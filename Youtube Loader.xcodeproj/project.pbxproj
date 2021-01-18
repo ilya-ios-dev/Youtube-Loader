@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA05A1B625B58BE800E31D31 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = FA05A1B525B58BE800E31D31 /* AlamofireImage */; };
+		FA05A1B925B5C6AC00E31D31 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA05A1B825B5C6AC00E31D31 /* ApiKeys.swift */; };
+		FA05A1BC25B5CCBC00E31D31 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA05A1BB25B5CCBC00E31D31 /* String+Extensions.swift */; };
+		FA05A1BF25B5CCE300E31D31 /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA05A1BE25B5CCE300E31D31 /* TimeInterval+Extensions.swift */; };
 		FA18D2D225AC564C004D0E67 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18D2D125AC564C004D0E67 /* PlayerViewController.swift */; };
 		FA18D2D525AC5B40004D0E67 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18D2D425AC5B40004D0E67 /* TimelineView.swift */; };
 		FA18D2DC25ACC13D004D0E67 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18D2DB25ACC13D004D0E67 /* PlayButton.swift */; };
@@ -15,6 +19,9 @@
 		FA28617825ADEF1B001D131F /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28617625ADEF1B001D131F /* SongTableViewCell.swift */; };
 		FA28617925ADEF1B001D131F /* SongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA28617725ADEF1B001D131F /* SongTableViewCell.xib */; };
 		FA4B803E25B1833800A9ED9F /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4B803D25B1833800A9ED9F /* MiniPlayerViewController.swift */; };
+		FA60C34225B4391D003D754C /* XCDYouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = FA60C34125B4391D003D754C /* XCDYouTubeKit */; };
+		FA60C34925B467E5003D754C /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60C34825B467E5003D754C /* LocalFileManager.swift */; };
+		FA60C34F25B46A3D003D754C /* AVAsset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60C34E25B46A3D003D754C /* AVAsset+Extensions.swift */; };
 		FA69970825ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA69970625ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodeld */; };
 		FA912A2A25AB3292001936F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA912A2925AB3292001936F1 /* AppDelegate.swift */; };
 		FA912A2C25AB3292001936F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA912A2B25AB3292001936F1 /* SceneDelegate.swift */; };
@@ -25,9 +32,17 @@
 		FAA6B8E925ADAD8800E3C4BF /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6B8E825ADAD8800E3C4BF /* UIView+Extensions.swift */; };
 		FAA88C5525B3281800DBA1F5 /* AddSong.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA88C5425B3281700DBA1F5 /* AddSong.storyboard */; };
 		FABDBFA025B193730039B4B3 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABDBF9F25B193730039B4B3 /* Player.storyboard */; };
+		FAFA680925B37EB60026059D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FAFA680825B37EB60026059D /* Alamofire */; };
+		FAFA680C25B37F670026059D /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA680B25B37F670026059D /* AddViewController.swift */; };
+		FAFA680F25B380C90026059D /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA680E25B380C90026059D /* Youtube.swift */; };
+		FAFA681325B382830026059D /* AddSongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA681125B382830026059D /* AddSongTableViewCell.swift */; };
+		FAFA681425B382830026059D /* AddSongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFA681225B382830026059D /* AddSongTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA05A1B825B5C6AC00E31D31 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
+		FA05A1BB25B5CCBC00E31D31 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		FA05A1BE25B5CCE300E31D31 /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		FA18D2D125AC564C004D0E67 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		FA18D2D425AC5B40004D0E67 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		FA18D2DB25ACC13D004D0E67 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
@@ -36,6 +51,8 @@
 		FA28617625ADEF1B001D131F /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		FA28617725ADEF1B001D131F /* SongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongTableViewCell.xib; sourceTree = "<group>"; };
 		FA4B803D25B1833800A9ED9F /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
+		FA60C34825B467E5003D754C /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
+		FA60C34E25B46A3D003D754C /* AVAsset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+Extensions.swift"; sourceTree = "<group>"; };
 		FA69970725ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YoutubeLoader.xcdatamodel; sourceTree = "<group>"; };
 		FA912A2625AB3292001936F1 /* Youtube Loader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Youtube Loader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA912A2925AB3292001936F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +65,10 @@
 		FAA6B8E825ADAD8800E3C4BF /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		FAA88C5425B3281700DBA1F5 /* AddSong.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSong.storyboard; sourceTree = "<group>"; };
 		FABDBF9F25B193730039B4B3 /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
+		FAFA680B25B37F670026059D /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		FAFA680E25B380C90026059D /* Youtube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Youtube.swift; sourceTree = "<group>"; };
+		FAFA681125B382830026059D /* AddSongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongTableViewCell.swift; sourceTree = "<group>"; };
+		FAFA681225B382830026059D /* AddSongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSongTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFA680925B37EB60026059D /* Alamofire in Frameworks */,
+				FA60C34225B4391D003D754C /* XCDYouTubeKit in Frameworks */,
+				FA05A1B625B58BE800E31D31 /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				FA18D2DE25ACC26F004D0E67 /* AudioPlayer.swift */,
+				FA60C34825B467E5003D754C /* LocalFileManager.swift */,
+				FAFA680E25B380C90026059D /* Youtube.swift */,
 				FA69970625ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodeld */,
 			);
 			path = Model;
@@ -122,6 +148,7 @@
 		FA912A3E25AB348E001936F1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA05A1B825B5C6AC00E31D31 /* ApiKeys.swift */,
 				FA912A3225AB3295001936F1 /* Assets.xcassets */,
 				FA912A3725AB3295001936F1 /* Info.plist */,
 			);
@@ -134,6 +161,7 @@
 				FA28617325ADEA72001D131F /* CustomSegmentedControl.swift */,
 				FA18D2DB25ACC13D004D0E67 /* PlayButton.swift */,
 				FA18D2D425AC5B40004D0E67 /* TimelineView.swift */,
+				FAFA681625B3828A0026059D /* AddSongTableViewCell */,
 				FA28617B25ADEF1F001D131F /* SongTableViewCell */,
 				FA2CF88F25B1CF2E00A78BB1 /* Storyboards */,
 			);
@@ -146,6 +174,7 @@
 				FA912A2D25AB3292001936F1 /* ViewController.swift */,
 				FA18D2D125AC564C004D0E67 /* PlayerViewController.swift */,
 				FA4B803D25B1833800A9ED9F /* MiniPlayerViewController.swift */,
+				FAFA680B25B37F670026059D /* AddViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -163,8 +192,20 @@
 			isa = PBXGroup;
 			children = (
 				FAA6B8E825ADAD8800E3C4BF /* UIView+Extensions.swift */,
+				FA60C34E25B46A3D003D754C /* AVAsset+Extensions.swift */,
+				FA05A1BB25B5CCBC00E31D31 /* String+Extensions.swift */,
+				FA05A1BE25B5CCE300E31D31 /* TimeInterval+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FAFA681625B3828A0026059D /* AddSongTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FAFA681125B382830026059D /* AddSongTableViewCell.swift */,
+				FAFA681225B382830026059D /* AddSongTableViewCell.xib */,
+			);
+			path = AddSongTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +225,9 @@
 			);
 			name = "Youtube Loader";
 			packageProductDependencies = (
+				FAFA680825B37EB60026059D /* Alamofire */,
+				FA60C34125B4391D003D754C /* XCDYouTubeKit */,
+				FA05A1B525B58BE800E31D31 /* AlamofireImage */,
 			);
 			productName = "Youtube Loader";
 			productReference = FA912A2625AB3292001936F1 /* Youtube Loader.app */;
@@ -213,6 +257,9 @@
 			);
 			mainGroup = FA912A1D25AB3292001936F1;
 			packageReferences = (
+				FAFA680725B37EB50026059D /* XCRemoteSwiftPackageReference "Alamofire" */,
+				FA60C34025B4391D003D754C /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */,
+				FA05A1B425B58BE800E31D31 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = FA912A2725AB3292001936F1 /* Products */;
 			projectDirPath = "";
@@ -231,6 +278,7 @@
 				FA28617925ADEF1B001D131F /* SongTableViewCell.xib in Resources */,
 				FA912A3625AB3295001936F1 /* LaunchScreen.storyboard in Resources */,
 				FABDBFA025B193730039B4B3 /* Player.storyboard in Resources */,
+				FAFA681425B382830026059D /* AddSongTableViewCell.xib in Resources */,
 				FA912A3325AB3295001936F1 /* Assets.xcassets in Resources */,
 				FA912A3125AB3292001936F1 /* Main.storyboard in Resources */,
 				FAA88C5525B3281800DBA1F5 /* AddSong.storyboard in Resources */,
@@ -246,15 +294,23 @@
 			files = (
 				FA912A2E25AB3292001936F1 /* ViewController.swift in Sources */,
 				FA18D2D225AC564C004D0E67 /* PlayerViewController.swift in Sources */,
+				FA05A1B925B5C6AC00E31D31 /* ApiKeys.swift in Sources */,
+				FAFA681325B382830026059D /* AddSongTableViewCell.swift in Sources */,
 				FA18D2DC25ACC13D004D0E67 /* PlayButton.swift in Sources */,
+				FA60C34F25B46A3D003D754C /* AVAsset+Extensions.swift in Sources */,
 				FA28617825ADEF1B001D131F /* SongTableViewCell.swift in Sources */,
+				FA05A1BF25B5CCE300E31D31 /* TimeInterval+Extensions.swift in Sources */,
 				FA4B803E25B1833800A9ED9F /* MiniPlayerViewController.swift in Sources */,
 				FA28617425ADEA72001D131F /* CustomSegmentedControl.swift in Sources */,
+				FA60C34925B467E5003D754C /* LocalFileManager.swift in Sources */,
 				FAA6B8E925ADAD8800E3C4BF /* UIView+Extensions.swift in Sources */,
 				FA912A2A25AB3292001936F1 /* AppDelegate.swift in Sources */,
 				FA18D2D525AC5B40004D0E67 /* TimelineView.swift in Sources */,
+				FA05A1BC25B5CCBC00E31D31 /* String+Extensions.swift in Sources */,
 				FA912A2C25AB3292001936F1 /* SceneDelegate.swift in Sources */,
 				FA69970825ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodeld in Sources */,
+				FAFA680F25B380C90026059D /* Youtube.swift in Sources */,
+				FAFA680C25B37F670026059D /* AddViewController.swift in Sources */,
 				FA18D2DF25ACC26F004D0E67 /* AudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,6 +511,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA05A1B425B58BE800E31D31 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+		FA60C34025B4391D003D754C /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/0xced/XCDYouTubeKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.15.2;
+			};
+		};
+		FAFA680725B37EB50026059D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA05A1B525B58BE800E31D31 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA05A1B425B58BE800E31D31 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+		FA60C34125B4391D003D754C /* XCDYouTubeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA60C34025B4391D003D754C /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */;
+			productName = XCDYouTubeKit;
+		};
+		FAFA680825B37EB60026059D /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFA680725B37EB50026059D /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		FA69970625ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodeld */ = {

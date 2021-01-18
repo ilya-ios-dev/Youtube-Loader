@@ -161,33 +161,3 @@ extension PlayerViewController {
         playButton.setImage(UIImage(systemName: imageName), for: .normal)
     }
 }
-
-// MARK: TimeInterval
-extension TimeInterval {
-    func stringFromTimeInterval() -> String {
-        
-        let time = NSInteger(self)
-        let seconds = time % 60
-        var minutes = (time / 60) % 60
-        minutes += Int(time / 3600) * 60  // to account for the hours as minutes
-        
-        return String(format: "%0.2d:%0.2d",minutes,seconds)
-    }
-}
-
-extension String {
-    func convertToTimeInterval() -> TimeInterval {
-        guard self != "" else {
-            return 0
-        }
-        
-        var interval:Double = 0
-        
-        let parts = self.components(separatedBy: ":")
-        for (index, part) in parts.reversed().enumerated() {
-            interval += (Double(part) ?? 0) * pow(Double(60), Double(index))
-        }
-        
-        return interval
-    }
-}

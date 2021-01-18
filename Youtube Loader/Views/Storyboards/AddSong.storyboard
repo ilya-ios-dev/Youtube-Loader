@@ -4,22 +4,49 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Add-->
         <scene sceneID="bTP-GJ-Rl1">
             <objects>
-                <viewController id="DDi-jw-yCs" sceneMemberID="viewController">
+                <viewController id="DDi-jw-yCs" customClass="AddViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HQa-cV-uxZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="6YO-cm-KIv">
+                                <rect key="frame" x="20" y="44" width="374" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OKl-iK-hdb">
+                                <rect key="frame" x="20" y="116" width="374" height="697"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="mbF-Qw-MgE"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.96078431372549022" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="mbF-Qw-MgE" firstAttribute="trailing" secondItem="OKl-iK-hdb" secondAttribute="trailing" constant="20" id="KTz-lj-0B8"/>
+                            <constraint firstItem="6YO-cm-KIv" firstAttribute="leading" secondItem="mbF-Qw-MgE" secondAttribute="leading" constant="20" id="Kwv-h9-hte"/>
+                            <constraint firstItem="OKl-iK-hdb" firstAttribute="top" secondItem="6YO-cm-KIv" secondAttribute="bottom" constant="16" id="UhK-lo-wQf"/>
+                            <constraint firstItem="6YO-cm-KIv" firstAttribute="top" secondItem="mbF-Qw-MgE" secondAttribute="top" id="Ulh-qT-BBa"/>
+                            <constraint firstItem="mbF-Qw-MgE" firstAttribute="bottom" secondItem="OKl-iK-hdb" secondAttribute="bottom" id="YJQ-Ih-08q"/>
+                            <constraint firstItem="OKl-iK-hdb" firstAttribute="leading" secondItem="mbF-Qw-MgE" secondAttribute="leading" constant="20" id="YYE-Ju-2aK"/>
+                            <constraint firstItem="mbF-Qw-MgE" firstAttribute="trailing" secondItem="6YO-cm-KIv" secondAttribute="trailing" constant="20" id="aAj-bd-8b1"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Add" image="plus" catalog="system" id="tim-At-yOr"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="6YO-cm-KIv" id="v6L-EO-wRQ"/>
+                        <outlet property="tableView" destination="OKl-iK-hdb" id="HTj-gD-5Pe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCJ-Kd-J5Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -28,8 +55,5 @@
     </scenes>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

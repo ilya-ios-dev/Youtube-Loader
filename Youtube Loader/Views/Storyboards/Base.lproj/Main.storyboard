@@ -54,7 +54,7 @@
                             <constraint firstItem="YcM-R3-mH2" firstAttribute="trailing" secondItem="f8A-vH-woo" secondAttribute="trailing" constant="20" id="VTy-dc-Yym"/>
                             <constraint firstItem="f8A-vH-woo" firstAttribute="top" secondItem="e3L-oe-CGx" secondAttribute="bottom" id="kBw-6w-JNF"/>
                             <constraint firstItem="ZWy-sP-md0" firstAttribute="top" secondItem="f8A-vH-woo" secondAttribute="bottom" constant="8" symbolic="YES" id="oEz-5F-QSe"/>
-                            <constraint firstItem="ZWy-sP-md0" firstAttribute="bottom" secondItem="B1P-82-7Lc" secondAttribute="bottom" constant="-83" id="rJ6-dS-l8L"/>
+                            <constraint firstItem="ZWy-sP-md0" firstAttribute="bottom" secondItem="YcM-R3-mH2" secondAttribute="bottom" id="rJ6-dS-l8L"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Music" image="music.note.list" catalog="system" id="Mtu-fS-yzi"/>
@@ -93,18 +93,23 @@
                                                         <constraint firstAttribute="height" constant="40" id="Q1M-Rf-1EA"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Worry Bout Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dm0-P6-uPD">
-                                                    <rect key="frame" x="56" y="0.0" width="99.5" height="17"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                    <color key="textColor" red="0.23529411764705882" green="0.25882352941176467" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rosie Lowe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QP-xd-QFH">
-                                                    <rect key="frame" x="56" y="17" width="64" height="14.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.4359766207202227" green="0.47563520497039857" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Er6-zD-cPR">
+                                                    <rect key="frame" x="56" y="0.0" width="99.5" height="31.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Worry Bout Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dm0-P6-uPD">
+                                                            <rect key="frame" x="0.0" y="0.0" width="99.5" height="17"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                            <color key="textColor" red="0.23529411764705882" green="0.25882352941176467" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rosie Lowe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QP-xd-QFH">
+                                                            <rect key="frame" x="0.0" y="17" width="64" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" red="0.4359766207202227" green="0.47563520497039857" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Umu-j7-Nl8">
                                                     <rect key="frame" x="0.0" y="40" width="382" height="19"/>
                                                     <subviews>
@@ -127,7 +132,7 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gcH-GT-iZw">
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gcH-GT-iZw">
                                                     <rect key="frame" x="339" y="0.0" width="43" height="22"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoB-sH-Clw">
@@ -154,18 +159,15 @@
                                                 <constraint firstItem="dru-iF-d9p" firstAttribute="top" secondItem="ZUV-yh-wv9" secondAttribute="top" id="2Te-dH-BK2"/>
                                                 <constraint firstItem="dru-iF-d9p" firstAttribute="leading" secondItem="ZUV-yh-wv9" secondAttribute="leading" id="3b3-Up-HPJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="Umu-j7-Nl8" secondAttribute="trailing" id="4Lh-Qf-FC8"/>
-                                                <constraint firstItem="dm0-P6-uPD" firstAttribute="top" secondItem="ZUV-yh-wv9" secondAttribute="top" id="4kI-ki-OnT"/>
                                                 <constraint firstItem="Umu-j7-Nl8" firstAttribute="top" secondItem="dru-iF-d9p" secondAttribute="bottom" id="O11-5z-b1N"/>
-                                                <constraint firstItem="dm0-P6-uPD" firstAttribute="leading" secondItem="dru-iF-d9p" secondAttribute="trailing" constant="16" id="aCk-Re-g8u"/>
-                                                <constraint firstItem="gcH-GT-iZw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5QP-xd-QFH" secondAttribute="trailing" id="agQ-7w-MYf"/>
+                                                <constraint firstItem="Er6-zD-cPR" firstAttribute="top" secondItem="ZUV-yh-wv9" secondAttribute="top" id="Xvr-as-UQ6"/>
+                                                <constraint firstItem="Er6-zD-cPR" firstAttribute="leading" secondItem="dru-iF-d9p" secondAttribute="trailing" constant="16" id="Y3M-7g-AIY"/>
                                                 <constraint firstItem="Umu-j7-Nl8" firstAttribute="leading" secondItem="ZUV-yh-wv9" secondAttribute="leading" id="cdM-QV-NjM"/>
                                                 <constraint firstAttribute="bottom" secondItem="Umu-j7-Nl8" secondAttribute="bottom" id="dM5-R2-vn3"/>
                                                 <constraint firstItem="dru-iF-d9p" firstAttribute="top" secondItem="ZUV-yh-wv9" secondAttribute="top" id="gXb-c3-55q"/>
-                                                <constraint firstItem="gcH-GT-iZw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dm0-P6-uPD" secondAttribute="trailing" id="jCd-B7-VvQ"/>
+                                                <constraint firstItem="gcH-GT-iZw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Er6-zD-cPR" secondAttribute="trailing" constant="16" id="ggX-fT-RHh"/>
                                                 <constraint firstItem="gcH-GT-iZw" firstAttribute="top" secondItem="ZUV-yh-wv9" secondAttribute="top" id="sNq-Zg-I7z"/>
-                                                <constraint firstItem="5QP-xd-QFH" firstAttribute="leading" secondItem="dru-iF-d9p" secondAttribute="trailing" constant="16" id="u5c-LY-iXE"/>
                                                 <constraint firstAttribute="trailing" secondItem="gcH-GT-iZw" secondAttribute="trailing" id="wvG-ma-T1B"/>
-                                                <constraint firstItem="5QP-xd-QFH" firstAttribute="top" secondItem="dm0-P6-uPD" secondAttribute="bottom" id="z4g-ei-Dgx"/>
                                             </constraints>
                                         </view>
                                     </subviews>
