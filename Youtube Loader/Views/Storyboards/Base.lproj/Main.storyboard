@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VaU-sh-n7M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tpM-PJ-tkN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -67,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kCC-3S-6Vv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1432" y="1025"/>
+            <point key="canvasLocation" x="3519" y="682"/>
         </scene>
         <!--Mini Player View Controller-->
         <scene sceneID="2Sp-y6-eeo">
@@ -232,7 +233,349 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9h-L0-cMx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="621.73913043478262" y="583.92857142857144"/>
+            <point key="canvasLocation" x="3518.840579710145" y="-133.25892857142856"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Pzl-0v-MOZ">
+            <objects>
+                <viewController id="tiw-6R-qpT" customClass="MainViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sC8-vS-goJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMk-WU-eFF">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JL1-fS-bhJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1675.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWz-22-OPx">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="285.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="m2E-1S-Zbk">
+                                                        <rect key="frame" x="20" y="0.0" width="374" height="285.5"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Zsd-tQ-i6G">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="45.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Songs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkW-dj-7rG">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="112" height="45.5"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wg-6W-Dro">
+                                                                        <rect key="frame" x="311" y="0.0" width="63" height="45.5"/>
+                                                                        <state key="normal" title="All songs">
+                                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                                        </state>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgR-kH-deS">
+                                                                <rect key="frame" x="0.0" y="45.5" width="374" height="240"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="240" id="4af-PP-FCl"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <segue destination="YbZ-V9-DkF" kind="embed" id="aAr-Ix-xVK"/>
+                                                                </connections>
+                                                            </containerView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="m2E-1S-Zbk" firstAttribute="leading" secondItem="eWz-22-OPx" secondAttribute="leading" constant="20" symbolic="YES" id="MLq-qe-DES"/>
+                                                    <constraint firstItem="m2E-1S-Zbk" firstAttribute="top" secondItem="eWz-22-OPx" secondAttribute="top" id="ZIu-6W-3Y8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="m2E-1S-Zbk" secondAttribute="trailing" constant="20" symbolic="YES" id="cCK-zW-EjS"/>
+                                                    <constraint firstAttribute="bottom" secondItem="m2E-1S-Zbk" secondAttribute="bottom" id="pdN-uZ-Rbk"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FL1-HK-tdF">
+                                                <rect key="frame" x="0.0" y="293.5" width="414" height="270"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="z6z-Fr-f3L">
+                                                        <rect key="frame" x="20" y="0.0" width="374" height="270"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="cPW-p8-4AK">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Albums" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EG4-cd-lq0">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="135" height="60"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gyt-Cr-cV1">
+                                                                        <rect key="frame" x="303" y="0.0" width="71" height="60"/>
+                                                                        <state key="normal" title="All albums">
+                                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                                        </state>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXX-1h-VCu">
+                                                                <rect key="frame" x="0.0" y="60" width="374" height="210"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="210" id="YUk-4R-pJy"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <segue destination="RaE-cs-Zhe" kind="embed" id="t2e-G6-3Io"/>
+                                                                </connections>
+                                                            </containerView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="270" id="3Lz-cd-lGL"/>
+                                                    <constraint firstAttribute="bottom" secondItem="z6z-Fr-f3L" secondAttribute="bottom" id="6E9-t9-lyM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="z6z-Fr-f3L" secondAttribute="trailing" constant="20" id="A25-rK-eIq"/>
+                                                    <constraint firstItem="z6z-Fr-f3L" firstAttribute="leading" secondItem="FL1-HK-tdF" secondAttribute="leading" constant="20" id="CNn-jq-YhJ"/>
+                                                    <constraint firstAttribute="top" secondItem="z6z-Fr-f3L" secondAttribute="top" id="DUo-EQ-jv3"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4JZ-Ho-ig0">
+                                                <rect key="frame" x="0.0" y="571.5" width="414" height="270"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oYQ-S9-89d">
+                                                        <rect key="frame" x="20" y="0.0" width="374" height="270"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="H00-z2-c7z">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Artists" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPO-dt-1RK">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="118.5" height="60"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAx-qb-Xqt">
+                                                                        <rect key="frame" x="317" y="0.0" width="57" height="60"/>
+                                                                        <state key="normal" title="All artist">
+                                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                                        </state>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Kc-ir-q3u">
+                                                                <rect key="frame" x="0.0" y="60" width="374" height="210"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="210" id="Zdi-YW-Kzw"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <segue destination="LTr-Er-ieI" kind="embed" id="JGi-OH-bnQ"/>
+                                                                </connections>
+                                                            </containerView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="oYQ-S9-89d" secondAttribute="trailing" constant="20" id="1EA-HB-I7j"/>
+                                                    <constraint firstAttribute="height" constant="270" id="9SB-7Z-h7z"/>
+                                                    <constraint firstItem="oYQ-S9-89d" firstAttribute="top" secondItem="4JZ-Ho-ig0" secondAttribute="top" id="HKs-th-7OX"/>
+                                                    <constraint firstAttribute="bottom" secondItem="oYQ-S9-89d" secondAttribute="bottom" id="fkk-3i-3pw"/>
+                                                    <constraint firstItem="oYQ-S9-89d" firstAttribute="leading" secondItem="4JZ-Ho-ig0" secondAttribute="leading" constant="20" id="z5T-b7-XUb"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GYq-d6-Hom">
+                                                <rect key="frame" x="0.0" y="849.5" width="414" height="270"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="y4i-XF-aoK">
+                                                        <rect key="frame" x="20" y="0.0" width="374" height="270"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="EYp-mq-eOh">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Playlists" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tZ-kl-nee">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="148.5" height="60"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCY-aI-HYs">
+                                                                        <rect key="frame" x="297" y="0.0" width="77" height="60"/>
+                                                                        <state key="normal" title="All playlists">
+                                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                                        </state>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qc8-4L-sz1">
+                                                                <rect key="frame" x="0.0" y="60" width="374" height="210"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="210" id="Ysh-CX-BH9"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <segue destination="Haz-gd-ght" kind="embed" id="Lqh-p0-u4m"/>
+                                                                </connections>
+                                                            </containerView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="270" id="CPO-Uq-7cl"/>
+                                                    <constraint firstItem="y4i-XF-aoK" firstAttribute="top" secondItem="GYq-d6-Hom" secondAttribute="top" id="FuQ-yJ-gCy"/>
+                                                    <constraint firstItem="y4i-XF-aoK" firstAttribute="leading" secondItem="GYq-d6-Hom" secondAttribute="leading" constant="20" id="eYr-08-Myt"/>
+                                                    <constraint firstAttribute="bottom" secondItem="y4i-XF-aoK" secondAttribute="bottom" id="kqm-CR-G8g"/>
+                                                    <constraint firstAttribute="trailing" secondItem="y4i-XF-aoK" secondAttribute="trailing" constant="20" id="oab-31-xN1"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2KM-b4-npg">
+                                                <rect key="frame" x="0.0" y="1127.5" width="414" height="270"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3uQ-bB-9XW">
+                                                        <rect key="frame" x="20" y="0.0" width="374" height="270"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="i4A-qs-q6M">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIMILAR TO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQb-gg-uoW">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="v7o-qd-jCx">
+                                                                        <rect key="frame" x="0.0" y="18" width="374" height="42"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Artist name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6l-RG-kcq">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="204.5" height="42"/>
+                                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7I-eJ-gqn">
+                                                                                <rect key="frame" x="311" y="0.0" width="63" height="42"/>
+                                                                                <state key="normal" title="All songs">
+                                                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                                                </state>
+                                                                            </button>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="51l-GY-KeU">
+                                                                <rect key="frame" x="0.0" y="60" width="374" height="210"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="210" id="M6M-7b-P37"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <segue destination="naC-Bz-rA9" kind="embed" id="2an-ng-aDz"/>
+                                                                </connections>
+                                                            </containerView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="3uQ-bB-9XW" secondAttribute="bottom" id="1X4-Q9-ned"/>
+                                                    <constraint firstItem="3uQ-bB-9XW" firstAttribute="leading" secondItem="2KM-b4-npg" secondAttribute="leading" constant="20" id="CDA-pB-X5D"/>
+                                                    <constraint firstItem="3uQ-bB-9XW" firstAttribute="top" secondItem="2KM-b4-npg" secondAttribute="top" id="YJ7-wl-Ojr"/>
+                                                    <constraint firstAttribute="height" constant="270" id="nQS-pm-WBo"/>
+                                                    <constraint firstAttribute="trailing" secondItem="3uQ-bB-9XW" secondAttribute="trailing" constant="20" id="yu9-WP-5Rr"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fT-ru-Vk3">
+                                                <rect key="frame" x="0.0" y="1405.5" width="414" height="270"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CIY-AV-RTA">
+                                                        <rect key="frame" x="20" y="0.0" width="374" height="270"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dX3-yG-jpl">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Recommendations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="IdB-zQ-Ewq">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="303" height="30"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpJ-pp-wQS">
+                                                                        <rect key="frame" x="311" y="0.0" width="63" height="30"/>
+                                                                        <state key="normal" title="All songs">
+                                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                                        </state>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IgF-jf-rkp">
+                                                                <rect key="frame" x="0.0" y="30" width="374" height="240"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="240" id="w8Q-sv-tcH"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <segue destination="Sl7-W0-75H" kind="embed" id="EOv-D5-gyY"/>
+                                                                </connections>
+                                                            </containerView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="CIY-AV-RTA" secondAttribute="trailing" constant="20" id="Dol-Ng-lmL"/>
+                                                    <constraint firstItem="CIY-AV-RTA" firstAttribute="top" secondItem="0fT-ru-Vk3" secondAttribute="top" id="K6n-YD-Xs6"/>
+                                                    <constraint firstItem="CIY-AV-RTA" firstAttribute="leading" secondItem="0fT-ru-Vk3" secondAttribute="leading" constant="20" id="gjx-HM-bz0"/>
+                                                    <constraint firstAttribute="bottom" secondItem="CIY-AV-RTA" secondAttribute="bottom" id="s9K-lb-QZC"/>
+                                                    <constraint firstAttribute="height" constant="270" id="vTc-dC-dI0"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="JL1-fS-bhJ" firstAttribute="width" secondItem="Gia-NM-gWE" secondAttribute="width" id="873-NY-naZ"/>
+                                    <constraint firstItem="JL1-fS-bhJ" firstAttribute="trailing" secondItem="iqY-ZC-PNb" secondAttribute="trailing" id="8Hm-yE-Edz"/>
+                                    <constraint firstItem="JL1-fS-bhJ" firstAttribute="top" secondItem="iqY-ZC-PNb" secondAttribute="top" id="CAo-vy-8gN"/>
+                                    <constraint firstItem="JL1-fS-bhJ" firstAttribute="leading" secondItem="iqY-ZC-PNb" secondAttribute="leading" id="FMd-iY-oTL"/>
+                                    <constraint firstItem="JL1-fS-bhJ" firstAttribute="bottom" secondItem="iqY-ZC-PNb" secondAttribute="bottom" id="oHO-vp-FEe"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="iqY-ZC-PNb"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Gia-NM-gWE"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZYt-zc-bSc"/>
+                        <color key="backgroundColor" red="0.92608445880000001" green="0.96039432290000004" blue="0.98039633039999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="lMk-WU-eFF" firstAttribute="bottom" secondItem="sC8-vS-goJ" secondAttribute="bottom" id="DLl-K3-hIk"/>
+                            <constraint firstItem="lMk-WU-eFF" firstAttribute="top" secondItem="ZYt-zc-bSc" secondAttribute="top" id="fLC-50-ueB"/>
+                            <constraint firstItem="lMk-WU-eFF" firstAttribute="trailing" secondItem="ZYt-zc-bSc" secondAttribute="trailing" id="lcU-bk-wMO"/>
+                            <constraint firstItem="lMk-WU-eFF" firstAttribute="leading" secondItem="ZYt-zc-bSc" secondAttribute="leading" id="oyX-gf-Z2u"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="xJV-pr-kL4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vDu-AM-MGK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="328" y="-82"/>
+        </scene>
+        <!--Songs Collection View Controller-->
+        <scene sceneID="yET-qL-8Ml">
+            <objects>
+                <collectionViewController id="YbZ-V9-DkF" customClass="SongsCollectionViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ztf-Zg-zeE">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="240"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dyW-5V-39H">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="YbZ-V9-DkF" id="IGF-JI-n0N"/>
+                            <outlet property="delegate" destination="YbZ-V9-DkF" id="gA7-RW-yKI"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FPU-XX-W9w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1399" y="-804"/>
         </scene>
         <!--AddSong-->
         <scene sceneID="Zkc-yU-96p">
@@ -242,7 +585,150 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LT7-3o-2qY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1433" y="293"/>
+            <point key="canvasLocation" x="2957" y="310"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="gzF-Tm-l5r">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="tpM-PJ-tkN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JSg-fy-bTp">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="tiw-6R-qpT" kind="relationship" relationship="viewControllers" id="Nno-QM-UwK"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dqX-gB-Tqr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-563.768115942029" y="18.75"/>
+        </scene>
+        <!--Albums Collection View Controller-->
+        <scene sceneID="EJm-Vy-rKi">
+            <objects>
+                <collectionViewController id="RaE-cs-Zhe" customClass="AlbumsCollectionViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8LH-jB-UhU">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="210"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nIc-7h-XMf">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="RaE-cs-Zhe" id="cEM-wb-gGi"/>
+                            <outlet property="delegate" destination="RaE-cs-Zhe" id="qd2-Y1-7tC"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TWd-34-HA8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1399" y="-513"/>
+        </scene>
+        <!--Similar To Artist Collection View Controller-->
+        <scene sceneID="bL3-xY-im7">
+            <objects>
+                <collectionViewController id="naC-Bz-rA9" customClass="SimilarToArtistCollectionViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="uDC-rj-glw">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="210"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VuE-Q8-KR9">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="naC-Bz-rA9" id="2me-5q-pNA"/>
+                            <outlet property="delegate" destination="naC-Bz-rA9" id="yfv-TD-eao"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yoY-Sy-aLQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1399" y="277"/>
+        </scene>
+        <!--Artist Collection View Controller-->
+        <scene sceneID="kHx-Yc-GhQ">
+            <objects>
+                <collectionViewController id="LTr-Er-ieI" customClass="ArtistCollectionViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="EjF-ws-OeK">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="210"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e7M-B9-FJP">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="LTr-Er-ieI" id="g9x-Tm-yLZ"/>
+                            <outlet property="delegate" destination="LTr-Er-ieI" id="rCP-va-WWa"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ivs-re-c2N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1400" y="-291"/>
+        </scene>
+        <!--Playlist Collection View Controller-->
+        <scene sceneID="aav-0H-POf">
+            <objects>
+                <collectionViewController id="Haz-gd-ght" customClass="PlaylistCollectionViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2AQ-81-OYx">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="210"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fWG-hf-oa0">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="Haz-gd-ght" id="Hkt-z3-QCF"/>
+                            <outlet property="delegate" destination="Haz-gd-ght" id="Xyb-9f-Bjd"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Py-zw-5BC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1400" y="-44"/>
+        </scene>
+        <!--Recommendations Collection View Controller-->
+        <scene sceneID="0TY-x4-TPZ">
+            <objects>
+                <collectionViewController id="Sl7-W0-75H" customClass="RecommendationsCollectionViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="VTa-GR-xWn">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="240"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LaM-bL-BPw">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="Sl7-W0-75H" id="IbE-p8-WKo"/>
+                            <outlet property="delegate" destination="Sl7-W0-75H" id="29D-rb-nOx"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hQO-9C-eJQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1400" y="569"/>
         </scene>
     </scenes>
     <resources>
@@ -250,5 +736,8 @@
         <image name="music.note.list" catalog="system" width="128" height="115"/>
         <image name="pause.fill" catalog="system" width="116" height="128"/>
         <image name="sample image" width="138" height="138"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -8,5 +8,5 @@
 import Foundation
 
 struct ApiKeys {
-    static let youtubeApiKey = ""
+    static let youtubeApiKey = "AIzaSyDNqvafSNx5C2cG5YOWouooQm0r8JBP0jQ"
 }
