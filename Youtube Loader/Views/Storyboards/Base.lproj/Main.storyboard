@@ -247,7 +247,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JL1-fS-bhJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1675.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1397.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWz-22-OPx">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="285.5"/>
@@ -424,63 +424,8 @@
                                                     <constraint firstAttribute="trailing" secondItem="y4i-XF-aoK" secondAttribute="trailing" constant="20" id="oab-31-xN1"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2KM-b4-npg">
-                                                <rect key="frame" x="0.0" y="1127.5" width="414" height="270"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3uQ-bB-9XW">
-                                                        <rect key="frame" x="20" y="0.0" width="374" height="270"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="i4A-qs-q6M">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIMILAR TO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQb-gg-uoW">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
-                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="v7o-qd-jCx">
-                                                                        <rect key="frame" x="0.0" y="18" width="374" height="42"/>
-                                                                        <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Artist name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6l-RG-kcq">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="204.5" height="42"/>
-                                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
-                                                                                <nil key="textColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7I-eJ-gqn">
-                                                                                <rect key="frame" x="311" y="0.0" width="63" height="42"/>
-                                                                                <state key="normal" title="All songs">
-                                                                                    <color key="titleColor" systemColor="labelColor"/>
-                                                                                </state>
-                                                                            </button>
-                                                                        </subviews>
-                                                                    </stackView>
-                                                                </subviews>
-                                                            </stackView>
-                                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="51l-GY-KeU">
-                                                                <rect key="frame" x="0.0" y="60" width="374" height="210"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="210" id="M6M-7b-P37"/>
-                                                                </constraints>
-                                                                <connections>
-                                                                    <segue destination="naC-Bz-rA9" kind="embed" id="2an-ng-aDz"/>
-                                                                </connections>
-                                                            </containerView>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="3uQ-bB-9XW" secondAttribute="bottom" id="1X4-Q9-ned"/>
-                                                    <constraint firstItem="3uQ-bB-9XW" firstAttribute="leading" secondItem="2KM-b4-npg" secondAttribute="leading" constant="20" id="CDA-pB-X5D"/>
-                                                    <constraint firstItem="3uQ-bB-9XW" firstAttribute="top" secondItem="2KM-b4-npg" secondAttribute="top" id="YJ7-wl-Ojr"/>
-                                                    <constraint firstAttribute="height" constant="270" id="nQS-pm-WBo"/>
-                                                    <constraint firstAttribute="trailing" secondItem="3uQ-bB-9XW" secondAttribute="trailing" constant="20" id="yu9-WP-5Rr"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fT-ru-Vk3">
-                                                <rect key="frame" x="0.0" y="1405.5" width="414" height="270"/>
+                                                <rect key="frame" x="0.0" y="1127.5" width="414" height="270"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CIY-AV-RTA">
                                                         <rect key="frame" x="20" y="0.0" width="374" height="270"/>
@@ -547,6 +492,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="xJV-pr-kL4"/>
+                    <connections>
+                        <outlet property="albumsContainerView" destination="FL1-HK-tdF" id="6AK-Dv-lrp"/>
+                        <outlet property="artistsContainerView" destination="4JZ-Ho-ig0" id="siP-Rr-PDB"/>
+                        <outlet property="playlistsContainerView" destination="GYq-d6-Hom" id="Oxb-8j-hgg"/>
+                        <outlet property="recommendationsContainerView" destination="0fT-ru-Vk3" id="8P1-je-ZAR"/>
+                        <outlet property="songsContainerView" destination="eWz-22-OPx" id="wgQ-wp-1Pe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vDu-AM-MGK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -575,7 +527,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FPU-XX-W9w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1399" y="-804"/>
+            <point key="canvasLocation" x="1399" y="-764"/>
         </scene>
         <!--AddSong-->
         <scene sceneID="Zkc-yU-96p">
@@ -586,6 +538,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LT7-3o-2qY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2957" y="310"/>
+        </scene>
+        <!--AddSong-->
+        <scene sceneID="u46-sR-EZs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddSong" id="pF4-N9-Bd8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="bQD-m2-NQJ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5A0-KP-HcD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1664" y="495"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gzF-Tm-l5r">
@@ -599,6 +561,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="tiw-6R-qpT" kind="relationship" relationship="viewControllers" id="Nno-QM-UwK"/>
+                        <segue destination="pF4-N9-Bd8" kind="relationship" relationship="viewControllers" id="LAe-Yt-OJu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqX-gB-Tqr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -628,32 +591,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TWd-34-HA8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1399" y="-513"/>
-        </scene>
-        <!--Similar To Artist Collection View Controller-->
-        <scene sceneID="bL3-xY-im7">
-            <objects>
-                <collectionViewController id="naC-Bz-rA9" customClass="SimilarToArtistCollectionViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="uDC-rj-glw">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="210"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VuE-Q8-KR9">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="naC-Bz-rA9" id="2me-5q-pNA"/>
-                            <outlet property="delegate" destination="naC-Bz-rA9" id="yfv-TD-eao"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yoY-Sy-aLQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1399" y="277"/>
+            <point key="canvasLocation" x="1399" y="-467"/>
         </scene>
         <!--Artist Collection View Controller-->
         <scene sceneID="kHx-Yc-GhQ">
@@ -678,7 +616,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ivs-re-c2N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1400" y="-291"/>
+            <point key="canvasLocation" x="1399" y="-246"/>
         </scene>
         <!--Playlist Collection View Controller-->
         <scene sceneID="aav-0H-POf">
@@ -703,7 +641,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Py-zw-5BC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1400" y="-44"/>
+            <point key="canvasLocation" x="1399" y="33"/>
         </scene>
         <!--Recommendations Collection View Controller-->
         <scene sceneID="0TY-x4-TPZ">
@@ -728,7 +666,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQO-9C-eJQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1400" y="569"/>
+            <point key="canvasLocation" x="1399" y="335"/>
         </scene>
     </scenes>
     <resources>

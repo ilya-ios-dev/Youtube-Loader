@@ -67,8 +67,10 @@ extension MiniPlayerViewController: AudioPlayerDelegate {
             return
         }
         songTitleLabel.text = song.name
-        songDesctiptionLabel.text = song.author
-        songImageView.image = UIImage(data: song.image ?? Data())
+        songDesctiptionLabel.text = song.author?.name
+        if let imageUrl = song.thumbnails?.smallUrl {
+            songImageView.af.setImage(withURL: imageUrl)
+        }
         let imageName = audioplayer.isPlaying ? "pause.fill" : "play.fill"
         playOrPauseButton.setImage(UIImage(systemName: imageName), for: .normal)
         playOrPauseButton.tintColor = audioplayer.isPlaying ? #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1) : #colorLiteral(red: 0.2352941176, green: 0.2588235294, blue: 0.3568627451, alpha: 1)

@@ -10,6 +10,7 @@ import CoreData
 
 final class SongsCollectionViewController: UICollectionViewController {
 
+    //MARK: - Properties
     private var dataSource: UICollectionViewDiffableDataSource<Int, Song>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
     private var fetchedResultsController: NSFetchedResultsController<Song>!
@@ -17,6 +18,7 @@ final class SongsCollectionViewController: UICollectionViewController {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }()
     
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,8 +26,14 @@ final class SongsCollectionViewController: UICollectionViewController {
         setupFetchedResultsController()
         configureDataSource()
     }
+    
+    // TODO: - ADD ACTION
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Selected: \(indexPath.item)")
+    }
 }
 
+//MARK: - Supporting Methods
 extension SongsCollectionViewController {
     
     private func configureSongCollectionView() {
@@ -56,8 +64,12 @@ extension SongsCollectionViewController {
     private func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Int, Song> (collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: SongCollectionViewCell.cellIdentifier, for: indexPath) as! SongCollectionViewCell
-            guard let imageData = item.image else { return nil }
-            cell.configure(title: item.name, description: item.author, image: UIImage(data: imageData))
+            
+            cell.configure(title: item.name, description: item.author?.name, image: nil)
+            if let url = item.thumbnails?.smallUrl {
+                cell.songImageView.af.setImage(withURL: url)
+                cell.songBackgroundImageView.af.setImage(withURL: url)
+            }
             return cell
         })
         setupSnapshot()
@@ -71,9 +83,9 @@ extension SongsCollectionViewController {
             self.dataSource?.apply(self.snapshot, animatingDifferences: true)
         }
     }
+    
     private func setupFetchedResultsController() {
         let request: NSFetchRequest = Song.fetchRequest()
-        
         
         let sort = NSSortDescriptor(key: "dateSave", ascending: true)
         request.sortDescriptors = [sort]
@@ -84,7 +96,7 @@ extension SongsCollectionViewController {
             try fetchedResultsController.performFetch()
             setupSnapshot()
         } catch {
-            print(error)
+            showAlert(alertText: error.localizedDescription)
         }
     }
 }

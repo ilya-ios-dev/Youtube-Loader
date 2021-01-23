@@ -153,10 +153,12 @@ extension PlayerViewController {
     }
     
     private func configureSong(_ song: Song) {
-        songImageView.image = UIImage(data: song.image!)
-        backgroundImageView.image = songImageView.image
+        if let imageUrl = song.thumbnails?.largeUrl {
+            songImageView.af.setImage(withURL: imageUrl)
+            backgroundImageView.image = songImageView.image
+        }
         songTitleLabel.text = song.name
-        songAuthor.text = song.author
+        songAuthor.text = song.author?.name
         let imageName = audioPlayer.isPlaying ? "pause.fill" : "play.fill"
         playButton.setImage(UIImage(systemName: imageName), for: .normal)
     }

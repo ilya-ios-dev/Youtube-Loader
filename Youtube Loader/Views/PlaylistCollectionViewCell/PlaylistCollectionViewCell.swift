@@ -20,8 +20,17 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
         // Initialization code
         configureBlur()
         playlistImageView.layer.cornerRadius = 8
+//        configureImage(image: UIImage(named: "playlist_img_\(Int.random(in: 1...10))"))
     }
-
+    public func configureImage(image: String?) {
+        configureImage(image: UIImage(named: image ?? ""))
+    }
+    
+    public func configureImage(image: UIImage?) {
+        backgroundImageView.image = image
+        playlistImageView.image = image
+    }
+    
     public func configure(title: String?, description: String?, image: UIImage?) {
         titleLabel.text = title
         descriptionLabel.text = description

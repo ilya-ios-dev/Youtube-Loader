@@ -17,9 +17,8 @@ protocol AddSongTableViewCellDelegate: class {
 final class AddSongTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
-    @IBOutlet public weak var backgroundBlurImage: UIImageView!
-    @IBOutlet public weak var songImageView: UIImageView!
-
+    @IBOutlet private weak var backgroundBlurImage: UIImageView!
+    @IBOutlet private weak var songImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var pauseOrResumeButton: UIButton!
@@ -109,9 +108,15 @@ extension AddSongTableViewCell {
     ///   - video: The object to be displayed.
     ///   - downloading: Whether the object is currently loading.
     ///   - paused: Whether the object is paused.
-    public func configure(video: Video, downloading: Bool, paused: Bool) {
-        titleLabel.text = video.snippet.title
-        descriptionLabel.text = video.snippet.channelTitle
+    ///   - url: Link to image.
+    public func configure(video: Video, downloading: Bool, paused: Bool, url: URL?) {
+        if let url = url {
+            backgroundBlurImage.af.setImage(withURL: url)
+            songImageView.af.setImage(withURL: url)
+        }
+        
+        titleLabel.text = video.snippet?.title
+        descriptionLabel.text = video.snippet?.channelTitle
         self.isDownloading = downloading
         self.isPaused = paused
         

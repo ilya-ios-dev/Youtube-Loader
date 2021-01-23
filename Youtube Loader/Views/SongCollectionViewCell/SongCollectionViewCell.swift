@@ -11,8 +11,8 @@ final class SongCollectionViewCell: UICollectionViewCell {
 
     //MARK: - Outlets
     @IBOutlet private weak var backgorundView: UIView!
-    @IBOutlet private weak var songBackgroundImageView: UIImageView!
-    @IBOutlet private weak var songImageView: UIImageView!
+    @IBOutlet public weak var songBackgroundImageView: UIImageView!
+    @IBOutlet public weak var songImageView: UIImageView!
     @IBOutlet private weak var visualEffectBlur: UIVisualEffectView!
     @IBOutlet private weak var playPauseButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!

@@ -8,15 +8,15 @@
 import UIKit
 import CoreData
 
-// MARK: - Youtube
-struct YoutubeResponse: Codable {
+/// JSON response to a YouTube video request, presented as a swift class.
+struct YoutubeVideoResponse: Codable, Hashable {
     let items: [Video]
 }
 
 // MARK: - Item
-struct Video: Codable {
+struct Video: Codable, Hashable {
     let id: ID
-    let snippet: Snippet
+    let snippet: Snippet?
 }
 
 extension Video {
@@ -31,7 +31,7 @@ extension Video {
 }
 
 // MARK: - ID
-struct ID: Codable {
+struct ID: Codable, Hashable {
     let videoID: String
     enum CodingKeys: String, CodingKey {
         case videoID = "videoId"
@@ -39,21 +39,22 @@ struct ID: Codable {
 }
 
 // MARK: - Snippet
-struct Snippet: Codable {
+struct Snippet: Codable, Hashable {
     let title: String
     let snippetDescription: String
     let thumbnails: Thumbnails
     let channelTitle: String
-    
+    let channelID: String
     enum CodingKeys: String, CodingKey {
         case title
+        case channelID = "channelId"
         case snippetDescription = "description"
         case thumbnails, channelTitle
     }
 }
 
 // MARK: - Thumbnails
-struct Thumbnails: Codable {
+struct Thumbnails: Codable, Hashable {
     let thumbnailsDefault, medium, high: Default
     
     enum CodingKeys: String, CodingKey {
@@ -63,6 +64,6 @@ struct Thumbnails: Codable {
 }
 
 // MARK: - Default
-struct Default: Codable {
+struct Default: Codable, Hashable {
     let url: String
 }

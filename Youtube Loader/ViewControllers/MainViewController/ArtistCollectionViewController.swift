@@ -10,22 +10,24 @@ import CoreData
 
 final class ArtistCollectionViewController: UICollectionViewController {
 
-    private var dataSource: UICollectionViewDiffableDataSource<Int, Song>!
-    private var snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
-    private var fetchedResultsController: NSFetchedResultsController<Song>!
+    //MARK: - Properties
+    private var dataSource: UICollectionViewDiffableDataSource<Int, Artist>!
+    private var snapshot = NSDiffableDataSourceSnapshot<Int, Artist>()
+    private var fetchedResultsController: NSFetchedResultsController<Artist>!
     private var context: NSManagedObjectContext = {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }()
     
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureSongCollectionView()
         setupFetchedResultsController()
         configureDataSource()
     }
 }
 
+//MARK: - Supporting Methods
 extension ArtistCollectionViewController {
     
     private func configureSongCollectionView() {
@@ -54,25 +56,25 @@ extension ArtistCollectionViewController {
     }
     
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Int, Song> (collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Int, Artist> (collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: ArtistCollectionViewCell.cellIdentifier, for: indexPath) as! ArtistCollectionViewCell
-            
+            cell.configure(title: item.name, url: item.thumbnails?.mediumUrl)
             return cell
         })
         setupSnapshot()
     }
     
     private func setupSnapshot() {
-        snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
+        snapshot = NSDiffableDataSourceSnapshot<Int, Artist>()
         snapshot.appendSections([0])
         snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
         DispatchQueue.main.async {
             self.dataSource?.apply(self.snapshot, animatingDifferences: true)
         }
     }
+    
     private func setupFetchedResultsController() {
-        let request: NSFetchRequest = Song.fetchRequest()
-        
+        let request: NSFetchRequest = Artist.fetchRequest()
         
         let sort = NSSortDescriptor(key: "dateSave", ascending: true)
         request.sortDescriptors = [sort]
@@ -83,7 +85,7 @@ extension ArtistCollectionViewController {
             try fetchedResultsController.performFetch()
             setupSnapshot()
         } catch {
-            print(error)
+            showAlert(alertText: error.localizedDescription)
         }
     }
 }

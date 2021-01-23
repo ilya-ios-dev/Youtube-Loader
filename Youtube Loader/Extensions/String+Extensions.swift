@@ -20,4 +20,11 @@ extension String {
         
         return interval
     }
+    
+    /// Removes the prefix from the string, if he is.
+    /// - Parameter prefix: The prefix to remove.
+    func deletingPrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else { return self }
+        return String(self.dropFirst(prefix.count))
+    }
 }

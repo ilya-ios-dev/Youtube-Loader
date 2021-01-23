@@ -10,13 +10,15 @@ import CoreData
 
 final class AlbumsCollectionViewController: UICollectionViewController {
 
-    private var dataSource: UICollectionViewDiffableDataSource<Int, Song>!
-    private var snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
-    private var fetchedResultsController: NSFetchedResultsController<Song>!
+    //MARK: - Properties
+    private var dataSource: UICollectionViewDiffableDataSource<Int, Album>!
+    private var snapshot = NSDiffableDataSourceSnapshot<Int, Album>()
+    private var fetchedResultsController: NSFetchedResultsController<Album>!
     private var context: NSManagedObjectContext = {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }()
     
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +28,7 @@ final class AlbumsCollectionViewController: UICollectionViewController {
     }
 }
 
+//MARK: - Supprting Methods
 extension AlbumsCollectionViewController {
     
     private func configureSongCollectionView() {
@@ -41,7 +44,6 @@ extension AlbumsCollectionViewController {
             
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//            item.contentInsets = .init(top: 4, leading: 0, bottom: 4, trailing: 0)
             
             let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(150), heightDimension: .fractionalHeight(1))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
@@ -55,25 +57,25 @@ extension AlbumsCollectionViewController {
     }
     
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Int, Song> (collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Int, Album> (collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCollectionViewCell.cellIdentifier, for: indexPath) as! AlbumCollectionViewCell
-            
+            cell.configure(title: item.name, imageUrl: item.thumbnails?.mediumUrl)
             return cell
         })
         setupSnapshot()
     }
     
     private func setupSnapshot() {
-        snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
+        snapshot = NSDiffableDataSourceSnapshot<Int, Album>()
         snapshot.appendSections([0])
         snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
         DispatchQueue.main.async {
             self.dataSource?.apply(self.snapshot, animatingDifferences: true)
         }
     }
+    
     private func setupFetchedResultsController() {
-        let request: NSFetchRequest = Song.fetchRequest()
-        
+        let request: NSFetchRequest = Album.fetchRequest()
         
         let sort = NSSortDescriptor(key: "dateSave", ascending: true)
         request.sortDescriptors = [sort]
@@ -84,7 +86,7 @@ extension AlbumsCollectionViewController {
             try fetchedResultsController.performFetch()
             setupSnapshot()
         } catch {
-            print(error)
+            showAlert(alertText: error.localizedDescription)
         }
     }
 }

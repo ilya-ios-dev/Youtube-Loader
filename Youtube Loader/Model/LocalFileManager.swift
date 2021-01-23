@@ -40,5 +40,35 @@ struct LocalFileManager {
         }
         return true
     }
+    
+    /// Saves a file with the specified name and data in the document directory.
+    /// - Parameters:
+    ///   - filename_ext: Filename with extension.
+    ///   - data: The data that will be saved.
+    /// - Returns: Was it possible to save it or not.
+    @discardableResult static func saveData(withNameAndExtension filename_ext: String, data: Data) -> Bool {
+        do {
+            guard let url = getURLForFile(withNameAndExtension: filename_ext) else { return false }
+            try data.write(to: url)
+            return true
+        } catch {
+            print(error)
+            return false
+        }
+    }
+    
+    /// Gets a link to a file if it exists in the document directory.
+    /// - Parameter filename_ext: The filename along with the extension.
+    static func getURLForFile(withNameAndExtension filename_ext: String) -> URL? {
+        return FileManager.default.url(for: .documentDirectory, filename: filename_ext)
+    }
+    
+    /// Gets a link to a file if it exists in the document directory.
+    /// - Parameters:
+    ///   - filename: The filename.
+    ///   - ext: Extension of the desired file.
+    static func getURLForFile(withNameAndExtension filename: String, ext: String) -> URL? {
+        return FileManager.default.url(for: .documentDirectory, filename: "\(filename).\(ext)")
+    }
 
 }

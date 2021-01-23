@@ -9,11 +9,11 @@ import UIKit
 
 final class ArtistCollectionViewCell: UICollectionViewCell {
 
+    //MARK: - Outlets
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var artistImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,11 +23,12 @@ final class ArtistCollectionViewCell: UICollectionViewCell {
         artistImageView.layer.cornerRadius = artistImageView.frame.height / 2
     }
 
-    public func configure(title: String?, description: String?, image: UIImage?) {
+    public func configure(title: String?, url: URL?) {
         titleLabel.text = title
-        descriptionLabel.text = description
-        artistImageView.image = image
-        backgroundImageView.image = image
+        if let url = url {
+            artistImageView.af.setImage(withURL: url)
+            backgroundImageView.af.setImage(withURL: url)
+        }
     }
     
     /// Adjusts the display of the `visualEffectBlur` to look like a shadow.

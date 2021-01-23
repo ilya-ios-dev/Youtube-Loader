@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Song" representedClassName="Song" syncable="YES" codeGenerationType="class">
-        <attribute name="author" optional="YES" attributeType="String"/>
+    <entity name="Album" representedClassName="Album" syncable="YES" codeGenerationType="class">
+        <attribute name="dateSave" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="albums" inverseEntity="Artist"/>
+        <relationship name="songs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" inverseName="album" inverseEntity="Song"/>
+        <relationship name="thumbnails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thumbnail" inverseName="album" inverseEntity="Thumbnail"/>
+    </entity>
+    <entity name="Artist" representedClassName="Artist" syncable="YES" codeGenerationType="class">
         <attribute name="dateSave" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="String"/>
-        <attribute name="image" optional="YES" attributeType="Binary"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="song" optional="YES" attributeType="Binary"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="albums" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Album" inverseName="author" inverseEntity="Album"/>
+        <relationship name="songs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" inverseName="author" inverseEntity="Song"/>
+        <relationship name="thumbnails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thumbnail" inverseName="artist" inverseEntity="Thumbnail"/>
+    </entity>
+    <entity name="Playlist" representedClassName="Playlist" syncable="YES" codeGenerationType="class">
+        <attribute name="dateSave" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="imageName" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="songs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" inverseName="playlist" inverseEntity="Song"/>
+    </entity>
+    <entity name="Song" representedClassName="Song" syncable="YES" codeGenerationType="class">
+        <attribute name="dateSave" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="song" optional="YES" attributeType="URI"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="songs" inverseEntity="Album"/>
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="songs" inverseEntity="Artist"/>
+        <relationship name="playlist" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Playlist" inverseName="songs" inverseEntity="Playlist"/>
+        <relationship name="thumbnails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thumbnail" inverseName="song" inverseEntity="Thumbnail"/>
+    </entity>
+    <entity name="Thumbnail" representedClassName="Thumbnail" syncable="YES" codeGenerationType="class">
+        <attribute name="large" optional="YES" attributeType="String"/>
+        <attribute name="medium" optional="YES" attributeType="String"/>
+        <attribute name="small" optional="YES" attributeType="String"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="thumbnails" inverseEntity="Album"/>
+        <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="thumbnails" inverseEntity="Artist"/>
+        <relationship name="song" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Song" inverseName="thumbnails" inverseEntity="Song"/>
     </entity>
     <elements>
-        <element name="Song" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Album" positionX="77.934326171875" positionY="-98.982421875" width="128" height="118"/>
+        <element name="Artist" positionX="-288.7923583984375" positionY="149.4099731445312" width="128" height="133"/>
+        <element name="Playlist" positionX="-49.04571533203125" positionY="-232.4448852539062" width="128" height="89"/>
+        <element name="Song" positionX="-322.389404296875" positionY="-179.4634552001953" width="128" height="149"/>
+        <element name="Thumbnail" positionX="87.59674072265625" positionY="143.9660034179688" width="128" height="133"/>
     </elements>
 </model>

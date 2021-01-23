@@ -8,24 +8,26 @@
 import UIKit
 import CoreData
 
-class PlaylistCollectionViewController: UICollectionViewController {
+final class PlaylistCollectionViewController: UICollectionViewController {
 
-    private var dataSource: UICollectionViewDiffableDataSource<Int, Song>!
-    private var snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
-    private var fetchedResultsController: NSFetchedResultsController<Song>!
+    //MARK: - Properties
+    private var dataSource: UICollectionViewDiffableDataSource<Int, Playlist>!
+    private var snapshot = NSDiffableDataSourceSnapshot<Int, Playlist>()
+    private var fetchedResultsController: NSFetchedResultsController<Playlist>!
     private var context: NSManagedObjectContext = {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }()
     
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureSongCollectionView()
         setupFetchedResultsController()
         configureDataSource()
     }
 }
 
+//MARK: - Supporting Methods
 extension PlaylistCollectionViewController {
     
     private func configureSongCollectionView() {
@@ -54,25 +56,25 @@ extension PlaylistCollectionViewController {
     }
     
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Int, Song> (collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "playlist", for: indexPath) as? PlaylistCollectionViewCell else { print("эта хуета не получается"); return nil }
-            
+        dataSource = UICollectionViewDiffableDataSource<Int, Playlist> (collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+            guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "playlist", for: indexPath) as? PlaylistCollectionViewCell else { return nil }
+            cell.configure(title: item.name, description: nil, image: UIImage(named: item.imageName ?? "playlist_img_1"))
             return cell
         })
         setupSnapshot()
     }
     
     private func setupSnapshot() {
-        snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
+        snapshot = NSDiffableDataSourceSnapshot<Int, Playlist>()
         snapshot.appendSections([0])
         snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
         DispatchQueue.main.async {
             self.dataSource?.apply(self.snapshot, animatingDifferences: true)
         }
     }
+    
     private func setupFetchedResultsController() {
-        let request: NSFetchRequest = Song.fetchRequest()
-        
+        let request: NSFetchRequest = Playlist.fetchRequest()
         
         let sort = NSSortDescriptor(key: "dateSave", ascending: true)
         request.sortDescriptors = [sort]
@@ -83,7 +85,7 @@ extension PlaylistCollectionViewController {
             try fetchedResultsController.performFetch()
             setupSnapshot()
         } catch {
-            print(error)
+            showAlert(alertText: error.localizedDescription)
         }
     }
 }
@@ -94,4 +96,3 @@ extension PlaylistCollectionViewController: NSFetchedResultsControllerDelegate {
         setupSnapshot()
     }
 }
-

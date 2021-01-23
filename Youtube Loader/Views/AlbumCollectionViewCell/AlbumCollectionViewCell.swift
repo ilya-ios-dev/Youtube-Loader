@@ -6,28 +6,27 @@
 //
 
 import UIKit
-import AlamofireImage
 
 final class AlbumCollectionViewCell: UICollectionViewCell {
 
-    
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var visualEffectView: UIVisualEffectView!
-    @IBOutlet weak var albumImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    
+    //MARK: - Outlets
+    @IBOutlet private weak var backgroundImageView: UIImageView!
+    @IBOutlet private weak var visualEffectView: UIVisualEffectView!
+    @IBOutlet private weak var albumImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         configureBlur()
     }
 
-    public func configure(title: String?, description: String?, image: UIImage?) {
+    public func configure(title: String?, imageUrl: URL?) {
         titleLabel.text = title
-        descriptionLabel.text = description
-        albumImageView.image = image
-        backgroundImageView.image = image
+        if let url = imageUrl {
+            albumImageView.af.setImage(withURL: url)
+            backgroundImageView.af.setImage(withURL: url)
+        }
     }
     
     /// Adjusts the display of the `visualEffectBlur` to look like a shadow.

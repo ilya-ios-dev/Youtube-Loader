@@ -15,7 +15,6 @@
 		FA18D2D525AC5B40004D0E67 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18D2D425AC5B40004D0E67 /* TimelineView.swift */; };
 		FA18D2DC25ACC13D004D0E67 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18D2DB25ACC13D004D0E67 /* PlayButton.swift */; };
 		FA18D2DF25ACC26F004D0E67 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18D2DE25ACC26F004D0E67 /* AudioPlayer.swift */; };
-		FA28617425ADEA72001D131F /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28617325ADEA72001D131F /* CustomSegmentedControl.swift */; };
 		FA28617825ADEF1B001D131F /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28617625ADEF1B001D131F /* SongTableViewCell.swift */; };
 		FA28617925ADEF1B001D131F /* SongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA28617725ADEF1B001D131F /* SongTableViewCell.xib */; };
 		FA4B803E25B1833800A9ED9F /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4B803D25B1833800A9ED9F /* MiniPlayerViewController.swift */; };
@@ -23,12 +22,15 @@
 		FA60C34925B467E5003D754C /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60C34825B467E5003D754C /* LocalFileManager.swift */; };
 		FA60C34F25B46A3D003D754C /* AVAsset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60C34E25B46A3D003D754C /* AVAsset+Extensions.swift */; };
 		FA69970825ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA69970625ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodeld */; };
+		FA6CE33925BB11F400C9FD64 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CE33825BB11F400C9FD64 /* UIViewController+Extensions.swift */; };
+		FA6CE34025BB153000C9FD64 /* YoutubeSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CE33F25BB153000C9FD64 /* YoutubeSearcher.swift */; };
+		FA6CE34325BB166000C9FD64 /* YoutubeDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CE34225BB166000C9FD64 /* YoutubeDownloader.swift */; };
+		FA6CE34625BC0AF000C9FD64 /* YoutubeChannelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CE34525BC0AF000C9FD64 /* YoutubeChannelResponse.swift */; };
 		FA6D515C25B6FD3A00896236 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D515B25B6FD3A00896236 /* UICollectionView+Extensions.swift */; };
 		FA6D516025B7056400896236 /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D515E25B7056400896236 /* ArtistCollectionViewCell.swift */; };
 		FA6D516125B7056400896236 /* ArtistCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA6D515F25B7056400896236 /* ArtistCollectionViewCell.xib */; };
 		FA6D516425B7068000896236 /* ArtistCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D516325B7068000896236 /* ArtistCollectionViewController.swift */; };
 		FA6D516825B7086900896236 /* PlaylistCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D516725B7086900896236 /* PlaylistCollectionViewController.swift */; };
-		FA6D516B25B7088B00896236 /* SimilarToArtistCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D516A25B7088B00896236 /* SimilarToArtistCollectionViewController.swift */; };
 		FA6D516E25B708A600896236 /* RecommendationsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D516D25B708A600896236 /* RecommendationsCollectionViewController.swift */; };
 		FA6D517225B70A1400896236 /* PlaylistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D517025B70A1400896236 /* PlaylistCollectionViewCell.swift */; };
 		FA6D517325B70A1400896236 /* PlaylistCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA6D517125B70A1400896236 /* PlaylistCollectionViewCell.xib */; };
@@ -45,11 +47,17 @@
 		FAA6B8E925ADAD8800E3C4BF /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6B8E825ADAD8800E3C4BF /* UIView+Extensions.swift */; };
 		FAA88C5525B3281800DBA1F5 /* AddSong.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA88C5425B3281700DBA1F5 /* AddSong.storyboard */; };
 		FABDBFA025B193730039B4B3 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABDBF9F25B193730039B4B3 /* Player.storyboard */; };
+		FAC2EE4525B7323500F18648 /* CoreData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2EE4425B7323500F18648 /* CoreData+Extensions.swift */; };
 		FAFA680925B37EB60026059D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FAFA680825B37EB60026059D /* Alamofire */; };
 		FAFA680C25B37F670026059D /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA680B25B37F670026059D /* AddViewController.swift */; };
-		FAFA680F25B380C90026059D /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA680E25B380C90026059D /* Youtube.swift */; };
+		FAFA680F25B380C90026059D /* YoutubeVideoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA680E25B380C90026059D /* YoutubeVideoResponse.swift */; };
 		FAFA681325B382830026059D /* AddSongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA681125B382830026059D /* AddSongTableViewCell.swift */; };
 		FAFA681425B382830026059D /* AddSongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFA681225B382830026059D /* AddSongTableViewCell.xib */; };
+		FAFDBBB725BC0C5100FB2C4F /* Data+UIImageCompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDBBB625BC0C5100FB2C4F /* Data+UIImageCompression.swift */; };
+		FAFDBBBB25BC0C9000FB2C4F /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDBBBA25BC0C9000FB2C4F /* UIImage+Extensions.swift */; };
+		FAFDBBBF25BC0E9F00FB2C4F /* Filemanager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDBBBE25BC0E9F00FB2C4F /* Filemanager+Extensions.swift */; };
+		FAFDBBC425BC175800FB2C4F /* RecommendationsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDBBC225BC175800FB2C4F /* RecommendationsCollectionViewCell.swift */; };
+		FAFDBBC525BC175800FB2C4F /* RecommendationsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFDBBC325BC175800FB2C4F /* RecommendationsCollectionViewCell.xib */; };
 		FAFFE0DD25B6EB7A00FAE352 /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFE0DB25B6EB7A00FAE352 /* AlbumCollectionViewCell.swift */; };
 		FAFFE0DE25B6EB7A00FAE352 /* AlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFFE0DC25B6EB7A00FAE352 /* AlbumCollectionViewCell.xib */; };
 		FAFFE0E125B6F74400FAE352 /* SongsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFE0E025B6F74300FAE352 /* SongsCollectionViewController.swift */; };
@@ -63,19 +71,21 @@
 		FA18D2D425AC5B40004D0E67 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		FA18D2DB25ACC13D004D0E67 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		FA18D2DE25ACC26F004D0E67 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
-		FA28617325ADEA72001D131F /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		FA28617625ADEF1B001D131F /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		FA28617725ADEF1B001D131F /* SongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongTableViewCell.xib; sourceTree = "<group>"; };
 		FA4B803D25B1833800A9ED9F /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
 		FA60C34825B467E5003D754C /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		FA60C34E25B46A3D003D754C /* AVAsset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+Extensions.swift"; sourceTree = "<group>"; };
 		FA69970725ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YoutubeLoader.xcdatamodel; sourceTree = "<group>"; };
+		FA6CE33825BB11F400C9FD64 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		FA6CE33F25BB153000C9FD64 /* YoutubeSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearcher.swift; sourceTree = "<group>"; };
+		FA6CE34225BB166000C9FD64 /* YoutubeDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeDownloader.swift; sourceTree = "<group>"; };
+		FA6CE34525BC0AF000C9FD64 /* YoutubeChannelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeChannelResponse.swift; sourceTree = "<group>"; };
 		FA6D515B25B6FD3A00896236 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		FA6D515E25B7056400896236 /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA6D515F25B7056400896236 /* ArtistCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA6D516325B7068000896236 /* ArtistCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewController.swift; sourceTree = "<group>"; };
 		FA6D516725B7086900896236 /* PlaylistCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionViewController.swift; sourceTree = "<group>"; };
-		FA6D516A25B7088B00896236 /* SimilarToArtistCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarToArtistCollectionViewController.swift; sourceTree = "<group>"; };
 		FA6D516D25B708A600896236 /* RecommendationsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsCollectionViewController.swift; sourceTree = "<group>"; };
 		FA6D517025B70A1400896236 /* PlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA6D517125B70A1400896236 /* PlaylistCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaylistCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -94,10 +104,16 @@
 		FAA6B8E825ADAD8800E3C4BF /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		FAA88C5425B3281700DBA1F5 /* AddSong.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSong.storyboard; sourceTree = "<group>"; };
 		FABDBF9F25B193730039B4B3 /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
+		FAC2EE4425B7323500F18648 /* CoreData+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Extensions.swift"; sourceTree = "<group>"; };
 		FAFA680B25B37F670026059D /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
-		FAFA680E25B380C90026059D /* Youtube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Youtube.swift; sourceTree = "<group>"; };
+		FAFA680E25B380C90026059D /* YoutubeVideoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideoResponse.swift; sourceTree = "<group>"; };
 		FAFA681125B382830026059D /* AddSongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongTableViewCell.swift; sourceTree = "<group>"; };
 		FAFA681225B382830026059D /* AddSongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddSongTableViewCell.xib; sourceTree = "<group>"; };
+		FAFDBBB625BC0C5100FB2C4F /* Data+UIImageCompression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+UIImageCompression.swift"; sourceTree = "<group>"; };
+		FAFDBBBA25BC0C9000FB2C4F /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		FAFDBBBE25BC0E9F00FB2C4F /* Filemanager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Filemanager+Extensions.swift"; sourceTree = "<group>"; };
+		FAFDBBC225BC175800FB2C4F /* RecommendationsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAFDBBC325BC175800FB2C4F /* RecommendationsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendationsCollectionViewCell.xib; sourceTree = "<group>"; };
 		FAFFE0DB25B6EB7A00FAE352 /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAFFE0DC25B6EB7A00FAE352 /* AlbumCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumCollectionViewCell.xib; sourceTree = "<group>"; };
 		FAFFE0E025B6F74300FAE352 /* SongsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +138,10 @@
 			children = (
 				FA18D2DE25ACC26F004D0E67 /* AudioPlayer.swift */,
 				FA60C34825B467E5003D754C /* LocalFileManager.swift */,
-				FAFA680E25B380C90026059D /* Youtube.swift */,
+				FA6CE34525BC0AF000C9FD64 /* YoutubeChannelResponse.swift */,
+				FA6CE34225BB166000C9FD64 /* YoutubeDownloader.swift */,
+				FAFA680E25B380C90026059D /* YoutubeVideoResponse.swift */,
+				FA6CE33F25BB153000C9FD64 /* YoutubeSearcher.swift */,
 				FA69970625ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodeld */,
 			);
 			path = Model;
@@ -226,16 +245,16 @@
 		FA912A3F25AB3494001936F1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FA28617325ADEA72001D131F /* CustomSegmentedControl.swift */,
 				FA18D2DB25ACC13D004D0E67 /* PlayButton.swift */,
 				FA18D2D425AC5B40004D0E67 /* TimelineView.swift */,
 				FAFA681625B3828A0026059D /* AddSongTableViewCell */,
-				FA28617B25ADEF1F001D131F /* SongTableViewCell */,
-				FA2CF88F25B1CF2E00A78BB1 /* Storyboards */,
-				FA7505B025B6FA8C009DA119 /* SongCollectionViewCell */,
 				FA7505AE25B6FA7C009DA119 /* AlbumCollectionViewCell */,
 				FA6D516625B7082D00896236 /* ArtistCollectionViewCell */,
 				FA6D517525B70A1800896236 /* PlaylistCollectionViewCell */,
+				FAFDBBC725BC175D00FB2C4F /* RecommendationsCollectionViewCell */,
+				FA7505B025B6FA8C009DA119 /* SongCollectionViewCell */,
+				FA28617B25ADEF1F001D131F /* SongTableViewCell */,
+				FA2CF88F25B1CF2E00A78BB1 /* Storyboards */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,11 +283,16 @@
 		FAA6B8EB25ADADA900E3C4BF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FAA6B8E825ADAD8800E3C4BF /* UIView+Extensions.swift */,
 				FA60C34E25B46A3D003D754C /* AVAsset+Extensions.swift */,
+				FAC2EE4425B7323500F18648 /* CoreData+Extensions.swift */,
+				FAFDBBB625BC0C5100FB2C4F /* Data+UIImageCompression.swift */,
 				FA05A1BB25B5CCBC00E31D31 /* String+Extensions.swift */,
 				FA05A1BE25B5CCE300E31D31 /* TimeInterval+Extensions.swift */,
 				FA6D515B25B6FD3A00896236 /* UICollectionView+Extensions.swift */,
+				FAA6B8E825ADAD8800E3C4BF /* UIView+Extensions.swift */,
+				FA6CE33825BB11F400C9FD64 /* UIViewController+Extensions.swift */,
+				FAFDBBBA25BC0C9000FB2C4F /* UIImage+Extensions.swift */,
+				FAFDBBBE25BC0E9F00FB2C4F /* Filemanager+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -282,6 +306,15 @@
 			path = AddSongTableViewCell;
 			sourceTree = "<group>";
 		};
+		FAFDBBC725BC175D00FB2C4F /* RecommendationsCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FAFDBBC225BC175800FB2C4F /* RecommendationsCollectionViewCell.swift */,
+				FAFDBBC325BC175800FB2C4F /* RecommendationsCollectionViewCell.xib */,
+			);
+			path = RecommendationsCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		FAFFE0E325B6F74E00FAE352 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,7 +323,6 @@
 				FA7505AB25B6F944009DA119 /* AlbumsCollectionViewController.swift */,
 				FA6D516325B7068000896236 /* ArtistCollectionViewController.swift */,
 				FA6D516725B7086900896236 /* PlaylistCollectionViewController.swift */,
-				FA6D516A25B7088B00896236 /* SimilarToArtistCollectionViewController.swift */,
 				FA6D516D25B708A600896236 /* RecommendationsCollectionViewController.swift */,
 			);
 			path = MainViewController;
@@ -364,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAFFE0DE25B6EB7A00FAE352 /* AlbumCollectionViewCell.xib in Resources */,
+				FAFDBBC525BC175800FB2C4F /* RecommendationsCollectionViewCell.xib in Resources */,
 				FA6D516125B7056400896236 /* ArtistCollectionViewCell.xib in Resources */,
 				FA98DDF525B6D5CB0039BE5A /* SongCollectionViewCell.xib in Resources */,
 				FA28617925ADEF1B001D131F /* SongTableViewCell.xib in Resources */,
@@ -392,17 +425,19 @@
 				FA05A1B925B5C6AC00E31D31 /* ApiKeys.swift in Sources */,
 				FAFA681325B382830026059D /* AddSongTableViewCell.swift in Sources */,
 				FA6D516025B7056400896236 /* ArtistCollectionViewCell.swift in Sources */,
+				FA6CE34625BC0AF000C9FD64 /* YoutubeChannelResponse.swift in Sources */,
 				FA6D517225B70A1400896236 /* PlaylistCollectionViewCell.swift in Sources */,
+				FA6CE34025BB153000C9FD64 /* YoutubeSearcher.swift in Sources */,
 				FA18D2DC25ACC13D004D0E67 /* PlayButton.swift in Sources */,
 				FA60C34F25B46A3D003D754C /* AVAsset+Extensions.swift in Sources */,
 				FA28617825ADEF1B001D131F /* SongTableViewCell.swift in Sources */,
-				FA6D516B25B7088B00896236 /* SimilarToArtistCollectionViewController.swift in Sources */,
 				FA05A1BF25B5CCE300E31D31 /* TimeInterval+Extensions.swift in Sources */,
 				FA4B803E25B1833800A9ED9F /* MiniPlayerViewController.swift in Sources */,
 				FA6D515C25B6FD3A00896236 /* UICollectionView+Extensions.swift in Sources */,
-				FA28617425ADEA72001D131F /* CustomSegmentedControl.swift in Sources */,
+				FA6CE33925BB11F400C9FD64 /* UIViewController+Extensions.swift in Sources */,
 				FAFFE0E125B6F74400FAE352 /* SongsCollectionViewController.swift in Sources */,
 				FA7505AC25B6F944009DA119 /* AlbumsCollectionViewController.swift in Sources */,
+				FAC2EE4525B7323500F18648 /* CoreData+Extensions.swift in Sources */,
 				FA60C34925B467E5003D754C /* LocalFileManager.swift in Sources */,
 				FAFFE0DD25B6EB7A00FAE352 /* AlbumCollectionViewCell.swift in Sources */,
 				FAA6B8E925ADAD8800E3C4BF /* UIView+Extensions.swift in Sources */,
@@ -411,10 +446,15 @@
 				FA18D2D525AC5B40004D0E67 /* TimelineView.swift in Sources */,
 				FA05A1BC25B5CCBC00E31D31 /* String+Extensions.swift in Sources */,
 				FA912A2C25AB3292001936F1 /* SceneDelegate.swift in Sources */,
+				FA6CE34325BB166000C9FD64 /* YoutubeDownloader.swift in Sources */,
 				FA69970825ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodeld in Sources */,
-				FAFA680F25B380C90026059D /* Youtube.swift in Sources */,
+				FAFDBBC425BC175800FB2C4F /* RecommendationsCollectionViewCell.swift in Sources */,
+				FAFA680F25B380C90026059D /* YoutubeVideoResponse.swift in Sources */,
 				FAFA680C25B37F670026059D /* AddViewController.swift in Sources */,
 				FA6D516825B7086900896236 /* PlaylistCollectionViewController.swift in Sources */,
+				FAFDBBBF25BC0E9F00FB2C4F /* Filemanager+Extensions.swift in Sources */,
+				FAFDBBBB25BC0C9000FB2C4F /* UIImage+Extensions.swift in Sources */,
+				FAFDBBB725BC0C5100FB2C4F /* Data+UIImageCompression.swift in Sources */,
 				FA18D2DF25ACC26F004D0E67 /* AudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

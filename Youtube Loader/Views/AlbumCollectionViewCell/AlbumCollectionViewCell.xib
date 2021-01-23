@@ -30,19 +30,13 @@
                         </view>
                         <blurEffect style="regular"/>
                     </visualEffectView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCk-cZ-rD0">
-                        <rect key="frame" x="56.5" y="190" width="37.5" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.57647058819999997" green="0.6588235294" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vi6-KD-ylm">
-                        <rect key="frame" x="44.5" y="160" width="61" height="30"/>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label of Label of Label of Label of Label of Label of " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="vi6-KD-ylm">
+                        <rect key="frame" x="9" y="158" width="132.5" height="44"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                         <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample image" translatesAutoresizingMaskIntoConstraints="NO" id="LMx-Vr-NDl">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample image" translatesAutoresizingMaskIntoConstraints="NO" id="LMx-Vr-NDl">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="LMx-Vr-NDl" secondAttribute="height" id="Jmb-Tv-OBV"/>
@@ -53,24 +47,26 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Ps1-lL-JhJ" secondAttribute="trailing" id="3WR-a0-nhq"/>
-                <constraint firstItem="eCk-cZ-rD0" firstAttribute="top" secondItem="vi6-KD-ylm" secondAttribute="bottom" id="Eb0-XD-F0e"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vi6-KD-ylm" secondAttribute="trailing" constant="8" id="AF7-Nx-FSM"/>
                 <constraint firstItem="x2k-nc-Yk5" firstAttribute="width" secondItem="x2k-nc-Yk5" secondAttribute="height" id="FtX-JR-FMw"/>
+                <constraint firstItem="vi6-KD-ylm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Gg5-o7-1XS"/>
                 <constraint firstItem="LMx-Vr-NDl" firstAttribute="bottom" secondItem="x2k-nc-Yk5" secondAttribute="bottom" id="IB9-w1-mcK"/>
                 <constraint firstAttribute="trailing" secondItem="LMx-Vr-NDl" secondAttribute="trailing" id="JPb-92-hoA"/>
                 <constraint firstItem="vi6-KD-ylm" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="N2t-qC-rG7"/>
                 <constraint firstAttribute="trailing" secondItem="x2k-nc-Yk5" secondAttribute="trailing" constant="20" id="Ogj-dO-uN6"/>
                 <constraint firstItem="LMx-Vr-NDl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RMj-XR-7fy"/>
                 <constraint firstItem="LMx-Vr-NDl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SRH-k5-rtC"/>
+                <constraint firstAttribute="bottom" secondItem="vi6-KD-ylm" secondAttribute="bottom" constant="8" id="TO4-W7-RbR"/>
                 <constraint firstItem="Ps1-lL-JhJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="WEL-xX-IGg"/>
                 <constraint firstItem="Ps1-lL-JhJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ygb-Og-xGH"/>
-                <constraint firstItem="vi6-KD-ylm" firstAttribute="top" secondItem="x2k-nc-Yk5" secondAttribute="bottom" constant="10" id="kf0-mQ-zTT"/>
+                <constraint firstItem="vi6-KD-ylm" firstAttribute="top" secondItem="x2k-nc-Yk5" secondAttribute="bottom" constant="8" id="kf0-mQ-zTT"/>
                 <constraint firstAttribute="bottom" secondItem="Ps1-lL-JhJ" secondAttribute="bottom" id="uTy-gq-ovf"/>
                 <constraint firstItem="x2k-nc-Yk5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="vcT-aA-VtI"/>
-                <constraint firstItem="eCk-cZ-rD0" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="xS6-gy-cgF"/>
             </constraints>
             <connections>
                 <outlet property="albumImageView" destination="LMx-Vr-NDl" id="XbM-Sa-Fyn"/>
                 <outlet property="backgroundImageView" destination="x2k-nc-Yk5" id="6Wg-23-sXq"/>
+                <outlet property="titleLabel" destination="vi6-KD-ylm" id="ant-PS-y3U"/>
                 <outlet property="visualEffectView" destination="Ps1-lL-JhJ" id="BFy-rp-ecA"/>
             </connections>
             <point key="canvasLocation" x="63.768115942028992" y="89.732142857142847"/>

@@ -47,9 +47,9 @@ final class AudioPlayer: NSObject {
     
     @discardableResult
     public func setupPlayer(withSong song: Song) -> Bool {
-        guard let data = song.song else { return false }
+        guard let songURL = song.song else { return false }
         do {
-            audioPlayer = try AVAudioPlayer(data: data)
+            audioPlayer = try AVAudioPlayer(contentsOf: songURL)
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
             delegate?.audioPlayerPlayingStatusChanged(isPlaying: false)
@@ -59,6 +59,7 @@ final class AudioPlayer: NSObject {
             play()
             return true
         } catch {
+            
             print(error)
             return false
         }

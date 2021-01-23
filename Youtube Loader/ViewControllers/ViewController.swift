@@ -12,7 +12,6 @@ final class ViewController: UIViewController {
 
     //MARK: - Outlets
     @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var miniPlayerView: UIView!
     
@@ -41,7 +40,6 @@ final class ViewController: UIViewController {
         configureSearchBar()
         configureTableView()
         configureMiniPlayer()
-        configureSegmentedControl()
 
         //Data
         setupFetchedResultsController()
@@ -58,14 +56,7 @@ final class ViewController: UIViewController {
 }
 
 //MARK: - Supporting Methods
-extension ViewController {
-    private func configureSegmentedControl() {
-        segmentedControl.setButtonTitles(buttonTitles: ["Tracks", "Albums"])
-        segmentedControl.selectorViewColor = #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1)
-        segmentedControl.selectorTextColor = #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1)
-        segmentedControl.textColor = #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1)
-    }
-    
+extension ViewController {    
     private func configureSearchBar() {
         searchBar.delegate = self
         
@@ -130,10 +121,12 @@ extension ViewController {
         dataSource = UITableViewDiffableDataSource<Int, Song>(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "songTableViewCell") as! SongTableViewCell
             
-            cell.songImageView.image = UIImage(data: song.image ?? Data())
-            cell.backgroundBlurImage.image = UIImage(data: song.image ?? Data())
+            if let imageUrl = song.thumbnails?.smallUrl {
+                cell.songImageView.af.setImage(withURL: imageUrl)
+                cell.backgroundBlurImage.af.setImage(withURL: imageUrl)
+            }
             cell.titleLabel.text = song.name
-            cell.descriptionLabel.text = song.author
+            cell.descriptionLabel.text = song.author?.name
             cell.indexLabel.text = String(indexPath.row + 1)
             
             return cell
