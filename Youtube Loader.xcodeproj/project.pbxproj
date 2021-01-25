@@ -17,6 +17,7 @@
 		FA18D2DF25ACC26F004D0E67 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18D2DE25ACC26F004D0E67 /* AudioPlayer.swift */; };
 		FA28617825ADEF1B001D131F /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28617625ADEF1B001D131F /* SongTableViewCell.swift */; };
 		FA28617925ADEF1B001D131F /* SongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA28617725ADEF1B001D131F /* SongTableViewCell.xib */; };
+		FA4243CC25BDB91D005E4309 /* AddingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4243CA25BDB91D005E4309 /* AddingCollectionReusableView.swift */; };
 		FA4B803E25B1833800A9ED9F /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4B803D25B1833800A9ED9F /* MiniPlayerViewController.swift */; };
 		FA60C34225B4391D003D754C /* XCDYouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = FA60C34125B4391D003D754C /* XCDYouTubeKit */; };
 		FA60C34925B467E5003D754C /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA60C34825B467E5003D754C /* LocalFileManager.swift */; };
@@ -48,6 +49,7 @@
 		FAA88C5525B3281800DBA1F5 /* AddSong.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA88C5425B3281700DBA1F5 /* AddSong.storyboard */; };
 		FABDBFA025B193730039B4B3 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABDBF9F25B193730039B4B3 /* Player.storyboard */; };
 		FAC2EE4525B7323500F18648 /* CoreData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2EE4425B7323500F18648 /* CoreData+Extensions.swift */; };
+		FACC5AD025BDDEDC008C124A /* AddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC5ACF25BDDEDC008C124A /* AddingButton.swift */; };
 		FAFA680925B37EB60026059D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FAFA680825B37EB60026059D /* Alamofire */; };
 		FAFA680C25B37F670026059D /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA680B25B37F670026059D /* AddViewController.swift */; };
 		FAFA680F25B380C90026059D /* YoutubeVideoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA680E25B380C90026059D /* YoutubeVideoResponse.swift */; };
@@ -73,6 +75,7 @@
 		FA18D2DE25ACC26F004D0E67 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		FA28617625ADEF1B001D131F /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		FA28617725ADEF1B001D131F /* SongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongTableViewCell.xib; sourceTree = "<group>"; };
+		FA4243CA25BDB91D005E4309 /* AddingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingCollectionReusableView.swift; sourceTree = "<group>"; };
 		FA4B803D25B1833800A9ED9F /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
 		FA60C34825B467E5003D754C /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		FA60C34E25B46A3D003D754C /* AVAsset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+Extensions.swift"; sourceTree = "<group>"; };
@@ -105,6 +108,7 @@
 		FAA88C5425B3281700DBA1F5 /* AddSong.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSong.storyboard; sourceTree = "<group>"; };
 		FABDBF9F25B193730039B4B3 /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
 		FAC2EE4425B7323500F18648 /* CoreData+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Extensions.swift"; sourceTree = "<group>"; };
+		FACC5ACF25BDDEDC008C124A /* AddingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingButton.swift; sourceTree = "<group>"; };
 		FAFA680B25B37F670026059D /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		FAFA680E25B380C90026059D /* YoutubeVideoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideoResponse.swift; sourceTree = "<group>"; };
 		FAFA681125B382830026059D /* AddSongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongTableViewCell.swift; sourceTree = "<group>"; };
@@ -255,6 +259,8 @@
 				FA7505B025B6FA8C009DA119 /* SongCollectionViewCell */,
 				FA28617B25ADEF1F001D131F /* SongTableViewCell */,
 				FA2CF88F25B1CF2E00A78BB1 /* Storyboards */,
+				FA4243CA25BDB91D005E4309 /* AddingCollectionReusableView.swift */,
+				FACC5ACF25BDDEDC008C124A /* AddingButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -425,6 +431,7 @@
 				FA05A1B925B5C6AC00E31D31 /* ApiKeys.swift in Sources */,
 				FAFA681325B382830026059D /* AddSongTableViewCell.swift in Sources */,
 				FA6D516025B7056400896236 /* ArtistCollectionViewCell.swift in Sources */,
+				FACC5AD025BDDEDC008C124A /* AddingButton.swift in Sources */,
 				FA6CE34625BC0AF000C9FD64 /* YoutubeChannelResponse.swift in Sources */,
 				FA6D517225B70A1400896236 /* PlaylistCollectionViewCell.swift in Sources */,
 				FA6CE34025BB153000C9FD64 /* YoutubeSearcher.swift in Sources */,
@@ -455,6 +462,7 @@
 				FAFDBBBF25BC0E9F00FB2C4F /* Filemanager+Extensions.swift in Sources */,
 				FAFDBBBB25BC0C9000FB2C4F /* UIImage+Extensions.swift in Sources */,
 				FAFDBBB725BC0C5100FB2C4F /* Data+UIImageCompression.swift in Sources */,
+				FA4243CC25BDB91D005E4309 /* AddingCollectionReusableView.swift in Sources */,
 				FA18D2DF25ACC26F004D0E67 /* AudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

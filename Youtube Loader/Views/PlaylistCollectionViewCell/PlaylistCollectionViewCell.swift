@@ -13,7 +13,6 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var playlistImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,9 +30,8 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
         playlistImageView.image = image
     }
     
-    public func configure(title: String?, description: String?, image: UIImage?) {
+    public func configure(title: String?, image: UIImage?) {
         titleLabel.text = title
-        descriptionLabel.text = description
         playlistImageView.image = image
         backgroundImageView.image = image
     }
