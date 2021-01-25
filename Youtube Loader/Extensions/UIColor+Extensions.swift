@@ -120,7 +120,7 @@ extension UIColor {
         
         // If there is no Saturation it means that it’s a shade of grey. So in that case we just need to convert the Luminance and set R,G and B to that level.
         if saturation == 0 {
-            return UIColor(red: 255 * luminosity, green: 255 * luminosity, blue: 255 * luminosity, alpha: alpha)
+            return UIColor(red: luminosity, green: luminosity, blue: luminosity, alpha: alpha)
         }
         
         // If Luminance is smaller then 0.5 (50%) then temporary_1 = Luminance x (1.0+Saturation)
