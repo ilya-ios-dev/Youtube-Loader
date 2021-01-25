@@ -22,6 +22,8 @@ final class MiniPlayerViewController: UIViewController {
     @IBOutlet private weak var endSongTimelineLabel: UILabel!
     @IBOutlet private weak var startSongTimelineLabel: UILabel!
     @IBOutlet private weak var songProgress: UIProgressView!
+    @IBOutlet private weak var backgroundImageView: UIImageView!
+    @IBOutlet private weak var visualEffectView: UIVisualEffectView!
     
     //MARK: - Properties
     public weak var delegate: MiniPlayerDelegate?
@@ -36,13 +38,16 @@ final class MiniPlayerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        songImageView.layer.cornerRadius = 4
+        backgroundImageView.layer.cornerRadius = 5
+        backgroundImageView.clipsToBounds = true
+        backgroundImageView.layer.masksToBounds = true
+        songImageView.layer.cornerRadius = 5
+        songImageView.clipsToBounds = true
+        songImageView.layer.masksToBounds = true
+        
+        configureBlur()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
+        
     //MARK: - Actions
     @IBAction func heartTapped(_ sender: Any) {
     }
@@ -60,6 +65,21 @@ final class MiniPlayerViewController: UIViewController {
     }
 }
 
+//MARK: - Supporting Methods
+extension MiniPlayerViewController {
+    /// Adjusts the display of the `visualEffectView` to look like a shadow.
+    private func configureBlur() {
+        let maskLayer = CAGradientLayer()
+        maskLayer.frame = visualEffectView.bounds
+        maskLayer.shadowRadius = 7
+        maskLayer.shadowPath = CGPath(roundedRect: visualEffectView.bounds.insetBy(dx: 5, dy: 8), cornerWidth: 10, cornerHeight: 10, transform: nil)
+        maskLayer.shadowOpacity = 1
+        maskLayer.shadowOffset = CGSize.zero
+        maskLayer.shadowColor = UIColor.white.cgColor
+        visualEffectView.layer.mask = maskLayer
+    }
+}
+
 //MARK: - AudioPlayerDelegate
 extension MiniPlayerViewController: AudioPlayerDelegate {
     private func configureSong(_ song: Song?) {
@@ -70,10 +90,27 @@ extension MiniPlayerViewController: AudioPlayerDelegate {
         songDesctiptionLabel.text = song.author?.name
         if let imageUrl = song.thumbnails?.smallUrl {
             songImageView.af.setImage(withURL: imageUrl)
+            backgroundImageView.af.setImage(withURL: imageUrl)
         }
+        
+        // Changes the colors of all elements to the desired one.
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            if let url = song.thumbnails?.smallUrl {
+                guard let data = try? Data(contentsOf: url) else { return }
+                let imageColor = UIImage(data: data)?.averageColor?.withLuminosity(0.7)
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.playOrPauseButton.tintColor = imageColor
+                    self.songProgress.progressTintColor = imageColor
+                    self.startSongTimelineLabel.textColor = imageColor
+                    self.heartButton.tintColor = imageColor
+                }
+            }
+        }
+        
         let imageName = audioplayer.isPlaying ? "pause.fill" : "play.fill"
         playOrPauseButton.setImage(UIImage(systemName: imageName), for: .normal)
-        playOrPauseButton.tintColor = audioplayer.isPlaying ? #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1) : #colorLiteral(red: 0.2352941176, green: 0.2588235294, blue: 0.3568627451, alpha: 1)
     }
     
     func songChanged(_ song: Song) {
@@ -88,8 +125,8 @@ extension MiniPlayerViewController: AudioPlayerDelegate {
     
     func audioPlayerPlayingStatusChanged(isPlaying: Bool) {
         let imageName = isPlaying ? "pause.fill" : "play.fill"
-        playOrPauseButton.setImage(UIImage(systemName: imageName), for: .normal)
-        playOrPauseButton.tintColor = isPlaying ? #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1) : #colorLiteral(red: 0.2352941176, green: 0.2588235294, blue: 0.3568627451, alpha: 1) 
+        let largeConfig = UIImage.SymbolConfiguration(scale: .large)
+        playOrPauseButton.setImage(UIImage(systemName: imageName, withConfiguration: largeConfig), for: .normal)
     }
 }
 

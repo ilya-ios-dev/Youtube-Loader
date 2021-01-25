@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TjK-Ia-ArN">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Songs List View Controller-->
+        <scene sceneID="fAy-80-GG1">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="TjK-Ia-ArN" customClass="SongsListViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E3G-fs-532">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8S4-K6-EiH">
+                                <rect key="frame" x="16" y="44" width="382" height="852"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="pU3-gm-kDE">
+                                <rect key="frame" x="20" y="44" width="374" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                            <containerView opaque="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvs-9Y-TYz">
+                                <rect key="frame" x="0.0" y="757" width="414" height="105"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="ksh-Vd-eaQ"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="MEw-V8-MQg" kind="embed" id="e5Z-aA-w6O"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Exh-OV-BCh">
+                                <rect key="frame" x="0.0" y="862" width="414" height="34"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ORY-TS-XWh"/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.95686274510000002" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="tvs-9Y-TYz" firstAttribute="leading" secondItem="E3G-fs-532" secondAttribute="leading" id="41u-Ni-mqB"/>
+                            <constraint firstAttribute="trailing" secondItem="Exh-OV-BCh" secondAttribute="trailing" id="43e-y1-C0H"/>
+                            <constraint firstItem="tvs-9Y-TYz" firstAttribute="bottom" secondItem="ORY-TS-XWh" secondAttribute="bottom" id="73H-h2-5Fc"/>
+                            <constraint firstItem="8S4-K6-EiH" firstAttribute="leading" secondItem="ORY-TS-XWh" secondAttribute="leading" constant="16" id="Hc4-ZL-KMG"/>
+                            <constraint firstItem="Exh-OV-BCh" firstAttribute="leading" secondItem="E3G-fs-532" secondAttribute="leading" id="Hye-oK-Fmv"/>
+                            <constraint firstItem="Exh-OV-BCh" firstAttribute="top" secondItem="tvs-9Y-TYz" secondAttribute="bottom" id="PQW-bO-1EB"/>
+                            <constraint firstItem="tvs-9Y-TYz" firstAttribute="trailing" secondItem="E3G-fs-532" secondAttribute="trailing" id="Pdu-S4-UTA"/>
+                            <constraint firstAttribute="bottom" secondItem="Exh-OV-BCh" secondAttribute="bottom" id="Rm8-oL-1nK"/>
+                            <constraint firstItem="pU3-gm-kDE" firstAttribute="leading" secondItem="ORY-TS-XWh" secondAttribute="leading" constant="20" id="cjp-m9-Wqh"/>
+                            <constraint firstAttribute="bottom" secondItem="8S4-K6-EiH" secondAttribute="bottom" id="f4E-0M-e0z"/>
+                            <constraint firstItem="pU3-gm-kDE" firstAttribute="top" secondItem="ORY-TS-XWh" secondAttribute="top" id="kuM-KY-vJh"/>
+                            <constraint firstItem="8S4-K6-EiH" firstAttribute="top" secondItem="ORY-TS-XWh" secondAttribute="top" id="w6r-DI-A03"/>
+                            <constraint firstItem="ORY-TS-XWh" firstAttribute="trailing" secondItem="8S4-K6-EiH" secondAttribute="trailing" constant="16" id="wBn-Ix-9Af"/>
+                            <constraint firstItem="ORY-TS-XWh" firstAttribute="trailing" secondItem="pU3-gm-kDE" secondAttribute="trailing" constant="20" id="xg2-Ie-FxO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="521-g9-EL8"/>
+                    <connections>
+                        <outlet property="bottomView" destination="Exh-OV-BCh" id="OOf-Tm-nri"/>
+                        <outlet property="miniPlayerView" destination="tvs-9Y-TYz" id="QqZ-pu-K8n"/>
+                        <outlet property="searchBar" destination="pU3-gm-kDE" id="8Qq-vC-N1N"/>
+                        <outlet property="tableView" destination="8S4-K6-EiH" id="cZp-yR-Bsz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t4E-pO-w7t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4078.2608695652175" y="-133.25892857142856"/>
+        </scene>
+        <!--MiniPlayer-->
+        <scene sceneID="IAp-8Y-kEi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MiniPlayer" id="MEw-V8-MQg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bGg-12-1dI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4078" y="304"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

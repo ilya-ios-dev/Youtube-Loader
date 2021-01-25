@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import Alamofire
-import AlamofireImage
 import CoreData
 
 final class MainViewController: UIViewController {
@@ -26,10 +24,5 @@ final class MainViewController: UIViewController {
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
-    }
-    
-    // TODO: - Add check of containers for emptiness.
-    private func configureContainers() {
-        
     }
 }

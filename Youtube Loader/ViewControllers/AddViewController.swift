@@ -14,8 +14,8 @@ import XCDYouTubeKit
 final class AddViewController: UIViewController {
     
     //MARK: - Outlets
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var tableView: UITableView!
     
     //MARK: - Properties
     private var searchText = ""
@@ -31,6 +31,7 @@ final class AddViewController: UIViewController {
         tableView.dataSource = self
         configureSearchBar()
         
+        tableView.contentInset = UIEdgeInsets(top: searchBar.frame.height, left: 0, bottom: 0, right: 0)
         downloader.delegate = self
     }
     
@@ -49,7 +50,20 @@ final class AddViewController: UIViewController {
         imageView.tintColor = #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1)
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         
-        searchBar.searchTextField.backgroundColor = .white
+        searchBar.searchTextField.backgroundColor = .clear
+        let view = UIVisualEffectView()
+        view.effect = UIBlurEffect(style: .regular)
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.85)
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 15
+        view.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.insertSubview(view, at: 0)
+        NSLayoutConstraint.activate([
+            view.leadingAnchor.constraint(equalTo: searchTextField.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: searchTextField.trailingAnchor),
+            view.bottomAnchor.constraint(equalTo: searchTextField.bottomAnchor),
+            view.topAnchor.constraint(equalTo: searchTextField.topAnchor)
+        ])
     }
 }
 

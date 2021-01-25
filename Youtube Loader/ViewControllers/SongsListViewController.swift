@@ -8,12 +8,13 @@
 import UIKit
 import CoreData
 
-final class ViewController: UIViewController {
+final class SongsListViewController: UIViewController {
 
     //MARK: - Outlets
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var miniPlayerView: UIView!
+    @IBOutlet private weak var bottomView: UIView!
     
     //MARK: - Properties
     private var miniPlayer: MiniPlayerViewController!
@@ -40,11 +41,13 @@ final class ViewController: UIViewController {
         configureSearchBar()
         configureTableView()
         configureMiniPlayer()
+        miniPlayerView.isHidden = true
+        bottomView.isHidden = true
+        tableView.contentInset = UIEdgeInsets(top: searchBar.frame.height, left: 0, bottom: 0, right: 0)
 
         //Data
         setupFetchedResultsController()
         setupDiffableDataSource()
-        miniPlayerView.isHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,7 +59,7 @@ final class ViewController: UIViewController {
 }
 
 //MARK: - Supporting Methods
-extension ViewController {    
+extension SongsListViewController {    
     private func configureSearchBar() {
         searchBar.delegate = self
         
@@ -71,7 +74,20 @@ extension ViewController {
         imageView.tintColor = #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1)
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         
-        searchBar.searchTextField.backgroundColor = .white
+        searchBar.searchTextField.backgroundColor = .clear
+        let view = UIVisualEffectView()
+        view.effect = UIBlurEffect(style: .regular)
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.85)
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 15
+        view.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.insertSubview(view, at: 0)
+        NSLayoutConstraint.activate([
+            view.leadingAnchor.constraint(equalTo: searchTextField.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: searchTextField.trailingAnchor),
+            view.bottomAnchor.constraint(equalTo: searchTextField.bottomAnchor),
+            view.topAnchor.constraint(equalTo: searchTextField.topAnchor)
+        ])
     }
     
     private func configureTableView() {
@@ -91,7 +107,7 @@ extension ViewController {
         let request: NSFetchRequest = Song.fetchRequest()
         
         if !searchText.isEmpty {
-            request.predicate = NSPredicate(format: "(name CONTAINS[c] %@) OR (author CONTAINS[c] %@)", searchText, searchText)
+            request.predicate = NSPredicate(format: "(name CONTAINS[c] %@) OR (author.name CONTAINS[c] %@)", searchText, searchText)
         }
         
         let sort = NSSortDescriptor(key: "dateSave", ascending: true)
@@ -136,14 +152,14 @@ extension ViewController {
 }
 
 //MARK: - NSFetchedResultsControllerDelegate
-extension ViewController: NSFetchedResultsControllerDelegate {
+extension SongsListViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         setupSnapshot()
     }
 }
 
 //MARK: - MiniPlayerDelegate
-extension ViewController: MiniPlayerDelegate {
+extension SongsListViewController: MiniPlayerDelegate {
     func expandSong(song: Song?) {
         let storyboard = UIStoryboard(name: "Player", bundle: nil)
         guard let playerController = storyboard.instantiateInitialViewController() as? PlayerViewController else { return }
@@ -155,21 +171,28 @@ extension ViewController: MiniPlayerDelegate {
 }
 
 //MARK: - UITableViewDelegate
-extension ViewController: UITableViewDelegate {
+extension SongsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        miniPlayerView.isHidden = false
         if let song = miniPlayer.audioplayer.currentSong {
             guard let songIndex = dataSource.indexPath(for: song) else { return }
             guard songIndex != indexPath else { return }
         }
         miniPlayer.play(at: indexPath.row)
+        
+        if miniPlayerView.isHidden {
+            tableView.contentInset = UIEdgeInsets(top: tableView.contentInset.top, left: 0, bottom: miniPlayerView.frame.height + 8, right: 0)
+            
+            UIView.transition(with: miniPlayerView, duration: 0.3, options: .transitionCrossDissolve) {
+                self.miniPlayerView.isHidden = false
+                self.bottomView.isHidden = false
+            } completion: { (_) in }
+        }
     }
 }
 
 //MARK: - UISearchBarDelegate
-extension ViewController: UISearchBarDelegate {
+extension SongsListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // to limit network activity, reload half a second after last key press.
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(search), object: nil)
         self.searchText = searchText
         perform(#selector(search), with: nil, afterDelay: 0.5)

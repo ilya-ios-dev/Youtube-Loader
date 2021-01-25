@@ -22,10 +22,11 @@ final class SongTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         if selected {
+            playingImageView.tintColor = songImageView.image?.averageColor?.withLuminosity(0.7)
             UIView.transition(with: playingImageView, duration: 0.325, options: .transitionCrossDissolve) {
                 self.playingImageView.isHidden = false
                 self.indexLabel.isHidden = true
-                self.contentView.backgroundColor = #colorLiteral(red: 0.9725490196, green: 0.9882352941, blue: 1, alpha: 1)
+                self.contentView.backgroundColor = .white
             }
         } else {
             playingImageView.isHidden = true
