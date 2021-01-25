@@ -26,13 +26,12 @@ final class PlayerViewController: UIViewController {
     @IBOutlet private weak var downButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subtitleLabel: UILabel!
-    @IBOutlet private weak var gradientView: UIView!
-    @IBOutlet private weak var topGradientView: UIView!
+    @IBOutlet private weak var backgroundImageView: UIImageView!
+    @IBOutlet private weak var visualEffectView: UIVisualEffectView!
     
     
     //MARK: - Properties
     private var isProgressBarSliding = false
-    private var backgroundImageView: UIImageView!
     private var context: NSManagedObjectContext  = {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }()
@@ -47,15 +46,16 @@ final class PlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        songImageView.layer.cornerRadius = 8
+        
+        configureCircleView()
+        
+        configureBlur()
+        backgroundImageView.layer.cornerRadius = backgroundImageView.frame.height / 2
+        songImageView.layer.cornerRadius = songImageView.frame.height / 2
         audioPlayer.delegate = self
         timelineView.slider.addTarget(self, action: #selector(onSliderValChanged), for: .valueChanged)
         
         downButton.layer.cornerRadius = downButton.frame.height / 2
-        configureBackgroundImageView()
-        configureBlurEffectView()
-        configureGradients()
-        
         configureSong(audioPlayer.currentSong)
     }
     
@@ -130,36 +130,56 @@ extension PlayerViewController {
             }
         }
     }
-    
-    private func configureGradients() {
-        gradientView.applyGradient(colours: [#colorLiteral(red: 0.9433182478, green: 0.9772475362, blue: 0.9983965755, alpha: 1), #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 0)], locations: [0.45, 1] ,startPoint: .bottomLeft, endPoint: .topLeft)
-        topGradientView.applyGradient(colours: [#colorLiteral(red: 0.9433182478, green: 0.9772475362, blue: 0.9983965755, alpha: 1), #colorLiteral(red: 0.9999018312, green: 1, blue: 0.9998798966, alpha: 0)], locations: [0.5, 1] ,startPoint: .topLeft, endPoint: .bottomLeft)
-    }
-    
-    private func configureBlurEffectView() {
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurEffectView = UIVisualEffectView()
-        blurEffectView.effect = blurEffect
-        view.insertSubview(blurEffectView, aboveSubview: backgroundImageView)
-        blurEffectView.fillSuperview()
-    }
-    
-    private func configureBackgroundImageView() {
-        backgroundImageView = UIImageView(image: songImageView.image!)
-        backgroundImageView.alpha = 0.6
-        backgroundImageView.contentMode = .scaleAspectFill
-        view.insertSubview(backgroundImageView, at: 0)
-        backgroundImageView.fillSuperview()
-    }
-    
+        
     private func configureSong(_ song: Song) {
         if let imageUrl = song.thumbnails?.largeUrl {
             songImageView.af.setImage(withURL: imageUrl)
-            backgroundImageView.image = songImageView.image
+            backgroundImageView.af.setImage(withURL: imageUrl)
         }
         songTitleLabel.text = song.name
         songAuthor.text = song.author?.name
         let imageName = audioPlayer.isPlaying ? "pause.fill" : "play.fill"
         playButton.setImage(UIImage(systemName: imageName), for: .normal)
+        
+        // Changes the colors of all elements to the desired one.
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            if let url = song.thumbnails?.smallUrl {
+                guard let data = try? Data(contentsOf: url) else { return }
+                guard let imageColor = UIImage(data: data)?.averageColor?.withLuminosity(0.5) else { return }
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.timelineView.changeAccentColor(to: imageColor)
+                }
+            }
+        }
+    }
+    
+    /// Adds a circle to the center of the songImageView.
+    private func configureCircleView() {
+        let circleView = UIView()
+        circleView.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9568627451, blue: 0.9882352941, alpha: 1)
+        circleView.layer.cornerRadius = (songImageView.frame.height / 2) * 0.2
+        circleView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(circleView)
+        NSLayoutConstraint.activate([
+            circleView.centerYAnchor.constraint(equalTo: songImageView.centerYAnchor),
+            circleView.centerXAnchor.constraint(equalTo: songImageView.centerXAnchor),
+            circleView.heightAnchor.constraint(equalTo: songImageView.heightAnchor, multiplier: 0.2),
+            circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor)
+        ])
+    }
+    
+    /// Adjusts the display of the `visualEffectView` to look like a shadow.
+    private func configureBlur() {
+        let maskLayer = CAGradientLayer()
+        maskLayer.frame = visualEffectView.bounds
+        maskLayer.shadowRadius = 15
+        
+        maskLayer.shadowPath = CGPath(roundedRect: visualEffectView.bounds.inset(by: UIEdgeInsets(top: songImageView.frame.height / 2, left: 30, bottom: 0, right: 30)), cornerWidth: 20, cornerHeight: 20, transform: nil)
+        maskLayer.shadowOpacity = 1
+        maskLayer.shadowOffset = CGSize.zero
+        maskLayer.shadowColor = UIColor.white.cgColor
+        visualEffectView.layer.mask = maskLayer
     }
 }

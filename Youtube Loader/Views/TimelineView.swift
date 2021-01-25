@@ -26,6 +26,15 @@ final class TimelineView: UIView {
         super.init(coder: coder)
         setupViews()
     }
+    
+    public func changeAccentColor(to color: UIColor) {
+        startLabel.textColor = color
+        slider.setThumbImage(makeCircleWith(size: CGSize(width: 10, height: 10), backgroundColor: color), for: .normal)
+        slider.setThumbImage(makeCircleWith(size: CGSize(width: 17, height: 17), backgroundColor: color), for: .highlighted)
+        slider.minimumTrackTintColor = color
+        slider.maximumTrackTintColor = #colorLiteral(red: 0.7098039216, green: 0.831372549, blue: 0.8823529412, alpha: 1)
+
+    }
 }
 
 private extension TimelineView {
@@ -52,14 +61,14 @@ private extension TimelineView {
         startLabel = UILabel()
         startLabel.text = "00:00"
         startLabel.textColor = #colorLiteral(red: 0.2941176471, green: 0.3333333333, blue: 0.3529411765, alpha: 1)
-        startLabel.font = UIFont.systemFont(ofSize: 10)
+        startLabel.font = UIFont.systemFont(ofSize: 10, weight: .medium)
     }
     
     private func setupEndLabel() {
         endLabel = UILabel()
         endLabel.text = "00:00"
         endLabel.textColor = #colorLiteral(red: 0.2941176471, green: 0.3333333333, blue: 0.3529411765, alpha: 1)
-        endLabel.font = UIFont.systemFont(ofSize: 10)
+        endLabel.font = UIFont.systemFont(ofSize: 10, weight: .medium)
     }
     
     private func setupSlider() {

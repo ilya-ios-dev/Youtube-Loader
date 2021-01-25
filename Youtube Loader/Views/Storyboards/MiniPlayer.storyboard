@@ -140,6 +140,9 @@
                             <constraint firstItem="fyg-vp-7wL" firstAttribute="leading" secondItem="omD-VH-hvG" secondAttribute="leading" constant="20" id="h3Y-zR-peI"/>
                             <constraint firstItem="fyg-vp-7wL" firstAttribute="top" secondItem="76i-EJ-5qf" secondAttribute="top" constant="20" id="qub-qc-Yh4"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="JgI-sh-qcC" appends="YES" id="2zd-M1-wS9"/>
+                        </connections>
                     </view>
                     <size key="freeformSize" width="414" height="105"/>
                     <connections>
@@ -156,6 +159,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tki-LN-KL1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="JgI-sh-qcC">
+                    <connections>
+                        <action selector="tapGesture:" destination="s5t-hF-FtB" id="wN0-hS-imB"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2257.971014492754" y="309.04017857142856"/>
         </scene>
