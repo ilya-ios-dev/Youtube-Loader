@@ -59,9 +59,7 @@ final class YoutubeDownloader {
     /// - Parameter youtubeVideo: The video object to be loaded.
     /// - Parameter completion: If an error occurs during download or during conversion, it returns it.
     public func downloadVideo(_ videoID: String, youtubeVideo: Video, completion: ((Error?) -> Void)? = nil) {
-        // Получаю информацию о видео и ссылку на его скачивание
         XCDYouTubeClient.default().getVideoWithIdentifier(videoID) { (video, error) in
-            // Получить nonNil видео и ссылку на лучшее качество
             guard let video = video, let downloadingUrl = video.streamURLs[140] else {
                 print(error?.localizedDescription ?? "error")
                 completion?(error)
@@ -78,9 +76,25 @@ final class YoutubeDownloader {
                 }
                 // If the song has been downloaded, then you need to download images for the song.
                 group.enter()
-                self.downloadImages(from: youtubeVideo.snippet?.thumbnails, named: youtubeVideo.id.videoID) { _ in
-                    group.leave()
+                
+                // If possible, get links from XCDYouTubeClient for better quality
+                // From the youtube v3 api, the images are obtained with black bars at the top and bottom.
+                if let thumbnailURLs = video.thumbnailURLs {
+                    let smallURL = thumbnailURLs.first
+                    let mediumURL = thumbnailURLs[thumbnailURLs.count / 2]
+                    let highUrl = thumbnailURLs.last
+                    
+                    let images = [smallURL, mediumURL, highUrl]
+                    self.downloadImages(from: images, named: youtubeVideo.id.videoID) { _ in
+                        group.leave()
+                    }
+                    
+                } else {
+                    self.downloadImages(from: youtubeVideo.snippet?.thumbnails, named: youtubeVideo.id.videoID) { _ in
+                        group.leave()
+                    }
                 }
+                
                 
                 // Find the channel and get the artist object from it.
                 group.enter()
@@ -233,6 +247,49 @@ final class YoutubeDownloader {
     private func downloadImages(from urlsString: [String?], named: String, completion: ((Error?) -> Void)? = nil) {
         // gets non nil URL from strings
         let urls = urlsString.compactMap{$0}.compactMap{ URL(string: $0) }
+        // create names and urls where images will be saved.
+        let destitaionations = (0..<urls.count).map { (index) -> DownloadRequest.Destination in
+            return { _, _ in
+                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                let size: String
+                switch index {
+                case 0 : size = "Small"
+                case 1: size = "Medium"
+                default: size = "Large"
+                }
+                let fileURL = documentsURL.appendingPathComponent(named + "\(size)" + "." + "jpg")
+                
+                return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+            }
+        }
+        
+        (0..<urls.count).forEach { (index) in
+            let link = urls[index]
+            let destination = destitaionations[index]
+            AF.download(link, to: destination).validate().response(queue: .global()) {
+                response in
+                if response.error == nil, let filePath = response.fileURL?.path {
+                    print("Downloaded successfully to " + filePath)
+                } else {
+                    print("Error downlaoding file: " + (response.error?.localizedDescription ?? "Unknown error"))
+                    completion?(response.error)
+                }
+                // If everything worked out, return an empty completion.
+                if index == urls.count - 1 {
+                    completion?(nil)
+                }
+            }
+        }
+    }
+    
+    /// Uploads pictures and signs them accordingly.
+    /// - Parameters:
+    ///   - urls: List of download links.
+    ///   - named: How the pictures will be called.
+    ///   - completion: If an error occurs during conversion, it returns it.
+    private func downloadImages(from urls: [URL?], named: String, completion: ((Error?) -> Void)? = nil) {
+        // gets non nil URL
+        let urls = urls.compactMap{$0}
         // create names and urls where images will be saved.
         let destitaionations = (0..<urls.count).map { (index) -> DownloadRequest.Destination in
             return { _, _ in

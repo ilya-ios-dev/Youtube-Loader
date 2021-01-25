@@ -47,7 +47,7 @@ final class AudioPlayer: NSObject {
     
     @discardableResult
     public func setupPlayer(withSong song: Song) -> Bool {
-        guard let songURL = song.song else { return false }
+        guard let songURL = song.songURL else { return false }
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: songURL)
             audioPlayer.delegate = self

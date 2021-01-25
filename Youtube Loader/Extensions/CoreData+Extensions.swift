@@ -61,6 +61,11 @@ extension Song {
         song.author = artist
         return song
     }
+    
+    public var songURL: URL? {
+        guard let name = self.song?.lastPathComponent else { return nil }
+        return FileManager.default.url(for: .documentDirectory, filename: name)
+    }
 }
 
 //MARK: - Album
