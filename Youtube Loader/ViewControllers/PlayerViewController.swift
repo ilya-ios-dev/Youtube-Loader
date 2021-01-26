@@ -48,7 +48,6 @@ final class PlayerViewController: UIViewController {
         super.viewDidLoad()
         
         configureCircleView()
-        
         configureBlur()
         backgroundImageView.layer.cornerRadius = backgroundImageView.frame.height / 2
         songImageView.layer.cornerRadius = songImageView.frame.height / 2
@@ -132,12 +131,17 @@ extension PlayerViewController {
     }
         
     private func configureSong(_ song: Song) {
-        if let imageUrl = song.thumbnails?.largeUrl {
-            songImageView.af.setImage(withURL: imageUrl)
-            backgroundImageView.af.setImage(withURL: imageUrl)
-        }
-        songTitleLabel.text = song.name
-        songAuthor.text = song.author?.name
+        UIView.transition(with: songImageView, duration: 0.325, options: .transitionCrossDissolve) {
+            if let imageUrl = song.thumbnails?.largeUrl {
+                self.songImageView.af.setImage(withURL: imageUrl)
+                self.backgroundImageView.af.setImage(withURL: imageUrl)
+            }
+            self.songTitleLabel.text = song.name
+            self.songAuthor.text = song.author?.name
+        } completion: { (_) in }
+        
+        songImageView.rotate(with: 1)
+        
         let imageName = audioPlayer.isPlaying ? "pause.fill" : "play.fill"
         playButton.setImage(UIImage(systemName: imageName), for: .normal)
         

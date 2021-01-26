@@ -98,7 +98,7 @@ extension MiniPlayerViewController: AudioPlayerDelegate {
             guard let self = self else { return }
             if let url = song.thumbnails?.smallUrl {
                 guard let data = try? Data(contentsOf: url) else { return }
-                let imageColor = UIImage(data: data)?.averageColor?.withLuminosity(0.7)
+                let imageColor = UIImage(data: data)?.averageColor?.withLuminosity(0.5)
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
                     self.playOrPauseButton.tintColor = imageColor

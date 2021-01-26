@@ -57,3 +57,17 @@ public enum Point {
         }
     }
 }
+
+extension UIView{
+    /// Rotates the UIView around its axis
+    /// - Parameter duration: How long will the rotation animation take
+    func rotate(with duration: CFTimeInterval, reversed: Bool = false) {
+        let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.toValue = reversed ? NSNumber(value: -Double.pi * 2) : NSNumber(value: Double.pi * 2)
+        rotation.duration = duration
+        rotation.isCumulative = true
+        rotation.repeatCount = 0
+        rotation.timingFunction =  CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.layer.add(rotation, forKey: "rotationAnimation")
+    }
+}
