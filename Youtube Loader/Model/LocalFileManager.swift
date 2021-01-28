@@ -48,13 +48,19 @@ struct LocalFileManager {
     /// - Returns: Was it possible to save it or not.
     @discardableResult static func saveData(withNameAndExtension filename_ext: String, data: Data) -> Bool {
         do {
-            guard let url = getURLForFile(withNameAndExtension: filename_ext) else { return false }
+            let url = getDocumentsDirectory().appendingPathComponent("\(filename_ext)")
             try data.write(to: url)
             return true
         } catch {
             print(error)
             return false
         }
+    }
+    
+    static func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
     }
     
     /// Gets a link to a file if it exists in the document directory.

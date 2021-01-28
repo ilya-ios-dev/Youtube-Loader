@@ -15,6 +15,11 @@
 		FA18D2D525AC5B40004D0E67 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18D2D425AC5B40004D0E67 /* TimelineView.swift */; };
 		FA18D2DC25ACC13D004D0E67 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18D2DB25ACC13D004D0E67 /* PlayButton.swift */; };
 		FA18D2DF25ACC26F004D0E67 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18D2DE25ACC26F004D0E67 /* AudioPlayer.swift */; };
+		FA275C7225BFFCD500C581BD /* CreatePlaylist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA275C7125BFFCD500C581BD /* CreatePlaylist.storyboard */; };
+		FA275C7525BFFEC300C581BD /* CreatePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA275C7425BFFEC300C581BD /* CreatePlaylistViewController.swift */; };
+		FA275C7925C00C3400C581BD /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA275C7825C00C3400C581BD /* CustomTextField.swift */; };
+		FA275C7E25C0555300C581BD /* UnsplashImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA275C7D25C0555200C581BD /* UnsplashImagesCollectionViewCell.swift */; };
+		FA28430225C06ED20066AC8F /* UnsplashResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28430125C06ED20066AC8F /* UnsplashResponse.swift */; };
 		FA28617825ADEF1B001D131F /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28617625ADEF1B001D131F /* SongTableViewCell.swift */; };
 		FA28617925ADEF1B001D131F /* SongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA28617725ADEF1B001D131F /* SongTableViewCell.xib */; };
 		FA4243CC25BDB91D005E4309 /* AddingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4243CA25BDB91D005E4309 /* AddingCollectionReusableView.swift */; };
@@ -76,12 +81,18 @@
 		FA18D2D425AC5B40004D0E67 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		FA18D2DB25ACC13D004D0E67 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		FA18D2DE25ACC26F004D0E67 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		FA275C7125BFFCD500C581BD /* CreatePlaylist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePlaylist.storyboard; sourceTree = "<group>"; };
+		FA275C7425BFFEC300C581BD /* CreatePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlaylistViewController.swift; sourceTree = "<group>"; };
+		FA275C7825C00C3400C581BD /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		FA275C7D25C0555200C581BD /* UnsplashImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA28430125C06ED20066AC8F /* UnsplashResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashResponse.swift; sourceTree = "<group>"; };
 		FA28617625ADEF1B001D131F /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		FA28617725ADEF1B001D131F /* SongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongTableViewCell.xib; sourceTree = "<group>"; };
 		FA4243CA25BDB91D005E4309 /* AddingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingCollectionReusableView.swift; sourceTree = "<group>"; };
 		FA44B38425BEFAB000009756 /* SongsList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SongsList.storyboard; sourceTree = "<group>"; };
 		FA44B38725BEFBA900009756 /* MiniPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MiniPlayer.storyboard; sourceTree = "<group>"; };
 		FA4B803D25B1833800A9ED9F /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
+		FA5A8E5B25C152120071524C /* YoutubeLoader 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "YoutubeLoader 2.xcdatamodel"; sourceTree = "<group>"; };
 		FA5F65E025BF003B00BDAB22 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		FA60C34825B467E5003D754C /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		FA60C34E25B46A3D003D754C /* AVAsset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+Extensions.swift"; sourceTree = "<group>"; };
@@ -153,6 +164,7 @@
 				FAFA680E25B380C90026059D /* YoutubeVideoResponse.swift */,
 				FA6CE33F25BB153000C9FD64 /* YoutubeSearcher.swift */,
 				FA69970625ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodeld */,
+				FA28430125C06ED20066AC8F /* UnsplashResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,12 +181,13 @@
 		FA2CF88F25B1CF2E00A78BB1 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				FAA88C5425B3281700DBA1F5 /* AddSong.storyboard */,
+				FA275C7125BFFCD500C581BD /* CreatePlaylist.storyboard */,
+				FA44B38725BEFBA900009756 /* MiniPlayer.storyboard */,
+				FABDBF9F25B193730039B4B3 /* Player.storyboard */,
+				FA44B38425BEFAB000009756 /* SongsList.storyboard */,
 				FA912A3425AB3295001936F1 /* LaunchScreen.storyboard */,
 				FA912A2F25AB3292001936F1 /* Main.storyboard */,
-				FABDBF9F25B193730039B4B3 /* Player.storyboard */,
-				FAA88C5425B3281700DBA1F5 /* AddSong.storyboard */,
-				FA44B38425BEFAB000009756 /* SongsList.storyboard */,
-				FA44B38725BEFBA900009756 /* MiniPlayer.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -269,6 +282,8 @@
 				FA2CF88F25B1CF2E00A78BB1 /* Storyboards */,
 				FA4243CA25BDB91D005E4309 /* AddingCollectionReusableView.swift */,
 				FACC5ACF25BDDEDC008C124A /* AddingButton.swift */,
+				FA275C7825C00C3400C581BD /* CustomTextField.swift */,
+				FA275C7D25C0555200C581BD /* UnsplashImagesCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,10 +291,11 @@
 		FA912A4025AB3498001936F1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA912A2D25AB3292001936F1 /* SongsListViewController.swift */,
-				FA18D2D125AC564C004D0E67 /* PlayerViewController.swift */,
-				FA4B803D25B1833800A9ED9F /* MiniPlayerViewController.swift */,
 				FAFA680B25B37F670026059D /* AddViewController.swift */,
+				FA275C7425BFFEC300C581BD /* CreatePlaylistViewController.swift */,
+				FA4B803D25B1833800A9ED9F /* MiniPlayerViewController.swift */,
+				FA18D2D125AC564C004D0E67 /* PlayerViewController.swift */,
+				FA912A2D25AB3292001936F1 /* SongsListViewController.swift */,
 				FAFFE0E325B6F74E00FAE352 /* MainViewController */,
 			);
 			path = ViewControllers;
@@ -418,6 +434,7 @@
 				FA28617925ADEF1B001D131F /* SongTableViewCell.xib in Resources */,
 				FA6D517325B70A1400896236 /* PlaylistCollectionViewCell.xib in Resources */,
 				FA912A3625AB3295001936F1 /* LaunchScreen.storyboard in Resources */,
+				FA275C7225BFFCD500C581BD /* CreatePlaylist.storyboard in Resources */,
 				FABDBFA025B193730039B4B3 /* Player.storyboard in Resources */,
 				FAFA681425B382830026059D /* AddSongTableViewCell.xib in Resources */,
 				FA912A3325AB3295001936F1 /* Assets.xcassets in Resources */,
@@ -436,6 +453,7 @@
 			files = (
 				FA6D516E25B708A600896236 /* RecommendationsCollectionViewController.swift in Sources */,
 				FA98DDF025B6D48C0039BE5A /* MainViewController.swift in Sources */,
+				FA28430225C06ED20066AC8F /* UnsplashResponse.swift in Sources */,
 				FA6D516425B7068000896236 /* ArtistCollectionViewController.swift in Sources */,
 				FA912A2E25AB3292001936F1 /* SongsListViewController.swift in Sources */,
 				FA18D2D225AC564C004D0E67 /* PlayerViewController.swift in Sources */,
@@ -446,6 +464,7 @@
 				FA6CE34625BC0AF000C9FD64 /* YoutubeChannelResponse.swift in Sources */,
 				FA6D517225B70A1400896236 /* PlaylistCollectionViewCell.swift in Sources */,
 				FA6CE34025BB153000C9FD64 /* YoutubeSearcher.swift in Sources */,
+				FA275C7925C00C3400C581BD /* CustomTextField.swift in Sources */,
 				FA18D2DC25ACC13D004D0E67 /* PlayButton.swift in Sources */,
 				FA60C34F25B46A3D003D754C /* AVAsset+Extensions.swift in Sources */,
 				FA28617825ADEF1B001D131F /* SongTableViewCell.swift in Sources */,
@@ -470,10 +489,12 @@
 				FAFDBBC425BC175800FB2C4F /* RecommendationsCollectionViewCell.swift in Sources */,
 				FAFA680F25B380C90026059D /* YoutubeVideoResponse.swift in Sources */,
 				FAFA680C25B37F670026059D /* AddViewController.swift in Sources */,
+				FA275C7E25C0555300C581BD /* UnsplashImagesCollectionViewCell.swift in Sources */,
 				FA6D516825B7086900896236 /* PlaylistCollectionViewController.swift in Sources */,
 				FAFDBBBF25BC0E9F00FB2C4F /* Filemanager+Extensions.swift in Sources */,
 				FAFDBBBB25BC0C9000FB2C4F /* UIImage+Extensions.swift in Sources */,
 				FAFDBBB725BC0C5100FB2C4F /* Data+UIImageCompression.swift in Sources */,
+				FA275C7525BFFEC300C581BD /* CreatePlaylistViewController.swift in Sources */,
 				FA4243CC25BDB91D005E4309 /* AddingCollectionReusableView.swift in Sources */,
 				FA18D2DF25ACC26F004D0E67 /* AudioPlayer.swift in Sources */,
 			);
@@ -725,9 +746,10 @@
 		FA69970625ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FA5A8E5B25C152120071524C /* YoutubeLoader 2.xcdatamodel */,
 				FA69970725ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodel */,
 			);
-			currentVersion = FA69970725ACC9B3007FD9D2 /* YoutubeLoader.xcdatamodel */;
+			currentVersion = FA5A8E5B25C152120071524C /* YoutubeLoader 2.xcdatamodel */;
 			path = YoutubeLoader.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

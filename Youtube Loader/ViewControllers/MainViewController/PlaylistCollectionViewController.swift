@@ -66,17 +66,24 @@ extension PlaylistCollectionViewController {
     private func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Int, Playlist> (collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "playlist", for: indexPath) as? PlaylistCollectionViewCell else { return nil }
-            cell.configure(title: item.name, image: UIImage(named: item.imageName ?? "playlist_img_1"))
+            guard let imageURL = item.mediumUrl else { return cell }
+            cell.configure(title: item.name, imageURL: imageURL)
             return cell
         })
         
         dataSource.supplementaryViewProvider = {(
             collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             let addingView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddingCollectionReusableView.reuseIdentifier, for: indexPath) as! AddingCollectionReusableView
+            addingView.button.addTarget(self, action: #selector(self.createPlaylistTapped), for: .touchUpInside)
             return addingView
         }
-
         setupSnapshot()
+    }
+    
+    @objc private func createPlaylistTapped() {
+        let storyboard = UIStoryboard(name: "CreatePlaylist", bundle: nil)
+        guard let vc = storyboard.instantiateInitialViewController() else { return }
+        present(vc, animated: true, completion: nil)
     }
     
     private func setupSnapshot() {

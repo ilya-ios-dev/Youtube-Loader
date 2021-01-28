@@ -19,21 +19,12 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
         // Initialization code
         configureBlur()
         playlistImageView.layer.cornerRadius = 8
-//        configureImage(image: UIImage(named: "playlist_img_\(Int.random(in: 1...10))"))
     }
-    public func configureImage(image: String?) {
-        configureImage(image: UIImage(named: image ?? ""))
-    }
-    
-    public func configureImage(image: UIImage?) {
-        backgroundImageView.image = image
-        playlistImageView.image = image
-    }
-    
-    public func configure(title: String?, image: UIImage?) {
+
+    public func configure(title: String?, imageURL: URL) {
         titleLabel.text = title
-        playlistImageView.image = image
-        backgroundImageView.image = image
+        playlistImageView.af.setImage(withURL: imageURL)
+        backgroundImageView.af.setImage(withURL: imageURL)
     }
     
     /// Adjusts the display of the `visualEffectBlur` to look like a shadow.

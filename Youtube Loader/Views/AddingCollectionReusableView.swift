@@ -11,7 +11,7 @@ final class AddingCollectionReusableView: UICollectionReusableView {
     
     //MARK: - Properties
     public static let reuseIdentifier = "AddingCollectionReusableView"
-    private var button: AddingButton!
+    public var button: AddingButton!
 
     //MARK: - Initialization
     override init(frame: CGRect) {

@@ -129,4 +129,8 @@ extension Playlist {
         playlist.imageName = imageName ?? "playlist_img_1"
         return playlist
     }
+    
+    public var mediumUrl: URL? {
+        return FileManager.default.url(for: .documentDirectory, filename: self.imageName ?? "")
+    }
 }
