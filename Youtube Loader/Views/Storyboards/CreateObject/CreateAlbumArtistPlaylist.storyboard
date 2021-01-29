@@ -31,6 +31,14 @@
                                                             <constraint firstAttribute="height" constant="180" id="mTA-MM-Etg"/>
                                                         </constraints>
                                                     </imageView>
+                                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soq-Tq-U6N">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wjp-iC-3qK">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </view>
+                                                        <blurEffect style="regular"/>
+                                                    </visualEffectView>
                                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLU-Kr-HdE">
                                                         <rect key="frame" x="318" y="12" width="44" height="44"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ld0-cY-Z22">
@@ -102,12 +110,16 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="bNr-Tm-bM5" firstAttribute="leading" secondItem="auW-Qy-I0r" secondAttribute="leading" id="0sY-8T-Wda"/>
+                                                    <constraint firstAttribute="bottom" secondItem="soq-Tq-U6N" secondAttribute="bottom" id="6ct-Vj-39r"/>
                                                     <constraint firstAttribute="trailing" secondItem="bNr-Tm-bM5" secondAttribute="trailing" id="E6B-wQ-Os1"/>
                                                     <constraint firstItem="bNr-Tm-bM5" firstAttribute="top" secondItem="auW-Qy-I0r" secondAttribute="top" id="LaB-Q1-w2c"/>
                                                     <constraint firstItem="Wjl-4a-kJo" firstAttribute="height" secondItem="bNr-Tm-bM5" secondAttribute="height" multiplier="0.488889" id="PUu-Ut-9tj"/>
                                                     <constraint firstAttribute="trailing" secondItem="xLU-Kr-HdE" secondAttribute="trailing" constant="12" id="Y7v-AZ-mJk"/>
                                                     <constraint firstAttribute="bottom" secondItem="bNr-Tm-bM5" secondAttribute="bottom" id="aOg-O0-gek"/>
+                                                    <constraint firstItem="soq-Tq-U6N" firstAttribute="top" secondItem="auW-Qy-I0r" secondAttribute="top" id="hT3-Xq-yHW"/>
+                                                    <constraint firstItem="soq-Tq-U6N" firstAttribute="leading" secondItem="auW-Qy-I0r" secondAttribute="leading" id="mRt-Wv-Ny9"/>
                                                     <constraint firstItem="Wjl-4a-kJo" firstAttribute="centerY" secondItem="auW-Qy-I0r" secondAttribute="centerY" id="teY-Sg-GCA"/>
+                                                    <constraint firstAttribute="trailing" secondItem="soq-Tq-U6N" secondAttribute="trailing" id="v3T-uv-Gt2"/>
                                                     <constraint firstItem="xLU-Kr-HdE" firstAttribute="top" secondItem="auW-Qy-I0r" secondAttribute="top" constant="12" id="wZw-7y-vOU"/>
                                                     <constraint firstItem="Wjl-4a-kJo" firstAttribute="centerX" secondItem="auW-Qy-I0r" secondAttribute="centerX" id="yQ8-az-rRH"/>
                                                 </constraints>
@@ -226,6 +238,7 @@
                         <outlet property="collectionView" destination="g6T-gc-sfH" id="u92-rk-gBG"/>
                         <outlet property="createButton" destination="7cJ-f6-Fq2" id="emF-hE-nwh"/>
                         <outlet property="imageView" destination="bNr-Tm-bM5" id="40c-Qx-ip8"/>
+                        <outlet property="imageViewBlur" destination="soq-Tq-U6N" id="JIv-0p-SWq"/>
                         <outlet property="nameTextField" destination="pwg-q9-94g" id="M0d-fX-b4U"/>
                         <outlet property="refreshBlurView" destination="xLU-Kr-HdE" id="O4z-NS-3Vz"/>
                         <outlet property="refreshButton" destination="Tt5-0T-Rmn" id="xWt-8n-1T5"/>

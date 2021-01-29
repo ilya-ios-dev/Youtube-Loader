@@ -26,6 +26,7 @@ final class CreateAlbumArtistPlaylistViewController: UIViewController {
     @IBOutlet private weak var selectSongsButton: UIButton!
     @IBOutlet private weak var selectArtistOrAlbumButton: UIButton!
     @IBOutlet private weak var selectArtistOrAlbumView: UIView!
+    @IBOutlet private weak var imageViewBlur: UIVisualEffectView!
     
     //MARK: - Properties
     /// настраивает вид контента, какой будет добавляться
@@ -105,8 +106,15 @@ final class CreateAlbumArtistPlaylistViewController: UIViewController {
             }
             
             if let url = fileURL {
-                self.imageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "image_placeholder"))
+                self.imageView.af.setImage(withURL: url)
             }
+            
+            UIView.animate(withDuration: 0.325, delay: 0, options: [], animations: {
+                self.imageViewBlur.alpha = 0
+            }, completion: { _ in
+                self.imageViewBlur.isHidden = true
+            })
+
             self.activityIndicatiorView.stopAnimating()
             self.refreshButton.isHidden = false
         }
@@ -186,7 +194,7 @@ extension CreateAlbumArtistPlaylistViewController {
         guard !searchText.isEmpty else { return }
         // loading image from URL
         if let url = URL(string: searchText) {
-            imageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "image_placeholder"))
+            imageView.af.setImage(withURL: url)
             searchImageTextField.usernameTextField.text = ""
             searchImageTextField.usernameTextField.endEditing(true)
         } else {
