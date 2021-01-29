@@ -123,8 +123,8 @@ extension SelectArtistViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "selectArtistTableViewCell") as! SelectArtistAlbumSongTableViewCell
             
             if let imageUrl = song.thumbnails?.smallUrl {
-                cell.songImageView.af.setImage(withURL: imageUrl)
-                cell.backgroundBlurImage.af.setImage(withURL: imageUrl)
+                cell.songImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "artist_placeholder"))
+                cell.backgroundBlurImage.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "artist_placeholder"))
             }
             cell.titleLabel.text = song.name
             cell.descriptionLabel.isHidden = true

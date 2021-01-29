@@ -111,8 +111,8 @@ extension AddSongTableViewCell {
     ///   - url: Link to image.
     public func configure(video: Video, downloading: Bool, paused: Bool, url: URL?) {
         if let url = url {
-            backgroundBlurImage.af.setImage(withURL: url)
-            songImageView.af.setImage(withURL: url)
+            backgroundBlurImage.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
+            songImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
         }
         
         titleLabel.text = video.snippet?.title

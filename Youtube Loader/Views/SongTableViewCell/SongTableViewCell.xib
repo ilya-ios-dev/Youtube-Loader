@@ -58,7 +58,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdw-t9-PUG">
                         <rect key="frame" x="45" y="0.0" width="64" height="64"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample image" translatesAutoresizingMaskIntoConstraints="NO" id="KRg-ly-fA2">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="KRg-ly-fA2">
                                 <rect key="frame" x="12" y="12" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KRg-ly-fA2" secondAttribute="height" multiplier="1:1" id="fBV-XY-Jyw"/>
@@ -72,7 +72,7 @@
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample image" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-2s-lal">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-2s-lal">
                                 <rect key="frame" x="12" y="12" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="z3z-2s-lal" secondAttribute="height" multiplier="1:1" id="viL-aB-QD0"/>
@@ -128,7 +128,7 @@
     </objects>
     <resources>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
+        <image name="music_placeholder" width="500" height="500"/>
         <image name="playing" width="24" height="24"/>
-        <image name="sample image" width="138" height="138"/>
     </resources>
 </document>

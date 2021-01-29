@@ -19,7 +19,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZi-5a-sze">
                         <rect key="frame" x="16" y="0.0" width="64" height="64"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample image" translatesAutoresizingMaskIntoConstraints="NO" id="YD1-3T-dXK">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="YD1-3T-dXK">
                                 <rect key="frame" x="12" y="12" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="YD1-3T-dXK" secondAttribute="height" multiplier="1:1" id="IyE-i5-CFN"/>
@@ -33,7 +33,7 @@
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample image" translatesAutoresizingMaskIntoConstraints="NO" id="S2Y-qZ-ttN">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="S2Y-qZ-ttN">
                                 <rect key="frame" x="12" y="12" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="S2Y-qZ-ttN" secondAttribute="height" multiplier="1:1" id="5zU-Jc-3nQ"/>
@@ -132,7 +132,7 @@
     </objects>
     <resources>
         <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="music_placeholder" width="500" height="500"/>
         <image name="pause.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="sample image" width="138" height="138"/>
     </resources>
 </document>

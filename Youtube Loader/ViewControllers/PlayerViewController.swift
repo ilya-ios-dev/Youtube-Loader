@@ -133,8 +133,8 @@ extension PlayerViewController {
     private func configureSong(_ song: Song) {
         UIView.transition(with: songImageView, duration: 0.325, options: .transitionCrossDissolve) {
             if let imageUrl = song.thumbnails?.largeUrl {
-                self.songImageView.af.setImage(withURL: imageUrl)
-                self.backgroundImageView.af.setImage(withURL: imageUrl)
+                self.songImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "vinyl_record"))
+                self.backgroundImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "vinyl_record"))
             }
             self.songTitleLabel.text = song.name
             self.songAuthor.text = song.author?.name

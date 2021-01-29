@@ -145,8 +145,8 @@ extension SongsListViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "songTableViewCell") as! SongTableViewCell
             
             if let imageUrl = song.thumbnails?.smallUrl {
-                cell.songImageView.af.setImage(withURL: imageUrl)
-                cell.backgroundBlurImage.af.setImage(withURL: imageUrl)
+                cell.songImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
+                cell.backgroundBlurImage.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
             }
             cell.titleLabel.text = song.name
             cell.descriptionLabel.text = song.author?.name

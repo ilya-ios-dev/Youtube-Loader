@@ -67,8 +67,8 @@ extension SongsCollectionViewController {
             
             cell.configure(title: item.name, description: item.author?.name, image: nil)
             if let url = item.thumbnails?.smallUrl {
-                cell.songImageView.af.setImage(withURL: url)
-                cell.songBackgroundImageView.af.setImage(withURL: url)
+                cell.songImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
+                cell.songBackgroundImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
             }
             return cell
         })

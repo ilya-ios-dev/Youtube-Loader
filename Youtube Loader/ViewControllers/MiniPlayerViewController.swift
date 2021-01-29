@@ -89,8 +89,8 @@ extension MiniPlayerViewController: AudioPlayerDelegate {
         songTitleLabel.text = song.name
         songDesctiptionLabel.text = song.author?.name
         if let imageUrl = song.thumbnails?.smallUrl {
-            songImageView.af.setImage(withURL: imageUrl)
-            backgroundImageView.af.setImage(withURL: imageUrl)
+            songImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
+            backgroundImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
         }
         
         // Changes the colors of all elements to the desired one.

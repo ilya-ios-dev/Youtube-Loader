@@ -40,7 +40,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8O-t3-Y8K">
                                 <rect key="frame" x="8" y="0.0" width="64" height="64"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample image" translatesAutoresizingMaskIntoConstraints="NO" id="uEk-rY-fBb">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="uEk-rY-fBb">
                                         <rect key="frame" x="12" y="12" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="uEk-rY-fBb" secondAttribute="height" multiplier="1:1" id="ITe-Vy-vSJ"/>
@@ -54,7 +54,7 @@
                                         </view>
                                         <blurEffect style="regular"/>
                                     </visualEffectView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample image" translatesAutoresizingMaskIntoConstraints="NO" id="CGX-yc-5td">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="CGX-yc-5td">
                                         <rect key="frame" x="12" y="12" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="CGX-yc-5td" secondAttribute="height" multiplier="1:1" id="ulA-mR-Tg6"/>
@@ -127,7 +127,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="music_placeholder" width="500" height="500"/>
         <image name="play.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="sample image" width="138" height="138"/>
     </resources>
 </document>

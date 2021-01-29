@@ -24,8 +24,8 @@ final class AlbumCollectionViewCell: UICollectionViewCell {
     public func configure(title: String?, imageUrl: URL?) {
         titleLabel.text = title
         if let url = imageUrl {
-            albumImageView.af.setImage(withURL: url)
-            backgroundImageView.af.setImage(withURL: url)
+            albumImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "vinyl_record"))
+            backgroundImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "vinyl_record"))
         }
     }
     

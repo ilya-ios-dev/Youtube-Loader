@@ -26,8 +26,8 @@ final class ArtistCollectionViewCell: UICollectionViewCell {
     public func configure(title: String?, url: URL?) {
         titleLabel.text = title
         if let url = url {
-            artistImageView.af.setImage(withURL: url)
-            backgroundImageView.af.setImage(withURL: url)
+            artistImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "artist_placeholder"))
+            backgroundImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "artist_placeholder"))
         }
     }
     

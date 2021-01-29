@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="210"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample image" translatesAutoresizingMaskIntoConstraints="NO" id="x2k-nc-Yk5">
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vinyl_record" translatesAutoresizingMaskIntoConstraints="NO" id="x2k-nc-Yk5">
                         <rect key="frame" x="20" y="40" width="110" height="110"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="x2k-nc-Yk5" secondAttribute="height" id="dRk-CG-Y8U"/>
@@ -36,7 +36,7 @@
                         <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample image" translatesAutoresizingMaskIntoConstraints="NO" id="LMx-Vr-NDl">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vinyl_record" translatesAutoresizingMaskIntoConstraints="NO" id="LMx-Vr-NDl">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="LMx-Vr-NDl" secondAttribute="height" id="Jmb-Tv-OBV"/>
@@ -73,6 +73,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="sample image" width="138" height="138"/>
+        <image name="vinyl_record" width="500" height="500"/>
     </resources>
 </document>

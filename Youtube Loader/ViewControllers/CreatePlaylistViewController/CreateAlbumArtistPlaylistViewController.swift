@@ -105,7 +105,7 @@ final class CreateAlbumArtistPlaylistViewController: UIViewController {
             }
             
             if let url = fileURL {
-                self.imageView.af.setImage(withURL: url)
+                self.imageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "image_placeholder"))
             }
             self.activityIndicatiorView.stopAnimating()
             self.refreshButton.isHidden = false
@@ -186,7 +186,7 @@ extension CreateAlbumArtistPlaylistViewController {
         guard !searchText.isEmpty else { return }
         // loading image from URL
         if let url = URL(string: searchText) {
-            imageView.af.setImage(withURL: url)
+            imageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "image_placeholder"))
             searchImageTextField.usernameTextField.text = ""
             searchImageTextField.usernameTextField.endEditing(true)
         } else {
@@ -327,7 +327,7 @@ extension CreateAlbumArtistPlaylistViewController {
             let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: UnsplashImagesCollectionViewCell.cellIdentifier, for: indexPath) as! UnsplashImagesCollectionViewCell
             let imageUrl = self.results[indexPath.item].urls.small
             guard let url = URL(string: imageUrl) else { return cell }
-            cell.imageView.af.setImage(withURL: url)
+            cell.imageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "image_placeholder"))
             return cell
         })
         

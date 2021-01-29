@@ -121,8 +121,8 @@ extension SelectAlbumsViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "selectAlbumTableViewCell") as! SelectArtistAlbumSongTableViewCell
             
             if let imageUrl = song.thumbnails?.smallUrl {
-                cell.songImageView.af.setImage(withURL: imageUrl)
-                cell.backgroundBlurImage.af.setImage(withURL: imageUrl)
+                cell.songImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "vinyl_record"))
+                cell.backgroundBlurImage.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "vinyl_record"))
             }
             cell.titleLabel.text = song.name
             cell.descriptionLabel.text = nil

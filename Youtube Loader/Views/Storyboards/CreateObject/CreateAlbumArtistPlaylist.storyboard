@@ -25,7 +25,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auW-Qy-I0r">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playlist_img_8" translatesAutoresizingMaskIntoConstraints="NO" id="bNr-Tm-bM5">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="bNr-Tm-bM5">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="180" id="mTA-MM-Etg"/>
@@ -263,6 +263,6 @@
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="camera.fill" catalog="system" width="128" height="94"/>
-        <image name="playlist_img_8" width="500" height="500"/>
+        <image name="image_placeholder" width="500" height="500"/>
     </resources>
 </document>

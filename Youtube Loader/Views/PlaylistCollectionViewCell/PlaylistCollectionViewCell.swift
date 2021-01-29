@@ -23,8 +23,8 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
 
     public func configure(title: String?, imageURL: URL) {
         titleLabel.text = title
-        playlistImageView.af.setImage(withURL: imageURL)
-        backgroundImageView.af.setImage(withURL: imageURL)
+        playlistImageView.af.setImage(withURL: imageURL, placeholderImage: #imageLiteral(resourceName: "vinyl_record"))
+        backgroundImageView.af.setImage(withURL: imageURL, placeholderImage: #imageLiteral(resourceName: "vinyl_record"))
     }
     
     /// Adjusts the display of the `visualEffectBlur` to look like a shadow.
