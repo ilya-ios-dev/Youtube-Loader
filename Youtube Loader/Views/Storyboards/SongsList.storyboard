@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,14 +21,34 @@
                                 <rect key="frame" x="16" y="44" width="382" height="852"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="pU3-gm-kDE">
-                                <rect key="frame" x="20" y="44" width="374" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                            </searchBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dS5-JP-itz">
+                                <rect key="frame" x="20" y="44" width="362" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUx-w4-aKw">
+                                        <rect key="frame" x="0.0" y="16" width="24" height="24"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="AUx-w4-aKw" secondAttribute="height" id="Rae-Y9-Ktk"/>
+                                            <constraint firstAttribute="height" constant="24" id="Ybm-da-Z7I"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.57647058819999997" green="0.6588235294" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="chevron.down" catalog="system" symbolScale="small"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="downButtonTapped:" destination="TjK-Ia-ArN" eventType="touchUpInside" id="4ux-cj-ER9"/>
+                                        </connections>
+                                    </button>
+                                    <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="pU3-gm-kDE">
+                                        <rect key="frame" x="32" y="0.0" width="330" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
+                                </subviews>
+                            </stackView>
                             <containerView opaque="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvs-9Y-TYz">
                                 <rect key="frame" x="0.0" y="757" width="414" height="105"/>
                                 <constraints>
@@ -45,6 +66,7 @@
                         <viewLayoutGuide key="safeArea" id="ORY-TS-XWh"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.95686274510000002" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="dS5-JP-itz" firstAttribute="leading" secondItem="ORY-TS-XWh" secondAttribute="leading" constant="20" id="1fJ-ZJ-h0A"/>
                             <constraint firstItem="tvs-9Y-TYz" firstAttribute="leading" secondItem="E3G-fs-532" secondAttribute="leading" id="41u-Ni-mqB"/>
                             <constraint firstAttribute="trailing" secondItem="Exh-OV-BCh" secondAttribute="trailing" id="43e-y1-C0H"/>
                             <constraint firstItem="tvs-9Y-TYz" firstAttribute="bottom" secondItem="ORY-TS-XWh" secondAttribute="bottom" id="73H-h2-5Fc"/>
@@ -53,17 +75,17 @@
                             <constraint firstItem="Exh-OV-BCh" firstAttribute="top" secondItem="tvs-9Y-TYz" secondAttribute="bottom" id="PQW-bO-1EB"/>
                             <constraint firstItem="tvs-9Y-TYz" firstAttribute="trailing" secondItem="E3G-fs-532" secondAttribute="trailing" id="Pdu-S4-UTA"/>
                             <constraint firstAttribute="bottom" secondItem="Exh-OV-BCh" secondAttribute="bottom" id="Rm8-oL-1nK"/>
-                            <constraint firstItem="pU3-gm-kDE" firstAttribute="leading" secondItem="ORY-TS-XWh" secondAttribute="leading" constant="20" id="cjp-m9-Wqh"/>
                             <constraint firstAttribute="bottom" secondItem="8S4-K6-EiH" secondAttribute="bottom" id="f4E-0M-e0z"/>
-                            <constraint firstItem="pU3-gm-kDE" firstAttribute="top" secondItem="ORY-TS-XWh" secondAttribute="top" id="kuM-KY-vJh"/>
+                            <constraint firstItem="dS5-JP-itz" firstAttribute="top" secondItem="ORY-TS-XWh" secondAttribute="top" id="pPh-0H-den"/>
+                            <constraint firstItem="ORY-TS-XWh" firstAttribute="trailing" secondItem="dS5-JP-itz" secondAttribute="trailing" constant="32" id="pS3-0i-XVu"/>
                             <constraint firstItem="8S4-K6-EiH" firstAttribute="top" secondItem="ORY-TS-XWh" secondAttribute="top" id="w6r-DI-A03"/>
                             <constraint firstItem="ORY-TS-XWh" firstAttribute="trailing" secondItem="8S4-K6-EiH" secondAttribute="trailing" constant="16" id="wBn-Ix-9Af"/>
-                            <constraint firstItem="ORY-TS-XWh" firstAttribute="trailing" secondItem="pU3-gm-kDE" secondAttribute="trailing" constant="20" id="xg2-Ie-FxO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="521-g9-EL8"/>
                     <connections>
                         <outlet property="bottomView" destination="Exh-OV-BCh" id="OOf-Tm-nri"/>
+                        <outlet property="downButton" destination="AUx-w4-aKw" id="yq1-fQ-dAx"/>
                         <outlet property="miniPlayerView" destination="tvs-9Y-TYz" id="QqZ-pu-K8n"/>
                         <outlet property="searchBar" destination="pU3-gm-kDE" id="8Qq-vC-N1N"/>
                         <outlet property="tableView" destination="8S4-K6-EiH" id="cZp-yR-Bsz"/>
@@ -83,6 +105,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

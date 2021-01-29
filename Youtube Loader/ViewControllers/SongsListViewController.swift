@@ -15,6 +15,7 @@ final class SongsListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var miniPlayerView: UIView!
     @IBOutlet private weak var bottomView: UIView!
+    @IBOutlet private weak var downButton: UIButton!
     
     //MARK: - Properties
     private var miniPlayer: MiniPlayerViewController!
@@ -44,7 +45,8 @@ final class SongsListViewController: UIViewController {
         miniPlayerView.isHidden = true
         bottomView.isHidden = true
         tableView.contentInset = UIEdgeInsets(top: searchBar.frame.height, left: 0, bottom: 0, right: 0)
-
+        downButton.layer.cornerRadius = downButton.frame.height / 2
+        
         //Data
         setupFetchedResultsController()
         setupDiffableDataSource()
@@ -55,6 +57,11 @@ final class SongsListViewController: UIViewController {
           miniPlayer = destination
           miniPlayer?.delegate = self
         }
+    }
+    
+    //MARK: - Actions
+    @IBAction private func downButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }
 
