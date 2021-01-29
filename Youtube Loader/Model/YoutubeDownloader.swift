@@ -166,7 +166,7 @@ final class YoutubeDownloader {
             let smallImage = LocalFileManager.getURLForFile(withNameAndExtension: "\(channelID)Small", ext: "jpg")
             var artist: Artist?
             let thumbnail = Thumbnail.create(context: self.context, small: smallImage, medium: mediumImage, large: largeImage)
-            artist = Artist.create(context: self.context, thumbnails: thumbnail, id: channelID, name: channel.snippet.title)
+            artist = Artist.createIfNotExist(context: self.context, thumbnails: thumbnail, id: channelID, name: channel.snippet.title)
             completion?(artist)
         }
     }

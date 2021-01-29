@@ -93,7 +93,7 @@ extension Album {
 
 //MARK: - Artist
 extension Artist {
-    @discardableResult public class func create(context: NSManagedObjectContext, thumbnails: Thumbnail, id: String, name: String) -> Artist {
+    @discardableResult public class func createIfNotExist(context: NSManagedObjectContext, thumbnails: Thumbnail, id: String, name: String) -> Artist {
         let fetchRequest: NSFetchRequest = Artist.fetchRequest()
         let predicate = NSPredicate(format: "id == %@", id)
         fetchRequest.predicate = predicate
@@ -109,6 +109,18 @@ extension Artist {
         
         return artist!
     }
+    
+    @discardableResult public class func create(context: NSManagedObjectContext, thumbnails: Thumbnail?, id: String?, name: String?, songs: [Song?] = [], albums: [Album?] = []) -> Artist {
+        let artist = Artist(context: context)
+        artist.dateSave = Date()
+        artist.thumbnails = thumbnails
+        artist.id = id
+        artist.name = name
+        artist.songs = NSSet(array: songs as [Any])
+        artist.albums = NSSet(array: albums as [Any])
+        return artist
+    }
+
 
     @discardableResult public class func create (context: NSManagedObjectContext, small: URL?, medium: URL?, large: URL?, id: String? = nil, name: String) -> Artist {
         let artist = Artist(context: context)

@@ -74,11 +74,21 @@ extension AlbumsCollectionViewController {
         dataSource.supplementaryViewProvider = {(
             collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             let addingView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AddingCollectionReusableView.reuseIdentifier, for: indexPath) as! AddingCollectionReusableView
+            addingView.button.addTarget(self, action: #selector(self.createPlaylistTapped), for: .touchUpInside)
             return addingView
         }
 
         setupSnapshot()
     }
+    
+    @objc private func createPlaylistTapped() {
+        let storyboard = UIStoryboard(name: "CreateAlbumArtistPlaylist", bundle: nil)
+        guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
+        guard let vc = navigationController.topViewController as? CreateAlbumArtistPlaylistViewController else { return }
+        vc.contentType = .album
+        present(navigationController, animated: true, completion: nil)
+    }
+
     
     private func setupSnapshot() {
         snapshot = NSDiffableDataSourceSnapshot<Int, Album>()

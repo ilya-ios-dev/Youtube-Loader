@@ -103,14 +103,14 @@ extension SelectSongsViewController {
     
     private func configureTableView() {
         tableView.delegate = self
-        let nib = UINib(nibName: "SelectSongTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "songTableViewCell")
+        let nib = UINib(nibName: "SelectArtistAlbumSongTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "selectSongTableViewCell")
     }
     
     private func setupTableSnapshot() {
         tableSnapshot = NSDiffableDataSourceSnapshot<Int, Song>()
         tableSnapshot.appendSections([0])
-        tableSnapshot.appendItems(songs) // TODO
+        tableSnapshot.appendItems(songs)
         DispatchQueue.main.async {
             self.tableDataSource?.apply(self.tableSnapshot, animatingDifferences: true)
         }
@@ -118,7 +118,7 @@ extension SelectSongsViewController {
     
     private func setupTableDataSource() {
         tableDataSource = UITableViewDiffableDataSource<Int, Song>(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "songTableViewCell") as! SelectSongTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "selectSongTableViewCell") as! SelectArtistAlbumSongTableViewCell
             
             if let imageUrl = song.thumbnails?.smallUrl {
                 cell.songImageView.af.setImage(withURL: imageUrl)

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sxp-iU-hei">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Select Artist View Controller-->
+        <scene sceneID="N3T-DL-sZU">
+            <objects>
+                <viewController id="sxp-iU-hei" customClass="SelectArtistViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="05j-qj-WOr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VfD-TI-31k">
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="U2Y-jC-kTG">
+                                <rect key="frame" x="20" y="44" width="374" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="U2A-lk-DG4"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.95686274509803915" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="U2A-lk-DG4" firstAttribute="trailing" secondItem="VfD-TI-31k" secondAttribute="trailing" constant="20" id="892-Ao-ESr"/>
+                            <constraint firstItem="VfD-TI-31k" firstAttribute="leading" secondItem="U2A-lk-DG4" secondAttribute="leading" constant="20" id="O65-E4-YcW"/>
+                            <constraint firstItem="VfD-TI-31k" firstAttribute="bottom" secondItem="U2A-lk-DG4" secondAttribute="bottom" id="OoB-aD-Jc1"/>
+                            <constraint firstItem="VfD-TI-31k" firstAttribute="top" secondItem="U2A-lk-DG4" secondAttribute="top" id="R6s-II-Lar"/>
+                            <constraint firstItem="U2A-lk-DG4" firstAttribute="trailing" secondItem="U2Y-jC-kTG" secondAttribute="trailing" constant="20" id="jBR-6b-4jm"/>
+                            <constraint firstItem="U2Y-jC-kTG" firstAttribute="top" secondItem="U2A-lk-DG4" secondAttribute="top" id="oq9-4a-Wv4"/>
+                            <constraint firstItem="U2Y-jC-kTG" firstAttribute="leading" secondItem="U2A-lk-DG4" secondAttribute="leading" constant="20" id="pld-ri-JAy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="U2Y-jC-kTG" id="rEh-Qq-Xv5"/>
+                        <outlet property="tableView" destination="VfD-TI-31k" id="v1B-Qk-nYY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0KE-3U-iTo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="204" y="78"/>
+        </scene>
+    </scenes>
+</document>

@@ -11,16 +11,16 @@
         <!--Create Playlist-->
         <scene sceneID="GpM-QK-ezL">
             <objects>
-                <viewController id="HX3-Nx-FCJ" customClass="CreatePlaylistViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HX3-Nx-FCJ" customClass="CreateAlbumArtistPlaylistViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D5f-mV-XdL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BIe-Jz-CbX">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="BIe-Jz-CbX">
                                 <rect key="frame" x="20" y="76" width="374" height="712"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jsm-6d-7Uu">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="448"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="596"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auW-Qy-I0r">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
@@ -140,13 +140,34 @@
                                                     <constraint firstAttribute="height" constant="40" id="TJZ-GU-EdI"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiA-9z-H8H">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uLU-xQ-zix">
                                                 <rect key="frame" x="0.0" y="320" width="374" height="128"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIF-Wq-NGg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="107" height="128"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="Select Artist">
+                                                            <color key="titleColor" red="0.30588235294117649" green="0.33333333333333331" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AIF-Wq-NGg" secondAttribute="trailing" id="7b4-U7-gcf"/>
+                                                    <constraint firstItem="AIF-Wq-NGg" firstAttribute="leading" secondItem="uLU-xQ-zix" secondAttribute="leading" id="OsT-GI-bLN"/>
+                                                    <constraint firstAttribute="bottom" secondItem="AIF-Wq-NGg" secondAttribute="bottom" id="eFN-Lf-z8x"/>
+                                                    <constraint firstItem="AIF-Wq-NGg" firstAttribute="top" secondItem="uLU-xQ-zix" secondAttribute="top" id="skH-rT-Qc2"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiA-9z-H8H">
+                                                <rect key="frame" x="0.0" y="468" width="374" height="128"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmz-JQ-3py">
                                                         <rect key="frame" x="0.0" y="0.0" width="116" height="128"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <state key="normal" title="Select Songs"/>
+                                                        <state key="normal" title="Select Songs">
+                                                            <color key="titleColor" red="0.30588235294117649" green="0.33333333333333331" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="selectSongsTapped:" destination="HX3-Nx-FCJ" eventType="touchUpInside" id="ata-YM-twF"/>
                                                         </connections>
@@ -185,11 +206,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Create Playlist" id="Isq-ad-QXX">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="S8m-c6-Q4N">
+                            <color key="tintColor" red="0.14901960784313725" green="0.16470588235294117" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelTapped:" destination="HX3-Nx-FCJ" id="abh-ED-Ia0"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Create" id="7cJ-f6-Fq2">
+                            <color key="tintColor" red="0.14901960784313725" green="0.16470588235294117" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="createTapped:" destination="HX3-Nx-FCJ" id="L93-zy-qPb"/>
                             </connections>
@@ -207,6 +230,9 @@
                         <outlet property="refreshBlurView" destination="xLU-Kr-HdE" id="O4z-NS-3Vz"/>
                         <outlet property="refreshButton" destination="Tt5-0T-Rmn" id="xWt-8n-1T5"/>
                         <outlet property="searchImageTextField" destination="bxT-6E-ZFs" id="hl0-1l-wVR"/>
+                        <outlet property="selectArtistOrAlbumButton" destination="AIF-Wq-NGg" id="GY4-ht-hF8"/>
+                        <outlet property="selectArtistOrAlbumView" destination="uLU-xQ-zix" id="bm8-0Z-XkG"/>
+                        <outlet property="selectSongsButton" destination="Dmz-JQ-3py" id="3V1-sI-Olt"/>
                         <outlet property="stackView" destination="jsm-6d-7Uu" id="u9g-Sp-LlE"/>
                     </connections>
                 </viewController>
@@ -222,6 +248,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9GT-3u-t48">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.14901960784313725" green="0.16470588235294117" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

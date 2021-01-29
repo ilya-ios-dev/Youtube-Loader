@@ -1,5 +1,5 @@
 //
-//  SelectSongTableViewCell.swift
+//  SelectArtistAlbumSongTableViewCell.swift
 //  Youtube Loader
 //
 //  Created by isEmpty on 29.01.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SelectSongTableViewCell: UITableViewCell {
+final class SelectArtistAlbumSongTableViewCell: UITableViewCell {
 
     //MARK: - Outlets
     @IBOutlet private weak var visualEffectBlur: UIVisualEffectView!

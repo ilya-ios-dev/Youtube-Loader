@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eom-Ym-a1A">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Select Albums View Controller-->
+        <scene sceneID="Kox-ov-bSz">
+            <objects>
+                <viewController id="eom-Ym-a1A" customClass="SelectAlbumsViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pc8-Hj-aR6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="acb-cr-SgJ">
+                                <rect key="frame" x="20" y="0.0" width="374" height="862"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="q0g-pG-f6D">
+                                <rect key="frame" x="20" y="44" width="374" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CmB-2j-fX5"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.95686274509803915" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="acb-cr-SgJ" firstAttribute="leading" secondItem="CmB-2j-fX5" secondAttribute="leading" constant="20" id="FLP-Yk-IYV"/>
+                            <constraint firstItem="q0g-pG-f6D" firstAttribute="top" secondItem="CmB-2j-fX5" secondAttribute="top" id="OIZ-Ow-G1d"/>
+                            <constraint firstItem="acb-cr-SgJ" firstAttribute="top" secondItem="pc8-Hj-aR6" secondAttribute="top" id="e5K-Mx-ajh"/>
+                            <constraint firstItem="CmB-2j-fX5" firstAttribute="trailing" secondItem="acb-cr-SgJ" secondAttribute="trailing" constant="20" id="iOo-5x-Kox"/>
+                            <constraint firstItem="CmB-2j-fX5" firstAttribute="trailing" secondItem="q0g-pG-f6D" secondAttribute="trailing" constant="20" id="jVj-bm-LuP"/>
+                            <constraint firstItem="CmB-2j-fX5" firstAttribute="bottom" secondItem="acb-cr-SgJ" secondAttribute="bottom" id="umX-QK-JG3"/>
+                            <constraint firstItem="q0g-pG-f6D" firstAttribute="leading" secondItem="CmB-2j-fX5" secondAttribute="leading" constant="20" id="vjd-LR-BPX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="q0g-pG-f6D" id="far-bS-h6c"/>
+                        <outlet property="tableView" destination="acb-cr-SgJ" id="EW9-4z-wne"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bCX-GH-SWU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="219" y="123"/>
+        </scene>
+    </scenes>
+</document>

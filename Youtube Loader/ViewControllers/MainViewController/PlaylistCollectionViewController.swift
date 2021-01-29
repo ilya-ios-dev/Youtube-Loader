@@ -81,11 +81,13 @@ extension PlaylistCollectionViewController {
     }
     
     @objc private func createPlaylistTapped() {
-        let storyboard = UIStoryboard(name: "CreatePlaylist", bundle: nil)
-        guard let vc = storyboard.instantiateInitialViewController() else { return }
-        present(vc, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "CreateAlbumArtistPlaylist", bundle: nil)
+        guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
+        guard let vc = navigationController.topViewController as? CreateAlbumArtistPlaylistViewController else { return }
+        vc.contentType = .playlist
+        present(navigationController, animated: true, completion: nil)
     }
-    
+
     private func setupSnapshot() {
         snapshot = NSDiffableDataSourceSnapshot<Int, Playlist>()
         snapshot.appendSections([0])
