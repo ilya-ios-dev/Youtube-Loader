@@ -22,25 +22,18 @@ final class CreatePlaylistViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var createButton: UIBarButtonItem!
-    @IBOutlet weak var activityIndicatiorView: UIActivityIndicatorView!
+    @IBOutlet private weak var activityIndicatiorView: UIActivityIndicatorView!
     
     //MARK: - Properties
-    private var context: NSManagedObjectContext = {
-        return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    }()
+    private var selectedSongs = [Song]()
     private var imageName = ""
     private var dataSource: UICollectionViewDiffableDataSource<Int, UnsplashResponse.Result>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, UnsplashResponse.Result>()
     private var searchText = ""
-    private var results = [UnsplashResponse.Result]() {
-        didSet {
-            UIView.animate(withDuration: 1) {
-                self.collectionView.isHidden = false
-                self.stackView.layoutIfNeeded()
-            }
-            setupSnapshot()
-        }
-    }
+    private var results = [UnsplashResponse.Result]()
+    private var context: NSManagedObjectContext = {
+        return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    }()
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -78,15 +71,27 @@ final class CreatePlaylistViewController: UIViewController {
     
     @objc private func search() {
         guard !searchText.isEmpty else { return }
-        searchImage(by: searchText) { (error, response) in
-            if let error = error {
-                print(error)
-                self.showAlert(alertText: error.localizedDescription)
-                return
+        // загрузка картинки с URL
+        if let url = URL(string: searchText) {
+            imageView.af.setImage(withURL: url)
+            searchImageTextField.usernameTextField.text = ""
+            searchImageTextField.usernameTextField.endEditing(true)
+        } else {
+            // Поиск картинки в Unsplash
+            searchImage(by: searchText) { (error, response) in
+                if let error = error {
+                    print(error)
+                    self.showAlert(alertText: error.localizedDescription)
+                    return
+                }
+                guard let results = response?.results else { return }
+                self.results = results
+                self.setupSnapshot()
+                UIView.animate(withDuration: 1) {
+                    self.collectionView.isHidden = false
+                    self.stackView.layoutIfNeeded()
+                }
             }
-            
-            guard let results = response?.results else { return }
-            self.results = results
         }
     }
     
@@ -104,18 +109,27 @@ final class CreatePlaylistViewController: UIViewController {
     }
     
     @IBAction func createTapped(_ sender: Any) {
-        compressAndSaveImages()
+        let th = compressImages()
+        let thumbnail = Thumbnail.create(context: context, small: th?.small, medium: th?.medium, large: th?.large)
+        Playlist.create(context: context, thumbnails: thumbnail, name: nameTextField.usernameTextField.text, songs: selectedSongs)
+        try? context.save()
+        dismiss(animated: true, completion: nil)
     }
     
-    private func compressAndSaveImages() {
+    private typealias Thumbnails = (small: String, medium: String, large: String)
+    
+    private func compressImages() -> Thumbnails? {
         if imageName.isEmpty { imageName = UUID().uuidString }
-        guard let imageData = imageView.image?.jpegData(compressionQuality: 0.8) else { return }
-        guard let largeData = imageData.compressImage(size: .large) else { return }
-        guard let mediumData = imageData.compressImage(size: .medium) else { return }
-        guard let smallData = imageData.compressImage(size: .small) else { return }
+        guard let imageData = imageView.image?.jpegData(compressionQuality: 0.8) else { return nil }
+        guard let largeData = imageData.compressImage(size: .large) else { return nil }
+        guard let mediumData = imageData.compressImage(size: .medium) else { return nil }
+        guard let smallData = imageData.compressImage(size: .small) else { return nil }
         LocalFileManager.saveData(withNameAndExtension: "\(imageName)Large.jpg", data: largeData)
         LocalFileManager.saveData(withNameAndExtension: "\(imageName)Medium.jpg", data: mediumData)
         LocalFileManager.saveData(withNameAndExtension: "\(imageName)Small.jpg", data: smallData)
+        return Thumbnails(small: "\(imageName)Small.jpg",
+                          medium: "\(imageName)Medium.jpg",
+                          large: "\(imageName)Large.jpg")
     }
     
     @IBAction func refreshTapped(_ sender: Any) {
@@ -148,6 +162,12 @@ final class CreatePlaylistViewController: UIViewController {
             self.refreshButton.isHidden = false
         }
     }
+    @IBAction func selectSongsTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "SelectSongs", bundle: nil)
+        guard let vc = storyboard.instantiateInitialViewController() as? SelectSongsViewController else { return }
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     @IBAction func selectPhotoTapped(_ sender: Any) {
         let pickerController = UIImagePickerController()
@@ -155,6 +175,12 @@ final class CreatePlaylistViewController: UIViewController {
         pickerController.allowsEditing = false
         pickerController.mediaTypes = ["public.image"]
         present(pickerController, animated: true, completion: nil)
+    }
+}
+
+extension CreatePlaylistViewController: SelectSongsViewControllerDelegate {
+    func didSaveSelectedSongs(_ songs: [Song]) {
+        selectedSongs = songs
     }
 }
 

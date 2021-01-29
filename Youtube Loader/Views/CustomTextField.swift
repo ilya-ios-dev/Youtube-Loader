@@ -25,6 +25,7 @@ final class CustomTextField: UIView {
             usernameLBL.text = placeholder
         }
     }
+    
     public var bottomLineColor: UIColor = UIColor.darkGray {
         didSet {
             bottomLine.backgroundColor = bottomLineColor.cgColor
@@ -37,6 +38,7 @@ final class CustomTextField: UIView {
         label.alpha = 0.5
         return label
     }()
+    
     public lazy var usernameTextField: UITextField! = {
         let textLabel = UITextField()
         textLabel.borderStyle = .none
@@ -49,7 +51,6 @@ final class CustomTextField: UIView {
         super.init(frame: frame)
         addSubview(usernameTextField)
         addSubview(usernameLBL)
-        backgroundColor = UIColor(white: 1, alpha: 1)
         usernameTextField.delegate = self
         
         configureViews()
@@ -59,7 +60,6 @@ final class CustomTextField: UIView {
         super.init(coder: aDecoder)
         addSubview(usernameTextField)
         addSubview(usernameLBL)
-        backgroundColor = UIColor(white: 1, alpha: 1)
         usernameTextField.delegate = self
         
         configureViews()

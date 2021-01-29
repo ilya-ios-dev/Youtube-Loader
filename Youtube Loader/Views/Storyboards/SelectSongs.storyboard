@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Euh-t4-Ord">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Select Songs View Controller-->
+        <scene sceneID="Zyc-uN-5B2">
+            <objects>
+                <viewController id="Euh-t4-Ord" customClass="SelectSongsViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PGs-If-slh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mmb-Mk-BiX">
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="CuM-QD-px0">
+                                <rect key="frame" x="20" y="44" width="374" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KwM-fu-9p8"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.95686274509803915" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="KwM-fu-9p8" firstAttribute="trailing" secondItem="CuM-QD-px0" secondAttribute="trailing" constant="20" id="2N9-pC-65C"/>
+                            <constraint firstItem="CuM-QD-px0" firstAttribute="top" secondItem="KwM-fu-9p8" secondAttribute="top" id="2OO-B1-sNh"/>
+                            <constraint firstItem="KwM-fu-9p8" firstAttribute="bottom" secondItem="mmb-Mk-BiX" secondAttribute="bottom" id="JUD-g9-D5T"/>
+                            <constraint firstItem="mmb-Mk-BiX" firstAttribute="top" secondItem="KwM-fu-9p8" secondAttribute="top" id="OoX-ep-OgS"/>
+                            <constraint firstItem="CuM-QD-px0" firstAttribute="leading" secondItem="KwM-fu-9p8" secondAttribute="leading" constant="20" id="ljg-8E-sh2"/>
+                            <constraint firstItem="mmb-Mk-BiX" firstAttribute="leading" secondItem="KwM-fu-9p8" secondAttribute="leading" constant="20" id="ySz-XY-lX9"/>
+                            <constraint firstItem="KwM-fu-9p8" firstAttribute="trailing" secondItem="mmb-Mk-BiX" secondAttribute="trailing" constant="20" id="zOs-QU-2cW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="CuM-QD-px0" id="c9q-Y2-VlO"/>
+                        <outlet property="tableView" destination="mmb-Mk-BiX" id="FtW-MN-a7s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vQ3-Lh-Xji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="269.56521739130437" y="54.910714285714285"/>
+        </scene>
+    </scenes>
+</document>

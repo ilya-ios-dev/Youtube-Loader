@@ -122,15 +122,22 @@ extension Artist {
 
 //MARK: - Playlist
 extension Playlist {
-    @discardableResult public class func create (context: NSManagedObjectContext, imageName: String?, name: String?, songs: [Song?] = []) -> Playlist {
+    @discardableResult public class func create (context: NSManagedObjectContext, thumbnails: Thumbnail, name: String?, songs: [Song?] = []) -> Playlist {
         let playlist = Playlist(context: context)
         playlist.dateSave = Date()
         playlist.name = name
-        playlist.imageName = imageName ?? "playlist_img_1"
+        playlist.thumbnails = thumbnails
+        playlist.songs = NSSet(array: songs as [Any])
         return playlist
     }
     
+    public var smallUrl: URL? {
+        return FileManager.default.url(for: .documentDirectory, filename: self.thumbnails?.small ?? "")
+    }
     public var mediumUrl: URL? {
-        return FileManager.default.url(for: .documentDirectory, filename: self.imageName ?? "")
+        return FileManager.default.url(for: .documentDirectory, filename: self.thumbnails?.medium ?? "")
+    }
+    public var largeUrl: URL? {
+        return FileManager.default.url(for: .documentDirectory, filename: self.thumbnails?.large ?? "")
     }
 }

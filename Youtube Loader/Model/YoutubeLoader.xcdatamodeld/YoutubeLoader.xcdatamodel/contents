@@ -17,9 +17,9 @@
     </entity>
     <entity name="Playlist" representedClassName="Playlist" syncable="YES" codeGenerationType="class">
         <attribute name="dateSave" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="imageName" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="songs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" inverseName="playlist" inverseEntity="Song"/>
+        <relationship name="thumbnails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thumbnail" inverseName="playlist" inverseEntity="Thumbnail"/>
     </entity>
     <entity name="Song" representedClassName="Song" syncable="YES" codeGenerationType="class">
         <attribute name="dateSave" attributeType="Date" usesScalarValueType="NO"/>
@@ -37,6 +37,7 @@
         <attribute name="small" optional="YES" attributeType="String"/>
         <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="thumbnails" inverseEntity="Album"/>
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="thumbnails" inverseEntity="Artist"/>
+        <relationship name="playlist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Playlist" inverseName="thumbnails" inverseEntity="Playlist"/>
         <relationship name="song" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Song" inverseName="thumbnails" inverseEntity="Song"/>
     </entity>
     <elements>
@@ -44,6 +45,6 @@
         <element name="Artist" positionX="-288.7923583984375" positionY="149.4099731445312" width="128" height="133"/>
         <element name="Playlist" positionX="-49.04571533203125" positionY="-232.4448852539062" width="128" height="89"/>
         <element name="Song" positionX="-322.389404296875" positionY="-179.4634552001953" width="128" height="149"/>
-        <element name="Thumbnail" positionX="87.59674072265625" positionY="143.9660034179688" width="128" height="133"/>
+        <element name="Thumbnail" positionX="87.59674072265625" positionY="143.9660034179688" width="128" height="134"/>
     </elements>
 </model>
