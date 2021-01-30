@@ -172,6 +172,12 @@ extension SongsListViewController: NSFetchedResultsControllerDelegate {
 
 //MARK: - MiniPlayerDelegate
 extension SongsListViewController: MiniPlayerDelegate {
+    func didSelectedItem(_ item: Song?) {
+        guard let song = item else { return }
+        guard let songIndex = dataSource.indexPath(for: song) else { return }
+        tableView.selectRow(at: songIndex, animated: true, scrollPosition: .middle)
+    }
+    
     func expandSong(song: Song?) {
         let storyboard = UIStoryboard(name: "Player", bundle: nil)
         guard let playerController = storyboard.instantiateInitialViewController() as? PlayerViewController else { return }

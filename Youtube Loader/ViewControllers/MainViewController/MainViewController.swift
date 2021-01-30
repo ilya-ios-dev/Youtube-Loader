@@ -30,7 +30,8 @@ final class MainViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard miniPlayer.audioplayer.currentSong != nil else { return }
+        guard let song = miniPlayer.audioplayer.currentSong else { return }
+        songsCollectionView.selectItem(song)
         miniPlayerView.isHidden = false
     }
     
@@ -65,6 +66,11 @@ final class MainViewController: UIViewController {
 
 //MARK: - MiniPlayerDelegate
 extension MainViewController: MiniPlayerDelegate {
+    func didSelectedItem(_ item: Song?) {
+        guard let song = item else { return }
+        songsCollectionView.selectItem(song)
+    }
+    
     func expandSong(song: Song?) {
         let storyboard = UIStoryboard(name: "Player", bundle: nil)
         guard let playerController = storyboard.instantiateInitialViewController() as? PlayerViewController else { return }

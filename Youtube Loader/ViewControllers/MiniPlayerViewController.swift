@@ -9,6 +9,7 @@ import UIKit
 
 protocol MiniPlayerDelegate: class {
     func expandSong(song: Song?)
+    func didSelectedItem(_ item: Song?)
 }
 
 final class MiniPlayerViewController: UIViewController {
@@ -126,9 +127,9 @@ extension MiniPlayerViewController {
 //MARK: - AudioPlayerDelegate
 extension MiniPlayerViewController: AudioPlayerDelegate {
     private func configureSong(_ song: Song?) {
-        guard let song = song else {
-            return
-        }
+        delegate?.didSelectedItem(song)
+        guard let song = song else { return }
+        
         titleLabel.text = song.name
         authorLabel.text = song.author?.name
         if let imageUrl = song.thumbnails?.smallUrl {

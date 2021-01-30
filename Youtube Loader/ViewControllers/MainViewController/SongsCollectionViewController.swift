@@ -42,6 +42,11 @@ final class SongsCollectionViewController: UICollectionViewController {
 //MARK: - Supporting Methods
 extension SongsCollectionViewController {
     
+    public func selectItem(_ item: Song) {
+        guard let index = dataSource.indexPath(for: item) else { return }
+        collectionView.selectItem(at: index, animated: true, scrollPosition: .centeredHorizontally)
+    }
+    
     private func configureSongCollectionView() {
         let nib = UINib(nibName: String(describing: SongCollectionViewCell.self), bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: SongCollectionViewCell.cellIdentifier)
