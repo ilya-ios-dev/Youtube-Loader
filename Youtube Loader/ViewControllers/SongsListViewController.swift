@@ -18,6 +18,7 @@ final class SongsListViewController: UIViewController {
     @IBOutlet private weak var downButton: UIButton!
     
     //MARK: - Properties
+    public var audioPlayer: AudioPlayer?
     private var miniPlayer: MiniPlayerViewController!
     private var fetchedResultsController: NSFetchedResultsController<Song>!
     private var dataSource: UITableViewDiffableDataSource<Int, Song>!
@@ -34,6 +35,8 @@ final class SongsListViewController: UIViewController {
         guard let song = miniPlayer.audioplayer.currentSong else { return }
         guard let songIndex = dataSource.indexPath(for: song) else { return }
         tableView.selectRow(at: songIndex, animated: true, scrollPosition: .middle)
+        miniPlayerView.isHidden = false
+        bottomView.isHidden = false
     }
     
     override func viewDidLoad() {
@@ -44,6 +47,8 @@ final class SongsListViewController: UIViewController {
         configureMiniPlayer()
         miniPlayerView.isHidden = true
         bottomView.isHidden = true
+        miniPlayer.audioplayer = audioPlayer!
+
         tableView.contentInset = UIEdgeInsets(top: searchBar.frame.height, left: 0, bottom: 0, right: 0)
         downButton.layer.cornerRadius = downButton.frame.height / 2
         
@@ -134,7 +139,7 @@ extension SongsListViewController {
         snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
         snapshot.appendSections([0])
         snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
-        miniPlayer.audioplayer.songs = snapshot.itemIdentifiers
+        miniPlayer.songs = snapshot.itemIdentifiers
         DispatchQueue.main.async {
             self.dataSource?.apply(self.snapshot, animatingDifferences: true)
         }

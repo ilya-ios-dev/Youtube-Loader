@@ -237,28 +237,42 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="iqY-ZC-PNb"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Gia-NM-gWE"/>
                             </scrollView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7aq-gd-A5y">
+                                <rect key="frame" x="0.0" y="708" width="414" height="105"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="uY4-Vq-seT"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Sv2-tW-llq" kind="embed" id="X0N-ZC-D1A"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZYt-zc-bSc"/>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.95686274509803915" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="lMk-WU-eFF" firstAttribute="bottom" secondItem="sC8-vS-goJ" secondAttribute="bottom" id="DLl-K3-hIk"/>
+                            <constraint firstItem="7aq-gd-A5y" firstAttribute="leading" secondItem="ZYt-zc-bSc" secondAttribute="leading" id="McZ-LX-P3y"/>
+                            <constraint firstItem="ZYt-zc-bSc" firstAttribute="bottom" secondItem="7aq-gd-A5y" secondAttribute="bottom" id="SEc-lE-ltS"/>
                             <constraint firstItem="lMk-WU-eFF" firstAttribute="top" secondItem="ZYt-zc-bSc" secondAttribute="top" id="fLC-50-ueB"/>
+                            <constraint firstItem="7aq-gd-A5y" firstAttribute="trailing" secondItem="ZYt-zc-bSc" secondAttribute="trailing" id="lRS-H5-5q7"/>
                             <constraint firstItem="lMk-WU-eFF" firstAttribute="trailing" secondItem="ZYt-zc-bSc" secondAttribute="trailing" id="lcU-bk-wMO"/>
                             <constraint firstItem="lMk-WU-eFF" firstAttribute="leading" secondItem="ZYt-zc-bSc" secondAttribute="leading" id="oyX-gf-Z2u"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="music.note.house.fill" catalog="system" id="xJV-pr-kL4"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="music.note.house" catalog="system" id="xJV-pr-kL4"/>
                     <connections>
                         <outlet property="albumsContainerView" destination="FL1-HK-tdF" id="6AK-Dv-lrp"/>
                         <outlet property="artistsContainerView" destination="4JZ-Ho-ig0" id="siP-Rr-PDB"/>
+                        <outlet property="miniPlayerView" destination="7aq-gd-A5y" id="53w-GK-eNO"/>
                         <outlet property="playlistsContainerView" destination="GYq-d6-Hom" id="Oxb-8j-hgg"/>
                         <outlet property="recommendationsContainerView" destination="0fT-ru-Vk3" id="8P1-je-ZAR"/>
+                        <outlet property="scrollView" destination="lMk-WU-eFF" id="raM-3V-skD"/>
                         <outlet property="songsContainerView" destination="eWz-22-OPx" id="wgQ-wp-1Pe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vDu-AM-MGK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="328" y="-82"/>
+            <point key="canvasLocation" x="327.536231884058" y="-82.366071428571431"/>
         </scene>
         <!--Songs Collection View Controller-->
         <scene sceneID="yET-qL-8Ml">
@@ -294,6 +308,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5A0-KP-HcD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-564" y="335"/>
+        </scene>
+        <!--MiniPlayer-->
+        <scene sceneID="GXC-kP-WDf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MiniPlayer" id="Sv2-tW-llq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Imd-7K-ace" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="299" y="379"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gzF-Tm-l5r">
@@ -427,7 +449,7 @@
     </scenes>
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
-        <image name="music.note.house.fill" catalog="system" width="128" height="106"/>
+        <image name="music.note.house" catalog="system" width="128" height="106"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample image" translatesAutoresizingMaskIntoConstraints="NO" id="gVO-s3-7Ef">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vinyl_record" translatesAutoresizingMaskIntoConstraints="NO" id="gVO-s3-7Ef">
                                 <rect key="frame" x="69" y="232.5" width="276" height="276"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gVO-s3-7Ef" secondAttribute="height" id="0se-6W-qUF"/>
@@ -31,7 +31,7 @@
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample image" translatesAutoresizingMaskIntoConstraints="NO" id="l7D-3I-cZf">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vinyl_record" translatesAutoresizingMaskIntoConstraints="NO" id="l7D-3I-cZf">
                                 <rect key="frame" x="69" y="232.5" width="276" height="276"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="l7D-3I-cZf" secondAttribute="height" id="vK7-nq-UPQ"/>
@@ -229,8 +229,8 @@
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="repeat" catalog="system" width="128" height="99"/>
-        <image name="sample image" width="138" height="138"/>
         <image name="shuffle" catalog="system" width="128" height="93"/>
         <image name="text.badge.plus" catalog="system" width="128" height="109"/>
+        <image name="vinyl_record" width="500" height="500"/>
     </resources>
 </document>

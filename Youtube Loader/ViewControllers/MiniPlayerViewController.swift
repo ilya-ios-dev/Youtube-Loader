@@ -15,19 +15,29 @@ final class MiniPlayerViewController: UIViewController {
 
     //MARK: - Outlets
     @IBOutlet private weak var songImageView: UIImageView!
-    @IBOutlet private weak var songDesctiptionLabel: UILabel!
-    @IBOutlet private weak var songTitleLabel: UILabel!
-    @IBOutlet private weak var heartButton: UIButton!
+    @IBOutlet private weak var authorLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var playOrPauseButton: UIButton!
     @IBOutlet private weak var endSongTimelineLabel: UILabel!
     @IBOutlet private weak var startSongTimelineLabel: UILabel!
     @IBOutlet private weak var songProgress: UIProgressView!
     @IBOutlet private weak var backgroundImageView: UIImageView!
     @IBOutlet private weak var visualEffectView: UIVisualEffectView!
+    @IBOutlet private var tapGesture: UITapGestureRecognizer!
     
     //MARK: - Properties
     public weak var delegate: MiniPlayerDelegate?
     public var audioplayer = AudioPlayer()
+    
+    public var songs: [Song] {
+        get {
+            return audioplayer.songs
+        } set {
+            audioplayer.songs = newValue
+            tapGesture.isEnabled = true
+        }
+    }
     
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
@@ -38,18 +48,14 @@ final class MiniPlayerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundImageView.layer.cornerRadius = 5
-        backgroundImageView.clipsToBounds = true
-        backgroundImageView.layer.masksToBounds = true
-        songImageView.layer.cornerRadius = 5
-        songImageView.clipsToBounds = true
-        songImageView.layer.masksToBounds = true
-        
+        tapGesture.isEnabled = false
+        configureImageViews()
         configureBlur()
     }
         
     //MARK: - Actions
-    @IBAction func heartTapped(_ sender: Any) {
+    @IBAction func nextTapped(_ sender: Any) {
+        audioplayer.nextSong()
     }
     
     @IBAction func pauseTapped(_ sender: Any) {
@@ -57,6 +63,7 @@ final class MiniPlayerViewController: UIViewController {
     }
     
     @IBAction func tapGesture(_ sender: Any) {
+        guard audioplayer.currentSong != nil else { return }
         delegate?.expandSong(song: nil)
     }
     
@@ -78,6 +85,42 @@ extension MiniPlayerViewController {
         maskLayer.shadowColor = UIColor.white.cgColor
         visualEffectView.layer.mask = maskLayer
     }
+    
+    private func configureImageViews() {
+        backgroundImageView.layer.cornerRadius = 5
+        backgroundImageView.clipsToBounds = true
+        backgroundImageView.layer.masksToBounds = true
+        songImageView.layer.cornerRadius = 5
+        songImageView.clipsToBounds = true
+        songImageView.layer.masksToBounds = true
+    }
+    
+    /// Changes the colors of all elements to the desired one
+    /// - Parameter song: A song that is expected to get a medium color.
+    private func configureColorElementOf(_ song: Song) {
+        let group = DispatchGroup()
+        var color: UIColor?
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            if let url = song.thumbnails?.smallUrl {
+                guard let data = try? Data(contentsOf: url) else {
+                    group.leave()
+                    return
+                }
+                color = UIImage(data: data)?.averageColor?.withLuminosity(0.5)
+                group.leave()
+            } else {
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.playOrPauseButton.tintColor = color
+            self.songProgress.progressTintColor = color
+            self.startSongTimelineLabel.textColor = color
+            self.nextButton.tintColor = color
+        }
+    }
 }
 
 //MARK: - AudioPlayerDelegate
@@ -86,28 +129,14 @@ extension MiniPlayerViewController: AudioPlayerDelegate {
         guard let song = song else {
             return
         }
-        songTitleLabel.text = song.name
-        songDesctiptionLabel.text = song.author?.name
+        titleLabel.text = song.name
+        authorLabel.text = song.author?.name
         if let imageUrl = song.thumbnails?.smallUrl {
             songImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
             backgroundImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
         }
         
-        // Changes the colors of all elements to the desired one.
-        DispatchQueue.global().async { [weak self] in
-            guard let self = self else { return }
-            if let url = song.thumbnails?.smallUrl {
-                guard let data = try? Data(contentsOf: url) else { return }
-                let imageColor = UIImage(data: data)?.averageColor?.withLuminosity(0.5)
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.playOrPauseButton.tintColor = imageColor
-                    self.songProgress.progressTintColor = imageColor
-                    self.startSongTimelineLabel.textColor = imageColor
-                    self.heartButton.tintColor = imageColor
-                }
-            }
-        }
+        configureColorElementOf(song)
         
         let imageName = audioplayer.isPlaying ? "pause.fill" : "play.fill"
         playOrPauseButton.setImage(UIImage(systemName: imageName), for: .normal)

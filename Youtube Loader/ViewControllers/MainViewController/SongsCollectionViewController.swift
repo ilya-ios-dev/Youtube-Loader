@@ -8,9 +8,16 @@
 import UIKit
 import CoreData
 
+protocol SongsCollectionViewControllerDelegate: class {
+    func updateSongsArray(_ songs: [Song])
+    func didSelectedItemAt(_ index: Int)
+}
+
 final class SongsCollectionViewController: UICollectionViewController {
 
     //MARK: - Properties
+    public weak var delegate: SongsCollectionViewControllerDelegate?
+    
     private var dataSource: UICollectionViewDiffableDataSource<Int, Song>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
     private var fetchedResultsController: NSFetchedResultsController<Song>!
@@ -27,9 +34,8 @@ final class SongsCollectionViewController: UICollectionViewController {
         configureDataSource()
     }
     
-    // TODO: - ADD ACTION
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected: \(indexPath.item)")
+        delegate?.didSelectedItemAt(indexPath.item)
     }
 }
 
@@ -79,6 +85,7 @@ extension SongsCollectionViewController {
         snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
         snapshot.appendSections([0])
         snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
+        delegate?.updateSongsArray(snapshot.itemIdentifiers)
         DispatchQueue.main.async {
             self.dataSource?.apply(self.snapshot, animatingDifferences: true)
         }
