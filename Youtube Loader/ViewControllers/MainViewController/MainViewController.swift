@@ -33,6 +33,7 @@ final class MainViewController: UIViewController {
         guard let song = miniPlayer.audioplayer.currentSong else { return }
         songsCollectionView.selectItem(song)
         miniPlayerView.isHidden = false
+        scrollView.contentInset = UIEdgeInsets(top: scrollView.contentInset.top, left: 0, bottom: miniPlayerView.frame.height + 8, right: 0)
     }
     
     override func viewDidLoad() {
@@ -69,6 +70,13 @@ extension MainViewController: MiniPlayerDelegate {
     func didSelectedItem(_ item: Song?) {
         guard let song = item else { return }
         songsCollectionView.selectItem(song)
+        if miniPlayerView.isHidden {
+            scrollView.contentInset = UIEdgeInsets(top: scrollView.contentInset.top, left: 0, bottom: miniPlayerView.frame.height + 8, right: 0)
+            
+            UIView.transition(with: miniPlayerView, duration: 0.3, options: .transitionCrossDissolve) {
+                self.miniPlayerView.isHidden = false
+            } completion: { (_) in }
+        }
     }
     
     func expandSong(song: Song?) {
@@ -90,13 +98,5 @@ extension MainViewController: SongsCollectionViewControllerDelegate {
     
     func didSelectedItemAt(_ index: Int) {
         miniPlayer.play(at: index)
-        
-        if miniPlayerView.isHidden {
-            scrollView.contentInset = UIEdgeInsets(top: scrollView.contentInset.top, left: 0, bottom: miniPlayerView.frame.height + 8, right: 0)
-            
-            UIView.transition(with: miniPlayerView, duration: 0.3, options: .transitionCrossDissolve) {
-                self.miniPlayerView.isHidden = false
-            } completion: { (_) in }
-        }
     }
 }
