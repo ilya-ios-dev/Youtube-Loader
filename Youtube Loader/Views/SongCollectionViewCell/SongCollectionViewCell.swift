@@ -14,33 +14,40 @@ final class SongCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var songBackgroundImageView: UIImageView!
     @IBOutlet public weak var songImageView: UIImageView!
     @IBOutlet private weak var visualEffectBlur: UIVisualEffectView!
-    @IBOutlet private weak var playPauseButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var playImageView: UIImageView!
     
     //MARK: - Properties
-    public var isPlayed = false
     override func awakeFromNib() {
         super.awakeFromNib()
-        songImageView.layer.cornerRadius = 4
+        songImageView.layer.cornerRadius = 5
+        songImageView.clipsToBounds = true
+        songBackgroundImageView.layer.cornerRadius = 5
+        songBackgroundImageView.clipsToBounds = true
         backgorundView.layer.cornerRadius = 8
-        configureBlur()
     }
     
-    @IBAction private func playOrPauseTapped(_ sender: Any) {
-        if isPlayed {
-            playPauseButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-        } else {
-            playPauseButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                UIView.transition(with: playImageView, duration: 0.325, options: .transitionCrossDissolve) {
+                    self.playImageView.image = UIImage(named: "playing")
+                }
+                
+            } else {
+                UIView.transition(with: playImageView, duration: 0.325, options: .transitionCrossDissolve) {
+                    self.playImageView.image = UIImage(systemName: "play.circle.fill")
+                }
+            }
         }
-        isPlayed = !isPlayed
     }
     
-    public func configure(title: String?, description: String?, image: UIImage?) {
+    public func configure(title: String?, description: String?, imageURL: URL) {
         titleLabel.text = title
         descriptionLabel.text = description
-        songImageView.image = image
-        songBackgroundImageView.image = image
+        songImageView.af.setImage(withURL: imageURL)
+        songBackgroundImageView.af.setImage(withURL: imageURL)
     }
     
     /// Adjusts the display of the `visualEffectBlur` to look like a shadow.
@@ -48,10 +55,16 @@ final class SongCollectionViewCell: UICollectionViewCell {
         let maskLayer = CAGradientLayer()
         maskLayer.frame = visualEffectBlur.bounds
         maskLayer.shadowRadius = 5
-        maskLayer.shadowPath = CGPath(roundedRect: visualEffectBlur.bounds.insetBy(dx: 8, dy: 8), cornerWidth: 10, cornerHeight: 10, transform: nil)
+        maskLayer.shadowPath = CGPath(roundedRect: visualEffectBlur.bounds.insetBy(dx: 12, dy: 12), cornerWidth: 8, cornerHeight: 8, transform: nil)
         maskLayer.shadowOpacity = 1
-        maskLayer.shadowOffset = CGSize.zero
+        maskLayer.shadowOffset = CGSize(width: 0, height: 5)
         maskLayer.shadowColor = UIColor.white.cgColor
         visualEffectBlur.layer.mask = maskLayer
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard visualEffectBlur.layer.mask?.frame != visualEffectBlur.frame else { return }
+        configureBlur()
     }
 }

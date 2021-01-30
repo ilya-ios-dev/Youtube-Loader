@@ -71,10 +71,8 @@ extension SongsCollectionViewController {
         dataSource = UICollectionViewDiffableDataSource<Int, Song> (collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: SongCollectionViewCell.cellIdentifier, for: indexPath) as! SongCollectionViewCell
             
-            cell.configure(title: item.name, description: item.author?.name, image: nil)
             if let url = item.thumbnails?.smallUrl {
-                cell.songImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
-                cell.songBackgroundImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
+                cell.configure(title: item.name, description: item.author?.name, imageURL: url)
             }
             return cell
         })

@@ -140,7 +140,7 @@ extension PlayerViewController {
             self.songAuthor.text = song.author?.name
         } completion: { (_) in }
         
-        songImageView.rotate(with: 1)
+        songImageView.rotate(duration: 1)
         
         let imageName = audioPlayer.isPlaying ? "pause.fill" : "play.fill"
         playButton.setImage(UIImage(systemName: imageName), for: .normal)

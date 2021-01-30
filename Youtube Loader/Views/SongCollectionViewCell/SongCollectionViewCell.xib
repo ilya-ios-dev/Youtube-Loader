@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -76,32 +75,27 @@
                                     <constraint firstItem="uEk-rY-fBb" firstAttribute="width" secondItem="M8O-t3-Y8K" secondAttribute="width" multiplier="0.625" id="pqa-gf-gqs"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPs-nQ-BvB">
-                                <rect key="frame" x="323" y="14.5" width="35" height="35"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" image="play.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WVm-R9-SZT">
+                                <rect key="frame" x="335" y="21" width="23" height="22"/>
+                                <color key="tintColor" red="0.63921568627450975" green="0.71764705882352942" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="oPs-nQ-BvB" secondAttribute="height" id="Doe-Kl-Xeu"/>
-                                    <constraint firstAttribute="height" constant="35" id="od2-Xb-oKA"/>
+                                    <constraint firstAttribute="width" secondItem="WVm-R9-SZT" secondAttribute="height" id="yQ7-5H-Gh7"/>
                                 </constraints>
-                                <color key="tintColor" red="0.57647058823529407" green="0.6588235294117647" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="play.circle.fill" catalog="system" symbolScale="default"/>
-                                </state>
-                                <connections>
-                                    <action selector="playOrPauseTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Kec-dq-btc"/>
-                                </connections>
-                            </button>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.9882352941176471" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="oPs-nQ-BvB" firstAttribute="centerY" secondItem="mSk-Xs-oHY" secondAttribute="centerY" id="2b6-v6-q2c"/>
+                            <constraint firstItem="WVm-R9-SZT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rbJ-cL-5Md" secondAttribute="trailing" constant="16" id="77q-Tb-0fC"/>
                             <constraint firstItem="rbJ-cL-5Md" firstAttribute="leading" secondItem="M8O-t3-Y8K" secondAttribute="trailing" constant="16" id="7Pq-6O-yyq"/>
                             <constraint firstItem="M8O-t3-Y8K" firstAttribute="top" secondItem="mSk-Xs-oHY" secondAttribute="top" id="Meb-Ww-lJd"/>
                             <constraint firstItem="M8O-t3-Y8K" firstAttribute="leading" secondItem="mSk-Xs-oHY" secondAttribute="leading" constant="8" id="VGr-iM-zJQ"/>
                             <constraint firstAttribute="bottom" secondItem="M8O-t3-Y8K" secondAttribute="bottom" id="XSJ-mf-L7R"/>
-                            <constraint firstAttribute="trailing" secondItem="oPs-nQ-BvB" secondAttribute="trailing" constant="16" id="bg4-TT-rnQ"/>
                             <constraint firstItem="rbJ-cL-5Md" firstAttribute="centerY" secondItem="mSk-Xs-oHY" secondAttribute="centerY" id="brk-Ed-ffy"/>
+                            <constraint firstAttribute="trailing" secondItem="WVm-R9-SZT" secondAttribute="trailing" constant="16" id="eUm-5d-81L"/>
+                            <constraint firstItem="WVm-R9-SZT" firstAttribute="centerY" secondItem="mSk-Xs-oHY" secondAttribute="centerY" id="kov-3j-GNH"/>
                             <constraint firstItem="M8O-t3-Y8K" firstAttribute="width" secondItem="M8O-t3-Y8K" secondAttribute="height" multiplier="1:1" id="nMM-cZ-Ym5"/>
-                            <constraint firstItem="oPs-nQ-BvB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rbJ-cL-5Md" secondAttribute="trailing" constant="16" id="tmU-eR-yfS"/>
+                            <constraint firstItem="WVm-R9-SZT" firstAttribute="height" secondItem="mSk-Xs-oHY" secondAttribute="height" multiplier="0.36" id="oPh-i7-wzc"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -117,13 +111,13 @@
             <connections>
                 <outlet property="backgorundView" destination="mSk-Xs-oHY" id="D20-gh-u91"/>
                 <outlet property="descriptionLabel" destination="eoG-fT-2UZ" id="x7m-bP-YzM"/>
-                <outlet property="playPauseButton" destination="oPs-nQ-BvB" id="KwE-5Q-8t6"/>
+                <outlet property="playImageView" destination="WVm-R9-SZT" id="qXh-ij-QMH"/>
                 <outlet property="songBackgroundImageView" destination="uEk-rY-fBb" id="LLP-MI-ryg"/>
                 <outlet property="songImageView" destination="CGX-yc-5td" id="QVD-dE-Z1P"/>
                 <outlet property="titleLabel" destination="fR2-rE-ZL1" id="UPB-7R-vYI"/>
                 <outlet property="visualEffectBlur" destination="2fG-J7-cbQ" id="Uye-eE-W6Z"/>
             </connections>
-            <point key="canvasLocation" x="334.05797101449281" y="90.401785714285708"/>
+            <point key="canvasLocation" x="333.33333333333337" y="90.401785714285708"/>
         </collectionViewCell>
     </objects>
     <resources>
