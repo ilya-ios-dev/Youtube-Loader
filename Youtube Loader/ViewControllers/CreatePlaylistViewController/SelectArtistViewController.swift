@@ -20,10 +20,10 @@ final class SelectArtistViewController: UIViewController {
     
     //MARK: - Properties
     public weak var delegate: SelectArtistViewControllerDelegate?
-    
+    public var selectedArtist: Artist?
+
     private var tableDataSource: UITableViewDiffableDataSource<Int, Artist>!
     private var tableSnapshot: NSDiffableDataSourceSnapshot<Int, Artist>!
-    private var selectedArtist: Artist?
     private var artists = [Artist]()
     private var searchText = ""
     private var context: NSManagedObjectContext = {
@@ -115,6 +115,10 @@ extension SelectArtistViewController {
         tableSnapshot.appendItems(artists)
         DispatchQueue.main.async {
             self.tableDataSource?.apply(self.tableSnapshot, animatingDifferences: true)
+            
+            guard let artist = self.selectedArtist else { return }
+            let index = self.tableDataSource.indexPath(for: artist)
+            self.tableView.selectRow(at: index, animated: false, scrollPosition: .none)
         }
     }
     

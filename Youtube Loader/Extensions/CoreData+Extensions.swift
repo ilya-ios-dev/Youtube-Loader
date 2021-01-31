@@ -37,6 +37,11 @@ extension Thumbnail {
         return FileManager.default.url(for: .documentDirectory, filename: self.small ?? "")
     }
     
+    public func removeImages() {
+        LocalFileManager.deleteFile(withNameAndExtension: self.small ?? "" + ".jpg")
+        LocalFileManager.deleteFile(withNameAndExtension: self.medium ?? "" + ".jpg")
+        LocalFileManager.deleteFile(withNameAndExtension: self.large ?? "" + ".jpg")
+    }
 }
 
 //MARK: - Song

@@ -95,7 +95,9 @@ extension AlbumsCollectionViewController {
         snapshot.appendSections([0])
         snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
         DispatchQueue.main.async {
-            self.dataSource?.apply(self.snapshot, animatingDifferences: true)
+            self.dataSource.apply(self.snapshot, animatingDifferences: true) {
+                self.dataSource.apply(self.snapshot, animatingDifferences: false)
+            }
         }
     }
     
@@ -120,5 +122,55 @@ extension AlbumsCollectionViewController {
 extension AlbumsCollectionViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         setupSnapshot()
+    }
+}
+
+//MARK: - UICollectionViewDelegate
+extension AlbumsCollectionViewController {
+    override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        if let cellItemIdentifier = dataSource.itemIdentifier(for: indexPath) {
+            let identifier = NSString(string: String(describing: cellItemIdentifier))
+            return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { suggestedActions in
+                let editAction = self.editAction(indexPath)
+                let deleteAction = self.deleteAction(indexPath)
+                return UIMenu(title: "", children: [editAction, deleteAction])
+            })
+            
+        } else {
+            return nil
+        }
+    }
+    
+    ///Adds the ability to edit `transactions`.
+    private func editAction(_ indexPath: IndexPath) -> UIAction {
+        return UIAction(title: "Edit",
+                        image: UIImage(systemName: "square.and.pencil")) { action in
+            
+            let storyboard = UIStoryboard(name: "CreateAlbumArtistPlaylist", bundle: nil)
+            guard let editingItem = self.dataSource.itemIdentifier(for: indexPath) else { return }
+            guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
+            guard let vc = navigationController.topViewController as? CreateAlbumArtistPlaylistViewController else { return }
+            vc.contentType = .album
+            vc.editingContent = editingItem
+            self.present(navigationController, animated: true, completion: nil)
+        }
+    }
+
+    private func deleteAction(_ indexPath: IndexPath) -> UIAction {
+        return UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
+            guard let item = self.dataSource.itemIdentifier(for: indexPath) else { return }
+            if let thumbnail = item.thumbnails {
+                thumbnail.removeImages()
+                self.context.delete(thumbnail)
+            }
+            self.context.delete(item)
+
+            do {
+                try self.context.save()
+            } catch {
+                print(error)
+                self.showAlert(alertText: error.localizedDescription)
+            }
+        }
     }
 }

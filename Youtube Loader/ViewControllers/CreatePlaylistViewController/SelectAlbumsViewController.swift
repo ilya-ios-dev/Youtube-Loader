@@ -20,10 +20,10 @@ final class SelectAlbumsViewController: UIViewController {
     
     //MARK: - Properties
     public weak var delegate: SelectAlbumsViewControllerDelegate?
-    
+    public var selectedAlbums = [Album]()
+
     private var tableDataSource: UITableViewDiffableDataSource<Int, Album>!
     private var tableSnapshot: NSDiffableDataSourceSnapshot<Int, Album>!
-    private var selectedAlbums = [Album]()
     private var albums = [Album]()
     private var searchText = ""
     private var context: NSManagedObjectContext = {
@@ -113,6 +113,11 @@ extension SelectAlbumsViewController {
         tableSnapshot.appendItems(albums)
         DispatchQueue.main.async {
             self.tableDataSource?.apply(self.tableSnapshot, animatingDifferences: true)
+            
+            self.selectedAlbums.forEach { (album) in
+                let index = self.tableDataSource.indexPath(for: album)
+                self.tableView.selectRow(at: index, animated: false, scrollPosition: .none)
+            }
         }
     }
     

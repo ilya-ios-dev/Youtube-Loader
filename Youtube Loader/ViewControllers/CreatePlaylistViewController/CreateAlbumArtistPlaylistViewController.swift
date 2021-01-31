@@ -10,7 +10,7 @@ import CoreData
 import Alamofire
 
 final class CreateAlbumArtistPlaylistViewController: UIViewController {
-
+    
     //MARK: - Outlets
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var refreshBlurView: UIVisualEffectView!
@@ -29,21 +29,36 @@ final class CreateAlbumArtistPlaylistViewController: UIViewController {
     @IBOutlet private weak var imageViewBlur: UIVisualEffectView!
     
     //MARK: - Properties
-    /// настраивает вид контента, какой будет добавляться
+    /// configures the type of content that will be added
     public var contentType: ContentType = .playlist
-    /// Вид контента, какой будет добавляться
+    /// Configures object for editing mode
+    public var editingContent: NSManagedObject?
+    /// The type of content that will be added
     enum ContentType {
         case album, artist, playlist
     }
-
-    private var selectedSongs = [Song]()
-    private var selectedAlbums = [Album]()
-    private var selectedArtist: Artist?
+    
     private var imageName = ""
     private var searchText = ""
     private var dataSource: UICollectionViewDiffableDataSource<Int, UnsplashResponse.Result>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, UnsplashResponse.Result>()
     private var results = [UnsplashResponse.Result]()
+    private var selectedSongs = [Song]() {
+        didSet {
+            selectSongsButton.setTitle("Selected Songs (\(selectedSongs.count))", for: .normal)
+        }
+    }
+    private var selectedAlbums = [Album]() {
+        didSet {
+            selectArtistOrAlbumButton.setTitle("Selected Albums (\(selectedAlbums.count))", for: .normal)
+        }
+    }
+    private var selectedArtist: Artist? {
+        didSet {
+            let title = selectedArtist == nil ? "Select Artist" : "Selected Artist (1)"
+            selectArtistOrAlbumButton.setTitle(title, for: .normal)
+        }
+    }
     private var context: NSManagedObjectContext = {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }()
@@ -53,15 +68,21 @@ final class CreateAlbumArtistPlaylistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // UI
-        createButton.isEnabled = false
         configureBlurView()
         imageView.layer.cornerRadius = 13
         configureTextFields()
         configureCollectionView()
         configureContentDependentView()
+        
+        if editingContent != nil {
+            configureViewsForEditing()
+        } else {
+            createButton.isEnabled = false
+            refreshTapped(self)
+        }
+        
         // Data
         configureDataSource()
-        refreshTapped(self)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -69,7 +90,7 @@ final class CreateAlbumArtistPlaylistViewController: UIViewController {
         LocalFileManager.deleteFile(withNameAndExtension: "\(imageName).jpg")
     }
     
-
+    
     //MARK: - Actions
     @IBAction func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -78,7 +99,12 @@ final class CreateAlbumArtistPlaylistViewController: UIViewController {
     
     // Saves the object to CoreData.
     @IBAction func createTapped(_ sender: Any) {
-        createInCoreData()
+        if editingContent != nil {
+            editInCoreData()
+        } else {
+            createInCoreData()
+        }
+        
         do {
             try context.save()
         } catch {
@@ -114,7 +140,7 @@ final class CreateAlbumArtistPlaylistViewController: UIViewController {
             }, completion: { _ in
                 self.imageViewBlur.isHidden = true
             })
-
+            
             self.activityIndicatiorView.stopAnimating()
             self.refreshButton.isHidden = false
         }
@@ -124,6 +150,10 @@ final class CreateAlbumArtistPlaylistViewController: UIViewController {
         let storyboard = UIStoryboard(name: "SelectSongs", bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? SelectSongsViewController else { return }
         vc.delegate = self
+        
+        if editingContent != nil {
+            configureSelectedSongs(vc)
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -131,16 +161,25 @@ final class CreateAlbumArtistPlaylistViewController: UIViewController {
         let storyboard = UIStoryboard(name: "SelectArtist", bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? SelectArtistViewController else { return }
         vc.delegate = self
+        
+        if editingContent != nil {
+            configureSelectedArtist(vc)
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
+    
     
     @objc private func selectAlbum() {
         let storyboard = UIStoryboard(name: "SelectAlbums", bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? SelectAlbumsViewController else { return }
         vc.delegate = self
+        
+        if editingContent != nil {
+            configureSelectedAlbum(vc)
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
-        
+    
     @IBAction func selectPhotoTapped(_ sender: Any) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
@@ -150,24 +189,8 @@ final class CreateAlbumArtistPlaylistViewController: UIViewController {
     }
 }
 
-//MARK: - Supporting Methods
+//MARK: - Networking
 extension CreateAlbumArtistPlaylistViewController {
-    
-    /// Creates the desired object in CoreData.
-    private func createInCoreData() {
-        guard let name = nameTextField.usernameTextField.text else { return }
-        let th = compressImages()
-        let thumbnail = Thumbnail.create(context: context, small: th?.small, medium: th?.medium, large: th?.large)
-        switch contentType {
-        case .album:
-            Album.create(context: context, thumbnails: thumbnail, name: name, author: selectedArtist, songs: selectedSongs)
-        case .artist:
-            Artist.create(context: context, thumbnails: thumbnail, id: nil, name: name, songs: selectedSongs, albums: selectedAlbums)
-        case .playlist:
-            Playlist.create(context: context, thumbnails: thumbnail, name: nameTextField.usernameTextField.text, songs: selectedSongs)
-        }
-    }
-
     /// Hears changes of the text field.
     /// Checks the text field for emptiness, makes an appropriate mapping.
     @objc private func nameDidChanged(_ textField: UITextView) {
@@ -193,10 +216,10 @@ extension CreateAlbumArtistPlaylistViewController {
     @objc private func searchImages() {
         guard !searchText.isEmpty else { return }
         // loading image from URL
-        if let url = URL(string: searchText) {
+        if searchText.isValidURL, let url = URL(string: searchText) {
             imageView.af.setImage(withURL: url)
-            searchImageTextField.usernameTextField.text = ""
-            searchImageTextField.usernameTextField.endEditing(true)
+            searchImageTextField.textField.text = ""
+            searchImageTextField.textField.endEditing(true)
         } else {
             // Search for a picture in Unsplash.
             searchImage(by: searchText) { (error, response) in
@@ -263,8 +286,10 @@ extension CreateAlbumArtistPlaylistViewController {
                           medium: "\(imageName)Medium.jpg",
                           large: "\(imageName)Large.jpg")
     }
-    
-    //MARK: Configure UI
+}
+
+//MARK: Configure UI
+extension CreateAlbumArtistPlaylistViewController {
     private func configureCollectionView() {
         collectionView.delegate = self
         collectionView.register(UnsplashImagesCollectionViewCell.self, forCellWithReuseIdentifier: UnsplashImagesCollectionViewCell.cellIdentifier)
@@ -287,9 +312,9 @@ extension CreateAlbumArtistPlaylistViewController {
     private func configureTextFields() {
         searchImageTextField.placeholder = "Search Image"
         nameTextField.placeholder = "Name"
-        nameTextField.bottomLineColor = #colorLiteral(red: 0.8470588235, green: 0.2392156863, blue: 0.1882352941, alpha: 1)
-        nameTextField.usernameTextField.addTarget(self, action: #selector(nameDidChanged(_:)), for: .editingChanged)
-        searchImageTextField.usernameTextField.addTarget(self, action: #selector(searchImageDidChanged(_:)), for: .editingChanged)
+        nameTextField.bottomLineColor = editingContent == nil ? #colorLiteral(red: 0.8470588235, green: 0.2392156863, blue: 0.1882352941, alpha: 1) : #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        nameTextField.textField.addTarget(self, action: #selector(nameDidChanged(_:)), for: .editingChanged)
+        searchImageTextField.textField.addTarget(self, action: #selector(searchImageDidChanged(_:)), for: .editingChanged)
     }
     
     private func configureSongLayout() -> UICollectionViewLayout {
@@ -304,7 +329,7 @@ extension CreateAlbumArtistPlaylistViewController {
         section = NSCollectionLayoutSection(group: group)
         section.supplementariesFollowContentInsets = true
         section.interGroupSpacing = 16
-
+        
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.scrollDirection = .horizontal
         let layout = UICollectionViewCompositionalLayout(section: section, configuration: config)
@@ -328,8 +353,52 @@ extension CreateAlbumArtistPlaylistViewController {
             selectArtistOrAlbumView.isHidden = true
         }
     }
+    
+    private func configureAlbumForEditing() {
+        let content = editingContent as! Album
+        guard let url = content.thumbnails?.largeUrl else { return }
+        imageView.af.setImage(withURL: url)
+        nameTextField.text = content.name
+        selectedSongs = content.songs?.allObjects as! [Song]
+        selectedArtist = content.author
+    }
+    
+    private func configureAristForEditing() {
+        let content = editingContent as! Artist
+        guard let url = content.thumbnails?.largeUrl else { return }
+        imageView.af.setImage(withURL: url)
+        nameTextField.text = content.name
+        selectedSongs = content.songs?.allObjects as! [Song]
+        selectedAlbums = content.albums?.allObjects as! [Album]
+    }
+    
+    private func configurePlaylistForEditing() {
+        let content = editingContent as! Playlist
+        guard let url = content.thumbnails?.largeUrl else { return }
+        imageView.af.setImage(withURL: url)
+        nameTextField.text = content.name
+        selectedSongs = content.songs?.allObjects as! [Song]
+    }
+    
+    private func configureViewsForEditing() {
+        imageViewBlur.isHidden = true
+        activityIndicatiorView.stopAnimating()
+        
+        switch contentType {
+        case .album:
+            configureAlbumForEditing()
+        case .artist:
+            configureAristForEditing()
+        case .playlist:
+            configurePlaylistForEditing()
+        }
+        
+        createButton.title = "Save"
+    }
+}
 
-    //MARK: Setup Data
+//MARK: Setup Data
+extension CreateAlbumArtistPlaylistViewController {
     private func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Int, UnsplashResponse.Result> (collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
             let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: UnsplashImagesCollectionViewCell.cellIdentifier, for: indexPath) as! UnsplashImagesCollectionViewCell
@@ -350,13 +419,89 @@ extension CreateAlbumArtistPlaylistViewController {
             self.dataSource?.apply(self.snapshot, animatingDifferences: true)
         }
     }
+    
+    /// Creates the desired object in CoreData.
+    private func createInCoreData() {
+        guard let name = nameTextField.textField.text else { return }
+        let th = compressImages()
+        let thumbnail = Thumbnail.create(context: context, small: th?.small, medium: th?.medium, large: th?.large)
+        switch contentType {
+        case .album:
+            Album.create(context: context, thumbnails: thumbnail, name: name, author: selectedArtist, songs: selectedSongs)
+        case .artist:
+            Artist.create(context: context, thumbnails: thumbnail, id: nil, name: name, songs: selectedSongs, albums: selectedAlbums)
+        case .playlist:
+            Playlist.create(context: context, thumbnails: thumbnail, name: nameTextField.textField.text, songs: selectedSongs)
+        }
+    }
+    
+    /// Edit existing object in CoreData.
+    private func editInCoreData() {
+        guard let name = nameTextField.textField.text else { return }
+        let th = compressImages()
+        let thumbnail = Thumbnail.create(context: context, small: th?.small, medium: th?.medium, large: th?.large)
+        
+        switch contentType {
+        case .album:
+            let album = editingContent as! Album
+            album.name = name
+            album.author = selectedArtist
+            album.songs = NSSet(array: selectedSongs as [Any])
+            album.thumbnails?.removeImages()
+            album.thumbnails = thumbnail
+        case .artist:
+            let artist = editingContent as! Artist
+            artist.name = name
+            artist.songs = NSSet(array: selectedSongs as [Any])
+            artist.albums = NSSet(array: selectedAlbums as [Any])
+            artist.thumbnails?.removeImages()
+            artist.thumbnails = thumbnail
+        case .playlist:
+            let playlist = editingContent as! Playlist
+            playlist.thumbnails?.removeImages()
+            playlist.thumbnails = thumbnail
+            playlist.name = name
+            playlist.songs = NSSet(array: selectedSongs as [Any])
+        }
+    }
+    
+    private func configureSelectedSongs(_ vc: SelectSongsViewController) {
+        switch contentType {
+        case .album:
+            guard let album = editingContent as? Album,
+                  let array = album.songs?.allObjects as? [Song] else { return }
+            vc.selectedSongs = array
+        case .artist:
+            guard let artist = editingContent as? Artist,
+                  let array = artist.songs?.allObjects as? [Song] else { return }
+            vc.selectedSongs = array
+            
+        case .playlist:
+            guard let playlist = editingContent as? Playlist,
+                  let array = playlist.songs?.allObjects as? [Song] else { return }
+            vc.selectedSongs = array
+        }
+    }
+    
+    private func configureSelectedArtist(_ vc: SelectArtistViewController) {
+        guard contentType == .album,
+              let album = editingContent as? Album else { return }
+        let author = album.author
+        vc.selectedArtist = author
+    }
+    
+    private func configureSelectedAlbum(_ vc: SelectAlbumsViewController) {
+        guard contentType == .artist,
+              let artist = editingContent as? Artist,
+              let array = artist.albums?.allObjects as? [Album] else { return }
+        vc.selectedAlbums = array
+    }
 }
 
 //MARK: - SelectSongsViewControllerDelegate
 extension CreateAlbumArtistPlaylistViewController: SelectSongsViewControllerDelegate {
     func didSaveSelectedSongs(_ songs: [Song]) {
         selectedSongs = songs
-        selectSongsButton.setTitle("Selected Songs (\(selectedSongs.count))", for: .normal)
     }
 }
 
@@ -364,7 +509,6 @@ extension CreateAlbumArtistPlaylistViewController: SelectSongsViewControllerDele
 extension CreateAlbumArtistPlaylistViewController: SelectArtistViewControllerDelegate {
     func didSaveSelectedArtist(_ artist: Artist) {
         selectedArtist = artist
-        selectArtistOrAlbumButton.setTitle("Selected Arist (1)", for: .normal)
     }
 }
 
@@ -372,7 +516,6 @@ extension CreateAlbumArtistPlaylistViewController: SelectArtistViewControllerDel
 extension CreateAlbumArtistPlaylistViewController: SelectAlbumsViewControllerDelegate {
     func didSaveSelectedAlbums(_ albums: [Album]) {
         selectedAlbums = albums
-        selectArtistOrAlbumButton.setTitle("Selected Albums (\(selectedAlbums.count))", for: .normal)
     }
 }
 
@@ -392,7 +535,7 @@ extension CreateAlbumArtistPlaylistViewController: UIImagePickerControllerDelega
             imageView.contentMode = .scaleAspectFill
             imageView.image = pickedImage
         }
-
+        
         dismiss(animated: true, completion: nil)
     }
 }

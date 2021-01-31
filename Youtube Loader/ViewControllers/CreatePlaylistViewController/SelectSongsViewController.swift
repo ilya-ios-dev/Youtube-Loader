@@ -20,10 +20,10 @@ final class SelectSongsViewController: UIViewController {
     
     //MARK: - Properties
     public weak var delegate: SelectSongsViewControllerDelegate?
-    
+    public var selectedSongs = [Song]()
+
     private var tableDataSource: UITableViewDiffableDataSource<Int, Song>!
     private var tableSnapshot: NSDiffableDataSourceSnapshot<Int, Song>!
-    private var selectedSongs = [Song]()
     private var songs = [Song]()
     private var searchText = ""
     private var context: NSManagedObjectContext = {
@@ -113,6 +113,11 @@ extension SelectSongsViewController {
         tableSnapshot.appendItems(songs)
         DispatchQueue.main.async {
             self.tableDataSource?.apply(self.tableSnapshot, animatingDifferences: true)
+            
+            self.selectedSongs.forEach { (song) in
+                let index = self.tableDataSource.indexPath(for: song)
+                self.tableView.selectRow(at: index, animated: false, scrollPosition: .none)
+            }
         }
     }
     

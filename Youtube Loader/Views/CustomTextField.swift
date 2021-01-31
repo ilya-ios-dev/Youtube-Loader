@@ -11,18 +11,18 @@ import UIKit
 final class CustomTextField: UIView {
     
     //MARK: - Properties
-    private var usernameLabelYAnchorConstraint: NSLayoutConstraint!
-    private var usernameLabelLeadingAnchor: NSLayoutConstraint!
+    private var labelYAnchorConstraint: NSLayoutConstraint!
+    private var labelLeadingAnchorConstraint: NSLayoutConstraint!
     
     public lazy var bottomLine: CALayer = {
         let bottomLine = CALayer()
-        usernameTextField.layer.addSublayer(bottomLine)
+        textField.layer.addSublayer(bottomLine)
         return bottomLine
     }()
     
     public var placeholder: String = "Username" {
         didSet {
-            usernameLBL.text = placeholder
+            label.text = placeholder
         }
     }
     
@@ -31,15 +31,28 @@ final class CustomTextField: UIView {
             bottomLine.backgroundColor = bottomLineColor.cgColor
         }
     }
-    public lazy var usernameLBL: UILabel! = {
+    
+    public var text: String? {
+        get {
+            return textField.text
+        } set {
+            textField.text = newValue
+            let leadingConstant = label.frame.width * 0.1
+            labelYAnchorConstraint.constant = -25
+            labelLeadingAnchorConstraint.constant = -leadingConstant
+            performAnimation(transform: CGAffineTransform(scaleX: 0.8, y: 0.8))
+        }
+    }
+    
+    public lazy var label: UILabel! = {
         let label = UILabel()
-        label.text = "Username"
+        label.text = "Label"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.alpha = 0.5
         return label
     }()
     
-    public lazy var usernameTextField: UITextField! = {
+    public lazy var textField: UITextField! = {
         let textLabel = UITextField()
         textLabel.borderStyle = .none
         textLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -49,18 +62,18 @@ final class CustomTextField: UIView {
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(usernameTextField)
-        addSubview(usernameLBL)
-        usernameTextField.delegate = self
+        addSubview(textField)
+        addSubview(label)
+        textField.delegate = self
         
         configureViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        addSubview(usernameTextField)
-        addSubview(usernameLBL)
-        usernameTextField.delegate = self
+        addSubview(textField)
+        addSubview(label)
+        textField.delegate = self
         
         configureViews()
 
@@ -68,18 +81,18 @@ final class CustomTextField: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let amountOrigin = CGPoint(x: 0, y: usernameTextField.bounds.height)
-        bottomLine.frame = CGRect(origin: amountOrigin, size: CGSize(width: usernameTextField.bounds.width, height: 1))
+        let amountOrigin = CGPoint(x: 0, y: textField.bounds.height)
+        bottomLine.frame = CGRect(origin: amountOrigin, size: CGSize(width: textField.bounds.width, height: 1))
     }
     
     private func configureViews() {
-        usernameLabelYAnchorConstraint = usernameLBL.centerYAnchor.constraint(equalTo: usernameTextField.centerYAnchor, constant: 0)
-        usernameLabelLeadingAnchor = usernameLBL.leadingAnchor.constraint(equalTo: usernameTextField.leadingAnchor, constant: 0)
+        labelYAnchorConstraint = label.centerYAnchor.constraint(equalTo: textField.centerYAnchor, constant: 0)
+        labelLeadingAnchorConstraint = label.leadingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 0)
         
-        usernameTextField.fillSuperview()
+        textField.fillSuperview()
         NSLayoutConstraint.activate([
-            usernameLabelYAnchorConstraint,
-            usernameLabelLeadingAnchor,
+            labelYAnchorConstraint,
+            labelLeadingAnchorConstraint,
         ])
         bottomLine.backgroundColor = bottomLineColor.cgColor
     }
@@ -94,23 +107,23 @@ extension CustomTextField: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // When the object shrinks, it shifts to the center,
         // i.e. a decrease in 0.8 times means that on each side the object will move by 0.1 + 0.1
-        let leadingConstant = usernameLBL.frame.width * 0.1
-        usernameLabelYAnchorConstraint.constant = -25
-        usernameLabelLeadingAnchor.constant = -leadingConstant
+        let leadingConstant = label.frame.width * 0.1
+        labelYAnchorConstraint.constant = -25
+        labelLeadingAnchorConstraint.constant = -leadingConstant
         performAnimation(transform: CGAffineTransform(scaleX: 0.8, y: 0.8))
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = textField.text, text.isEmpty {
-            usernameLabelYAnchorConstraint.constant = 0
-            usernameLabelLeadingAnchor.constant = 5
+            labelYAnchorConstraint.constant = 0
+            labelLeadingAnchorConstraint.constant = 5
             performAnimation(transform: CGAffineTransform(scaleX: 1, y: 1))
         }
     }
     
     private func performAnimation(transform: CGAffineTransform) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.usernameLBL.transform = transform
+            self.label.transform = transform
             self.layoutIfNeeded()
         }, completion: nil)
     }
