@@ -81,9 +81,9 @@ extension PlaylistCollectionViewController {
     }
     
     @objc private func createPlaylistTapped() {
-        let storyboard = UIStoryboard(name: "CreateAlbumArtistPlaylist", bundle: nil)
+        let storyboard = UIStoryboard(name: "CreateOrEditContent", bundle: nil)
         guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
-        guard let vc = navigationController.topViewController as? CreateAlbumArtistPlaylistViewController else { return }
+        guard let vc = navigationController.topViewController as? CreateOrEditContentViewController else { return }
         vc.contentType = .playlist
         present(navigationController, animated: true, completion: nil)
     }
@@ -143,10 +143,10 @@ extension PlaylistCollectionViewController {
     private func editAction(_ indexPath: IndexPath) -> UIAction {
         return UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) { action in
             
-            let storyboard = UIStoryboard(name: "CreateAlbumArtistPlaylist", bundle: nil)
+            let storyboard = UIStoryboard(name: "CreateOrEditContent", bundle: nil)
             guard let editingItem = self.dataSource.itemIdentifier(for: indexPath) else { return }
             guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
-            guard let vc = navigationController.topViewController as? CreateAlbumArtistPlaylistViewController else { return }
+            guard let vc = navigationController.topViewController as? CreateOrEditContentViewController else { return }
             vc.contentType = .playlist
             vc.editingContent = editingItem
             self.present(navigationController, animated: true, completion: nil)

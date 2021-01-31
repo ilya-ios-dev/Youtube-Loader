@@ -10,6 +10,7 @@ import CoreData
 
 protocol SelectAlbumsViewControllerDelegate: class {
     func didSaveSelectedAlbums(_ albums: [Album])
+    func didSaveSelectedAlbum(_ album: Album?)
 }
 
 final class SelectAlbumsViewController: UIViewController {
@@ -21,7 +22,9 @@ final class SelectAlbumsViewController: UIViewController {
     //MARK: - Properties
     public weak var delegate: SelectAlbumsViewControllerDelegate?
     public var selectedAlbums = [Album]()
-
+    public var selectedAlbum: Album?
+    public var isMultipleSelectionAllowed = true
+    
     private var tableDataSource: UITableViewDiffableDataSource<Int, Album>!
     private var tableSnapshot: NSDiffableDataSourceSnapshot<Int, Album>!
     private var albums = [Album]()
@@ -41,12 +44,16 @@ final class SelectAlbumsViewController: UIViewController {
         
         let rightItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveAlbums))
         navigationItem.setRightBarButton(rightItem, animated: true)
-        
+        tableView.allowsMultipleSelection = isMultipleSelectionAllowed
         tableView.contentInset = .init(top: searchBar.frame.height, left: 0, bottom: 0, right: 0)
     }
     
     @objc private func saveAlbums() {
-        delegate?.didSaveSelectedAlbums(selectedAlbums)
+        if isMultipleSelectionAllowed {
+            delegate?.didSaveSelectedAlbums(selectedAlbums)
+        } else {
+            delegate?.didSaveSelectedAlbum(selectedAlbum)
+        }
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -113,11 +120,20 @@ extension SelectAlbumsViewController {
         tableSnapshot.appendItems(albums)
         DispatchQueue.main.async {
             self.tableDataSource?.apply(self.tableSnapshot, animatingDifferences: true)
-            
-            self.selectedAlbums.forEach { (album) in
-                let index = self.tableDataSource.indexPath(for: album)
-                self.tableView.selectRow(at: index, animated: false, scrollPosition: .none)
+            self.selectAlbum()
+        }
+    }
+    
+    private func selectAlbum() {
+        if isMultipleSelectionAllowed {
+            selectedAlbums.forEach { (album) in
+                let index = tableDataSource.indexPath(for: album)
+                tableView.selectRow(at: index, animated: false, scrollPosition: .none)
             }
+        } else {
+            guard let album = selectedAlbum else { return }
+            let index = tableDataSource.indexPath(for: album)
+            tableView.selectRow(at: index, animated: false, scrollPosition: .none)
         }
     }
     

@@ -15,8 +15,8 @@
 		FA18D2D525AC5B40004D0E67 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18D2D425AC5B40004D0E67 /* TimelineView.swift */; };
 		FA18D2DC25ACC13D004D0E67 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18D2DB25ACC13D004D0E67 /* PlayButton.swift */; };
 		FA18D2DF25ACC26F004D0E67 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18D2DE25ACC26F004D0E67 /* AudioPlayer.swift */; };
-		FA275C7225BFFCD500C581BD /* CreateAlbumArtistPlaylist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA275C7125BFFCD500C581BD /* CreateAlbumArtistPlaylist.storyboard */; };
-		FA275C7525BFFEC300C581BD /* CreateAlbumArtistPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA275C7425BFFEC300C581BD /* CreateAlbumArtistPlaylistViewController.swift */; };
+		FA275C7225BFFCD500C581BD /* CreateOrEditContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA275C7125BFFCD500C581BD /* CreateOrEditContent.storyboard */; };
+		FA275C7525BFFEC300C581BD /* CreateOrEditContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA275C7425BFFEC300C581BD /* CreateOrEditContentViewController.swift */; };
 		FA275C7925C00C3400C581BD /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA275C7825C00C3400C581BD /* CustomTextField.swift */; };
 		FA275C7E25C0555300C581BD /* UnsplashImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA275C7D25C0555200C581BD /* UnsplashImagesCollectionViewCell.swift */; };
 		FA28430225C06ED20066AC8F /* UnsplashResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28430125C06ED20066AC8F /* UnsplashResponse.swift */; };
@@ -89,8 +89,8 @@
 		FA18D2D425AC5B40004D0E67 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		FA18D2DB25ACC13D004D0E67 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		FA18D2DE25ACC26F004D0E67 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
-		FA275C7125BFFCD500C581BD /* CreateAlbumArtistPlaylist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAlbumArtistPlaylist.storyboard; sourceTree = "<group>"; };
-		FA275C7425BFFEC300C581BD /* CreateAlbumArtistPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAlbumArtistPlaylistViewController.swift; sourceTree = "<group>"; };
+		FA275C7125BFFCD500C581BD /* CreateOrEditContent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateOrEditContent.storyboard; sourceTree = "<group>"; };
+		FA275C7425BFFEC300C581BD /* CreateOrEditContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrEditContentViewController.swift; sourceTree = "<group>"; };
 		FA275C7825C00C3400C581BD /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		FA275C7D25C0555200C581BD /* UnsplashImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA28430125C06ED20066AC8F /* UnsplashResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashResponse.swift; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 		FA4393B325C4455B00F1D897 /* CreateObject */ = {
 			isa = PBXGroup;
 			children = (
-				FA275C7125BFFCD500C581BD /* CreateAlbumArtistPlaylist.storyboard */,
+				FA275C7125BFFCD500C581BD /* CreateOrEditContent.storyboard */,
 				FA4393A825C4384F00F1D897 /* SelectAlbums.storyboard */,
 				FA4393A325C437BE00F1D897 /* SelectArtist.storyboard */,
 				FACD3EA725C2DBFF0006A4DD /* SelectSongs.storyboard */,
@@ -368,7 +368,7 @@
 		FAE4873525C41A1E0056B87D /* CreatePlaylistViewController */ = {
 			isa = PBXGroup;
 			children = (
-				FA275C7425BFFEC300C581BD /* CreateAlbumArtistPlaylistViewController.swift */,
+				FA275C7425BFFEC300C581BD /* CreateOrEditContentViewController.swift */,
 				FACD3EAA25C2DDBC0006A4DD /* SelectSongsViewController.swift */,
 				FA4393AD25C43BF800F1D897 /* SelectArtistViewController.swift */,
 				FA4393B025C43C4200F1D897 /* SelectAlbumsViewController.swift */,
@@ -484,7 +484,7 @@
 				FA6D517325B70A1400896236 /* PlaylistCollectionViewCell.xib in Resources */,
 				FACD3EA825C2DBFF0006A4DD /* SelectSongs.storyboard in Resources */,
 				FA912A3625AB3295001936F1 /* LaunchScreen.storyboard in Resources */,
-				FA275C7225BFFCD500C581BD /* CreateAlbumArtistPlaylist.storyboard in Resources */,
+				FA275C7225BFFCD500C581BD /* CreateOrEditContent.storyboard in Resources */,
 				FABDBFA025B193730039B4B3 /* Player.storyboard in Resources */,
 				FA5BEBFA25C3F2EB00D64119 /* SelectArtistAlbumSongTableViewCell.xib in Resources */,
 				FAFA681425B382830026059D /* AddSongTableViewCell.xib in Resources */,
@@ -550,7 +550,7 @@
 				FAFDBBBF25BC0E9F00FB2C4F /* Filemanager+Extensions.swift in Sources */,
 				FAFDBBBB25BC0C9000FB2C4F /* UIImage+Extensions.swift in Sources */,
 				FAFDBBB725BC0C5100FB2C4F /* Data+UIImageCompression.swift in Sources */,
-				FA275C7525BFFEC300C581BD /* CreateAlbumArtistPlaylistViewController.swift in Sources */,
+				FA275C7525BFFEC300C581BD /* CreateOrEditContentViewController.swift in Sources */,
 				FA4243CC25BDB91D005E4309 /* AddingCollectionReusableView.swift in Sources */,
 				FA18D2DF25ACC26F004D0E67 /* AudioPlayer.swift in Sources */,
 			);

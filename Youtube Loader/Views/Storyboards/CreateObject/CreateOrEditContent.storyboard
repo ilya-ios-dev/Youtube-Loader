@@ -11,7 +11,7 @@
         <!--Create Playlist-->
         <scene sceneID="GpM-QK-ezL">
             <objects>
-                <viewController id="HX3-Nx-FCJ" customClass="CreateAlbumArtistPlaylistViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HX3-Nx-FCJ" customClass="CreateOrEditContentViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D5f-mV-XdL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="20" y="76" width="374" height="712"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jsm-6d-7Uu">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="596"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="744"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auW-Qy-I0r">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
@@ -171,8 +171,27 @@
                                                     <constraint firstItem="AIF-Wq-NGg" firstAttribute="top" secondItem="uLU-xQ-zix" secondAttribute="top" id="skH-rT-Qc2"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiA-9z-H8H">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGf-3x-etS">
                                                 <rect key="frame" x="0.0" y="468" width="374" height="128"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngh-wi-IgR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="128"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="Select Album">
+                                                            <color key="titleColor" red="0.30588235289999999" green="0.33333333329999998" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="Ngh-wi-IgR" firstAttribute="leading" secondItem="zGf-3x-etS" secondAttribute="leading" id="1ra-nF-sJj"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ngh-wi-IgR" secondAttribute="trailing" id="3eS-XH-7x6"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Ngh-wi-IgR" secondAttribute="bottom" id="JTP-Zz-A4a"/>
+                                                    <constraint firstItem="Ngh-wi-IgR" firstAttribute="top" secondItem="zGf-3x-etS" secondAttribute="top" id="NSL-Nm-ELi"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiA-9z-H8H">
+                                                <rect key="frame" x="0.0" y="616" width="374" height="128"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmz-JQ-3py">
                                                         <rect key="frame" x="0.0" y="0.0" width="116" height="128"/>
@@ -243,9 +262,12 @@
                         <outlet property="refreshBlurView" destination="xLU-Kr-HdE" id="O4z-NS-3Vz"/>
                         <outlet property="refreshButton" destination="Tt5-0T-Rmn" id="xWt-8n-1T5"/>
                         <outlet property="searchImageTextField" destination="bxT-6E-ZFs" id="hl0-1l-wVR"/>
-                        <outlet property="selectArtistOrAlbumButton" destination="AIF-Wq-NGg" id="GY4-ht-hF8"/>
-                        <outlet property="selectArtistOrAlbumView" destination="uLU-xQ-zix" id="bm8-0Z-XkG"/>
-                        <outlet property="selectSongsButton" destination="Dmz-JQ-3py" id="3V1-sI-Olt"/>
+                        <outlet property="selectAlbumButton" destination="Ngh-wi-IgR" id="0TD-oD-Vj8"/>
+                        <outlet property="selectAlbumButtonView" destination="zGf-3x-etS" id="JEM-Aw-Msa"/>
+                        <outlet property="selectArtistButton" destination="AIF-Wq-NGg" id="GY4-ht-hF8"/>
+                        <outlet property="selectArtistView" destination="uLU-xQ-zix" id="bm8-0Z-XkG"/>
+                        <outlet property="selectSongsButton" destination="Dmz-JQ-3py" id="FlJ-yQ-oy7"/>
+                        <outlet property="selectSongsView" destination="BiA-9z-H8H" id="O95-Px-QeQ"/>
                         <outlet property="stackView" destination="jsm-6d-7Uu" id="u9g-Sp-LlE"/>
                     </connections>
                 </viewController>
