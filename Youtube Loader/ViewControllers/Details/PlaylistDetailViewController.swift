@@ -197,6 +197,30 @@ extension PlaylistDetailViewController: MiniPlayerDelegate {
 
 //MARK: - UITableViewDelegate & UIScrollViewDelegate
 extension PlaylistDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let v = UIView()
+        v.backgroundColor = .clear
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 35, weight: .bold)
+        label.minimumScaleFactor = 0.7
+        label.adjustsFontSizeToFitWidth = true
+        label.text = playlist.name
+        label.textColor = #colorLiteral(red: 0.3647058824, green: 0.4509803922, blue: 0.5803921569, alpha: 1)
+        v.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: v.leadingAnchor, constant: 20),
+            label.trailingAnchor.constraint(equalTo: v.trailingAnchor, constant: -20),
+            label.topAnchor.constraint(equalTo: v.topAnchor),
+            label.bottomAnchor.constraint(equalTo: v.bottomAnchor)
+        ])
+        return v
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if miniPlayer.songs != snapshot.itemIdentifiers {
             miniPlayer.songs = snapshot.itemIdentifiers
