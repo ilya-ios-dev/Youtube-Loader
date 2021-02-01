@@ -114,8 +114,8 @@ extension AlbumDetailViewController {
     
     private func configureTableView() {
         tableView.delegate = self
-        let nib = UINib(nibName: "SongTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "songTableViewCell")
+        let nib = UINib(nibName: "SongFromDetailTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "SongFromDetailTableViewCell")
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
@@ -163,7 +163,7 @@ extension AlbumDetailViewController {
         
     private func setupDiffableDataSource() {
         dataSource = UITableViewDiffableDataSource<Int, Song>(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "songTableViewCell") as! SongTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SongFromDetailTableViewCell") as! SongFromDetailTableViewCell
             
             if let imageUrl = song.thumbnails?.smallUrl {
                 cell.songImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
