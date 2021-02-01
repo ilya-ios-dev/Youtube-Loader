@@ -136,7 +136,14 @@ extension AlbumDetailViewController {
     private func setupFetchedResultsController() {
         let request: NSFetchRequest = Song.fetchRequest()
         
-        request.predicate = NSPredicate(format: "album.name == %@", album.name!)
+        let albumPredicate = NSPredicate(format: "album.name == %@", album.name!)
+        
+        if !searchText.isEmpty {
+            let namePredicate = NSPredicate(format: "name CONTAINS[c] %@", searchText)
+            request.predicate = NSCompoundPredicate(type: .and, subpredicates: [albumPredicate, namePredicate])
+        } else {
+            request.predicate = albumPredicate
+        }
         
         let sort = NSSortDescriptor(key: "dateSave", ascending: true)
         request.sortDescriptors = [sort]

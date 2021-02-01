@@ -17,6 +17,7 @@ final class SongsCollectionViewController: UICollectionViewController {
 
     //MARK: - Properties
     public weak var delegate: SongsCollectionViewControllerDelegate?
+    public var predicate: NSCompoundPredicate?
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, Song>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
@@ -42,6 +43,10 @@ final class SongsCollectionViewController: UICollectionViewController {
 //MARK: - Supporting Methods
 extension SongsCollectionViewController {
     
+    public func reloadData() {
+        setupFetchedResultsController()
+    }
+
     public func selectItem(_ item: Song) {
         guard let index = dataSource.indexPath(for: item) else { return }
         collectionView.selectItem(at: index, animated: true, scrollPosition: .centeredHorizontally)
@@ -101,6 +106,10 @@ extension SongsCollectionViewController {
         
         let sort = NSSortDescriptor(key: "dateSave", ascending: true)
         request.sortDescriptors = [sort]
+        
+        if let predicate = predicate {
+            request.predicate = predicate
+        }
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self

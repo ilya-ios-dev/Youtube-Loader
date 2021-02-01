@@ -22,11 +22,13 @@ final class ArtistDetailViewController: UIViewController {
     public var artist: Artist!
     public var sourceProtocol: PlayerSourceProtocol!
     
+    private var searchText = ""
     private var imageView: UIImageView!
     private var headerContainerView: UIView!
     private var songs = [Song]()
     private var miniPlayer: MiniPlayerViewController!
     private var songsCollectionView: SongsCollectionViewController!
+    private var albumsCollectionView: AlbumsCollectionViewController!
     private var context: NSManagedObjectContext = {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }()
@@ -65,9 +67,14 @@ final class ArtistDetailViewController: UIViewController {
         } else if let destination = segue.destination as? SongsCollectionViewController {
             songsCollectionView = destination
             songsCollectionView.delegate = self
-            // SongsList
-        } else if let destination = segue.destination as? SongsListViewController {
-            destination.sourceProtocol = sourceProtocol
+            let authorPredicate = NSPredicate(format: "author == %@", artist)
+            songsCollectionView.predicate = NSCompoundPredicate(type: .and, subpredicates: [authorPredicate])
+            // AlbumsCollectionView
+        } else if let destination = segue.destination as? AlbumsCollectionViewController {
+            albumsCollectionView = destination
+            albumsCollectionView.delegate = self
+            let authorPredicate = NSPredicate(format: "author == %@", artist)
+            albumsCollectionView.predicate = NSCompoundPredicate(type: .and, subpredicates: [authorPredicate])
         }
     }
     
@@ -169,7 +176,30 @@ extension ArtistDetailViewController {
 
 //MARK: - UISearchBarDelegate
 extension ArtistDetailViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(search), object: nil)
+        self.searchText = searchText
+        perform(#selector(search), with: nil, afterDelay: 0.5)
+    }
     
+    @objc private func search() {
+        let andPredicate: NSCompoundPredicate
+        
+        if searchText.isEmpty {
+            let authorPredicate = NSPredicate(format: "author == %@", artist)
+            andPredicate = NSCompoundPredicate(type: .and, subpredicates: [authorPredicate])
+        } else {
+            let namePredicate = NSPredicate(format: "name CONTAINS[c] %@", searchText)
+            let authorPredicate = NSPredicate(format: "author == %@", artist)
+            andPredicate = NSCompoundPredicate(type: .and, subpredicates: [authorPredicate, namePredicate])
+        }
+        
+        albumsCollectionView.predicate = andPredicate
+        albumsCollectionView.reloadData()
+        
+        songsCollectionView.predicate = andPredicate
+        songsCollectionView.reloadData()
+    }
 }
 
 //MARK: - MiniPlayerDelegate
@@ -207,5 +237,16 @@ extension ArtistDetailViewController: SongsCollectionViewControllerDelegate {
             miniPlayer.songs = songs
         }
         miniPlayer.play(at: index)
+    }
+}
+
+extension ArtistDetailViewController: AlbumsCollectionViewControllerDelegate {
+    func didSelectedAlbum(_ album: Album) {
+        let storyboard = UIStoryboard(name: "AlbumDetail", bundle: nil)
+        guard let vc = storyboard.instantiateInitialViewController() as? AlbumDetailViewController else { return }
+        vc.sourceProtocol = sourceProtocol
+        vc.album = album
+        vc.modalPresentationStyle = .fullScreen
+        show(vc, sender: true)
     }
 }

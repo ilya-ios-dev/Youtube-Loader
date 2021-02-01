@@ -16,7 +16,8 @@ final class AlbumsCollectionViewController: UICollectionViewController {
 
     //MARK: - Properties
     public weak var delegate: AlbumsCollectionViewControllerDelegate?
-    
+    public var predicate: NSCompoundPredicate?
+
     private static let leadingKind = "Album.leading"
     private var dataSource: UICollectionViewDiffableDataSource<Int, Album>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, Album>()
@@ -37,6 +38,10 @@ final class AlbumsCollectionViewController: UICollectionViewController {
 
 //MARK: - Supprting Methods
 extension AlbumsCollectionViewController {
+    
+    public func reloadData() {
+        setupFetchedResultsController()
+    }
     
     private func configureSongCollectionView() {
         let nib = UINib(nibName: String(describing: AlbumCollectionViewCell.self), bundle: nil)
@@ -113,6 +118,10 @@ extension AlbumsCollectionViewController {
         let sort = NSSortDescriptor(key: "dateSave", ascending: true)
         request.sortDescriptors = [sort]
         
+        if let predicate = predicate {
+            request.predicate = predicate
+        }
+
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         do {

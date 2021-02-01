@@ -136,7 +136,15 @@ extension PlaylistDetailViewController {
     private func setupFetchedResultsController() {
         let request: NSFetchRequest = Song.fetchRequest()
         
-        request.predicate = NSPredicate(format: "ANY playlist.name == %@", playlist.name!)
+        
+        let playlistPredicate = NSPredicate(format: "ANY playlist.name == %@", playlist.name!)
+        
+        if !searchText.isEmpty {
+            let namePredicate = NSPredicate(format: "name CONTAINS[c] %@", searchText)
+            request.predicate = NSCompoundPredicate(type: .and, subpredicates: [playlistPredicate, namePredicate])
+        } else {
+            request.predicate = playlistPredicate
+        }
         
         let sort = NSSortDescriptor(key: "dateSave", ascending: true)
         request.sortDescriptors = [sort]
