@@ -1,5 +1,5 @@
 //
-//  AlbumDetailViewController.swift
+//  PlaylistDetailViewController.swift
 //  Youtube Loader
 //
 //  Created by isEmpty on 01.02.2021.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-final class AlbumDetailViewController: UIViewController {
+final class PlaylistDetailViewController: UIViewController {
     
     //MARK: - Outlets
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -19,7 +19,7 @@ final class AlbumDetailViewController: UIViewController {
     
     //MARK: - Properties
     public var sourceProtocol: PlayerSourceProtocol!
-    public var album: Album!
+    public var playlist: Playlist!
     
     private var headerView: StretchyTableHeaderView!
     private var miniPlayer: MiniPlayerViewController!
@@ -40,9 +40,12 @@ final class AlbumDetailViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // If the song is in the audio player, then the player should be shown
         guard let song = audioPlayer.currentSong else { return }
-        guard let songIndex = dataSource.indexPath(for: song) else { return }
-        tableView.selectRow(at: songIndex, animated: true, scrollPosition: .middle)
+        if let songIndex = dataSource.indexPath(for: song) {
+            tableView.selectRow(at: songIndex, animated: true, scrollPosition: .middle)
+        }
+        tableView.contentInset = UIEdgeInsets(top: tableView.contentInset.top, left: 0, bottom: miniPlayerView.frame.height + 16, right: 0)
         miniPlayerView.isHidden = false
         bottomView.isHidden = false
     }
@@ -78,7 +81,7 @@ final class AlbumDetailViewController: UIViewController {
 }
 
 //MARK: - Supporting Methods
-extension AlbumDetailViewController {
+extension PlaylistDetailViewController {
     private func configureSearchBar() {
         searchBar.delegate = self
         
@@ -118,7 +121,7 @@ extension AlbumDetailViewController {
     
     private func configureHeaderView() {
         headerView = StretchyTableHeaderView(frame: CGRect(x: 0, y: 0, width: 0, height: 300))
-        let url = album.thumbnails!.largeUrl!
+        let url = playlist.thumbnails!.largeUrl!
         headerView.imageView.af.setImage(withURL: url)
         tableView.tableHeaderView = headerView
     }
@@ -133,7 +136,7 @@ extension AlbumDetailViewController {
     private func setupFetchedResultsController() {
         let request: NSFetchRequest = Song.fetchRequest()
         
-        request.predicate = NSPredicate(format: "album.name == %@", album.name!)
+        request.predicate = NSPredicate(format: "ANY playlist.name == %@", playlist.name!)
         
         let sort = NSSortDescriptor(key: "dateSave", ascending: true)
         request.sortDescriptors = [sort]
@@ -161,7 +164,7 @@ extension AlbumDetailViewController {
     private func setupDiffableDataSource() {
         dataSource = UITableViewDiffableDataSource<Int, Song>(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "songTableViewCell") as! SongTableViewCell
-            
+                        
             if let imageUrl = song.thumbnails?.smallUrl {
                 cell.songImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
                 cell.backgroundBlurImage.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
@@ -178,14 +181,14 @@ extension AlbumDetailViewController {
 }
 
 //MARK: - NSFetchedResultsControllerDelegate
-extension AlbumDetailViewController: NSFetchedResultsControllerDelegate {
+extension PlaylistDetailViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         setupSnapshot()
     }
 }
 
 //MARK: - MiniPlayerDelegate
-extension AlbumDetailViewController: MiniPlayerDelegate {
+extension PlaylistDetailViewController: MiniPlayerDelegate {
     func didSelectedItem(_ item: Song?) {
         guard let song = item else { return }
         guard let songIndex = dataSource.indexPath(for: song) else { return }
@@ -202,7 +205,7 @@ extension AlbumDetailViewController: MiniPlayerDelegate {
 }
 
 //MARK: - UITableViewDelegate & UIScrollViewDelegate
-extension AlbumDetailViewController: UITableViewDelegate {
+extension PlaylistDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let song = audioPlayer.currentSong {
             guard let songIndex = dataSource.indexPath(for: song) else { return }
@@ -211,7 +214,7 @@ extension AlbumDetailViewController: UITableViewDelegate {
         miniPlayer.play(at: indexPath.row)
         
         if miniPlayerView.isHidden {
-            tableView.contentInset = UIEdgeInsets(top: tableView.contentInset.top, left: 0, bottom: miniPlayerView.frame.height + 8, right: 0)
+            tableView.contentInset = UIEdgeInsets(top: tableView.contentInset.top, left: 0, bottom: miniPlayerView.frame.height + 16, right: 0)
             
             UIView.transition(with: miniPlayerView, duration: 0.3, options: .transitionCrossDissolve) {
                 self.miniPlayerView.isHidden = false
@@ -226,7 +229,7 @@ extension AlbumDetailViewController: UITableViewDelegate {
 }
 
 //MARK: - UISearchBarDelegate
-extension AlbumDetailViewController: UISearchBarDelegate {
+extension PlaylistDetailViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(search), object: nil)
         self.searchText = searchText

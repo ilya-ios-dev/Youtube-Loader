@@ -42,7 +42,7 @@ final class ArtistDetailViewController: UIViewController {
         songsCollectionView.selectItem(song)
         miniPlayerView.isHidden = false
         miniPlayerBottomView.isHidden = false
-        scrollView.contentInset = UIEdgeInsets(top: scrollView.contentInset.top, left: 0, bottom: miniPlayerView.frame.height + view.safeAreaInsets.bottom + 16, right: 0)
+        scrollView.contentInset = UIEdgeInsets(top: scrollView.contentInset.top, left: 0, bottom: miniPlayerView.frame.height + miniPlayerBottomView.frame.height + 16, right: 0)
     }
 
     override func viewDidLoad() {

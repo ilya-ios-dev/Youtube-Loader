@@ -8,9 +8,15 @@
 import UIKit
 import CoreData
 
+protocol PlaylistCollectionViewControllerDelegate: class {
+    func didSelectedPlaylist(_ playlist: Playlist)
+}
+
 final class PlaylistCollectionViewController: UICollectionViewController {
 
     //MARK: - Properties
+    public weak var delegate: PlaylistCollectionViewControllerDelegate?
+    
     private static let leadingKind = "Playlist.leading"
     private var dataSource: UICollectionViewDiffableDataSource<Int, Playlist>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, Playlist>()
@@ -125,6 +131,12 @@ extension PlaylistCollectionViewController: NSFetchedResultsControllerDelegate {
 
 //MARK: - UICollectionViewDelegate
 extension PlaylistCollectionViewController {
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let playlist = dataSource.itemIdentifier(for: indexPath) else { return }
+        delegate?.didSelectedPlaylist(playlist)
+    }
+
     override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         if let cellItemIdentifier = dataSource.itemIdentifier(for: indexPath) {
             let identifier = NSString(string: String(describing: cellItemIdentifier))

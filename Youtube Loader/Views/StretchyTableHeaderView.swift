@@ -38,7 +38,6 @@ final class StretchyTableHeaderView: UIView {
         // ImageView for background
         imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .yellow
         imageView.contentMode = .scaleAspectFill
         containerView.addSubview(imageView)
     }
@@ -68,7 +67,6 @@ final class StretchyTableHeaderView: UIView {
     }
     
     public func scrollViewDidScroll(scrollView: UIScrollView) {
-        backgroundColor = .red
         containerViewHeight.constant = scrollView.contentInset.top
         let offsetY = -(scrollView.contentOffset.y + scrollView.contentInset.top)
         containerView.clipsToBounds = offsetY <= 0

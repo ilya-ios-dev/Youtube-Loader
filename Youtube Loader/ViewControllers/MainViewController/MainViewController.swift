@@ -68,6 +68,8 @@ final class MainViewController: UIViewController {
             destination.delegate = self
         } else if let destination = segue.destination as? AlbumsCollectionViewController {
             destination.delegate = self
+        } else if let destination = segue.destination as? PlaylistCollectionViewController {
+            destination.delegate = self
         }
     }
     
@@ -134,6 +136,18 @@ extension MainViewController: AlbumsCollectionViewControllerDelegate {
         guard let vc = storyboard.instantiateInitialViewController() as? AlbumDetailViewController else { return }
         vc.sourceProtocol = self
         vc.album = album
+        vc.modalPresentationStyle = .fullScreen
+        show(vc, sender: true)
+    }
+}
+
+//MARK: - PlaylistCollectionViewControllerDelegate
+extension MainViewController: PlaylistCollectionViewControllerDelegate {
+    func didSelectedPlaylist(_ playlist: Playlist) {
+        let storyboard = UIStoryboard(name: "PlaylistDetail", bundle: nil)
+        guard let vc = storyboard.instantiateInitialViewController() as? PlaylistDetailViewController else { return }
+        vc.sourceProtocol = self
+        vc.playlist = playlist
         vc.modalPresentationStyle = .fullScreen
         show(vc, sender: true)
     }
