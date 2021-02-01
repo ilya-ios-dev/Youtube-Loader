@@ -44,14 +44,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="x7R-er-MAG">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="0Yg-MP-TTo">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="400" id="kGe-ZX-N2o"/>
-                                        </constraints>
-                                    </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bRM-NO-CFw">
-                                        <rect key="frame" x="0.0" y="408" width="414" height="555.5"/>
+                                        <rect key="frame" x="0.0" y="350" width="414" height="555.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m5D-Ue-w1O">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="285.5"/>
@@ -144,13 +138,10 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="0Yg-MP-TTo" firstAttribute="trailing" secondItem="hBn-Ee-xk6" secondAttribute="trailing" id="2J1-Fb-6uw"/>
                                     <constraint firstItem="bRM-NO-CFw" firstAttribute="leading" secondItem="hBn-Ee-xk6" secondAttribute="leading" id="4oR-e7-4T1"/>
                                     <constraint firstItem="bRM-NO-CFw" firstAttribute="trailing" secondItem="hBn-Ee-xk6" secondAttribute="trailing" id="8fx-fW-r46"/>
-                                    <constraint firstItem="bRM-NO-CFw" firstAttribute="top" secondItem="0Yg-MP-TTo" secondAttribute="bottom" constant="8" id="GnO-jd-SxY"/>
+                                    <constraint firstItem="bRM-NO-CFw" firstAttribute="top" secondItem="hBn-Ee-xk6" secondAttribute="top" constant="350" id="MjU-vb-g58"/>
                                     <constraint firstItem="bRM-NO-CFw" firstAttribute="bottom" secondItem="hBn-Ee-xk6" secondAttribute="bottom" id="Uht-z6-Vmy"/>
-                                    <constraint firstItem="hBn-Ee-xk6" firstAttribute="top" secondItem="0Yg-MP-TTo" secondAttribute="top" id="j2P-jy-Shm"/>
-                                    <constraint firstItem="0Yg-MP-TTo" firstAttribute="leading" secondItem="hBn-Ee-xk6" secondAttribute="leading" id="nOv-zq-drh"/>
                                     <constraint firstItem="bRM-NO-CFw" firstAttribute="width" secondItem="l1S-tu-yQv" secondAttribute="width" id="yQf-cy-4cY"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="hBn-Ee-xk6"/>
@@ -220,11 +211,11 @@
                     </view>
                     <connections>
                         <outlet property="downButton" destination="VzH-3X-la0" id="huF-ZX-LEk"/>
-                        <outlet property="imageView" destination="0Yg-MP-TTo" id="d2f-rG-Wnf"/>
                         <outlet property="miniPlayerBottomView" destination="A1Y-lV-s5A" id="Kro-eb-fzc"/>
                         <outlet property="miniPlayerView" destination="X3R-I1-WqJ" id="tC7-cq-1Qg"/>
                         <outlet property="scrollView" destination="x7R-er-MAG" id="MBR-rv-puu"/>
                         <outlet property="searchBar" destination="LYn-eL-p9F" id="AAs-ZW-3Eq"/>
+                        <outlet property="stackView" destination="bRM-NO-CFw" id="liy-VL-eML"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nas-Cs-n3C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -234,7 +225,6 @@
     </scenes>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
-        <image name="image_placeholder" width="500" height="500"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

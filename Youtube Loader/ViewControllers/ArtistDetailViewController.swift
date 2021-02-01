@@ -11,17 +11,19 @@ import CoreData
 final class ArtistDetailViewController: UIViewController {
     
     //MARK: - Outlets
-    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var downButton: UIButton!
     @IBOutlet private weak var miniPlayerView: UIView!
     @IBOutlet private weak var miniPlayerBottomView: UIView!
     @IBOutlet private weak var scrollView: UIScrollView!
-
+    @IBOutlet private weak var stackView: UIStackView!
+    
     //MARK: - Properties
     public var artist: Artist!
     public var sourceProtocol: PlayerSourceProtocol!
     
+    private var imageView: UIImageView!
+    private var headerContainerView: UIView!
     private var songs = [Song]()
     private var miniPlayer: MiniPlayerViewController!
     private var songsCollectionView: SongsCollectionViewController!
@@ -46,15 +48,12 @@ final class ArtistDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let url = artist.thumbnails?.largeUrl {
-            imageView.af.setImage(withURL: url)
-        }
         downButton.layer.cornerRadius = downButton.frame.height / 2
-        
         configureSearchBar()
         scrollView.contentInset = .init(top: 0, left: 0, bottom: view.safeAreaInsets.bottom + 16, right: 0)
         configureMiniPlayer()
         miniPlayer?.songs = songs
+        configureHeaderView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -73,6 +72,21 @@ final class ArtistDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func downButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func songsListTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "SongsList", bundle: nil)
+        guard let vc = storyboard.instantiateInitialViewController() as? SongsListViewController else { return }
+        vc.sourceProtocol = sourceProtocol
+        present(vc, animated: true, completion: nil)
+    }
+}
+
+//MARK: - Supporting Methods
+extension ArtistDetailViewController {
+    
     private func configureMiniPlayer() {
         miniPlayerView.isHidden = true
         miniPlayerView.layer.shadowColor = #colorLiteral(red: 0.5764705882, green: 0.6588235294, blue: 0.7019607843, alpha: 0.1611958471).cgColor
@@ -81,6 +95,47 @@ final class ArtistDetailViewController: UIViewController {
         miniPlayerView.layer.shadowOpacity = 1
     }
 
+    private func configureHeaderView() {
+        imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        
+        if let url = artist.thumbnails?.largeUrl {
+            imageView.af.setImage(withURL: url)
+        }
+        
+        headerContainerView = UIView()
+        
+        scrollView.addSubview(headerContainerView)
+        headerContainerView.addSubview(imageView)
+        
+        // Header Container Constraints
+        let headerContainerViewBottom : NSLayoutConstraint!
+        
+        self.headerContainerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.headerContainerView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.headerContainerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.headerContainerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
+        headerContainerViewBottom = self.headerContainerView.bottomAnchor.constraint(equalTo: self.stackView.topAnchor, constant: -10)
+        headerContainerViewBottom.priority = UILayoutPriority(rawValue: 900)
+        headerContainerViewBottom.isActive = true
+        
+        // ImageView Constraints
+        let imageViewTopConstraint: NSLayoutConstraint!
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.imageView.leadingAnchor.constraint(equalTo: self.headerContainerView.leadingAnchor),
+            self.imageView.trailingAnchor.constraint(equalTo: self.headerContainerView.trailingAnchor),
+            self.imageView.bottomAnchor.constraint(equalTo: self.headerContainerView.bottomAnchor)
+        ])
+        
+        imageViewTopConstraint = self.imageView.topAnchor.constraint(equalTo: self.view.topAnchor)
+        imageViewTopConstraint.priority = UILayoutPriority(rawValue: 900)
+        imageViewTopConstraint.isActive = true
+    }
 
     private func configureSearchBar() {
         searchBar.delegate = self
@@ -110,17 +165,6 @@ final class ArtistDetailViewController: UIViewController {
             view.bottomAnchor.constraint(equalTo: searchTextField.bottomAnchor),
             view.topAnchor.constraint(equalTo: searchTextField.topAnchor)
         ])
-    }
-    
-    @IBAction func downButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func songsListTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "SongsList", bundle: nil)
-        guard let vc = storyboard.instantiateInitialViewController() as? SongsListViewController else { return }
-        vc.sourceProtocol = sourceProtocol
-        present(vc, animated: true, completion: nil)
     }
 }
 

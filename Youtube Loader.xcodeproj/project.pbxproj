@@ -333,6 +333,7 @@
 				FA4243CA25BDB91D005E4309 /* AddingCollectionReusableView.swift */,
 				FA275C7825C00C3400C581BD /* CustomTextField.swift */,
 				FA18D2DB25ACC13D004D0E67 /* PlayButton.swift */,
+				FA5E473B25C825780014572E /* StretchyTableHeaderView.swift */,
 				FA18D2D425AC5B40004D0E67 /* TimelineView.swift */,
 				FA275C7D25C0555200C581BD /* UnsplashImagesCollectionViewCell.swift */,
 				FAFA681625B3828A0026059D /* AddSongTableViewCell */,
@@ -344,7 +345,6 @@
 				FA7505B025B6FA8C009DA119 /* SongCollectionViewCell */,
 				FA28617B25ADEF1F001D131F /* SongTableViewCell */,
 				FA2CF88F25B1CF2E00A78BB1 /* Storyboards */,
-				FA5E473B25C825780014572E /* StretchyTableHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
