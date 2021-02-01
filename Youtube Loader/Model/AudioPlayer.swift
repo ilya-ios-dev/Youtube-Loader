@@ -16,6 +16,8 @@ protocol AudioPlayerDelegate: class {
 final class AudioPlayer: NSObject {
     
     //MARK: - Properties
+    public static let shared = AudioPlayer()
+
     private var updater = CADisplayLink()
     private var audioPlayer: AVAudioPlayer!
     

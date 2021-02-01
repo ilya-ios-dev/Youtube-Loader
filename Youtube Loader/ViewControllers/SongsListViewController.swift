@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 final class SongsListViewController: UIViewController {
-
+    
     //MARK: - Outlets
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: UITableView!
@@ -18,13 +18,16 @@ final class SongsListViewController: UIViewController {
     @IBOutlet private weak var downButton: UIButton!
     
     //MARK: - Properties
-    public var audioPlayer: AudioPlayer?
+    public var sourceProtocol: PlayerSourceProtocol!
+    
     private var miniPlayer: MiniPlayerViewController!
     private var fetchedResultsController: NSFetchedResultsController<Song>!
     private var dataSource: UITableViewDiffableDataSource<Int, Song>!
     private var snapshot: NSDiffableDataSourceSnapshot<Int, Song>!
     private var searchText = ""
-    
+    private var audioPlayer: AudioPlayer {
+        return sourceProtocol.audioPlayer
+    }
     private var context: NSManagedObjectContext = {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }()
@@ -32,7 +35,7 @@ final class SongsListViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let song = miniPlayer.audioplayer.currentSong else { return }
+        guard let song = audioPlayer.currentSong else { return }
         guard let songIndex = dataSource.indexPath(for: song) else { return }
         tableView.selectRow(at: songIndex, animated: true, scrollPosition: .middle)
         miniPlayerView.isHidden = false
@@ -47,8 +50,7 @@ final class SongsListViewController: UIViewController {
         configureMiniPlayer()
         miniPlayerView.isHidden = true
         bottomView.isHidden = true
-        miniPlayer.audioplayer = audioPlayer!
-
+        
         tableView.contentInset = UIEdgeInsets(top: searchBar.frame.height, left: 0, bottom: 0, right: 0)
         downButton.layer.cornerRadius = downButton.frame.height / 2
         
@@ -59,8 +61,9 @@ final class SongsListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? MiniPlayerViewController {
-          miniPlayer = destination
-          miniPlayer?.delegate = self
+            miniPlayer = destination
+            miniPlayer.sourceProtocol = sourceProtocol
+            miniPlayer?.delegate = self
         }
     }
     
@@ -181,8 +184,7 @@ extension SongsListViewController: MiniPlayerDelegate {
     func expandSong(song: Song?) {
         let storyboard = UIStoryboard(name: "Player", bundle: nil)
         guard let playerController = storyboard.instantiateInitialViewController() as? PlayerViewController else { return }
-        playerController.sourceView = miniPlayer
-        playerController.audioPlayer = miniPlayer.audioplayer
+        playerController.sourceProtocol = sourceProtocol
         playerController.modalPresentationStyle = .currentContext
         present(playerController, animated: true, completion: nil)
     }
@@ -191,7 +193,7 @@ extension SongsListViewController: MiniPlayerDelegate {
 //MARK: - UITableViewDelegate
 extension SongsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let song = miniPlayer.audioplayer.currentSong {
+        if let song = audioPlayer.currentSong {
             guard let songIndex = dataSource.indexPath(for: song) else { return }
             guard songIndex != indexPath else { return }
         }

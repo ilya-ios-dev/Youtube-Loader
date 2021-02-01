@@ -63,6 +63,13 @@
 		FAA88C5525B3281800DBA1F5 /* AddSong.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA88C5425B3281700DBA1F5 /* AddSong.storyboard */; };
 		FABDBFA025B193730039B4B3 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABDBF9F25B193730039B4B3 /* Player.storyboard */; };
 		FAC2EE4525B7323500F18648 /* CoreData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2EE4425B7323500F18648 /* CoreData+Extensions.swift */; };
+		FAC388E925C6C8C4009726BB /* ArtistDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC388E825C6C8C4009726BB /* ArtistDetail.storyboard */; };
+		FAC388EC25C6CA5E009726BB /* SongsCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC388EB25C6CA5E009726BB /* SongsCollection.storyboard */; };
+		FAC388EF25C6CA76009726BB /* AlbumsCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC388EE25C6CA76009726BB /* AlbumsCollection.storyboard */; };
+		FAC388F225C6CA7E009726BB /* ArtistCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC388F125C6CA7E009726BB /* ArtistCollection.storyboard */; };
+		FAC388F525C6CA8C009726BB /* PlaylistCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC388F425C6CA8C009726BB /* PlaylistCollection.storyboard */; };
+		FAC388F825C6CA96009726BB /* RecommendationsCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC388F725C6CA96009726BB /* RecommendationsCollection.storyboard */; };
+		FAC388FF25C6CD5E009726BB /* ArtistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC388FE25C6CD5E009726BB /* ArtistDetailViewController.swift */; };
 		FACC5AD025BDDEDC008C124A /* AddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC5ACF25BDDEDC008C124A /* AddingButton.swift */; };
 		FACD3EA825C2DBFF0006A4DD /* SelectSongs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACD3EA725C2DBFF0006A4DD /* SelectSongs.storyboard */; };
 		FACD3EAB25C2DDBC0006A4DD /* SelectSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD3EAA25C2DDBC0006A4DD /* SelectSongsViewController.swift */; };
@@ -139,6 +146,13 @@
 		FAA88C5425B3281700DBA1F5 /* AddSong.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSong.storyboard; sourceTree = "<group>"; };
 		FABDBF9F25B193730039B4B3 /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
 		FAC2EE4425B7323500F18648 /* CoreData+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Extensions.swift"; sourceTree = "<group>"; };
+		FAC388E825C6C8C4009726BB /* ArtistDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtistDetail.storyboard; sourceTree = "<group>"; };
+		FAC388EB25C6CA5E009726BB /* SongsCollection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SongsCollection.storyboard; sourceTree = "<group>"; };
+		FAC388EE25C6CA76009726BB /* AlbumsCollection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlbumsCollection.storyboard; sourceTree = "<group>"; };
+		FAC388F125C6CA7E009726BB /* ArtistCollection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtistCollection.storyboard; sourceTree = "<group>"; };
+		FAC388F425C6CA8C009726BB /* PlaylistCollection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlaylistCollection.storyboard; sourceTree = "<group>"; };
+		FAC388F725C6CA96009726BB /* RecommendationsCollection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecommendationsCollection.storyboard; sourceTree = "<group>"; };
+		FAC388FE25C6CD5E009726BB /* ArtistDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewController.swift; sourceTree = "<group>"; };
 		FACC5ACF25BDDEDC008C124A /* AddingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingButton.swift; sourceTree = "<group>"; };
 		FACD3EA725C2DBFF0006A4DD /* SelectSongs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectSongs.storyboard; sourceTree = "<group>"; };
 		FACD3EAA25C2DDBC0006A4DD /* SelectSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSongsViewController.swift; sourceTree = "<group>"; };
@@ -198,12 +212,14 @@
 			isa = PBXGroup;
 			children = (
 				FAA88C5425B3281700DBA1F5 /* AddSong.storyboard */,
+				FAC388E825C6C8C4009726BB /* ArtistDetail.storyboard */,
 				FA44B38725BEFBA900009756 /* MiniPlayer.storyboard */,
 				FABDBF9F25B193730039B4B3 /* Player.storyboard */,
 				FA44B38425BEFAB000009756 /* SongsList.storyboard */,
 				FA4393B325C4455B00F1D897 /* CreateObject */,
 				FA912A3425AB3295001936F1 /* LaunchScreen.storyboard */,
 				FA912A2F25AB3292001936F1 /* Main.storyboard */,
+				FAC388FB25C6CB8C009726BB /* MainScreen */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -329,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				FAFA680B25B37F670026059D /* AddViewController.swift */,
+				FAC388FE25C6CD5E009726BB /* ArtistDetailViewController.swift */,
 				FA4B803D25B1833800A9ED9F /* MiniPlayerViewController.swift */,
 				FA18D2D125AC564C004D0E67 /* PlayerViewController.swift */,
 				FA912A2D25AB3292001936F1 /* SongsListViewController.swift */,
@@ -363,6 +380,18 @@
 				FA5F65E025BF003B00BDAB22 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FAC388FB25C6CB8C009726BB /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FAC388F425C6CA8C009726BB /* PlaylistCollection.storyboard */,
+				FAC388F725C6CA96009726BB /* RecommendationsCollection.storyboard */,
+				FAC388EB25C6CA5E009726BB /* SongsCollection.storyboard */,
+				FAC388EE25C6CA76009726BB /* AlbumsCollection.storyboard */,
+				FAC388F125C6CA7E009726BB /* ArtistCollection.storyboard */,
+			);
+			path = MainScreen;
 			sourceTree = "<group>";
 		};
 		FAE4873525C41A1E0056B87D /* CreatePlaylistViewController */ = {
@@ -484,15 +513,21 @@
 				FA6D517325B70A1400896236 /* PlaylistCollectionViewCell.xib in Resources */,
 				FACD3EA825C2DBFF0006A4DD /* SelectSongs.storyboard in Resources */,
 				FA912A3625AB3295001936F1 /* LaunchScreen.storyboard in Resources */,
+				FAC388F525C6CA8C009726BB /* PlaylistCollection.storyboard in Resources */,
+				FAC388EF25C6CA76009726BB /* AlbumsCollection.storyboard in Resources */,
+				FAC388EC25C6CA5E009726BB /* SongsCollection.storyboard in Resources */,
 				FA275C7225BFFCD500C581BD /* CreateOrEditContent.storyboard in Resources */,
 				FABDBFA025B193730039B4B3 /* Player.storyboard in Resources */,
+				FAC388E925C6C8C4009726BB /* ArtistDetail.storyboard in Resources */,
 				FA5BEBFA25C3F2EB00D64119 /* SelectArtistAlbumSongTableViewCell.xib in Resources */,
+				FAC388F225C6CA7E009726BB /* ArtistCollection.storyboard in Resources */,
 				FAFA681425B382830026059D /* AddSongTableViewCell.xib in Resources */,
 				FA912A3325AB3295001936F1 /* Assets.xcassets in Resources */,
 				FA912A3125AB3292001936F1 /* Main.storyboard in Resources */,
 				FA44B38825BEFBA900009756 /* MiniPlayer.storyboard in Resources */,
 				FAA88C5525B3281800DBA1F5 /* AddSong.storyboard in Resources */,
 				FA4393A425C437BE00F1D897 /* SelectArtist.storyboard in Resources */,
+				FAC388F825C6CA96009726BB /* RecommendationsCollection.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +545,7 @@
 				FA6D516425B7068000896236 /* ArtistCollectionViewController.swift in Sources */,
 				FA912A2E25AB3292001936F1 /* SongsListViewController.swift in Sources */,
 				FA18D2D225AC564C004D0E67 /* PlayerViewController.swift in Sources */,
+				FAC388FF25C6CD5E009726BB /* ArtistDetailViewController.swift in Sources */,
 				FA05A1B925B5C6AC00E31D31 /* ApiKeys.swift in Sources */,
 				FAFA681325B382830026059D /* AddSongTableViewCell.swift in Sources */,
 				FA6D516025B7056400896236 /* ArtistCollectionViewCell.swift in Sources */,

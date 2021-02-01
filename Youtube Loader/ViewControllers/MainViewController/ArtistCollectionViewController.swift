@@ -8,9 +8,15 @@
 import UIKit
 import CoreData
 
+protocol ArtistCollectionViewControllerDelegate: class {
+    func didSelectedArtist(_ artist: Artist)
+}
+
 final class ArtistCollectionViewController: UICollectionViewController {
 
     //MARK: - Properties
+    public weak var delegate: ArtistCollectionViewControllerDelegate?
+    
     private static let leadingKind = "Artist.leading"
     private var dataSource: UICollectionViewDiffableDataSource<Int, Artist>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, Artist>()
@@ -124,7 +130,14 @@ extension ArtistCollectionViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
+//MARK: - UICollectionViewDelegate
 extension ArtistCollectionViewController {
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let artist = dataSource.itemIdentifier(for: indexPath) else { return }
+        delegate?.didSelectedArtist(artist)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         if let cellItemIdentifier = dataSource.itemIdentifier(for: indexPath) {
             let identifier = NSString(string: String(describing: cellItemIdentifier))

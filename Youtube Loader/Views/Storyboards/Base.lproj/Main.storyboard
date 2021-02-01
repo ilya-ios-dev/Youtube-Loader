@@ -57,7 +57,7 @@
                                                                     <constraint firstAttribute="height" constant="240" id="4af-PP-FCl"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <segue destination="YbZ-V9-DkF" kind="embed" id="aAr-Ix-xVK"/>
+                                                                    <segue destination="7da-Re-Eig" kind="embed" id="qlM-rI-Xis"/>
                                                                 </connections>
                                                             </containerView>
                                                         </subviews>
@@ -95,7 +95,7 @@
                                                                     <constraint firstAttribute="height" constant="210" id="YUk-4R-pJy"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <segue destination="RaE-cs-Zhe" kind="embed" id="t2e-G6-3Io"/>
+                                                                    <segue destination="K0u-CG-3DW" kind="embed" id="jt1-Ss-k3G"/>
                                                                 </connections>
                                                             </containerView>
                                                         </subviews>
@@ -133,7 +133,7 @@
                                                                     <constraint firstAttribute="height" constant="210" id="Zdi-YW-Kzw"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <segue destination="LTr-Er-ieI" kind="embed" id="JGi-OH-bnQ"/>
+                                                                    <segue destination="GE9-JQ-bKj" kind="embed" id="UUK-gE-EAm"/>
                                                                 </connections>
                                                             </containerView>
                                                         </subviews>
@@ -171,7 +171,7 @@
                                                                     <constraint firstAttribute="height" constant="210" id="Ysh-CX-BH9"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <segue destination="Haz-gd-ght" kind="embed" id="Lqh-p0-u4m"/>
+                                                                    <segue destination="w6l-Bf-eAD" kind="embed" id="ywm-jI-H0R"/>
                                                                 </connections>
                                                             </containerView>
                                                         </subviews>
@@ -209,7 +209,7 @@
                                                                     <constraint firstAttribute="height" constant="240" id="w8Q-sv-tcH"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <segue destination="Sl7-W0-75H" kind="embed" id="EOv-D5-gyY"/>
+                                                                    <segue destination="PzI-Re-viT" kind="embed" id="y61-RL-dFh"/>
                                                                 </connections>
                                                             </containerView>
                                                         </subviews>
@@ -274,31 +274,6 @@
             </objects>
             <point key="canvasLocation" x="327.536231884058" y="-82.366071428571431"/>
         </scene>
-        <!--Songs Collection View Controller-->
-        <scene sceneID="yET-qL-8Ml">
-            <objects>
-                <collectionViewController id="YbZ-V9-DkF" customClass="SongsCollectionViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ztf-Zg-zeE">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="240"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dyW-5V-39H">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="YbZ-V9-DkF" id="IGF-JI-n0N"/>
-                            <outlet property="delegate" destination="YbZ-V9-DkF" id="gA7-RW-yKI"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FPU-XX-W9w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1399" y="-648"/>
-        </scene>
         <!--AddSong-->
         <scene sceneID="u46-sR-EZs">
             <objects>
@@ -336,56 +311,6 @@
             </objects>
             <point key="canvasLocation" x="-564" y="-82"/>
         </scene>
-        <!--Albums Collection View Controller-->
-        <scene sceneID="EJm-Vy-rKi">
-            <objects>
-                <collectionViewController id="RaE-cs-Zhe" customClass="AlbumsCollectionViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8LH-jB-UhU">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="210"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nIc-7h-XMf">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="RaE-cs-Zhe" id="cEM-wb-gGi"/>
-                            <outlet property="delegate" destination="RaE-cs-Zhe" id="qd2-Y1-7tC"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TWd-34-HA8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1399" y="-372"/>
-        </scene>
-        <!--Artist Collection View Controller-->
-        <scene sceneID="kHx-Yc-GhQ">
-            <objects>
-                <collectionViewController id="LTr-Er-ieI" customClass="ArtistCollectionViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="EjF-ws-OeK">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="210"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e7M-B9-FJP">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="LTr-Er-ieI" id="g9x-Tm-yLZ"/>
-                            <outlet property="delegate" destination="LTr-Er-ieI" id="rCP-va-WWa"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ivs-re-c2N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1399" y="-123"/>
-        </scene>
         <!--SongsList-->
         <scene sceneID="2Lo-o0-n2l">
             <objects>
@@ -394,57 +319,47 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Cb-5K-9AD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1194" y="-876"/>
+            <point key="canvasLocation" x="1212" y="-307"/>
         </scene>
-        <!--Playlist Collection View Controller-->
-        <scene sceneID="aav-0H-POf">
+        <!--SongsCollection-->
+        <scene sceneID="Zs6-It-pdl">
             <objects>
-                <collectionViewController id="Haz-gd-ght" customClass="PlaylistCollectionViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2AQ-81-OYx">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="210"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fWG-hf-oa0">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="Haz-gd-ght" id="Hkt-z3-QCF"/>
-                            <outlet property="delegate" destination="Haz-gd-ght" id="Xyb-9f-Bjd"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Py-zw-5BC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="SongsCollection" id="7da-Re-Eig" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zL0-ch-l8k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1399" y="123"/>
+            <point key="canvasLocation" x="1205" y="-236"/>
         </scene>
-        <!--Recommendations Collection View Controller-->
-        <scene sceneID="0TY-x4-TPZ">
+        <!--AlbumsCollection-->
+        <scene sceneID="8iJ-DF-lfb">
             <objects>
-                <collectionViewController id="Sl7-W0-75H" customClass="RecommendationsCollectionViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="VTa-GR-xWn">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="240"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LaM-bL-BPw">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells/>
-                        <connections>
-                            <outlet property="dataSource" destination="Sl7-W0-75H" id="IbE-p8-WKo"/>
-                            <outlet property="delegate" destination="Sl7-W0-75H" id="29D-rb-nOx"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hQO-9C-eJQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="AlbumsCollection" id="K0u-CG-3DW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JHZ-kj-x3K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1399" y="428"/>
+            <point key="canvasLocation" x="1209" y="-143"/>
+        </scene>
+        <!--ArtistCollection-->
+        <scene sceneID="DUL-N5-kf3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ArtistCollection" id="GE9-JQ-bKj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9yd-HV-EcC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1212" y="-60"/>
+        </scene>
+        <!--PlaylistCollection-->
+        <scene sceneID="8jp-Iw-Jdo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PlaylistCollection" id="w6l-Bf-eAD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zLf-M1-B4J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1210" y="22"/>
+        </scene>
+        <!--RecommendationsCollection-->
+        <scene sceneID="jfY-By-c1F">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RecommendationsCollection" id="PzI-Re-viT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qDP-Mk-36a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1210" y="127"/>
         </scene>
     </scenes>
     <resources>

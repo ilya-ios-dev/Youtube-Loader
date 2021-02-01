@@ -29,8 +29,7 @@ final class MiniPlayerViewController: UIViewController {
     
     //MARK: - Properties
     public weak var delegate: MiniPlayerDelegate?
-    public var audioplayer = AudioPlayer()
-    
+    public var sourceProtocol: PlayerSourceProtocol!
     public var songs: [Song] {
         get {
             return audioplayer.songs
@@ -38,6 +37,9 @@ final class MiniPlayerViewController: UIViewController {
             audioplayer.songs = newValue
             tapGesture.isEnabled = true
         }
+    }
+    private var audioplayer: AudioPlayer {
+        return sourceProtocol.audioPlayer
     }
     
     //MARK: - View Life Cycle
@@ -127,8 +129,8 @@ extension MiniPlayerViewController {
 //MARK: - AudioPlayerDelegate
 extension MiniPlayerViewController: AudioPlayerDelegate {
     private func configureSong(_ song: Song?) {
-        delegate?.didSelectedItem(song)
         guard let song = song else { return }
+        delegate?.didSelectedItem(song)
         
         titleLabel.text = song.name
         authorLabel.text = song.author?.name
@@ -157,16 +159,5 @@ extension MiniPlayerViewController: AudioPlayerDelegate {
         let imageName = isPlaying ? "pause.fill" : "play.fill"
         let largeConfig = UIImage.SymbolConfiguration(scale: .large)
         playOrPauseButton.setImage(UIImage(systemName: imageName, withConfiguration: largeConfig), for: .normal)
-    }
-}
-
-//MARK: - PlayerSourceProtocol
-extension MiniPlayerViewController: PlayerSourceProtocol {
-    var originatingFrameInWindow: CGRect {
-      return view.convert(view.frame, to: nil)
-    }
-    
-    var originatingCoverImageView: UIImageView {
-      return songImageView
     }
 }

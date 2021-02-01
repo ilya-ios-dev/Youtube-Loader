@@ -8,13 +8,7 @@
 import UIKit
 import CoreData
 
-protocol PlayerSourceProtocol: class {
-    var originatingFrameInWindow: CGRect { get }
-    var originatingCoverImageView: UIImageView { get }
-}
-
 final class PlayerViewController: UIViewController {
-    
     //MARK: - Outlets
     @IBOutlet private weak var songImageView: UIImageView!
     @IBOutlet private weak var songTitleLabel: UILabel!
@@ -29,16 +23,17 @@ final class PlayerViewController: UIViewController {
     @IBOutlet private weak var backgroundImageView: UIImageView!
     @IBOutlet private weak var visualEffectView: UIVisualEffectView!
     
-    
     //MARK: - Properties
+    public var sourceProtocol: PlayerSourceProtocol!
+    
     private var isProgressBarSliding = false
+    private var audioPlayer: AudioPlayer {
+        return sourceProtocol.audioPlayer
+    }
     private var context: NSManagedObjectContext  = {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }()
-    
-    public var sourceView: PlayerSourceProtocol!
-    public var audioPlayer: AudioPlayer!
-    
+        
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

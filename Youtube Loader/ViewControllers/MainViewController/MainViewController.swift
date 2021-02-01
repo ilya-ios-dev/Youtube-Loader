@@ -8,6 +8,13 @@
 import UIKit
 import CoreData
 
+/// In this application, a player can be open on many screens, so the child and parent views,
+/// in which the song can be selected, must contain a field to pass the `shared audioplayer`.
+/// There is only one `AudioPlayer` in this application, and it only initializes on the first screen.
+protocol PlayerSourceProtocol: class {
+    var audioPlayer: AudioPlayer { get }
+}
+
 final class MainViewController: UIViewController {
     
     //MARK: - Outlets
@@ -30,9 +37,11 @@ final class MainViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let song = miniPlayer.audioplayer.currentSong else { return }
+        // If the song is in the audio player, then the player should be shown
+        guard let song = audioPlayer.currentSong else { return }
         songsCollectionView.selectItem(song)
         miniPlayerView.isHidden = false
+        
         scrollView.contentInset = UIEdgeInsets(top: scrollView.contentInset.top, left: 0, bottom: miniPlayerView.frame.height + 8, right: 0)
     }
     
@@ -42,17 +51,21 @@ final class MainViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // MiniPlayer
+            // MiniPlayer
         if let destination = segue.destination as? MiniPlayerViewController {
-          miniPlayer = destination
-          miniPlayer?.delegate = self
-        // SongsCollectionView
+            miniPlayer = destination
+            miniPlayer.sourceProtocol = self
+            miniPlayer?.delegate = self
+            // SongsCollectionView
         } else if let destination = segue.destination as? SongsCollectionViewController {
             songsCollectionView = destination
             songsCollectionView.delegate = self
-        // SongsList
+            // SongsList
         } else if let destination = segue.destination as? SongsListViewController {
-            destination.audioPlayer = miniPlayer.audioplayer
+            destination.sourceProtocol = self
+            // ArtistCollectionView
+        } else if let destination = segue.destination as? ArtistCollectionViewController {
+            destination.delegate = self
         }
     }
     
@@ -82,8 +95,7 @@ extension MainViewController: MiniPlayerDelegate {
     func expandSong(song: Song?) {
         let storyboard = UIStoryboard(name: "Player", bundle: nil)
         guard let playerController = storyboard.instantiateInitialViewController() as? PlayerViewController else { return }
-        playerController.sourceView = miniPlayer
-        playerController.audioPlayer = miniPlayer.audioplayer
+        playerController.sourceProtocol = self
         playerController.modalPresentationStyle = .currentContext
         present(playerController, animated: true, completion: nil)
     }
@@ -98,5 +110,24 @@ extension MainViewController: SongsCollectionViewControllerDelegate {
     
     func didSelectedItemAt(_ index: Int) {
         miniPlayer.play(at: index)
+    }
+}
+
+//MARK: - ArtistCollectionViewControllerDelegate
+extension MainViewController: ArtistCollectionViewControllerDelegate {
+    func didSelectedArtist(_ artist: Artist) {
+        let storyboard = UIStoryboard(name: "ArtistDetail", bundle: nil)
+        guard let vc = storyboard.instantiateInitialViewController() as? ArtistDetailViewController else { return }
+        vc.artist = artist
+        vc.sourceProtocol = self
+        vc.modalPresentationStyle = .fullScreen
+        show(vc, sender: true)
+    }
+}
+
+//MARK: - PlayerSourceProtocol
+extension MainViewController: PlayerSourceProtocol {
+    var audioPlayer: AudioPlayer {
+        return AudioPlayer.shared
     }
 }
