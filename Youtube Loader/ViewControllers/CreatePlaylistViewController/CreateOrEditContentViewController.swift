@@ -92,7 +92,8 @@ final class CreateOrEditContentViewController: UIViewController {
         
         // If Object are editing
         if editingContent != nil {
-            configureViewsForEditing()
+            configureViewForEditing()
+            configureContentForEditing()
         } else {
             createButton.isEnabled = false
             refreshTapped(self)
@@ -450,10 +451,9 @@ extension CreateOrEditContentViewController {
     }
     
     /// Adjusts the appearance of elements for editing. Populates with data from an object.
-    private func configureViewsForEditing() {
+    private func configureContentForEditing() {
         imageViewBlur.isHidden = true
         activityIndicatiorView.stopAnimating()
-        
         switch contentType {
         case .album:
             configureAlbumForEditing()
