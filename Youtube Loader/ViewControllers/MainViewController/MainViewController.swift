@@ -47,7 +47,6 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         configureMiniPlayer()
-        miniPlayer?.songs = songs
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -109,10 +108,12 @@ extension MainViewController: MiniPlayerDelegate {
 extension MainViewController: SongsCollectionViewControllerDelegate {
     func updateSongsArray(_ songs: [Song]) {
         self.songs = songs
-        miniPlayer?.songs = songs
     }
     
     func didSelectedItemAt(_ index: Int) {
+        if miniPlayer.songs != songs {
+            miniPlayer.songs = songs
+        }
         miniPlayer.play(at: index)
     }
 }

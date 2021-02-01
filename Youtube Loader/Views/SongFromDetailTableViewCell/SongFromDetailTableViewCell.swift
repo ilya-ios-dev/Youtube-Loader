@@ -12,13 +12,23 @@ final class SongFromDetailTableViewCell: UITableViewCell {
     //MARK: - Outlets
     @IBOutlet private weak var detailButton: UIButton!
     @IBOutlet private weak var visualEffectBlur: UIVisualEffectView!
-    @IBOutlet public weak var backgroundBlurImage: UIImageView!
+    @IBOutlet private weak var backgroundBlurImage: UIImageView!
     @IBOutlet private weak var playingImageView: UIImageView!
+    @IBOutlet private weak var songImageView: UIImageView!
+    @IBOutlet private weak var indexLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var contentBackgroundView: UIView!
     
-    @IBOutlet public weak var songImageView: UIImageView!
-    @IBOutlet public weak var indexLabel: UILabel!
-    @IBOutlet public weak var titleLabel: UILabel!
-    @IBOutlet public weak var descriptionLabel: UILabel!
+    public func configure(name: String?, author: String?, imageURL: URL?, index: Int) {
+        if let url = imageURL {
+            backgroundBlurImage.af.setImage(withURL: url)
+            songImageView.af.setImage(withURL: url)
+        }
+        indexLabel.text = String(index)
+        titleLabel.text = name
+        descriptionLabel.text = author
+    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         if selected {
@@ -26,12 +36,12 @@ final class SongFromDetailTableViewCell: UITableViewCell {
             UIView.transition(with: playingImageView, duration: 0.325, options: .transitionCrossDissolve) {
                 self.playingImageView.isHidden = false
                 self.indexLabel.isHidden = true
-                self.contentView.backgroundColor = .white
+                self.contentBackgroundView.backgroundColor = .white
             }
         } else {
             playingImageView.isHidden = true
             indexLabel.isHidden = false
-            contentView.backgroundColor = .clear
+            contentBackgroundView.backgroundColor = .clear
         }
     }
     
@@ -39,7 +49,7 @@ final class SongFromDetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         songImageView.layer.cornerRadius = 4
-        contentView.layer.cornerRadius = 8
+        contentBackgroundView.layer.cornerRadius = 8
         configureBlur()
     }
     

@@ -52,7 +52,6 @@ final class ArtistDetailViewController: UIViewController {
         configureSearchBar()
         scrollView.contentInset = .init(top: 0, left: 0, bottom: view.safeAreaInsets.bottom + 16, right: 0)
         configureMiniPlayer()
-        miniPlayer?.songs = songs
         configureHeaderView()
     }
     
@@ -201,10 +200,12 @@ extension ArtistDetailViewController: MiniPlayerDelegate {
 extension ArtistDetailViewController: SongsCollectionViewControllerDelegate {
     func updateSongsArray(_ songs: [Song]) {
         self.songs = songs
-        miniPlayer?.songs = songs
     }
     
     func didSelectedItemAt(_ index: Int) {
+        if miniPlayer.songs != songs {
+            miniPlayer.songs = songs
+        }
         miniPlayer.play(at: index)
     }
 }

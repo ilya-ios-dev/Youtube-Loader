@@ -12,14 +12,23 @@ final class SongTableViewCell: UITableViewCell {
     //MARK: - Outlets
     @IBOutlet private weak var detailButton: UIButton!
     @IBOutlet private weak var visualEffectBlur: UIVisualEffectView!
-    @IBOutlet public weak var backgroundBlurImage: UIImageView!
+    @IBOutlet private weak var backgroundBlurImage: UIImageView!
     @IBOutlet private weak var playingImageView: UIImageView!
+    @IBOutlet private weak var songImageView: UIImageView!
+    @IBOutlet private weak var indexLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
     
-    @IBOutlet public weak var songImageView: UIImageView!
-    @IBOutlet public weak var indexLabel: UILabel!
-    @IBOutlet public weak var titleLabel: UILabel!
-    @IBOutlet public weak var descriptionLabel: UILabel!
-    
+    public func configure(name: String?, author: String?, imageURL: URL?, index: Int) {
+        if let url = imageURL {
+            backgroundBlurImage.af.setImage(withURL: url)
+            songImageView.af.setImage(withURL: url)
+        }
+        indexLabel.text = String(index)
+        titleLabel.text = name
+        descriptionLabel.text = author
+    }
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         if selected {
             playingImageView.tintColor = songImageView.image?.averageColor?.withLuminosity(0.7)

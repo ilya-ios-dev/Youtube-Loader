@@ -51,7 +51,7 @@ final class MiniPlayerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tapGesture.isEnabled = false
+        tapGesture.isEnabled = !songs.isEmpty
         configureImageViews()
         configureBlur()
     }

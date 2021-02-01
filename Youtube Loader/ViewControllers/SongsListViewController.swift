@@ -142,7 +142,6 @@ extension SongsListViewController {
         snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
         snapshot.appendSections([0])
         snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
-        miniPlayer.songs = snapshot.itemIdentifiers
         DispatchQueue.main.async {
             self.dataSource?.apply(self.snapshot, animatingDifferences: true)
         }
@@ -151,15 +150,7 @@ extension SongsListViewController {
     private func setupDiffableDataSource() {
         dataSource = UITableViewDiffableDataSource<Int, Song>(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "songTableViewCell") as! SongTableViewCell
-            
-            if let imageUrl = song.thumbnails?.smallUrl {
-                cell.songImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
-                cell.backgroundBlurImage.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
-            }
-            cell.titleLabel.text = song.name
-            cell.descriptionLabel.text = song.author?.name
-            cell.indexLabel.text = String(indexPath.row + 1)
-            
+            cell.configure(name: song.name, author: song.author?.name, imageURL: song.thumbnails?.smallUrl, index: indexPath.row + 1)
             return cell
         })
         setupSnapshot()
@@ -193,9 +184,8 @@ extension SongsListViewController: MiniPlayerDelegate {
 //MARK: - UITableViewDelegate
 extension SongsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let song = audioPlayer.currentSong {
-            guard let songIndex = dataSource.indexPath(for: song) else { return }
-            guard songIndex != indexPath else { return }
+        if miniPlayer.songs != snapshot.itemIdentifiers {
+            miniPlayer.songs = snapshot.itemIdentifiers
         }
         miniPlayer.play(at: indexPath.row)
         
