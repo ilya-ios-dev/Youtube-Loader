@@ -161,9 +161,9 @@ final class YoutubeDownloader {
         }
         let _ = group.wait(timeout: .now() + 15)
         group.notify(queue: .main) {
-            let largeImage = LocalFileManager.getURLForFile(withNameAndExtension: "\(channelID)Large", ext: "jpg")
-            let mediumImage = LocalFileManager.getURLForFile(withNameAndExtension: "\(channelID)Medium", ext: "jpg")
-            let smallImage = LocalFileManager.getURLForFile(withNameAndExtension: "\(channelID)Small", ext: "jpg")
+            let largeImage = "\(channelID)Large" + ".jpg"
+            let mediumImage = "\(channelID)Medium" + ".jpg"
+            let smallImage = "\(channelID)Small" + ".jpg"
             var artist: Artist?
             let thumbnail = Thumbnail.create(context: self.context, small: smallImage, medium: mediumImage, large: largeImage)
             artist = Artist.createIfNotExist(context: self.context, thumbnails: thumbnail, id: channelID, name: channel.snippet.title)
