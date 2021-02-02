@@ -13,32 +13,53 @@ protocol AudioPlayerDelegate: class {
     func songChanged(_ song: Song)
 }
 
+/// The sequence in which songs will be delivered.
+enum OrderType: CaseIterable {
+    case none, reversed, shuffle
+}
+
+/// Repetitions, which will be applied after the song ends.
+enum RepeatType: CaseIterable {
+    case  none, once, infinity
+}
+
 final class AudioPlayer: NSObject {
     
     //MARK: - Properties
     public static let shared = AudioPlayer()
-
-    private var updater = CADisplayLink()
-    private var audioPlayer: AVAudioPlayer!
-    
-    public var currentSong: Song!
-    public var songs = [Song]()
     public weak var delegate: AudioPlayerDelegate?
+    
     public var isPlaying: Bool {
         return audioPlayer?.isPlaying ?? false
     }
     public var songIndex: Int? {
-        return songs.firstIndex(of: currentSong)
+        return _songs.firstIndex(of: currentSong!)
     }
-
-    //MARK: - Initialization
-    override init() {
-        super.init()
+    public var songs = [Song]() {
+        didSet {
+            orderType = .none
+            repeatType = .none
+            _songs = songs
+        }
     }
+    // List of songs that will be used inside the object.
+    // Changing the sort changes the object.
+    private var _songs = [Song]()
+    private var updater = CADisplayLink()
+    private var audioPlayer: AVAudioPlayer!
+    private(set) var currentSong: Song!
+    private(set) var prevSong: Song?
+    private(set) var repeatType = RepeatType.none
+    private(set) var orderType = OrderType.none
     
     //MARK: - Supporting Methods
-    @discardableResult
-    public func selectSong(at index: Int) -> Bool {
+    
+    /// Selects a song from the list by index. The list is not affected by the sort setting.
+    /// - Parameter index: Selected song index.
+    /// - Returns: Whether the operation was successful.
+    @discardableResult public func selectSong(at index: Int) -> Bool {
+        // If songs list is not empty, and song index greater than songs count,
+        // than it starts from the beginning.
         guard !songs.isEmpty else { return false }
         if index >= songs.count || index < 0 {
             return setupPlayer(withSong: songs[0])
@@ -47,8 +68,24 @@ final class AudioPlayer: NSObject {
         }
     }
     
-    @discardableResult
-    public func setupPlayer(withSong song: Song) -> Bool {
+    /// Selects a song from the list by index. The index respects the sort parameter.
+    /// - Parameter index: Selected song index.
+    /// - Returns: Whether the operation was successful.
+    @discardableResult public func setupPlayer(at index: Int) -> Bool {
+        // If songs list is not empty, and song index greater than songs count,
+        // than it starts from the beginning.
+        guard !_songs.isEmpty else { return false }
+        if index >= _songs.count || index < 0 {
+            return setupPlayer(withSong: _songs[0])
+        } else {
+            return setupPlayer(withSong: _songs[index])
+        }
+    }
+    
+    /// Takes a song as a parameter. Deletes the previous player, and creates a new one with a new song.
+    /// - Parameter song: The song that will be launched.
+    /// - Returns: Whether the operation was successful.
+    @discardableResult public func setupPlayer(withSong song: Song) -> Bool {
         guard let songURL = song.songURL else { return false }
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: songURL)
@@ -57,50 +94,79 @@ final class AudioPlayer: NSObject {
             delegate?.audioPlayerPlayingStatusChanged(isPlaying: false)
             delegate?.songChanged(song)
             updater = CADisplayLink(target: self, selector: #selector(updateDelegate))
+            prevSong = currentSong
             currentSong = song
             play()
             return true
         } catch {
-            
             print(error)
             return false
         }
     }
     
-    public func playOrPause() {
+    /// Returns a list of songs with sorting.
+    public func getOrderingSongs() -> [Song] {
+        return _songs
+    }
+    
+    /// Changes the sort parameter to the following. All ordering parameters are contained in `OrderType`.
+    public func changeOrdering() {
+        orderType = orderType.next()
+        switch orderType {
+        case .reversed:
+            _songs.reverse()
+        case .shuffle:
+            _songs.shuffle()
+        case .none:
+            _songs = songs
+        }
+    }
+    
+    /// Changes the repetition setting to the next. All repeating parameters are contained in `RepeatType`.
+    public func changeRepeating() {
+        repeatType = repeatType.next()
+    }
+    
+    /// Switches the play value to the opposite.
+    public func togglePlaying() {
         isPlaying ? pause() : play()
     }
     
+    /// Starts playing the song in the audio player.
     public func play() {
         audioPlayer.play()
         delegate?.audioPlayerPlayingStatusChanged(isPlaying: true)
         updater = CADisplayLink(target: self, selector: #selector(updateDelegate))
         updater.add(to: RunLoop.current, forMode: RunLoop.Mode.common)
     }
-
+    
+    /// Pauses the audio player.
     public func pause() {
         audioPlayer.pause()
         delegate?.audioPlayerPlayingStatusChanged(isPlaying: false)
         updater.invalidate()
     }
-
+    
+    /// Switches the song to the next. If there is no next one, then the playlist starts over.
     public func nextSong() {
         guard let songIndex = songIndex else { return }
-        selectSong(at: songIndex + 1)
+        setupPlayer(at: songIndex + 1)
     }
     
+    /// Switches the song to the previous one. If there is no previous one, then it opens the current one from the beginning.
     public func previousSong() {
         guard let songIndex = songIndex else { return }
-        selectSong(at: songIndex - 1)
+        setupPlayer(at: songIndex - 1)
     }
-
     
-    // Может перенести в плейлист менеджер?
+    /// Updates the listening time of the song.
+    /// - Parameter percenatge: Percentage value from which to start playback.
     public func setPlayerCurrentTime(withPercentage percenatge: Float) {
         guard audioPlayer != nil else { return }
         audioPlayer.currentTime = TimeInterval(percenatge * Float(audioPlayer.duration))
     }
     
+    /// Updates the song playing time in the delegate.
     @objc private func updateDelegate() {
         delegate?.audioPlayerPeriodicUpdate(currentTime: Float(audioPlayer?.currentTime ?? 0) , duration: Float(audioPlayer?.duration ?? 0))
     }
@@ -109,6 +175,18 @@ final class AudioPlayer: NSObject {
 //MARK: - AVAudioPlayerDelegate
 extension AudioPlayer: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        nextSong()
+        guard let songIndex = songIndex else { return }
+        switch repeatType {
+        case .none:
+            nextSong()
+        case .once:
+            if let prevSong = prevSong, prevSong == currentSong {
+                nextSong()
+            } else {
+                setupPlayer(at: songIndex)
+            }
+        case .infinity:
+            setupPlayer(at: songIndex)
+        }
     }
 }

@@ -17,14 +17,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vinyl_record" translatesAutoresizingMaskIntoConstraints="NO" id="gVO-s3-7Ef">
-                                <rect key="frame" x="69" y="232.5" width="276" height="276"/>
+                                <rect key="frame" x="69" y="235" width="276" height="276"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gVO-s3-7Ef" secondAttribute="height" id="0se-6W-qUF"/>
                                     <constraint firstAttribute="width" constant="276" id="g5T-Hw-JaC"/>
                                 </constraints>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6P3-UY-tRP">
-                                <rect key="frame" x="69" y="232.5" width="276" height="377.5"/>
+                                <rect key="frame" x="69" y="235" width="276" height="377.5"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0mc-xl-SYQ">
                                     <rect key="frame" x="0.0" y="0.0" width="276" height="377.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,14 +32,14 @@
                                 <blurEffect style="regular"/>
                             </visualEffectView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vinyl_record" translatesAutoresizingMaskIntoConstraints="NO" id="l7D-3I-cZf">
-                                <rect key="frame" x="69" y="232.5" width="276" height="276"/>
+                                <rect key="frame" x="69" y="235" width="276" height="276"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="l7D-3I-cZf" secondAttribute="height" id="vK7-nq-UPQ"/>
                                     <constraint firstAttribute="width" constant="276" id="xyu-sB-O31"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2v3-Zt-VgF">
-                                <rect key="frame" x="20" y="528.5" width="374" height="51.5"/>
+                                <rect key="frame" x="20" y="531" width="374" height="51.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmY-U0-u8x">
                                         <rect key="frame" x="169" y="0.0" width="36" height="24"/>
@@ -56,7 +56,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="Spx-R9-wXJ">
-                                <rect key="frame" x="94" y="679" width="226" height="97"/>
+                                <rect key="frame" x="94" y="681.5" width="226" height="97"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4TJ-dh-tY0">
                                         <rect key="frame" x="0.0" y="0.0" width="30.5" height="97"/>
@@ -92,34 +92,54 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Sp-71-z9R" customClass="TimelineView" customModule="Youtube_Loader" customModuleProvider="target">
-                                <rect key="frame" x="35" y="610" width="344" height="25"/>
+                                <rect key="frame" x="35" y="612.5" width="344" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="sKc-kD-GPf"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gmg-Xr-7oz">
-                                <rect key="frame" x="20" y="820" width="374" height="22"/>
+                                <rect key="frame" x="20" y="822.5" width="374" height="19.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ui7-iE-4Vi">
-                                        <rect key="frame" x="0.0" y="0.0" width="93.5" height="22"/>
-                                        <color key="tintColor" red="0.19215686274509802" green="0.27058823529411763" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="heart.fill" catalog="system"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ui7-iE-4Vi">
+                                        <rect key="frame" x="0.0" y="1" width="93.5" height="18"/>
+                                        <color key="tintColor" red="0.52549019607843139" green="0.63921568627450975" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="list.bullet" catalog="system" symbolScale="medium"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="songsListTapped:" destination="RsO-tx-p5C" eventType="touchUpInside" id="BKT-aK-1LJ"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIK-ad-rDo">
-                                        <rect key="frame" x="93.5" y="0.0" width="93.5" height="22"/>
-                                        <color key="tintColor" red="0.19215686274509802" green="0.27058823529411763" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="shuffle" catalog="system"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIK-ad-rDo">
+                                        <rect key="frame" x="93.5" y="1" width="93.5" height="18"/>
+                                        <color key="tintColor" red="0.52549019607843139" green="0.63921568627450975" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="shuffle" catalog="system" symbolScale="medium"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="shuffleTapped:" destination="RsO-tx-p5C" eventType="touchUpInside" id="eaC-jp-5pg"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKa-1Z-la6">
-                                        <rect key="frame" x="187" y="0.0" width="93.5" height="22"/>
-                                        <color key="tintColor" red="0.19215686274509802" green="0.27058823529411763" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="repeat" catalog="system"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKa-1Z-la6">
+                                        <rect key="frame" x="187" y="0.5" width="93.5" height="18.5"/>
+                                        <color key="tintColor" red="0.52549019607843139" green="0.63921568627450975" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="repeat" catalog="system" symbolScale="medium"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="repeatTapped:" destination="RsO-tx-p5C" eventType="touchUpInside" id="Y94-4c-rFf"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWY-KE-2VV">
-                                        <rect key="frame" x="280.5" y="0.0" width="93.5" height="22"/>
-                                        <color key="tintColor" red="0.19215686274509802" green="0.27058823529411763" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="text.badge.plus" catalog="system"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWY-KE-2VV">
+                                        <rect key="frame" x="280.5" y="0.0" width="93.5" height="19.5"/>
+                                        <color key="tintColor" red="0.52549019607843139" green="0.63921568627450975" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="text.badge.plus" catalog="system" symbolScale="medium"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addToPlaylistTapped:" destination="RsO-tx-p5C" eventType="touchUpInside" id="2OC-4N-d6F"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -203,14 +223,18 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addToPlaylist" destination="pWY-KE-2VV" id="MOH-fP-w5V"/>
                         <outlet property="backgroundImageView" destination="gVO-s3-7Ef" id="crx-TW-OHo"/>
                         <outlet property="backwardButton" destination="4TJ-dh-tY0" id="pGM-yd-BYr"/>
                         <outlet property="downButton" destination="UUf-s0-SWF" id="BtB-8J-qOk"/>
                         <outlet property="forwardButton" destination="SjL-92-Tuv" id="JoQ-pc-47m"/>
                         <outlet property="playButton" destination="Zfa-eO-XJN" id="6dr-LW-eI2"/>
+                        <outlet property="repeatButton" destination="FKa-1Z-la6" id="juU-VI-YXd"/>
+                        <outlet property="shuffleButton" destination="GIK-ad-rDo" id="61Q-De-D3X"/>
                         <outlet property="songAuthor" destination="QiS-Fd-a5Q" id="5u9-iY-Qlt"/>
                         <outlet property="songImageView" destination="l7D-3I-cZf" id="G3C-W6-bcf"/>
                         <outlet property="songTitleLabel" destination="fmY-U0-u8x" id="4bW-Or-ZKP"/>
+                        <outlet property="songsListButton" destination="Ui7-iE-4Vi" id="WDS-WU-fe7"/>
                         <outlet property="subtitleLabel" destination="StM-c5-WJA" id="WgI-Be-frD"/>
                         <outlet property="timelineView" destination="4Sp-71-z9R" id="QIu-fe-dvc"/>
                         <outlet property="titleLabel" destination="JAH-Cb-rjG" id="3dU-LT-lrh"/>
@@ -226,7 +250,7 @@
         <image name="backward.fill" catalog="system" width="128" height="79"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="forward.fill" catalog="system" width="128" height="79"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="repeat" catalog="system" width="128" height="99"/>
         <image name="shuffle" catalog="system" width="128" height="93"/>

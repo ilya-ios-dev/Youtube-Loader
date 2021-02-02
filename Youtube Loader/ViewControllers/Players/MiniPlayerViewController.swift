@@ -62,7 +62,7 @@ final class MiniPlayerViewController: UIViewController {
     }
     
     @IBAction func pauseTapped(_ sender: Any) {
-        audioplayer.playOrPause()
+        audioplayer.togglePlaying()
     }
     
     @IBAction func tapGesture(_ sender: Any) {
