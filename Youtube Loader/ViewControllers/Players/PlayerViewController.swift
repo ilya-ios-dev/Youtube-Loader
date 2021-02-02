@@ -74,11 +74,11 @@ final class PlayerViewController: UIViewController {
     }
     
     @IBAction private func songsListTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "SongsList", bundle: nil)
-        guard let vc = storyboard.instantiateInitialViewController() as? SongsListViewController else { return }
+        let storyboard = UIStoryboard(name: "PlayerSongsList", bundle: nil)
+        guard let vc = storyboard.instantiateInitialViewController() as? PlayerSongsListViewController else { return }
         vc.modalPresentationStyle = .automatic
         vc.sourceProtocol = sourceProtocol
-        // TODO: - Change VC
+        vc.songs = audioPlayer.getOrderingSongs()
         present(vc, animated: true, completion: nil)
     }
     

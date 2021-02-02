@@ -86,6 +86,7 @@ final class ArtistDetailViewController: UIViewController {
         let storyboard = UIStoryboard(name: "SongsList", bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? SongsListViewController else { return }
         vc.sourceProtocol = sourceProtocol
+        vc.artist = artist
         present(vc, animated: true, completion: nil)
     }
 }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yjc-Qv-Ou6">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Player Songs List View Controller-->
+        <scene sceneID="pha-dr-HRI">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="yjc-Qv-Ou6" customClass="PlayerSongsListViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ivx-hK-nNQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gAH-Ln-Moc">
+                                <rect key="frame" x="16" y="44" width="382" height="852"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7zC-We-JEc">
+                                <rect key="frame" x="20" y="44" width="362" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pra-Vj-vB4">
+                                        <rect key="frame" x="0.0" y="16" width="24" height="24"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Chu-A2-6Bb"/>
+                                            <constraint firstAttribute="width" secondItem="pra-Vj-vB4" secondAttribute="height" id="vUk-uZ-eay"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.57647058819999997" green="0.6588235294" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="chevron.down" catalog="system" symbolScale="small"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="downButtonTapped:" destination="yjc-Qv-Ou6" eventType="touchUpInside" id="TGN-tt-jle"/>
+                                        </connections>
+                                    </button>
+                                    <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="xdH-hZ-mcp">
+                                        <rect key="frame" x="32" y="0.0" width="330" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4Me-kZ-QGO"/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.95686274510000002" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="7zC-We-JEc" firstAttribute="leading" secondItem="4Me-kZ-QGO" secondAttribute="leading" constant="20" id="3WM-PK-MNv"/>
+                            <constraint firstAttribute="bottom" secondItem="gAH-Ln-Moc" secondAttribute="bottom" id="Fxo-UD-h46"/>
+                            <constraint firstItem="7zC-We-JEc" firstAttribute="top" secondItem="4Me-kZ-QGO" secondAttribute="top" id="NzB-XD-MtW"/>
+                            <constraint firstItem="gAH-Ln-Moc" firstAttribute="top" secondItem="4Me-kZ-QGO" secondAttribute="top" id="ZbT-Kv-wsv"/>
+                            <constraint firstItem="4Me-kZ-QGO" firstAttribute="trailing" secondItem="gAH-Ln-Moc" secondAttribute="trailing" constant="16" id="gmf-n8-p2I"/>
+                            <constraint firstItem="4Me-kZ-QGO" firstAttribute="trailing" secondItem="7zC-We-JEc" secondAttribute="trailing" constant="32" id="lNo-2R-0vR"/>
+                            <constraint firstItem="gAH-Ln-Moc" firstAttribute="leading" secondItem="4Me-kZ-QGO" secondAttribute="leading" constant="16" id="r0x-kE-nyw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="agX-FX-fSy"/>
+                    <connections>
+                        <outlet property="downButton" destination="pra-Vj-vB4" id="9b7-H3-vwl"/>
+                        <outlet property="searchBar" destination="xdH-hZ-mcp" id="har-FX-V1i"/>
+                        <outlet property="tableView" destination="gAH-Ln-Moc" id="MFS-bd-C3w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GsS-nM-bWX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4078.2608695652175" y="-133.25892857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
+    </resources>
+</document>
