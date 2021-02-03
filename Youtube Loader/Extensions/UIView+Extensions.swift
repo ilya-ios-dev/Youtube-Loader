@@ -71,3 +71,11 @@ extension UIView{
         self.layer.add(rotation, forKey: "rotationAnimation")
     }
 }
+
+extension UIView  {
+    /// Render the view within the view's bounds, then capture it as image.
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: frame.size)
+        return renderer.image { _ in drawHierarchy(in: bounds, afterScreenUpdates: true) }
+    }
+}

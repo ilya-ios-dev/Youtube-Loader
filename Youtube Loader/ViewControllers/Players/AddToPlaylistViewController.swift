@@ -1,5 +1,5 @@
 //
-//  PlayerSongsListViewController.swift
+//  AddToPlaylistViewController.swift
 //  Youtube Loader
 //
 //  Created by isEmpty on 02.02.2021.
@@ -8,35 +8,31 @@
 import UIKit
 import CoreData
 
-final class PlayerSongsListViewController: UIViewController {
+enum CardViewState {
+    case expanded
+    case normal
+}
+
+final class AddToPlaylistViewController: UIViewController {
     
     //MARK: - Outlets
-    @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var backingImageView: UIImageView!
     @IBOutlet private weak var dimmerView: UIView!
     @IBOutlet private weak var cardView: UIView!
     @IBOutlet private weak var cardViewTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var handleView: UIView!
-
-    
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var saveButton: UIButton!
+        
     //MARK: - Properties
     public var backingImage: UIImage?
-    public var sourceProtocol: PlayerSourceProtocol!
-    public var songs: [Song] {
-        return audioPlayer.getOrderingSongs()
-    }
+    public var currentSong: Song?
     
-    private var filteredSongs = [Song]()
     private var cardViewState : CardViewState = .normal
     private var cardPanStartingTopConstraint : CGFloat = 30.0
-    private var fetchedResultsController: NSFetchedResultsController<Song>!
-    private var dataSource: UITableViewDiffableDataSource<Int, Song>!
-    private var snapshot: NSDiffableDataSourceSnapshot<Int, Song>!
-    private var searchText = ""
-    private var audioPlayer: AudioPlayer {
-        return sourceProtocol.audioPlayer
-    }
+    private var fetchedResultsController: NSFetchedResultsController<Playlist>!
+    private var dataSource: UITableViewDiffableDataSource<Int, Playlist>!
+    private var snapshot: NSDiffableDataSourceSnapshot<Int, Playlist>!
     private var window: UIWindow? {
         return UIApplication.shared.windows.filter({$0.isKeyWindow}).first
     }
@@ -48,138 +44,40 @@ final class PlayerSongsListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showCard()
-        tableView.contentInset = .init(top: searchBar.frame.height, left: 0, bottom: view.safeAreaInsets.bottom, right: 0)
-        if let selectedSong = audioPlayer.currentSong {
-            let songIndex = dataSource.indexPath(for: selectedSong)
-            tableView.selectRow(at: songIndex, animated: true, scrollPosition: .top)
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //UI
         configureViews()
         configureTapGesture()
         configurePanGesture()
-        configureSearchBar()
-        configureTableView()
-        
-        //Data
+        let nib = UINib(nibName: "PlaylistTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "PlaylistTableViewCell")
+        tableView.delegate = self
+        setupFetchedResultsController()
         setupDiffableDataSource()
     }
-}
-
-//MARK: - Supporting Methods
-extension PlayerSongsListViewController {
-    private func configureSearchBar() {
-        searchBar.delegate = self
-        
-        searchBar.backgroundImage = UIImage()
-        guard let searchTextField: UITextField = searchBar.value(forKey: "searchField") as? UITextField else { return }
-        guard let imageView = searchTextField.leftView as? UIImageView else { return }
-        searchTextField.textColor = .black
-        
-        let attributeDict = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1)]
-        searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: attributeDict)
-        
-        imageView.tintColor = #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1)
-        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
-        
-        searchBar.searchTextField.backgroundColor = .clear
-        let view = UIVisualEffectView()
-        view.effect = UIBlurEffect(style: .regular)
-        view.backgroundColor = UIColor.white.withAlphaComponent(0.85)
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 15
-        view.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.insertSubview(view, at: 0)
-        NSLayoutConstraint.activate([
-            view.leadingAnchor.constraint(equalTo: searchTextField.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: searchTextField.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: searchTextField.bottomAnchor),
-            view.topAnchor.constraint(equalTo: searchTextField.topAnchor)
-        ])
-    }
     
-    private func configureTableView() {
-        tableView.delegate = self
-        let nib = UINib(nibName: "SongTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "songTableViewCell")
-    }
-    
-    private func setupSnapshot() {
-        snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
-        snapshot.appendSections([0])
-        
-        if !searchText.isEmpty {
-            filteredSongs = songs.filter { $0.name!.range(of: searchText, options: .caseInsensitive) != nil }
-        } else {
-            filteredSongs = songs
-        }
-        
-        snapshot.appendItems(filteredSongs)
-        DispatchQueue.main.async {
-            self.dataSource?.apply(self.snapshot, animatingDifferences: true)
-        }
-    }
-    
-    private func setupDiffableDataSource() {
-        dataSource = UITableViewDiffableDataSource<Int, Song>(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "songTableViewCell") as! SongTableViewCell
-            cell.configure(name: song.name, author: song.author?.name, imageURL: song.thumbnails?.smallUrl, index: indexPath.row + 1)
-            return cell
-        })
-        setupSnapshot()
-    }
 }
-
-//MARK: - NSFetchedResultsControllerDelegate
-extension PlayerSongsListViewController: NSFetchedResultsControllerDelegate {
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        setupSnapshot()
-    }
-}
-
-//MARK: - MiniPlayerDelegate
-extension PlayerSongsListViewController: MiniPlayerDelegate {
-    func didSelectedItem(_ item: Song?) {
-        guard let song = item else { return }
-        guard let songIndex = dataSource.indexPath(for: song) else { return }
-        tableView.selectRow(at: songIndex, animated: true, scrollPosition: .middle)
-    }
-    
-    func expandSong(song: Song?) {
-        let storyboard = UIStoryboard(name: "Player", bundle: nil)
-        guard let playerController = storyboard.instantiateInitialViewController() as? PlayerViewController else { return }
-        playerController.sourceProtocol = sourceProtocol
-        playerController.modalPresentationStyle = .currentContext
-        present(playerController, animated: true, completion: nil)
-    }
-}
-
-//MARK: - UITableViewDelegate
-extension PlayerSongsListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        audioPlayer.setupPlayer(at: indexPath.row)
-    }
-}
-
-//MARK: - UISearchBarDelegate
-extension PlayerSongsListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(search), object: nil)
-        self.searchText = searchText
-        perform(#selector(search), with: nil, afterDelay: 0.5)
-    }
-    
-    @objc private func search() {
-        setupSnapshot()
-    }
-}
-
 
 //MARK: - Actions
-extension PlayerSongsListViewController {
+extension AddToPlaylistViewController {
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        guard let currentSong = currentSong else { return }
+        guard let indexPath = tableView.indexPathForSelectedRow else { fatalError() }
+        guard let playlist = dataSource.itemIdentifier(for: indexPath) else { return }
+        currentSong.addToPlaylist(playlist)
+        do {
+            try context.save()
+        } catch {
+            print(error)
+            showAlert(alertText: error.localizedDescription)
+            return
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
     /// Tracks down Pan Gesture.
     /// Moves the `cardView` to one of the positions, depending on where the view is dragged to.
     @IBAction func viewPanned(_ panRecognizer: UIPanGestureRecognizer) {
@@ -227,7 +125,7 @@ extension PlayerSongsListViewController {
 }
 
 //MARK: Animations
-extension PlayerSongsListViewController {
+extension AddToPlaylistViewController {
     
     /// Animates the movement of the cardView depending on the state..
     /// - Parameter atState: CardView deployment position.
@@ -333,7 +231,7 @@ extension PlayerSongsListViewController {
 }
 
 //MARK: - Supporting Methods
-extension PlayerSongsListViewController {
+extension AddToPlaylistViewController {
     
     /// Configures pan gesture for adjusting cardViewState.
     private func configurePanGesture() {
@@ -365,5 +263,58 @@ extension PlayerSongsListViewController {
             cardViewTopConstraint.constant = safeAreaHeight + bottomPadding
         }
         dimmerView.alpha = 0.0
+    }
+    
+    private func setupFetchedResultsController() {
+        let request: NSFetchRequest = Playlist.fetchRequest()
+        
+        let sort = NSSortDescriptor(key: "dateSave", ascending: true)
+        request.sortDescriptors = [sort]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+            setupSnapshot()
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func setupSnapshot() {
+        snapshot = NSDiffableDataSourceSnapshot<Int, Playlist>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
+        DispatchQueue.main.async {
+            self.dataSource?.apply(self.snapshot, animatingDifferences: true)
+        }
+    }
+    
+    private func setupDiffableDataSource() {
+        dataSource = UITableViewDiffableDataSource<Int, Playlist>(tableView: tableView, cellProvider: { (tableView, indexPath, playlist) -> UITableViewCell? in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistTableViewCell") as! PlaylistTableViewCell
+            cell.configure(name: playlist.name, songsCount: playlist.songs?.count, imageURL: playlist.thumbnails?.smallUrl)
+            return cell
+        })
+        setupSnapshot()
+    }
+}
+
+//MARK: - UITableViewDelegate
+extension AddToPlaylistViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard saveButton.isHidden else { return }
+        saveButton.alpha = 0
+        saveButton.isHidden = false
+        UIView.animate(withDuration: 0.325) {
+            self.saveButton.alpha = 1
+        }
+    }
+}
+
+//MARK: - NSFetchedResultsControllerDelegate
+extension AddToPlaylistViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        setupSnapshot()
     }
 }

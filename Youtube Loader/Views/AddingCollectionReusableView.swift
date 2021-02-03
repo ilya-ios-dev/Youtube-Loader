@@ -11,7 +11,7 @@ final class AddingCollectionReusableView: UICollectionReusableView {
     
     //MARK: - Properties
     public static let reuseIdentifier = "AddingCollectionReusableView"
-    public var button: AddingButton!
+    public var button: AddingRoundedButton!
 
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -26,7 +26,7 @@ final class AddingCollectionReusableView: UICollectionReusableView {
     
     //MARK: - Supporting Methods
     private func configureButton() {
-        button = AddingButton()
+        button = AddingRoundedButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         addSubview(button)
         

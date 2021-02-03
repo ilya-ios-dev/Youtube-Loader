@@ -50,12 +50,7 @@ final class PlayerViewController: UIViewController {
         audioPlayer.delegate = self
         configureSong(audioPlayer.currentSong)
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        audioPlayer.delegate = nil
-    }
-    
+        
     //MARK: - Actions
     @IBAction private func playTapped(_ sender: Any) {
         audioPlayer.togglePlaying()
@@ -76,10 +71,18 @@ final class PlayerViewController: UIViewController {
     @IBAction private func songsListTapped(_ sender: Any) {
         let storyboard = UIStoryboard(name: "PlayerSongsList", bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? PlayerSongsListViewController else { return }
-        vc.modalPresentationStyle = .automatic
-        vc.sourceProtocol = sourceProtocol
-        vc.songs = audioPlayer.getOrderingSongs()
-        present(vc, animated: true, completion: nil)
+        // Delay the capture of snapshot by 0.1 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
+            // take a snapshot of current view and set it as backingImage
+            vc.backingImage = self.view.asImage()
+            
+            // set the modal presentation to full screen, in iOS 13, its no longer full screen by default
+            vc.modalPresentationStyle = .fullScreen
+            vc.sourceProtocol = self.sourceProtocol
+
+            // present the view controller modally without animation
+            self.present(vc, animated: false, completion: nil)
+        })
     }
     
     @IBAction private func shuffleTapped(_ sender: Any) {
@@ -93,7 +96,19 @@ final class PlayerViewController: UIViewController {
     }
     
     @IBAction private func addToPlaylistTapped(_ sender: Any) {
-        // TODO: - show playlists selection view controller
+        let storyboard = UIStoryboard(name: "AddToPlaylist", bundle: nil)
+        guard let vc = storyboard.instantiateInitialViewController() as? AddToPlaylistViewController else { return }
+        // Delay the capture of snapshot by 0.1 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
+            // take a snapshot of current view and set it as backingImage
+            vc.backingImage = self.view.asImage()
+            vc.currentSong = self.audioPlayer.currentSong
+            // set the modal presentation to full screen, in iOS 13, its no longer full screen by default
+            vc.modalPresentationStyle = .fullScreen
+            
+            // present the view controller modally without animation
+            self.present(vc, animated: false, completion: nil)
+        })
     }
 }
 

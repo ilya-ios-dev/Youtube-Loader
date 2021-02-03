@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AddingButton: UIButton {
+final class AddingRoundedButton: UIButton {
     
     private func createBottomRightShadow(_ width: CGFloat, _ context: CGContext, _ height: CGFloat) {
         let shadow1Color = #colorLiteral(red: 0.8509803922, green: 0.8823529412, blue: 0.968627451, alpha: 1)
