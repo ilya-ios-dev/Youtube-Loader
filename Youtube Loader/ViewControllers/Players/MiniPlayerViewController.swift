@@ -35,7 +35,6 @@ final class MiniPlayerViewController: UIViewController {
             return audioplayer.songs
         } set {
             audioplayer.songs = newValue
-            tapGesture.isEnabled = true
         }
     }
     private var audioplayer: AudioPlayer {
@@ -51,7 +50,6 @@ final class MiniPlayerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tapGesture.isEnabled = !songs.isEmpty
         configureImageViews()
         configureBlur()
     }

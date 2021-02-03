@@ -239,8 +239,8 @@
 		FA2CF88F25B1CF2E00A78BB1 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				FA44B38425BEFAB000009756 /* SongsList.storyboard */,
 				FAA88C5425B3281700DBA1F5 /* AddSong.storyboard */,
+				FA44B38425BEFAB000009756 /* SongsList.storyboard */,
 				FA4393B325C4455B00F1D897 /* CreateObject */,
 				FAE2AE5C25C879AF000EA8FF /* Details */,
 				FA912A3425AB3295001936F1 /* LaunchScreen.storyboard */,
