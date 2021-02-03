@@ -5,7 +5,7 @@
 //  Created by isEmpty on 03.02.2021.
 //
 
-import Foundation
+import UIKit
 
 struct Storyboards {
     static let addSong = "AddSong"
@@ -25,4 +25,23 @@ struct Storyboards {
     static let playerSongsList = "PlayerSongsList"
     static let addToPlaylist = "AddToPlaylist"
     static let player = "Player"
+}
+
+struct Colors {
+    static let darkTintSelectedColor = UIColor(named: "darkTintSelectedColor")!
+    static let backgorundColor = UIColor(named: "backgorundColor")!
+    static let darkerTintColor = UIColor(named: "darkerTintColor")!
+    static let darkTintColor = UIColor(named: "darkTintColor")!
+    static let lighestBlueColor = UIColor(named: "lighestBlueColor")!
+    static let lighestGreenBlueColor = UIColor(named: "lighestGreenBlueColor")!
+    static let lightGreenGrayColor = UIColor(named: "lightGreenGrayColor")!
+    static let lightTintColor = UIColor(named: "lightTintColor")!
+    static let lightyBlueColor = UIColor(named: "lightyBlueColor")!
+    static let textDarkGrayColor = UIColor(named: "textDarkGrayColor")!
+    static let textDescriptionAccentColor = UIColor(named: "textDescriptionAccentColor")!
+    static let textGrayColor = UIColor(named: "textGrayColor")!
+    static let textLighterGrayColor = UIColor(named: "textLighterGrayColor")!
+    static let textLightGrayColor = UIColor(named: "textLightGrayColor")!
+    static let textTitleAccentColor = UIColor(named: "textTitleAccentColor")!
+    static let whiteBlueColor = UIColor(named: "whiteBlueColor")!
 }

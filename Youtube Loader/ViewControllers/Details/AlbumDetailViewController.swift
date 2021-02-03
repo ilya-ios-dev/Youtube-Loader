@@ -127,7 +127,7 @@ extension AlbumDetailViewController {
     }
     
     private func configureMiniPlayer() {
-        miniPlayerView.layer.shadowColor = #colorLiteral(red: 0.5764705882, green: 0.6588235294, blue: 0.7019607843, alpha: 0.1611958471).cgColor
+        miniPlayerView.layer.shadowColor = Colors.darkTintColor.withAlphaComponent(0.13).cgColor
         miniPlayerView.layer.shadowOffset = CGSize(width: 0, height: -11)
         miniPlayerView.layer.shadowRadius = 9
         miniPlayerView.layer.shadowOpacity = 1
@@ -221,7 +221,7 @@ extension AlbumDetailViewController: UITableViewDelegate {
         label.minimumScaleFactor = 0.7
         label.adjustsFontSizeToFitWidth = true
         label.text = album.name
-        label.textColor = #colorLiteral(red: 0.3647058824, green: 0.4509803922, blue: 0.5803921569, alpha: 1)
+        label.textColor = Colors.textDescriptionAccentColor
         v.addSubview(label)
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: v.leadingAnchor, constant: 20),

@@ -2,8 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RsO-tx-p5C">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,13 +46,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmY-U0-u8x">
                                         <rect key="frame" x="169" y="0.0" width="36" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <color key="textColor" red="0.27304208289999998" green="0.2956414181" blue="0.38959819499999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="textColor" name="textTitleAccentColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Else &amp; Vanderway" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiS-Fd-a5Q">
                                         <rect key="frame" x="122.5" y="32" width="129.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" red="0.29411764709999999" green="0.33333333329999998" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" name="textDescriptionAccentColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -60,7 +62,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4TJ-dh-tY0">
                                         <rect key="frame" x="0.0" y="0.0" width="30.5" height="97"/>
-                                        <color key="tintColor" red="0.57647058819999997" green="0.6588235294" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal" title="prev" image="backward.fill" catalog="system"/>
                                         <connections>
                                             <action selector="backwardButtonTapped:" destination="RsO-tx-p5C" eventType="touchUpInside" id="urH-tO-Kzs"/>
@@ -72,7 +74,7 @@
                                             <constraint firstAttribute="width" constant="97" id="Kiz-F6-Zgd"/>
                                             <constraint firstAttribute="width" secondItem="Zfa-eO-XJN" secondAttribute="height" id="lrf-mo-VUB"/>
                                         </constraints>
-                                        <color key="tintColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" name="darkerTintColor"/>
                                         <state key="normal" image="play.fill" catalog="system"/>
                                         <connections>
                                             <action selector="playTapped:" destination="RsO-tx-p5C" eventType="touchUpInside" id="EPk-FX-d5d"/>
@@ -80,7 +82,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjL-92-Tuv">
                                         <rect key="frame" x="195.5" y="0.0" width="30.5" height="97"/>
-                                        <color key="tintColor" red="0.57647058819999997" green="0.6588235294" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal" title="next" image="forward.fill" catalog="system"/>
                                         <connections>
                                             <action selector="forwardButtonTapped:" destination="RsO-tx-p5C" eventType="touchUpInside" id="Yrz-zA-cBD"/>
@@ -103,7 +105,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ui7-iE-4Vi">
                                         <rect key="frame" x="0.0" y="1" width="93.5" height="18"/>
-                                        <color key="tintColor" red="0.52549019607843139" green="0.63921568627450975" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal">
                                             <imageReference key="image" image="list.bullet" catalog="system" symbolScale="medium"/>
                                         </state>
@@ -113,7 +115,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIK-ad-rDo">
                                         <rect key="frame" x="93.5" y="1" width="93.5" height="18"/>
-                                        <color key="tintColor" red="0.52549019607843139" green="0.63921568627450975" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal">
                                             <imageReference key="image" image="shuffle" catalog="system" symbolScale="medium"/>
                                         </state>
@@ -123,7 +125,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKa-1Z-la6">
                                         <rect key="frame" x="187" y="0.5" width="93.5" height="18.5"/>
-                                        <color key="tintColor" red="0.52549019607843139" green="0.63921568627450975" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal">
                                             <imageReference key="image" image="repeat" catalog="system" symbolScale="medium"/>
                                         </state>
@@ -133,7 +135,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWY-KE-2VV">
                                         <rect key="frame" x="280.5" y="0.0" width="93.5" height="19.5"/>
-                                        <color key="tintColor" red="0.52549019607843139" green="0.63921568627450975" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal">
                                             <imageReference key="image" image="text.badge.plus" catalog="system" symbolScale="medium"/>
                                         </state>
@@ -153,7 +155,7 @@
                                             <constraint firstAttribute="width" secondItem="UUf-s0-SWF" secondAttribute="height" id="kHh-6F-OJH"/>
                                             <constraint firstAttribute="height" constant="24" id="s1o-Q3-7kb"/>
                                         </constraints>
-                                        <color key="tintColor" red="0.57647058819999997" green="0.6588235294" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal">
                                             <imageReference key="image" image="chevron.down" catalog="system" symbolScale="small"/>
                                         </state>
@@ -168,13 +170,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="12"/>
                                                 <color key="tintColor" red="0.6705882353" green="0.72549019609999998" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
-                                                <color key="textColor" red="0.27747240499999998" green="0.30821071119999999" blue="0.32575424860000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" name="textDescriptionAccentColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Vibes of the Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StM-c5-WJA">
                                                 <rect key="frame" x="0.0" y="16" width="150" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" red="0.24941083010000001" green="0.27704048380000001" blue="0.2928097932" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" name="textTitleAccentColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -191,7 +193,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c0B-ZU-Tes"/>
-                        <color key="backgroundColor" red="0.94117647058823528" green="0.95686274509803915" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="backgorundColor"/>
                         <constraints>
                             <constraint firstItem="Spx-R9-wXJ" firstAttribute="leading" secondItem="c0B-ZU-Tes" secondAttribute="leading" constant="94" id="0MS-HQ-O6W"/>
                             <constraint firstItem="gVO-s3-7Ef" firstAttribute="trailing" secondItem="l7D-3I-cZf" secondAttribute="trailing" id="2g8-kt-ttZ"/>
@@ -256,5 +258,20 @@
         <image name="shuffle" catalog="system" width="128" height="93"/>
         <image name="text.badge.plus" catalog="system" width="128" height="109"/>
         <image name="vinyl_record" width="500" height="500"/>
+        <namedColor name="backgorundColor">
+            <color red="0.93725490196078431" green="0.95686274509803915" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="darkTintColor">
+            <color red="0.57647058823529407" green="0.6588235294117647" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="darkerTintColor">
+            <color red="0.23529411764705882" green="0.25882352941176467" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textDescriptionAccentColor">
+            <color red="0.45490196078431372" green="0.53333333333333333" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textTitleAccentColor">
+            <color red="0.2196078431372549" green="0.30980392156862746" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

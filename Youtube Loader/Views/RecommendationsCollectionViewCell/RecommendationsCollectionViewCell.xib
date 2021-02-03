@@ -2,7 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,13 +27,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mirage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftz-f4-dlb">
                                         <rect key="frame" x="0.0" y="0.0" width="47.5" height="17"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                        <color key="textColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" name="textDarkGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Else" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imL-aZ-afV">
                                         <rect key="frame" x="0.0" y="17" width="47.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" red="0.57647058819999997" green="0.6588235294" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" name="textLighterGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -80,7 +82,7 @@
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3NW-hp-btA">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
-                                        <color key="tintColor" red="0.57647058819999997" green="0.6588235294" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" name="lightGreenGrayColor"/>
                                         <state key="normal" image="pause.circle.fill" catalog="system"/>
                                         <connections>
                                             <action selector="tapPauseOrResume:" destination="gTV-IL-0wX" eventType="touchUpInside" id="xWC-CO-Sf8"/>
@@ -88,7 +90,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awm-EM-rC3">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
-                                        <color key="tintColor" red="0.57647058819999997" green="0.6588235294" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" name="lightGreenGrayColor"/>
                                         <state key="normal" image="arrow.down.circle.fill" catalog="system"/>
                                         <connections>
                                             <action selector="tapDownloadOrCancel:" destination="gTV-IL-0wX" eventType="touchUpInside" id="vrP-sg-YSS"/>
@@ -98,7 +100,7 @@
                             </stackView>
                             <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="4c2-1P-MRb">
                                 <rect key="frame" x="0.0" y="62.5" width="374" height="2.5"/>
-                                <color key="progressTintColor" red="0.23529411759999999" green="0.25882352939999997" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="progressTintColor" name="darkTintColor"/>
                                 <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </progressView>
                         </subviews>
@@ -145,5 +147,17 @@
         <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
         <image name="music_placeholder" width="500" height="500"/>
         <image name="pause.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="darkTintColor">
+            <color red="0.57647058823529407" green="0.6588235294117647" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lightGreenGrayColor">
+            <color red="0.59607843137254901" green="0.72549019607843135" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textDarkGrayColor">
+            <color red="0.30196078431372547" green="0.32941176470588235" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textLighterGrayColor">
+            <color red="0.6588235294117647" green="0.72156862745098038" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

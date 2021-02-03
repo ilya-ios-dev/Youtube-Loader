@@ -2,8 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4IO-3H-5rb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,7 +33,7 @@
                                             <constraint firstAttribute="width" secondItem="yJO-aU-0ch" secondAttribute="height" id="Buf-Gy-0GR"/>
                                             <constraint firstAttribute="height" constant="24" id="wgi-CT-Nyo"/>
                                         </constraints>
-                                        <color key="tintColor" red="0.57647058819999997" green="0.6588235294" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal">
                                             <imageReference key="image" image="chevron.down" catalog="system" symbolScale="small"/>
                                         </state>
@@ -64,7 +66,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fQd-UC-jzU"/>
-                        <color key="backgroundColor" red="0.94117647059999998" green="0.95686274510000002" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="backgorundColor"/>
                         <constraints>
                             <constraint firstItem="9y0-WF-F26" firstAttribute="top" secondItem="jBP-Q2-APw" secondAttribute="top" id="0g4-FO-ZRM"/>
                             <constraint firstItem="qel-EV-ab3" firstAttribute="trailing" secondItem="jBP-Q2-APw" secondAttribute="trailing" id="9mQ-DZ-DOU"/>
@@ -106,6 +108,12 @@
     </scenes>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
+        <namedColor name="backgorundColor">
+            <color red="0.93725490196078431" green="0.95686274509803915" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="darkTintColor">
+            <color red="0.57647058823529407" green="0.6588235294117647" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

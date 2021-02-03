@@ -202,7 +202,7 @@ extension PlayerViewController {
     /// Adds a circle to the center of the songImageView.
     private func configureCircleView() {
         let circleView = UIView()
-        circleView.backgroundColor = #colorLiteral(red: 0.9411764706, green: 0.9568627451, blue: 0.9882352941, alpha: 1)
+        circleView.backgroundColor = Colors.backgorundColor
         circleView.layer.cornerRadius = (songImageView.frame.height / 2) * 0.2
         circleView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(circleView)
@@ -228,7 +228,7 @@ extension PlayerViewController {
     }
     
     private func configureShuffleButton() {
-        shuffleButton.tintColor = audioPlayer.orderType == .none ? #colorLiteral(red: 0.5254901961, green: 0.6392156863, blue: 0.7450980392, alpha: 1) : #colorLiteral(red: 0.1803921569, green: 0.2666666667, blue: 0.4274509804, alpha: 1)
+        shuffleButton.tintColor = audioPlayer.orderType == .none ? Colors.darkTintColor : Colors.darkTintSelectedColor
         let mediumConfig = UIImage.SymbolConfiguration(scale: .medium)
         switch audioPlayer.orderType {
         case .reversed:
@@ -241,7 +241,7 @@ extension PlayerViewController {
     }
     
     private func configureRepeatButton() {
-        repeatButton.tintColor = audioPlayer.repeatType == .none ? #colorLiteral(red: 0.5254901961, green: 0.6392156863, blue: 0.7450980392, alpha: 1) : #colorLiteral(red: 0.1803921569, green: 0.2666666667, blue: 0.4274509804, alpha: 1)
+        repeatButton.tintColor = audioPlayer.repeatType == .none ? Colors.darkTintColor : Colors.darkTintSelectedColor
         let mediumConfig = UIImage.SymbolConfiguration(scale: .medium)
         switch audioPlayer.repeatType {
         case .none:

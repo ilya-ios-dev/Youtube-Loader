@@ -10,7 +10,7 @@ import UIKit
 final class AddingRoundedButton: UIButton {
     
     private func createBottomRightShadow(_ width: CGFloat, _ context: CGContext, _ height: CGFloat) {
-        let shadow1Color = #colorLiteral(red: 0.8509803922, green: 0.8823529412, blue: 0.968627451, alpha: 1)
+        let shadow1Color = Colors.lightyBlueColor
         let shadow = NSShadow()
         shadow.shadowColor = shadow1Color
         shadow.shadowOffset = CGSize(width: width * 2, height: 3)
@@ -52,7 +52,7 @@ final class AddingRoundedButton: UIButton {
     
 
     private func createPlus(_ rect: CGRect, _ width: CGFloat, _ height: CGFloat) {
-        let centerColor = #colorLiteral(red: 0.8745098039, green: 0.9058823529, blue: 0.9921568627, alpha: 1)
+        let centerColor = Colors.lighestBlueColor
         
         let plus2Width: CGFloat = rect.width * 0.47
         let plus2Height:CGFloat = plus2Width * 0.185
@@ -82,10 +82,10 @@ final class AddingRoundedButton: UIButton {
         createTopLeftShadow(width, context, height)
     
         let oval = UIBezierPath(ovalIn: CGRect(x: 13, y: 13, width: width - 26, height: height - 26))
-        #colorLiteral(red: 0.9411764706, green: 0.9568627451, blue: 0.9882352941, alpha: 1).setFill()
+        Colors.whiteBlueColor.setFill()
         oval.fill()
         
-        let centerColor = #colorLiteral(red: 0.8745098039, green: 0.9058823529, blue: 0.9921568627, alpha: 1)
+        let centerColor = Colors.lighestBlueColor
 
         let plus2Width: CGFloat = rect.width * 0.47
         let plus2Height:CGFloat = plus2Width * 0.185
@@ -105,7 +105,7 @@ final class AddingRoundedButton: UIButton {
         overalPaths.fill()
         
         let shadow = NSShadow()
-        shadow.shadowColor = #colorLiteral(red: 0.7722101808, green: 0.828825295, blue: 0.9720900655, alpha: 1)
+        shadow.shadowColor = Colors.lightyBlueColor
         shadow.shadowBlurRadius = 4
         shadow.shadowOffset = CGSize(width: 2, height: 2)
         

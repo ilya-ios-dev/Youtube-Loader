@@ -62,10 +62,10 @@ extension SelectSongsViewController {
         guard let imageView = searchTextField.leftView as? UIImageView else { return }
         searchTextField.textColor = .black
         
-        let attributeDict = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1)]
+        let attributeDict = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: attributeDict)
         
-        imageView.tintColor = #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1)
+        imageView.tintColor = UIColor.lightGray
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         
         searchBar.searchTextField.backgroundColor = .clear

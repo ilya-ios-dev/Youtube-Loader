@@ -19,7 +19,7 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
         // Initialization code
         configureBlur()
         playlistImageView.layer.cornerRadius = 8
-        contentView.backgroundColor = #colorLiteral(red: 0.937254902, green: 0.9568627451, blue: 0.9921568627, alpha: 1)
+        contentView.backgroundColor = Colors.backgorundColor
     }
 
     public func configure(title: String?, imageURL: URL) {

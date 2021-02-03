@@ -32,7 +32,7 @@ final class TimelineView: UIView {
         slider.setThumbImage(makeCircleWith(size: CGSize(width: 10, height: 10), backgroundColor: color), for: .normal)
         slider.setThumbImage(makeCircleWith(size: CGSize(width: 17, height: 17), backgroundColor: color), for: .highlighted)
         slider.minimumTrackTintColor = color
-        slider.maximumTrackTintColor = #colorLiteral(red: 0.7098039216, green: 0.831372549, blue: 0.8823529412, alpha: 1)
+        slider.maximumTrackTintColor = Colors.lighestGreenBlueColor
 
     }
 }
@@ -60,23 +60,23 @@ private extension TimelineView {
     private func setupStartLabel() {
         startLabel = UILabel()
         startLabel.text = "00:00"
-        startLabel.textColor = #colorLiteral(red: 0.2941176471, green: 0.3333333333, blue: 0.3529411765, alpha: 1)
+        startLabel.textColor = Colors.textDarkGrayColor
         startLabel.font = UIFont.systemFont(ofSize: 10, weight: .medium)
     }
     
     private func setupEndLabel() {
         endLabel = UILabel()
         endLabel.text = "00:00"
-        endLabel.textColor = #colorLiteral(red: 0.2941176471, green: 0.3333333333, blue: 0.3529411765, alpha: 1)
+        endLabel.textColor = Colors.textDarkGrayColor
         endLabel.font = UIFont.systemFont(ofSize: 10, weight: .medium)
     }
     
     private func setupSlider() {
         slider = UISlider()
         //Resize thumb.
-        slider.setThumbImage(makeCircleWith(size: CGSize(width: 10, height: 10), backgroundColor: #colorLiteral(red: 0.2352941176, green: 0.2588235294, blue: 0.3568627451, alpha: 1)), for: .normal)
-        slider.setThumbImage(makeCircleWith(size: CGSize(width: 17, height: 17), backgroundColor: #colorLiteral(red: 0.2352941176, green: 0.2588235294, blue: 0.3568627451, alpha: 1)), for: .highlighted)
-        slider.minimumTrackTintColor = #colorLiteral(red: 0.2352941176, green: 0.2588235294, blue: 0.3568627451, alpha: 1)
+        slider.setThumbImage(makeCircleWith(size: CGSize(width: 10, height: 10), backgroundColor: Colors.textDarkGrayColor), for: .normal)
+        slider.setThumbImage(makeCircleWith(size: CGSize(width: 17, height: 17), backgroundColor: Colors.textDarkGrayColor), for: .highlighted)
+        slider.minimumTrackTintColor = Colors.textDarkGrayColor
         slider.maximumTrackTintColor = .white
     }
     

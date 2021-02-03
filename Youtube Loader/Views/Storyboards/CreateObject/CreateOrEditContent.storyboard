@@ -2,8 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DQf-hf-eob">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -131,7 +133,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="gqP-8v-1NK"/>
                                                 </constraints>
                                             </view>
-                                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g6T-gc-sfH">
+                                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g6T-gc-sfH">
                                                 <rect key="frame" x="0.0" y="250" width="374" height="75"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -159,7 +161,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="107" height="128"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <state key="normal" title="Select Artist">
-                                                            <color key="titleColor" red="0.30588235294117649" green="0.33333333333333331" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="textGrayColor"/>
                                                         </state>
                                                     </button>
                                                 </subviews>
@@ -178,7 +180,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="117" height="128"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <state key="normal" title="Select Album">
-                                                            <color key="titleColor" red="0.30588235289999999" green="0.33333333329999998" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="textGrayColor"/>
                                                         </state>
                                                     </button>
                                                 </subviews>
@@ -197,7 +199,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="116" height="128"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <state key="normal" title="Select Songs">
-                                                            <color key="titleColor" red="0.30588235294117649" green="0.33333333333333331" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" name="textGrayColor"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="selectSongsTapped:" destination="HX3-Nx-FCJ" eventType="touchUpInside" id="ata-YM-twF"/>
@@ -227,7 +229,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fys-Ns-gld"/>
-                        <color key="backgroundColor" red="0.94117647058823528" green="0.95686274509803915" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="backgorundColor"/>
                         <constraints>
                             <constraint firstItem="fys-Ns-gld" firstAttribute="trailing" secondItem="BIe-Jz-CbX" secondAttribute="trailing" constant="20" id="4iL-Lu-C9U"/>
                             <constraint firstItem="BIe-Jz-CbX" firstAttribute="leading" secondItem="fys-Ns-gld" secondAttribute="leading" constant="20" id="JpS-3l-itm"/>
@@ -299,5 +301,11 @@
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="image_placeholder" width="500" height="500"/>
+        <namedColor name="backgorundColor">
+            <color red="0.93725490196078431" green="0.95686274509803915" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textGrayColor">
+            <color red="0.38431372549019605" green="0.41568627450980389" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

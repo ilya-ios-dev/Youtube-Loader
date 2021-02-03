@@ -2,7 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Euh-t4-Ord">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +27,7 @@
                             </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KwM-fu-9p8"/>
-                        <color key="backgroundColor" red="0.94117647058823528" green="0.95686274509803915" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="backgorundColor"/>
                         <constraints>
                             <constraint firstItem="KwM-fu-9p8" firstAttribute="trailing" secondItem="CuM-QD-px0" secondAttribute="trailing" constant="20" id="2N9-pC-65C"/>
                             <constraint firstItem="CuM-QD-px0" firstAttribute="top" secondItem="KwM-fu-9p8" secondAttribute="top" id="2OO-B1-sNh"/>
@@ -46,4 +48,9 @@
             <point key="canvasLocation" x="269.56521739130437" y="54.910714285714285"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="backgorundColor">
+            <color red="0.93725490196078431" green="0.95686274509803915" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -21,7 +21,7 @@ final class ArtistCollectionViewCell: UICollectionViewCell {
         configureBlur()
         backgroundImageView.layer.cornerRadius = backgroundImageView.frame.height / 2
         artistImageView.layer.cornerRadius = artistImageView.frame.height / 2
-        contentView.backgroundColor = #colorLiteral(red: 0.937254902, green: 0.9568627451, blue: 0.9921568627, alpha: 1)
+        contentView.backgroundColor = Colors.backgorundColor
     }
 
     public func configure(title: String?, url: URL?) {

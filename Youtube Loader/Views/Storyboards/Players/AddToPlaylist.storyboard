@@ -2,7 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oFx-sI-lMg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,13 +46,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Add to playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCY-8P-5dW">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                <color key="textColor" red="0.38431372549999998" green="0.44705882349999998" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" name="textLightGrayColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LM8-sW-4fd">
                                                 <rect key="frame" x="0.0" y="0.0" width="0.0" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <color key="tintColor" red="0.37160700559999998" green="0.44814550879999998" blue="0.58040982480000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="tintColor" name="textLightGrayColor"/>
                                                 <state key="normal" title="Save"/>
                                                 <connections>
                                                     <action selector="saveButtonTapped:" destination="oFx-sI-lMg" eventType="touchUpInside" id="GRq-N0-ILd"/>
@@ -72,6 +74,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TFs-PO-ZyX"/>
+                        <color key="backgroundColor" name="backgorundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="WZt-0u-EJW" secondAttribute="bottom" id="B1O-QI-hth"/>
                             <constraint firstAttribute="bottom" secondItem="TZc-PN-2N5" secondAttribute="bottom" id="JTr-gt-oJo"/>
@@ -105,6 +108,12 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="backgorundColor">
+            <color red="0.93725490196078431" green="0.95686274509803915" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textLightGrayColor">
+            <color red="0.36470588235294116" green="0.45098039215686275" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

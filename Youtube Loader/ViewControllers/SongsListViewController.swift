@@ -90,10 +90,10 @@ extension SongsListViewController {
         guard let imageView = searchTextField.leftView as? UIImageView else { return }
         searchTextField.textColor = .black
         
-        let attributeDict = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1)]
+        let attributeDict = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: attributeDict)
         
-        imageView.tintColor = #colorLiteral(red: 0.6705882353, green: 0.7254901961, blue: 0.7568627451, alpha: 1)
+        imageView.tintColor = UIColor.lightGray
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         
         searchBar.searchTextField.backgroundColor = .clear
@@ -119,7 +119,7 @@ extension SongsListViewController {
     }
     
     private func configureMiniPlayer() {
-        miniPlayerView.layer.shadowColor = #colorLiteral(red: 0.5764705882, green: 0.6588235294, blue: 0.7019607843, alpha: 0.1611958471).cgColor
+        miniPlayerView.layer.shadowColor = Colors.darkTintColor.withAlphaComponent(0.13).cgColor
         miniPlayerView.layer.shadowOffset = CGSize(width: 0, height: -11)
         miniPlayerView.layer.shadowRadius = 9
         miniPlayerView.layer.shadowOpacity = 1

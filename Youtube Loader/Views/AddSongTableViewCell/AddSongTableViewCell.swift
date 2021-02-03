@@ -45,10 +45,6 @@ final class AddSongTableViewCell: UITableViewCell {
         isDownloading = !isDownloading
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        self.contentView.backgroundColor = selected ? #colorLiteral(red: 0.9725490196, green: 0.9882352941, blue: 1, alpha: 1) : .clear
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
         songImageView.layer.cornerRadius = 4

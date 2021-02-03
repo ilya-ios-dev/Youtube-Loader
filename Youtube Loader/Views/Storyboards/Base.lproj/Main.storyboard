@@ -2,8 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tpM-PJ-tkN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,12 +37,12 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Songs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkW-dj-7rG">
                                                                         <rect key="frame" x="0.0" y="0.0" width="103" height="45.5"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                                                        <color key="textColor" red="0.38431372549019605" green="0.44705882352941173" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="textColor" name="textLightGrayColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wg-6W-Dro">
                                                                         <rect key="frame" x="348.5" y="0.0" width="25.5" height="45.5"/>
-                                                                        <color key="tintColor" red="0.38431372549019605" green="0.44705882352941173" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="tintColor" name="textLightGrayColor"/>
                                                                         <state key="normal">
                                                                             <color key="titleColor" systemColor="labelColor"/>
                                                                             <imageReference key="image" image="list.bullet" catalog="system" symbolScale="large"/>
@@ -82,9 +84,9 @@
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Albums" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EG4-cd-lq0">
                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
-                                                                        <color key="tintColor" red="0.44313725490196076" green="0.51764705882352935" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="tintColor" name="textLightGrayColor"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                                                        <color key="textColor" red="0.38431372549019605" green="0.44705882352941173" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="textColor" name="textLightGrayColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -122,7 +124,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Artists" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPO-dt-1RK">
                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                                                        <color key="textColor" red="0.38431372549019605" green="0.44705882352941173" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="textColor" name="textLightGrayColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -160,7 +162,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Playlists" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tZ-kl-nee">
                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                                                        <color key="textColor" red="0.38431372549019605" green="0.44705882352941173" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="textColor" name="textLightGrayColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -198,7 +200,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Recommendations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="IdB-zQ-Ewq">
                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                                                        <color key="textColor" red="0.38431372549019605" green="0.44705882352941173" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="textColor" name="textLightGrayColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -248,7 +250,7 @@
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZYt-zc-bSc"/>
-                        <color key="backgroundColor" red="0.94117647058823528" green="0.95686274509803915" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" name="backgorundColor"/>
                         <constraints>
                             <constraint firstItem="lMk-WU-eFF" firstAttribute="bottom" secondItem="sC8-vS-goJ" secondAttribute="bottom" id="DLl-K3-hIk"/>
                             <constraint firstItem="7aq-gd-A5y" firstAttribute="leading" secondItem="ZYt-zc-bSc" secondAttribute="leading" id="McZ-LX-P3y"/>
@@ -365,6 +367,12 @@
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="music.note.house" catalog="system" width="128" height="106"/>
+        <namedColor name="backgorundColor">
+            <color red="0.93725490196078431" green="0.95686274509803915" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textLightGrayColor">
+            <color red="0.36470588235294116" green="0.45098039215686275" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
