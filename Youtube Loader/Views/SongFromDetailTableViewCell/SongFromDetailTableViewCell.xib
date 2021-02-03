@@ -36,11 +36,6 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mP6-WS-IVd">
-                                <rect key="frame" x="314" y="21" width="19" height="22"/>
-                                <color key="tintColor" red="0.57647058819999997" green="0.6588235294" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="ellipsis" catalog="system"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSB-Pv-Vw7">
                                 <rect key="frame" x="16" y="25" width="21" height="14.5"/>
                                 <constraints>
@@ -104,13 +99,11 @@
                             <constraint firstItem="DTh-IA-d0n" firstAttribute="top" secondItem="Yqy-QF-VGe" secondAttribute="top" id="7TD-Mt-4S9"/>
                             <constraint firstItem="I7Q-CR-CLF" firstAttribute="centerY" secondItem="Yqy-QF-VGe" secondAttribute="centerY" id="7c3-Tn-Zu5"/>
                             <constraint firstItem="SSB-Pv-Vw7" firstAttribute="leading" secondItem="Yqy-QF-VGe" secondAttribute="leading" constant="16" id="DhD-nj-5Lg"/>
-                            <constraint firstItem="mP6-WS-IVd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="I7Q-CR-CLF" secondAttribute="trailing" constant="8" id="FLI-fQ-eYU"/>
                             <constraint firstItem="sjd-wA-76Y" firstAttribute="centerY" secondItem="Yqy-QF-VGe" secondAttribute="centerY" id="Wfb-Xf-va9"/>
                             <constraint firstItem="SSB-Pv-Vw7" firstAttribute="centerY" secondItem="Yqy-QF-VGe" secondAttribute="centerY" id="esz-VV-04L"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="I7Q-CR-CLF" secondAttribute="trailing" constant="16" id="i27-cY-Z5I"/>
                             <constraint firstAttribute="bottom" secondItem="DTh-IA-d0n" secondAttribute="bottom" id="oSX-HW-VI3"/>
                             <constraint firstItem="I7Q-CR-CLF" firstAttribute="leading" secondItem="DTh-IA-d0n" secondAttribute="trailing" constant="16" id="tDU-Sk-cfT"/>
-                            <constraint firstItem="mP6-WS-IVd" firstAttribute="centerY" secondItem="Yqy-QF-VGe" secondAttribute="centerY" id="vZl-dn-REJ"/>
-                            <constraint firstAttribute="trailing" secondItem="mP6-WS-IVd" secondAttribute="trailing" constant="20" symbolic="YES" id="yfb-86-lX9"/>
                             <constraint firstItem="DTh-IA-d0n" firstAttribute="leading" secondItem="SSB-Pv-Vw7" secondAttribute="trailing" constant="8" id="znm-7f-v6b"/>
                         </constraints>
                     </view>
@@ -129,7 +122,6 @@
                 <outlet property="backgroundBlurImage" destination="HpV-bU-g6f" id="1xm-Nd-b25"/>
                 <outlet property="contentBackgroundView" destination="Yqy-QF-VGe" id="tkM-jS-meo"/>
                 <outlet property="descriptionLabel" destination="V9q-G4-dGc" id="5y6-te-4qW"/>
-                <outlet property="detailButton" destination="mP6-WS-IVd" id="H25-T8-eq0"/>
                 <outlet property="indexLabel" destination="SSB-Pv-Vw7" id="G2Q-9b-tiC"/>
                 <outlet property="playingImageView" destination="sjd-wA-76Y" id="7Ew-RH-cYf"/>
                 <outlet property="songImageView" destination="stL-o0-Na8" id="sdf-5O-JL2"/>
@@ -140,7 +132,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="music_placeholder" width="500" height="500"/>
         <image name="playing" width="24" height="24"/>
     </resources>

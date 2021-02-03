@@ -33,11 +33,6 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xn4-OY-Wve">
-                        <rect key="frame" x="304" y="21" width="19" height="22"/>
-                        <color key="tintColor" red="0.57647058823529407" green="0.6588235294117647" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
-                        <state key="normal" image="ellipsis" catalog="system"/>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zl-DZ-CZ9">
                         <rect key="frame" x="16" y="25" width="21" height="14.5"/>
                         <constraints>
@@ -99,15 +94,13 @@
                 <constraints>
                     <constraint firstItem="cdw-t9-PUG" firstAttribute="leading" secondItem="3zl-DZ-CZ9" secondAttribute="trailing" constant="8" id="7rq-Fd-CV1"/>
                     <constraint firstAttribute="bottom" secondItem="cdw-t9-PUG" secondAttribute="bottom" id="A57-oi-svT"/>
-                    <constraint firstItem="xn4-OY-Wve" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GXR-jn-jka"/>
                     <constraint firstItem="5d8-ro-pGf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Hhn-xj-aPc"/>
                     <constraint firstItem="3zl-DZ-CZ9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="J40-F6-rHv"/>
                     <constraint firstItem="fjg-dK-48G" firstAttribute="leading" secondItem="cdw-t9-PUG" secondAttribute="trailing" constant="16" id="JCi-e9-S9V"/>
                     <constraint firstItem="3zl-DZ-CZ9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="SeG-JN-bBI"/>
-                    <constraint firstAttribute="trailing" secondItem="xn4-OY-Wve" secondAttribute="trailing" constant="20" symbolic="YES" id="TPZ-gO-bRv"/>
                     <constraint firstItem="fjg-dK-48G" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Vub-4d-AMW"/>
-                    <constraint firstItem="xn4-OY-Wve" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fjg-dK-48G" secondAttribute="trailing" constant="8" id="ZLJ-tL-WE9"/>
                     <constraint firstItem="5d8-ro-pGf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fmb-7G-eci"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fjg-dK-48G" secondAttribute="trailing" constant="16" id="hYT-mx-rHv"/>
                     <constraint firstItem="cdw-t9-PUG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="w2a-cc-hkp"/>
                 </constraints>
             </tableViewCellContentView>
@@ -116,7 +109,6 @@
             <connections>
                 <outlet property="backgroundBlurImage" destination="KRg-ly-fA2" id="2Rx-Sg-xh5"/>
                 <outlet property="descriptionLabel" destination="tS6-TF-MTJ" id="lZc-zU-HbS"/>
-                <outlet property="detailButton" destination="xn4-OY-Wve" id="pjd-Nf-tfC"/>
                 <outlet property="indexLabel" destination="3zl-DZ-CZ9" id="Rtl-Kg-rzD"/>
                 <outlet property="playingImageView" destination="5d8-ro-pGf" id="knf-EW-74e"/>
                 <outlet property="songImageView" destination="z3z-2s-lal" id="NWe-Ks-M0i"/>
@@ -127,7 +119,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="music_placeholder" width="500" height="500"/>
         <image name="playing" width="24" height="24"/>
     </resources>

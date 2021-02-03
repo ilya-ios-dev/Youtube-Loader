@@ -164,12 +164,20 @@ extension PlaylistDetailViewController {
         snapshot.appendSections([0])
         snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
         DispatchQueue.main.async {
-            self.dataSource?.apply(self.snapshot, animatingDifferences: true)
+            self.dataSource?.apply(self.snapshot, animatingDifferences: true) {
+                self.dataSource?.apply(self.snapshot, animatingDifferences: false)
+            }
         }
     }
         
+    private class DataSource: UITableViewDiffableDataSource<Int, Song> {
+        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+        }
+    }
+
     private func setupDiffableDataSource() {
-        dataSource = UITableViewDiffableDataSource<Int, Song>(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
+        dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "songTableViewCell") as! SongFromDetailTableViewCell
             cell.configure(name: song.name, author: song.author?.name, imageURL: song.thumbnails?.smallUrl, index: indexPath.row + 1)
             return cell
@@ -245,6 +253,27 @@ extension PlaylistDetailViewController: UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+            
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
+            guard let item = self.dataSource.itemIdentifier(for: indexPath) else { return }
+            self.playlist.removeFromSongs(item)
+            do {
+                try self.context.save()
+            } catch {
+                print(error)
+                self.showAlert(alertText: error.localizedDescription)
+            }
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage(systemName: "trash.fill")
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         headerView.scrollViewDidScroll(scrollView: scrollView)
     }

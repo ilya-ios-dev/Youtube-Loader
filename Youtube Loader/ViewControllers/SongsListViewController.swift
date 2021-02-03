@@ -157,12 +157,21 @@ extension SongsListViewController {
         snapshot.appendSections([0])
         snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
         DispatchQueue.main.async {
-            self.dataSource?.apply(self.snapshot, animatingDifferences: true)
+            self.dataSource?.apply(self.snapshot, animatingDifferences: true) {
+                self.dataSource?.apply(self.snapshot, animatingDifferences: false)
+            }
+        }
+    }
+    
+    private class DataSource: UITableViewDiffableDataSource<Int, Song> {
+        // editing support
+        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
         }
     }
     
     private func setupDiffableDataSource() {
-        dataSource = UITableViewDiffableDataSource<Int, Song>(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
+        dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "songTableViewCell") as! SongTableViewCell
             cell.configure(name: song.name, author: song.author?.name, imageURL: song.thumbnails?.smallUrl, index: indexPath.row + 1)
             return cell
@@ -211,6 +220,49 @@ extension SongsListViewController: UITableViewDelegate {
                 self.bottomView.isHidden = false
             } completion: { (_) in }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
+            let storyboard = UIStoryboard(name: "CreateOrEditContent", bundle: nil)
+            guard let editingItem = self.dataSource.itemIdentifier(for: indexPath) else { return }
+            guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
+            guard let vc = navigationController.topViewController as? CreateOrEditContentViewController else { return }
+            vc.contentType = .song
+            vc.editingContent = editingItem
+            self.present(navigationController, animated: true, completion: nil)
+            completionHandler(true)
+        }
+        editAction.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        editAction.image = UIImage(systemName: "square.and.pencil")
+        
+        return UISwipeActionsConfiguration(actions: [editAction])
+    }
+        
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
+            guard let item = self.dataSource.itemIdentifier(for: indexPath) else { return }
+            if let thumbnail = item.thumbnails {
+                thumbnail.removeImages()
+                self.context.delete(thumbnail)
+            }
+            self.context.delete(item)
+
+            do {
+                try self.context.save()
+            } catch {
+                print(error)
+                self.showAlert(alertText: error.localizedDescription)
+            }
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage(systemName: "trash.fill")
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
 

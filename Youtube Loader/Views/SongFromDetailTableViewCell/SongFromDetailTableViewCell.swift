@@ -10,7 +10,6 @@ import UIKit
 final class SongFromDetailTableViewCell: UITableViewCell {
 
     //MARK: - Outlets
-    @IBOutlet private weak var detailButton: UIButton!
     @IBOutlet private weak var visualEffectBlur: UIVisualEffectView!
     @IBOutlet private weak var backgroundBlurImage: UIImageView!
     @IBOutlet private weak var playingImageView: UIImageView!
