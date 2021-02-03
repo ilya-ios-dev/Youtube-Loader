@@ -171,7 +171,14 @@ extension PlayerViewController {
             self.songAuthor.text = song.author?.name
         } completion: { (_) in }
         
-        songImageView.rotate(duration: 1)
+        // If the previous song turned on
+        if let prevIndex = audioPlayer.previousSongIndex,
+           let currentIndex = audioPlayer.songIndex,
+           prevIndex > currentIndex {
+            songImageView.rotate(duration: 1, reversed: true)
+        } else {
+            songImageView.rotate(duration: 1, reversed: false)
+        }
         
         let imageName = audioPlayer.isPlaying ? "pause.fill" : "play.fill"
         playButton.setImage(UIImage(systemName: imageName), for: .normal)
@@ -179,10 +186,12 @@ extension PlayerViewController {
         // Changes the colors of all elements to the desired one.
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
+            
             if let url = song.thumbnails?.smallUrl {
                 guard let data = try? Data(contentsOf: url) else { return }
                 guard let imageColor = UIImage(data: data)?.averageColor?.withLuminosity(0.5) else { return }
                 DispatchQueue.main.async { [weak self] in
+                    
                     guard let self = self else { return }
                     self.timelineView.changeAccentColor(to: imageColor)
                 }

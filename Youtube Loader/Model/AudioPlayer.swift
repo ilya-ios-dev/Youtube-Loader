@@ -32,6 +32,10 @@ final class AudioPlayer: NSObject {
     public var isPlaying: Bool {
         return audioPlayer?.isPlaying ?? false
     }
+    public var previousSongIndex: Int? {
+        guard let prevSong = prevSong else { return nil }
+        return _songs.firstIndex(of: prevSong)
+    }
     public var songIndex: Int? {
         return _songs.firstIndex(of: currentSong!)
     }
@@ -91,11 +95,11 @@ final class AudioPlayer: NSObject {
             audioPlayer = try AVAudioPlayer(contentsOf: songURL)
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
-            delegate?.audioPlayerPlayingStatusChanged(isPlaying: false)
-            delegate?.songChanged(song)
             updater = CADisplayLink(target: self, selector: #selector(updateDelegate))
             prevSong = currentSong
             currentSong = song
+            delegate?.audioPlayerPlayingStatusChanged(isPlaying: false)
+            delegate?.songChanged(song)
             play()
             return true
         } catch {
