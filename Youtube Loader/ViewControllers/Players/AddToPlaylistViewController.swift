@@ -51,8 +51,8 @@ final class AddToPlaylistViewController: UIViewController {
         configureViews()
         configureTapGesture()
         configurePanGesture()
-        let nib = UINib(nibName: "PlaylistTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "PlaylistTableViewCell")
+        let nib = UINib(nibName: String(describing: PlaylistTableViewCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: PlaylistTableViewCell.cellIdentifier)
         tableView.delegate = self
         setupFetchedResultsController()
         setupDiffableDataSource()
@@ -292,7 +292,7 @@ extension AddToPlaylistViewController {
     
     private func setupDiffableDataSource() {
         dataSource = UITableViewDiffableDataSource<Int, Playlist>(tableView: tableView, cellProvider: { (tableView, indexPath, playlist) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PlaylistTableViewCell") as! PlaylistTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: PlaylistTableViewCell.cellIdentifier) as! PlaylistTableViewCell
             cell.configure(name: playlist.name, songsCount: playlist.songs?.count, imageURL: playlist.thumbnails?.smallUrl)
             return cell
         })

@@ -8,5 +8,5 @@
 import UIKit
 
 extension UICollectionViewCell {
-    public static let cellIdentifier = String(describing: self)
+    public static let cellIdentifier = String(describing: self).lowercased()
 }

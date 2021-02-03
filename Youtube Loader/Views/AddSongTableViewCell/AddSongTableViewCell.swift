@@ -29,7 +29,6 @@ final class AddSongTableViewCell: UITableViewCell {
     
     
     //MARK: - Properties
-    public static let cellIdentifier = String(describing: self)
     public weak var delegate: AddSongTableViewCellDelegate?
     
     private var isPaused = false

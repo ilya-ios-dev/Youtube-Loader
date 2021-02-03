@@ -103,8 +103,8 @@ extension SelectSongsViewController {
     
     private func configureTableView() {
         tableView.delegate = self
-        let nib = UINib(nibName: "SelectArtistAlbumSongTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "selectSongTableViewCell")
+        let nib = UINib(nibName: String(describing: SelectArtistAlbumSongTableViewCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: SelectArtistAlbumSongTableViewCell.cellIdentifier)
     }
     
     private func setupTableSnapshot() {
@@ -123,7 +123,7 @@ extension SelectSongsViewController {
     
     private func setupTableDataSource() {
         tableDataSource = UITableViewDiffableDataSource<Int, Song>(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "selectSongTableViewCell") as! SelectArtistAlbumSongTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: SelectArtistAlbumSongTableViewCell.cellIdentifier) as! SelectArtistAlbumSongTableViewCell
             
             if let imageUrl = song.thumbnails?.smallUrl {
                 cell.songImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))

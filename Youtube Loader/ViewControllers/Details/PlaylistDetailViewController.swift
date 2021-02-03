@@ -114,8 +114,8 @@ extension PlaylistDetailViewController {
     
     private func configureTableView() {
         tableView.delegate = self
-        let nib = UINib(nibName: "SongFromDetailTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "songTableViewCell")
+        let nib = UINib(nibName: String(describing: SongFromDetailTableViewCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: SongFromDetailTableViewCell.cellIdentifier)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
@@ -178,7 +178,7 @@ extension PlaylistDetailViewController {
 
     private func setupDiffableDataSource() {
         dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "songTableViewCell") as! SongFromDetailTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: SongFromDetailTableViewCell.cellIdentifier) as! SongFromDetailTableViewCell
             cell.configure(name: song.name, author: song.author?.name, imageURL: song.thumbnails?.smallUrl, index: indexPath.row + 1)
             return cell
         })

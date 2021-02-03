@@ -38,8 +38,8 @@ final class PlaylistCollectionViewController: UICollectionViewController {
 extension PlaylistCollectionViewController {
     
     private func configureSongCollectionView() {
-        let nib = UINib(nibName: "PlaylistCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "playlist")
+        let nib = UINib(nibName: String(describing: PlaylistCollectionViewCell.self), bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: PlaylistCollectionViewCell.cellIdentifier)
         collectionView.register(AddingCollectionReusableView.self, forSupplementaryViewOfKind: PlaylistCollectionViewController.leadingKind, withReuseIdentifier: AddingCollectionReusableView.reuseIdentifier)
         collectionView.collectionViewLayout = configureSongLayout()
     }
@@ -71,7 +71,7 @@ extension PlaylistCollectionViewController {
     
     private func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Int, Playlist> (collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "playlist", for: indexPath) as? PlaylistCollectionViewCell else { return nil }
+            guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCollectionViewCell.cellIdentifier, for: indexPath) as? PlaylistCollectionViewCell else { return nil }
             guard let imageURL = item.mediumUrl else { return cell }
             cell.configure(title: item.name, imageURL: imageURL)
             return cell

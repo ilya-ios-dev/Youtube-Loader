@@ -41,7 +41,6 @@ final class MainViewController: UIViewController {
         guard let song = audioPlayer.currentSong else { return }
         songsCollectionView.selectItem(song)
         miniPlayerView.isHidden = false
-        
         scrollView.contentInset = UIEdgeInsets(top: scrollView.contentInset.top, left: 0, bottom: miniPlayerView.frame.height + 8, right: 0)
     }
     

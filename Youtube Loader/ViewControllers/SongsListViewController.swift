@@ -114,8 +114,8 @@ extension SongsListViewController {
     
     private func configureTableView() {
         tableView.delegate = self
-        let nib = UINib(nibName: "SongTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "songTableViewCell")
+        let nib = UINib(nibName: String(describing: SongTableViewCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: SongTableViewCell.cellIdentifier)
     }
     
     private func configureMiniPlayer() {
@@ -172,7 +172,7 @@ extension SongsListViewController {
     
     private func setupDiffableDataSource() {
         dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "songTableViewCell") as! SongTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.cellIdentifier) as! SongTableViewCell
             cell.configure(name: song.name, author: song.author?.name, imageURL: song.thumbnails?.smallUrl, index: indexPath.row + 1)
             return cell
         })
