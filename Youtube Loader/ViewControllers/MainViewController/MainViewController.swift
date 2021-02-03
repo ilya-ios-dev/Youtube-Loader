@@ -96,7 +96,7 @@ extension MainViewController: MiniPlayerDelegate {
     }
     
     func expandSong(song: Song?) {
-        let storyboard = UIStoryboard(name: "Player", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.player, bundle: nil)
         guard let playerController = storyboard.instantiateInitialViewController() as? PlayerViewController else { return }
         playerController.sourceProtocol = self
         playerController.modalPresentationStyle = .currentContext
@@ -121,7 +121,7 @@ extension MainViewController: SongsCollectionViewControllerDelegate {
 //MARK: - ArtistCollectionViewControllerDelegate
 extension MainViewController: ArtistCollectionViewControllerDelegate {
     func didSelectedArtist(_ artist: Artist) {
-        let storyboard = UIStoryboard(name: "ArtistDetail", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.artistDetail, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? ArtistDetailViewController else { return }
         vc.artist = artist
         vc.sourceProtocol = self
@@ -133,7 +133,7 @@ extension MainViewController: ArtistCollectionViewControllerDelegate {
 //MARK: - AlbumsCollectionViewController
 extension MainViewController: AlbumsCollectionViewControllerDelegate {
     func didSelectedAlbum(_ album: Album) {
-        let storyboard = UIStoryboard(name: "AlbumDetail", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.albumDetail, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? AlbumDetailViewController else { return }
         vc.sourceProtocol = self
         vc.album = album
@@ -145,7 +145,7 @@ extension MainViewController: AlbumsCollectionViewControllerDelegate {
 //MARK: - PlaylistCollectionViewControllerDelegate
 extension MainViewController: PlaylistCollectionViewControllerDelegate {
     func didSelectedPlaylist(_ playlist: Playlist) {
-        let storyboard = UIStoryboard(name: "PlaylistDetail", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.playlistDetail, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? PlaylistDetailViewController else { return }
         vc.sourceProtocol = self
         vc.playlist = playlist

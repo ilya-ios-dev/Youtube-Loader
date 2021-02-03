@@ -196,7 +196,7 @@ extension SongsListViewController: MiniPlayerDelegate {
     }
     
     func expandSong(song: Song?) {
-        let storyboard = UIStoryboard(name: "Player", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.player, bundle: nil)
         guard let playerController = storyboard.instantiateInitialViewController() as? PlayerViewController else { return }
         playerController.sourceProtocol = sourceProtocol
         playerController.modalPresentationStyle = .currentContext
@@ -228,7 +228,7 @@ extension SongsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
-            let storyboard = UIStoryboard(name: "CreateOrEditContent", bundle: nil)
+            let storyboard = UIStoryboard(name: Storyboards.createOrEditContent, bundle: nil)
             guard let editingItem = self.dataSource.itemIdentifier(for: indexPath) else { return }
             guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
             guard let vc = navigationController.topViewController as? CreateOrEditContentViewController else { return }

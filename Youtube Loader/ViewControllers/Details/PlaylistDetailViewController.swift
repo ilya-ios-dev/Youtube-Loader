@@ -203,7 +203,7 @@ extension PlaylistDetailViewController: MiniPlayerDelegate {
     }
     
     func expandSong(song: Song?) {
-        let storyboard = UIStoryboard(name: "Player", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.player, bundle: nil)
         guard let playerController = storyboard.instantiateInitialViewController() as? PlayerViewController else { return }
         playerController.sourceProtocol = sourceProtocol
         playerController.modalPresentationStyle = .currentContext

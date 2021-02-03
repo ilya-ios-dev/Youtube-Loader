@@ -140,23 +140,6 @@ extension PlayerSongsListViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
-//MARK: - MiniPlayerDelegate
-extension PlayerSongsListViewController: MiniPlayerDelegate {
-    func didSelectedItem(_ item: Song?) {
-        guard let song = item else { return }
-        guard let songIndex = dataSource.indexPath(for: song) else { return }
-        tableView.selectRow(at: songIndex, animated: true, scrollPosition: .middle)
-    }
-    
-    func expandSong(song: Song?) {
-        let storyboard = UIStoryboard(name: "Player", bundle: nil)
-        guard let playerController = storyboard.instantiateInitialViewController() as? PlayerViewController else { return }
-        playerController.sourceProtocol = sourceProtocol
-        playerController.modalPresentationStyle = .currentContext
-        present(playerController, animated: true, completion: nil)
-    }
-}
-
 //MARK: - UITableViewDelegate
 extension PlayerSongsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

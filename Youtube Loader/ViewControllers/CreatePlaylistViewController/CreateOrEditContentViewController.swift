@@ -167,7 +167,7 @@ final class CreateOrEditContentViewController: UIViewController {
     
     /// Opens a controller with a list of songs.
     @IBAction func selectSongsTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "SelectSongs", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.selectSongs, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? SelectSongsViewController else { return }
         vc.delegate = self
         vc.selectedSongs = selectedSongs
@@ -176,7 +176,7 @@ final class CreateOrEditContentViewController: UIViewController {
     
     /// Opens a controller with a list of artists.
     @objc private func selectArtistTapped() {
-        let storyboard = UIStoryboard(name: "SelectArtist", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.selectArtist, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? SelectArtistViewController else { return }
         vc.delegate = self
         vc.selectedArtist = selectedArtist
@@ -185,7 +185,7 @@ final class CreateOrEditContentViewController: UIViewController {
     
     /// Opens a controller with a list of albums for multiple selection.
     @objc private func selectAlbumsTapped() {
-        let storyboard = UIStoryboard(name: "SelectAlbums", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.selectAlbums, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? SelectAlbumsViewController else { return }
         vc.delegate = self
         vc.selectedAlbums = selectedAlbums
@@ -194,7 +194,7 @@ final class CreateOrEditContentViewController: UIViewController {
     
     /// Opens a controller with a list of albums for single selection.
     @objc private func selectAlbumTapped() {
-        let storyboard = UIStoryboard(name: "SelectAlbums", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.selectAlbums, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? SelectAlbumsViewController else { return }
         vc.delegate = self
         vc.isMultipleSelectionAllowed = false

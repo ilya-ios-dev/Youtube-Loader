@@ -83,7 +83,7 @@ final class ArtistDetailViewController: UIViewController {
     }
     
     @IBAction func songsListTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "SongsList", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.songsList, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? SongsListViewController else { return }
         vc.sourceProtocol = sourceProtocol
         vc.artist = artist
@@ -206,7 +206,7 @@ extension ArtistDetailViewController: UISearchBarDelegate {
 //MARK: - MiniPlayerDelegate
 extension ArtistDetailViewController: MiniPlayerDelegate {
     func expandSong(song: Song?) {
-        let storyboard = UIStoryboard(name: "Player", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.player, bundle: nil)
         guard let playerController = storyboard.instantiateInitialViewController() as? PlayerViewController else { return }
         playerController.sourceProtocol = sourceProtocol
         playerController.modalPresentationStyle = .currentContext
@@ -243,7 +243,7 @@ extension ArtistDetailViewController: SongsCollectionViewControllerDelegate {
 
 extension ArtistDetailViewController: AlbumsCollectionViewControllerDelegate {
     func didSelectedAlbum(_ album: Album) {
-        let storyboard = UIStoryboard(name: "AlbumDetail", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.artistDetail, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? AlbumDetailViewController else { return }
         vc.sourceProtocol = sourceProtocol
         vc.album = album

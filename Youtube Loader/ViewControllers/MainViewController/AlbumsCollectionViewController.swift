@@ -93,7 +93,7 @@ extension AlbumsCollectionViewController {
     }
     
     @objc private func createPlaylistTapped() {
-        let storyboard = UIStoryboard(name: "CreateOrEditContent", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.createOrEditContent, bundle: nil)
         guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
         guard let vc = navigationController.topViewController as? CreateOrEditContentViewController else { return }
         vc.contentType = .album
@@ -167,7 +167,7 @@ extension AlbumsCollectionViewController {
         return UIAction(title: "Edit",
                         image: UIImage(systemName: "square.and.pencil")) { action in
             
-            let storyboard = UIStoryboard(name: "CreateOrEditContent", bundle: nil)
+            let storyboard = UIStoryboard(name: Storyboards.createOrEditContent, bundle: nil)
             guard let editingItem = self.dataSource.itemIdentifier(for: indexPath) else { return }
             guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
             guard let vc = navigationController.topViewController as? CreateOrEditContentViewController else { return }

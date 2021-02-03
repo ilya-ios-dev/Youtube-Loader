@@ -69,7 +69,7 @@ final class PlayerViewController: UIViewController {
     }
     
     @IBAction private func songsListTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "PlayerSongsList", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.playerSongsList, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? PlayerSongsListViewController else { return }
         // Delay the capture of snapshot by 0.1 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
@@ -96,7 +96,7 @@ final class PlayerViewController: UIViewController {
     }
     
     @IBAction private func addToPlaylistTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "AddToPlaylist", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.addToPlaylist, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? AddToPlaylistViewController else { return }
         // Delay the capture of snapshot by 0.1 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 , execute: {
