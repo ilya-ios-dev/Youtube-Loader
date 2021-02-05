@@ -17,23 +17,26 @@ protocol RecommendationsCollectionViewCellDelegate: class {
 final class RecommendationsCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Outlets
+    //Images
+    @IBOutlet private weak var visualEffectBlur: UIVisualEffectView!
     @IBOutlet private weak var backgroundBlurImage: UIImageView!
     @IBOutlet private weak var songImageView: UIImageView!
+    //Titles
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    //Button's
     @IBOutlet private weak var pauseOrResumeButton: UIButton!
     @IBOutlet private weak var donwloadOrCancelButton: UIButton!
     @IBOutlet private weak var buttonsStackView: UIStackView!
+    //Progress
     @IBOutlet private weak var progressView: UIProgressView!
-    @IBOutlet private weak var visualEffectBlur: UIVisualEffectView!
-    
     
     //MARK: - Properties
     public weak var delegate: RecommendationsCollectionViewCellDelegate?
     
     private var isPaused = false
     private var isDownloading = false
-
+    
     //MARK: - Actions
     @IBAction func tapPauseOrResume(_ sender: Any) {
         isPaused ? resume() : pause()
@@ -55,7 +58,7 @@ final class RecommendationsCollectionViewCell: UICollectionViewCell {
 
 //MARK: - Supporting Methods
 extension RecommendationsCollectionViewCell {
-    /// Adjusts the display of the `visualEffectBlur` to look like a shadow.
+    // Adjusts the display of the visualEffectBlur to look like a shadow.
     private func configureBlur() {
         let maskLayer = CAGradientLayer()
         maskLayer.frame = visualEffectBlur.bounds
@@ -67,16 +70,19 @@ extension RecommendationsCollectionViewCell {
         visualEffectBlur.layer.mask = maskLayer
     }
     
+    // Animate pausing and pass it to delegate
     private func pause() {
         delegate?.pauseTapped(self)
         pauseOrResumeButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
     }
     
+    // Animate resuming and pass it to deleagate
     private func resume() {
         delegate?.resumeTapped(self)
         pauseOrResumeButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
     }
     
+    // Animate downloading and pass it to delegate
     private func download() {
         delegate?.downloadTapped(self)
         UIView.transition(with: donwloadOrCancelButton, duration: 0.325, options: .transitionCrossDissolve) {
@@ -86,6 +92,7 @@ extension RecommendationsCollectionViewCell {
         }
     }
     
+    // Animate cancellation and pass it to delegate.
     private func cancel() {
         delegate?.cancelTapped(self)
         progressView.progress = 0
@@ -106,8 +113,8 @@ extension RecommendationsCollectionViewCell {
     ///   - url: Link to image.
     public func configure(video: Video, downloading: Bool, paused: Bool, url: URL?) {
         if let url = url {
-            backgroundBlurImage.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
-            songImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
+            backgroundBlurImage.af.setImage(withURL: url, placeholderImage: Images.music_placeholder)
+            songImageView.af.setImage(withURL: url, placeholderImage: Images.music_placeholder)
         }
         
         titleLabel.text = video.snippet?.title

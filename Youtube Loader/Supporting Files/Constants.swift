@@ -45,3 +45,10 @@ struct Colors {
     static let textTitleAccentColor = UIColor(named: "textTitleAccentColor")!
     static let whiteBlueColor = UIColor(named: "whiteBlueColor")!
 }
+
+struct Images {
+    static let artist_placeholder = UIImage(named: "artist_placeholder")!
+    static let image_placeholder = UIImage(named: "image_placeholder")!
+    static let music_placeholder = UIImage(named: "music_placeholder")!
+    static let vinyl_record = UIImage(named: "vinyl_record")!
+}

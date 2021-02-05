@@ -15,16 +15,21 @@ protocol MiniPlayerDelegate: class {
 final class MiniPlayerViewController: UIViewController {
 
     //MARK: - Outlets
+    // Image
     @IBOutlet private weak var songImageView: UIImageView!
+    @IBOutlet private weak var backgroundImageView: UIImageView!
+    @IBOutlet private weak var visualEffectView: UIVisualEffectView!
+    // Labels
     @IBOutlet private weak var authorLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
+    // Buttons
     @IBOutlet private weak var nextButton: UIButton!
     @IBOutlet private weak var playOrPauseButton: UIButton!
+    // Bottom control
     @IBOutlet private weak var endSongTimelineLabel: UILabel!
     @IBOutlet private weak var startSongTimelineLabel: UILabel!
     @IBOutlet private weak var songProgress: UIProgressView!
-    @IBOutlet private weak var backgroundImageView: UIImageView!
-    @IBOutlet private weak var visualEffectView: UIVisualEffectView!
+    // Tap Gesture
     @IBOutlet private var tapGesture: UITapGestureRecognizer!
     
     //MARK: - Properties
@@ -55,15 +60,15 @@ final class MiniPlayerViewController: UIViewController {
     }
         
     //MARK: - Actions
-    @IBAction func nextTapped(_ sender: Any) {
+    @IBAction private func nextTapped(_ sender: Any) {
         audioplayer.nextSong()
     }
     
-    @IBAction func pauseTapped(_ sender: Any) {
+    @IBAction private func pauseTapped(_ sender: Any) {
         audioplayer.togglePlaying()
     }
     
-    @IBAction func tapGesture(_ sender: Any) {
+    @IBAction private func tapGesture(_ sender: Any) {
         guard audioplayer.currentSong != nil else { return }
         delegate?.expandSong(song: nil)
     }

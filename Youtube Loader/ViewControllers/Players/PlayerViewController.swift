@@ -134,7 +134,7 @@ extension PlayerViewController: AudioPlayerDelegate {
 
 //MARK: - Supporting Methods
 extension PlayerViewController {
-    @objc func onSliderValChanged(slider: UISlider, event: UIEvent) {
+    @objc private func onSliderValChanged(slider: UISlider, event: UIEvent) {
         if let touchEvent = event.allTouches?.first {
             switch touchEvent.phase {
             case .began:

@@ -63,7 +63,7 @@ final class AddToPlaylistViewController: UIViewController {
 //MARK: - Actions
 extension AddToPlaylistViewController {
     
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    @IBAction private func saveButtonTapped(_ sender: Any) {
         guard let currentSong = currentSong else { return }
         guard let indexPath = tableView.indexPathForSelectedRow else { fatalError() }
         guard let playlist = dataSource.itemIdentifier(for: indexPath) else { return }
@@ -80,7 +80,7 @@ extension AddToPlaylistViewController {
     
     /// Tracks down Pan Gesture.
     /// Moves the `cardView` to one of the positions, depending on where the view is dragged to.
-    @IBAction func viewPanned(_ panRecognizer: UIPanGestureRecognizer) {
+    @IBAction private func viewPanned(_ panRecognizer: UIPanGestureRecognizer) {
         let velocity = panRecognizer.velocity(in: self.view)
         let translation = panRecognizer.translation(in: self.view)
         
@@ -119,7 +119,7 @@ extension AddToPlaylistViewController {
         }
     }
     
-    @IBAction func dimmerViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
+    @IBAction private func dimmerViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
         hideCardAndGoBack()
     }
 }

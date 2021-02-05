@@ -6,10 +6,6 @@
 //
 
 import UIKit
-import CoreData
-import Alamofire
-import AlamofireImage
-import XCDYouTubeKit
 
 final class AddViewController: UIViewController {
     

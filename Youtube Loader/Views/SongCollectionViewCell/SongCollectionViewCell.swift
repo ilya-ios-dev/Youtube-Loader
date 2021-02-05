@@ -11,8 +11,8 @@ final class SongCollectionViewCell: UICollectionViewCell {
 
     //MARK: - Outlets
     @IBOutlet private weak var backgorundView: UIView!
-    @IBOutlet public weak var songBackgroundImageView: UIImageView!
-    @IBOutlet public weak var songImageView: UIImageView!
+    @IBOutlet private weak var songBackgroundImageView: UIImageView!
+    @IBOutlet private weak var songImageView: UIImageView!
     @IBOutlet private weak var visualEffectBlur: UIVisualEffectView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
@@ -43,11 +43,14 @@ final class SongCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func configure(title: String?, description: String?, imageURL: URL) {
+    public func configure(title: String?, description: String?, imageURL: URL?) {
+        if let url = imageURL {
+            songImageView.af.setImage(withURL: url, placeholderImage: Images.music_placeholder)
+            songBackgroundImageView.af.setImage(withURL: url, placeholderImage: Images.music_placeholder)
+        }
+        
         titleLabel.text = title
         descriptionLabel.text = description
-        songImageView.af.setImage(withURL: imageURL)
-        songBackgroundImageView.af.setImage(withURL: imageURL)
     }
     
     /// Adjusts the display of the `visualEffectBlur` to look like a shadow.

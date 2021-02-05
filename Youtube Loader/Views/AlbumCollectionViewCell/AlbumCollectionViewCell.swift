@@ -17,7 +17,6 @@ final class AlbumCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         configureBlur()
         contentView.backgroundColor = Colors.backgorundColor
     }
@@ -25,8 +24,8 @@ final class AlbumCollectionViewCell: UICollectionViewCell {
     public func configure(title: String?, imageUrl: URL?) {
         titleLabel.text = title
         if let url = imageUrl {
-            albumImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "vinyl_record"))
-            backgroundImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "vinyl_record"))
+            albumImageView.af.setImage(withURL: url, placeholderImage: Images.vinyl_record)
+            backgroundImageView.af.setImage(withURL: url, placeholderImage: Images.vinyl_record)
         }
     }
     

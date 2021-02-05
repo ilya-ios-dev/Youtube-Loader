@@ -10,14 +10,14 @@ import UIKit
 final class ArtistCollectionViewCell: UICollectionViewCell {
 
     //MARK: - Outlets
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var visualEffectView: UIVisualEffectView!
-    @IBOutlet weak var artistImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet private weak var backgroundImageView: UIImageView!
+    @IBOutlet private weak var visualEffectView: UIVisualEffectView!
+    @IBOutlet private weak var artistImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
         configureBlur()
         backgroundImageView.layer.cornerRadius = backgroundImageView.frame.height / 2
         artistImageView.layer.cornerRadius = artistImageView.frame.height / 2
@@ -27,8 +27,8 @@ final class ArtistCollectionViewCell: UICollectionViewCell {
     public func configure(title: String?, url: URL?) {
         titleLabel.text = title
         if let url = url {
-            artistImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "artist_placeholder"))
-            backgroundImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "artist_placeholder"))
+            artistImageView.af.setImage(withURL: url, placeholderImage: Images.artist_placeholder)
+            backgroundImageView.af.setImage(withURL: url, placeholderImage: Images.artist_placeholder)
         }
     }
     
@@ -43,7 +43,6 @@ final class ArtistCollectionViewCell: UICollectionViewCell {
             maskLayer.shadowOffset = CGSize.zero
             maskLayer.shadowColor = UIColor.white.cgColor
             self.visualEffectView.layer.mask = maskLayer
-
         }
     }
 }

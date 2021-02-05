@@ -18,8 +18,8 @@ final class PlaylistTableViewCell: UITableViewCell {
     
     public func configure(name: String?, songsCount: Int?, imageURL: URL?) {
         if let url = imageURL {
-            backgroundBlurImage.af.setImage(withURL: url)
-            songImageView.af.setImage(withURL: url)
+            backgroundBlurImage.af.setImage(withURL: url, placeholderImage: Images.vinyl_record)
+            songImageView.af.setImage(withURL: url, placeholderImage: Images.vinyl_record)
         }
         titleLabel.text = name
         

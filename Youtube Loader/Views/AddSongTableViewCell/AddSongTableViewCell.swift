@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 protocol AddSongTableViewCellDelegate: class {
     func downloadTapped(_ cell: AddSongTableViewCell)
@@ -17,15 +19,19 @@ protocol AddSongTableViewCellDelegate: class {
 final class AddSongTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
+    // Image
     @IBOutlet private weak var backgroundBlurImage: UIImageView!
+    @IBOutlet private weak var visualEffectBlur: UIVisualEffectView!
     @IBOutlet private weak var songImageView: UIImageView!
+    // Title's
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    // Button's stack
     @IBOutlet private weak var pauseOrResumeButton: UIButton!
     @IBOutlet private weak var donwloadOrCancelButton: UIButton!
     @IBOutlet private weak var buttonsStackView: UIStackView!
+    // Progress
     @IBOutlet private weak var progressView: UIProgressView!
-    @IBOutlet private weak var visualEffectBlur: UIVisualEffectView!
     
     
     //MARK: - Properties
@@ -33,14 +39,14 @@ final class AddSongTableViewCell: UITableViewCell {
     
     private var isPaused = false
     private var isDownloading = false
-
+    
     //MARK: - Actions
-    @IBAction func tapPauseOrResume(_ sender: Any) {
+    @IBAction private func tapPauseOrResume(_ sender: Any) {
         isPaused ? resume() : pause()
         isPaused = !isPaused
     }
     
-    @IBAction func tapDownloadOrCancel(_ sender: Any) {
+    @IBAction private func tapDownloadOrCancel(_ sender: Any) {
         isDownloading ? cancel() : download()
         isDownloading = !isDownloading
     }
@@ -55,7 +61,7 @@ final class AddSongTableViewCell: UITableViewCell {
 
 //MARK: - Supporting Methods
 extension AddSongTableViewCell {
-    /// Adjusts the display of the `visualEffectBlur` to look like a shadow.
+    // Adjusts the display of the visualEffectBlur to look like a shadow.
     private func configureBlur() {
         let maskLayer = CAGradientLayer()
         maskLayer.frame = visualEffectBlur.bounds
@@ -67,16 +73,19 @@ extension AddSongTableViewCell {
         visualEffectBlur.layer.mask = maskLayer
     }
     
+    // Animate pausing and pass it to delegate
     private func pause() {
         delegate?.pauseTapped(self)
         pauseOrResumeButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
     }
     
+    // Animate resuming and pass it to deleagate
     private func resume() {
         delegate?.resumeTapped(self)
         pauseOrResumeButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
     }
     
+    // Animate downloading and pass it to delegate
     private func download() {
         delegate?.downloadTapped(self)
         UIView.transition(with: donwloadOrCancelButton, duration: 0.325, options: .transitionCrossDissolve) {
@@ -86,6 +95,7 @@ extension AddSongTableViewCell {
         }
     }
     
+    // Animate cancellation and pass it to delegate.
     private func cancel() {
         delegate?.cancelTapped(self)
         progressView.progress = 0
@@ -95,9 +105,10 @@ extension AddSongTableViewCell {
             self.progressView.isHidden = true
         }
     }
-    
-    //MARK: - Public Methods
-    
+}
+
+//MARK: - Public Methods
+extension AddSongTableViewCell {
     /// Adjusts the display of the call based on the provided conditions.
     /// - Parameters:
     ///   - video: The object to be displayed.
@@ -106,8 +117,8 @@ extension AddSongTableViewCell {
     ///   - url: Link to image.
     public func configure(video: Video, downloading: Bool, paused: Bool, url: URL?) {
         if let url = url {
-            backgroundBlurImage.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
-            songImageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "music_placeholder"))
+            backgroundBlurImage.af.setImage(withURL: url, placeholderImage: Images.music_placeholder)
+            songImageView.af.setImage(withURL: url, placeholderImage: Images.music_placeholder)
         }
         
         titleLabel.text = video.snippet?.title

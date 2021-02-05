@@ -36,15 +36,7 @@ final class SongsListViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let song = audioPlayer.currentSong else { return }
-        guard let songIndex = dataSource.indexPath(for: song) else { return }
-        tableView.selectRow(at: songIndex, animated: true, scrollPosition: .top)
-        miniPlayerView.isHidden = false
-        bottomView.isHidden = false
-        tableView.contentInset = UIEdgeInsets(top: view.safeAreaInsets.top + searchBar.frame.height,
-                                              left: 0,
-                                              bottom: miniPlayerView.frame.height + 16 + view.safeAreaInsets.bottom,
-                                              right: 0)
+        configureSelectedSong()
     }
     
     override func viewDidLoad() {
@@ -81,7 +73,20 @@ final class SongsListViewController: UIViewController {
 }
 
 //MARK: - Supporting Methods
-extension SongsListViewController {    
+extension SongsListViewController {
+    
+    private func configureSelectedSong() {
+        guard let song = audioPlayer.currentSong else { return }
+        guard let songIndex = dataSource.indexPath(for: song) else { return }
+        tableView.selectRow(at: songIndex, animated: true, scrollPosition: .top)
+        miniPlayerView.isHidden = false
+        bottomView.isHidden = false
+        tableView.contentInset = UIEdgeInsets(top: view.safeAreaInsets.top + searchBar.frame.height,
+                                              left: 0,
+                                              bottom: miniPlayerView.frame.height + 16 + view.safeAreaInsets.bottom,
+                                              right: 0)
+    }
+    
     private func configureSearchBar() {
         searchBar.delegate = self
         

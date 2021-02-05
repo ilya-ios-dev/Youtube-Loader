@@ -138,16 +138,10 @@ extension SelectAlbumsViewController {
     }
     
     private func setupTableDataSource() {
-        tableDataSource = UITableViewDiffableDataSource<Int, Album>(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
+        tableDataSource = UITableViewDiffableDataSource<Int, Album>(tableView: tableView, cellProvider: { (tableView, indexPath, album) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: SelectArtistAlbumSongTableViewCell.cellIdentifier) as! SelectArtistAlbumSongTableViewCell
             
-            if let imageUrl = song.thumbnails?.smallUrl {
-                cell.songImageView.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "vinyl_record"))
-                cell.backgroundBlurImage.af.setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "vinyl_record"))
-            }
-            cell.titleLabel.text = song.name
-            cell.descriptionLabel.text = nil
-            cell.indexLabel.text = String(indexPath.row + 1)
+            cell.configure(name: album.name, description: nil, url: album.thumbnails?.smallUrl, index: indexPath.row + 1)
             return cell
         })
         setupTableSnapshot()

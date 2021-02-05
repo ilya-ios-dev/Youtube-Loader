@@ -11,11 +11,11 @@ final class SelectArtistAlbumSongTableViewCell: UITableViewCell {
 
     //MARK: - Outlets
     @IBOutlet private weak var visualEffectBlur: UIVisualEffectView!
-    @IBOutlet public weak var backgroundBlurImage: UIImageView!
-    @IBOutlet public weak var songImageView: UIImageView!
-    @IBOutlet public weak var indexLabel: UILabel!
-    @IBOutlet public weak var titleLabel: UILabel!
-    @IBOutlet public weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var backgroundBlurImage: UIImageView!
+    @IBOutlet private weak var songImageView: UIImageView!
+    @IBOutlet private weak var indexLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         UIView.animate(withDuration: 0.325) {
@@ -41,5 +41,15 @@ final class SelectArtistAlbumSongTableViewCell: UITableViewCell {
         maskLayer.shadowOffset = CGSize.zero
         maskLayer.shadowColor = UIColor.white.cgColor
         visualEffectBlur.layer.mask = maskLayer
+    }
+    
+    public func configure(name: String?, description: String?, url: URL?, index: Int) {
+        if let url = url {
+            songImageView.af.setImage(withURL: url, placeholderImage: Images.music_placeholder)
+            backgroundBlurImage.af.setImage(withURL: url, placeholderImage: Images.music_placeholder)
+        }
+        titleLabel.text = name
+        descriptionLabel.text = description
+        indexLabel.text = String(index)
     }
 }

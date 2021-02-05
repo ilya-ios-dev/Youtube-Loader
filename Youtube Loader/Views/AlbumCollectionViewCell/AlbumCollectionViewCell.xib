@@ -32,8 +32,8 @@
                         </view>
                         <blurEffect style="regular"/>
                     </visualEffectView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label of Label of Label of Label of Label of Label of " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="vi6-KD-ylm">
-                        <rect key="frame" x="9" y="158" width="132.5" height="44"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="vi6-KD-ylm">
+                        <rect key="frame" x="51.5" y="158" width="47.5" height="44"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                         <color key="textColor" name="textDarkGrayColor"/>
                         <nil key="highlightedColor"/>
@@ -77,7 +77,7 @@
     <resources>
         <image name="vinyl_record" width="500" height="500"/>
         <namedColor name="textDarkGrayColor">
-            <color red="0.30196078431372547" green="0.32941176470588235" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.30199998617172241" green="0.32899999618530273" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
