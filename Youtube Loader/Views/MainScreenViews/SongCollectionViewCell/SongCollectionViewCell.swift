@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A collection view cell that specializes in displaying a playable song.
 final class SongCollectionViewCell: UICollectionViewCell {
 
     //MARK: - Outlets

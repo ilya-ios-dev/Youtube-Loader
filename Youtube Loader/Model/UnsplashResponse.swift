@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// JSON response to a Unsplash request.
 struct UnsplashResponse: Codable, Hashable {
     let results: [Result]
     

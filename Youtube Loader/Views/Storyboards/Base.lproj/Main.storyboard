@@ -276,10 +276,10 @@
             </objects>
             <point key="canvasLocation" x="327.536231884058" y="-82.366071428571431"/>
         </scene>
-        <!--AddSong-->
+        <!--DownloadSongs-->
         <scene sceneID="u46-sR-EZs">
             <objects>
-                <viewControllerPlaceholder storyboardName="AddSong" id="pF4-N9-Bd8" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="DownloadSongs" id="pF4-N9-Bd8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="bQD-m2-NQJ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5A0-KP-HcD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -368,10 +368,10 @@
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="music.note.house" catalog="system" width="128" height="106"/>
         <namedColor name="backgorundColor">
-            <color red="0.93725490196078431" green="0.95686274509803915" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.93699997663497925" green="0.9570000171661377" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textLightGrayColor">
-            <color red="0.36470588235294116" green="0.45098039215686275" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.36500000953674316" green="0.45100000500679016" blue="0.57999998331069946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+/// A view controller that specializes in displaying all featured songs as a collection view.
 final class RecommendationsCollectionViewController: UICollectionViewController {
 
     //MARK: - Properties

@@ -1,5 +1,5 @@
 //
-//  AddViewController.swift
+//  DownloadSongsViewController.swift
 //  Youtube Loader
 //
 //  Created by isEmpty on 16.01.2021.
@@ -7,7 +7,8 @@
 
 import UIKit
 
-final class AddViewController: UIViewController {
+/// A view controller that specializes in finding and downloading songs.
+final class DownloadSongsViewController: UIViewController {
     
     //MARK: - Outlets
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -22,8 +23,8 @@ final class AddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nib = UINib(nibName: String(describing: AddSongTableViewCell.self), bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: AddSongTableViewCell.cellIdentifier)
+        let nib = UINib(nibName: String(describing: DownloadSongsTableViewCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: DownloadSongsTableViewCell.cellIdentifier)
         tableView.dataSource = self
         configureSearchBar()
         
@@ -64,13 +65,13 @@ final class AddViewController: UIViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension AddViewController: UITableViewDataSource {
+extension DownloadSongsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: AddSongTableViewCell.cellIdentifier) as! AddSongTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: DownloadSongsTableViewCell.cellIdentifier) as! DownloadSongsTableViewCell
         cell.delegate = self
         let item = searchResults[indexPath.row]
         let nowDownloading = downloader.activeDownloads[item.id.videoID] != nil
@@ -83,9 +84,9 @@ extension AddViewController: UITableViewDataSource {
 }
 
 //MARK: - AddSongTableViewCellDelegate
-extension AddViewController: AddSongTableViewCellDelegate {
+extension DownloadSongsViewController: AddSongTableViewCellDelegate {
     
-    func downloadTapped(_ cell: AddSongTableViewCell) {
+    func downloadTapped(_ cell: DownloadSongsTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let video = searchResults[indexPath.row]
         let videoID = video.id.videoID
@@ -96,19 +97,19 @@ extension AddViewController: AddSongTableViewCellDelegate {
         }
     }
     
-    func cancelTapped(_ cell: AddSongTableViewCell) {
+    func cancelTapped(_ cell: DownloadSongsTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let videoID = searchResults[indexPath.row].id.videoID
         downloader.cancelDownloading(videoID)
     }
     
-    func pauseTapped(_ cell: AddSongTableViewCell) {
+    func pauseTapped(_ cell: DownloadSongsTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let videoID = searchResults[indexPath.row].id.videoID
         downloader.pauseDownloading(videoID)
     }
     
-    func resumeTapped(_ cell: AddSongTableViewCell) {
+    func resumeTapped(_ cell: DownloadSongsTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let videoID = searchResults[indexPath.row].id.videoID
         downloader.resumeDownloading(videoID)
@@ -116,11 +117,11 @@ extension AddViewController: AddSongTableViewCellDelegate {
 }
 
 //MARK: - YoutubeDownloaderDelegate
-extension AddViewController: YoutubeDownloaderDelegate {
+extension DownloadSongsViewController: YoutubeDownloaderDelegate {
     func download(_ progress: Progress, videoID: String) {
         guard let index = self.searchResults.firstIndex(where: {$0.id.videoID == videoID}) else { return }
         DispatchQueue.main.async {
-            if let trackCell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? AddSongTableViewCell {
+            if let trackCell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? DownloadSongsTableViewCell {
                 trackCell.updateDisplay(progress: Float(progress.fractionCompleted))
                 if progress.isFinished {
                     trackCell.finishDownload()
@@ -131,7 +132,7 @@ extension AddViewController: YoutubeDownloaderDelegate {
 }
 
 //MARK: - UISearchBarDelegate
-extension AddViewController: UISearchBarDelegate {
+extension DownloadSongsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // to limit network activity, reload half a second after last key press.
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(search), object: nil)

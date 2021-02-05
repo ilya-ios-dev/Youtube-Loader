@@ -7,11 +7,12 @@
 
 import UIKit
 
+/// UICollectionReusableView, that specializes in displaying a `RoundPlusButton`.
 final class AddingCollectionReusableView: UICollectionReusableView {
     
     //MARK: - Properties
     public static let reuseIdentifier = "AddingCollectionReusableView"
-    public var button: AddingRoundedButton!
+    private(set) var button: RoundPlusButton!
 
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -26,7 +27,7 @@ final class AddingCollectionReusableView: UICollectionReusableView {
     
     //MARK: - Supporting Methods
     private func configureButton() {
-        button = AddingRoundedButton()
+        button = RoundPlusButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         addSubview(button)
         

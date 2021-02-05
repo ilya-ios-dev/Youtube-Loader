@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A collection view cell that specializes in displaying a playlist.
 final class PlaylistCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var backgroundImageView: UIImageView!
@@ -30,15 +31,15 @@ final class PlaylistCollectionViewCell: UICollectionViewCell {
     
     /// Adjusts the display of the `visualEffectBlur` to look like a shadow.
     private func configureBlur() {
-        DispatchQueue.main.async { [self] in
+        DispatchQueue.main.async {
             let maskLayer = CAGradientLayer()
-            maskLayer.frame = visualEffectView.bounds
+            maskLayer.frame = self.visualEffectView.bounds
             maskLayer.shadowRadius = 8
-            maskLayer.shadowPath = CGPath(rect: visualEffectView.bounds.insetBy(dx: 10, dy: 30), transform: nil)
+            maskLayer.shadowPath = CGPath(rect: self.visualEffectView.bounds.insetBy(dx: 10, dy: 30), transform: nil)
             maskLayer.shadowOpacity = 1
             maskLayer.shadowOffset = CGSize.zero
             maskLayer.shadowColor = UIColor.white.cgColor
-            visualEffectView.layer.mask = maskLayer
+            self.visualEffectView.layer.mask = maskLayer
         }
     }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// UIView, that specializes in displaying a stretched image, when tableView are bounced.
 final class StretchyTableHeaderView: UIView {
     
     //MARK: - Properties

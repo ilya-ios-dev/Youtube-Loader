@@ -13,6 +13,7 @@ enum CardViewState {
     case normal
 }
 
+/// A view controller that specializes in displaying a list of playlists and adding the current song to the selected playlist.
 final class AddToPlaylistViewController: UIViewController {
     
     //MARK: - Outlets

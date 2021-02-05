@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DQf-hf-eob">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -15,34 +13,34 @@
             <objects>
                 <viewController id="HX3-Nx-FCJ" customClass="CreateOrEditContentViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D5f-mV-XdL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="BIe-Jz-CbX">
-                                <rect key="frame" x="20" y="76" width="374" height="712"/>
+                                <rect key="frame" x="20" y="76" width="560" height="484"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jsm-6d-7Uu">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="744"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="744"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auW-Qy-I0r">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="180"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="bNr-Tm-bM5">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="180"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="180" id="mTA-MM-Etg"/>
                                                         </constraints>
                                                     </imageView>
                                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soq-Tq-U6N">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="180"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wjp-iC-3qK">
-                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="560" height="180"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
                                                         <blurEffect style="regular"/>
                                                     </visualEffectView>
                                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLU-Kr-HdE">
-                                                        <rect key="frame" x="318" y="12" width="44" height="44"/>
+                                                        <rect key="frame" x="504" y="12" width="44" height="44"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ld0-cY-Z22">
                                                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,7 +78,7 @@
                                                         <blurEffect style="regular"/>
                                                     </visualEffectView>
                                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjl-4a-kJo">
-                                                        <rect key="frame" x="143" y="46" width="88" height="88"/>
+                                                        <rect key="frame" x="236" y="46" width="88" height="88"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oIJ-nz-lE5">
                                                             <rect key="frame" x="0.0" y="0.0" width="88" height="88"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,15 +124,15 @@
                                                     <constraint firstItem="Wjl-4a-kJo" firstAttribute="centerX" secondItem="auW-Qy-I0r" secondAttribute="centerX" id="yQ8-az-rRH"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxT-6E-ZFs" customClass="CustomTextField" customModule="Youtube_Loader" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="200" width="374" height="40"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxT-6E-ZFs" customClass="FloatingLabelTextField" customModule="Youtube_Loader" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="200" width="560" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="gqP-8v-1NK"/>
                                                 </constraints>
                                             </view>
                                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g6T-gc-sfH">
-                                                <rect key="frame" x="0.0" y="250" width="374" height="75"/>
+                                                <rect key="frame" x="0.0" y="250" width="560" height="75"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="3DF-7A-dOW"/>
@@ -147,15 +145,15 @@
                                                 </collectionViewFlowLayout>
                                                 <cells/>
                                             </collectionView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pwg-q9-94g" customClass="CustomTextField" customModule="Youtube_Loader" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="260" width="374" height="40"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pwg-q9-94g" customClass="FloatingLabelTextField" customModule="Youtube_Loader" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="260" width="560" height="40"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="TJZ-GU-EdI"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uLU-xQ-zix">
-                                                <rect key="frame" x="0.0" y="320" width="374" height="128"/>
+                                                <rect key="frame" x="0.0" y="320" width="560" height="128"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIF-Wq-NGg">
                                                         <rect key="frame" x="0.0" y="0.0" width="107" height="128"/>
@@ -174,7 +172,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGf-3x-etS">
-                                                <rect key="frame" x="0.0" y="468" width="374" height="128"/>
+                                                <rect key="frame" x="0.0" y="468" width="560" height="128"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngh-wi-IgR">
                                                         <rect key="frame" x="0.0" y="0.0" width="117" height="128"/>
@@ -193,7 +191,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiA-9z-H8H">
-                                                <rect key="frame" x="0.0" y="616" width="374" height="128"/>
+                                                <rect key="frame" x="0.0" y="616" width="560" height="128"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmz-JQ-3py">
                                                         <rect key="frame" x="0.0" y="0.0" width="116" height="128"/>

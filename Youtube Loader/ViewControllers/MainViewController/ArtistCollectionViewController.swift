@@ -12,6 +12,7 @@ protocol ArtistCollectionViewControllerDelegate: class {
     func didSelectedArtist(_ artist: Artist)
 }
 
+/// A view controller that specializes in displaying all created and loaded artists as a collection view.
 final class ArtistCollectionViewController: UICollectionViewController {
 
     //MARK: - Properties

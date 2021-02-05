@@ -1,5 +1,5 @@
 //
-//  UnsplashImagesCollectionViewCell.swift
+//  SquareImageCollectionViewCell.swift
 //  Youtube Loader
 //
 //  Created by isEmpty on 26.01.2021.
@@ -7,7 +7,8 @@
 
 import UIKit
 
-final class UnsplashImagesCollectionViewCell: UICollectionViewCell {
+/// A collection view cell that specializes in displaying a sqare image.
+final class SquareImageCollectionViewCell: UICollectionViewCell {
     
     public var imageView = UIImageView()
     

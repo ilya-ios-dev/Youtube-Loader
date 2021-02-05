@@ -8,7 +8,7 @@
 import UIKit
 
 struct Storyboards {
-    static let addSong = "AddSong"
+    static let downloadSongs = "DownloadSongs"
     static let songsList = "SongsList"
     static let createOrEditContent = "CreateOrEditContent"
     static let selectAlbums = "SelectAlbums"

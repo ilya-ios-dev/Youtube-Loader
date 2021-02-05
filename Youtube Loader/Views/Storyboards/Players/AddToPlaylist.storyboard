@@ -37,14 +37,14 @@
                                 <rect key="frame" x="0.0" y="74" width="414" height="822"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="X55-Ve-UQM">
-                                        <rect key="frame" x="20" y="52" width="374" height="770"/>
+                                        <rect key="frame" x="16" y="68" width="382" height="754"/>
                                         <color key="backgroundColor" red="0.95331996679999997" green="0.96425467730000003" blue="0.98823958639999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="ZRA-ja-YEH">
-                                        <rect key="frame" x="20" y="8" width="374" height="36"/>
+                                        <rect key="frame" x="16" y="16" width="382" height="36"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Add to playlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCY-8P-5dW">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="36"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                 <color key="textColor" name="textLightGrayColor"/>
                                                 <nil key="highlightedColor"/>
@@ -63,13 +63,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.95294117647058818" green="0.96470588235294119" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="X55-Ve-UQM" firstAttribute="top" secondItem="ZRA-ja-YEH" secondAttribute="bottom" constant="8" id="609-rw-iiN"/>
-                                    <constraint firstItem="ZRA-ja-YEH" firstAttribute="leading" secondItem="MK5-gB-rzU" secondAttribute="leading" constant="20" id="JOe-JV-pDG"/>
+                                    <constraint firstItem="X55-Ve-UQM" firstAttribute="top" secondItem="ZRA-ja-YEH" secondAttribute="bottom" constant="16" id="609-rw-iiN"/>
+                                    <constraint firstItem="ZRA-ja-YEH" firstAttribute="leading" secondItem="MK5-gB-rzU" secondAttribute="leading" constant="16" id="JOe-JV-pDG"/>
                                     <constraint firstAttribute="bottom" secondItem="X55-Ve-UQM" secondAttribute="bottom" id="PJw-mY-Y3z"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZRA-ja-YEH" secondAttribute="trailing" constant="20" id="Uei-v3-uBS"/>
-                                    <constraint firstItem="X55-Ve-UQM" firstAttribute="leading" secondItem="MK5-gB-rzU" secondAttribute="leading" constant="20" id="YoV-7s-1f5"/>
-                                    <constraint firstAttribute="trailing" secondItem="X55-Ve-UQM" secondAttribute="trailing" constant="20" id="aQS-dT-eTa"/>
-                                    <constraint firstItem="ZRA-ja-YEH" firstAttribute="top" secondItem="MK5-gB-rzU" secondAttribute="top" constant="8" id="uPV-DC-hX0"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZRA-ja-YEH" secondAttribute="trailing" constant="16" id="Uei-v3-uBS"/>
+                                    <constraint firstItem="X55-Ve-UQM" firstAttribute="leading" secondItem="MK5-gB-rzU" secondAttribute="leading" constant="16" id="YoV-7s-1f5"/>
+                                    <constraint firstAttribute="trailing" secondItem="X55-Ve-UQM" secondAttribute="trailing" constant="16" id="aQS-dT-eTa"/>
+                                    <constraint firstItem="ZRA-ja-YEH" firstAttribute="top" secondItem="MK5-gB-rzU" secondAttribute="top" constant="16" id="uPV-DC-hX0"/>
                                 </constraints>
                             </view>
                         </subviews>

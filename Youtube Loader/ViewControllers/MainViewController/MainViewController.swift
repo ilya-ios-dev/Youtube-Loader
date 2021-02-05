@@ -15,6 +15,7 @@ protocol PlayerSourceProtocol: class {
     var audioPlayer: AudioPlayer { get }
 }
 
+/// The main in-app view controller that specializes in displaying all songs, albums, artists, playlists and recommendations
 final class MainViewController: UIViewController {
     
     //MARK: - Outlets

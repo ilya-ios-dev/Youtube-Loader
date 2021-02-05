@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+/// A view controller that specializes in displaying a big player, which showing the current song in the player, its progress, and adjusts the sequence in which songs are played.
 final class PlayerViewController: UIViewController {
     //MARK: - Outlets
     // Top panel
@@ -22,7 +23,7 @@ final class PlayerViewController: UIViewController {
     @IBOutlet private weak var backgroundImageView: UIImageView!
     @IBOutlet private weak var visualEffectView: UIVisualEffectView!
     // Playback setting buttons
-    @IBOutlet private weak var playButton: PlayButton!
+    @IBOutlet private weak var playButton: RoundPlayButton!
     @IBOutlet private weak var forwardButton: UIButton!
     @IBOutlet private weak var backwardButton: UIButton!
     // Bottom configuration buttons

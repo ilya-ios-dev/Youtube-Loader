@@ -13,6 +13,7 @@ protocol YoutubeDownloaderDelegate: class {
     func download(_ progress: Progress, videoID: String)
 }
 
+/// YouTube song downloader providing methods to download, convert and save songs from youtube.
 final class YoutubeDownloader {
     
     //MARK: - Properties

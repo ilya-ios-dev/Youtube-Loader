@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A table view cell that specializes in displaying a playlist in `AddToPlaylistViewController`.
 final class PlaylistTableViewCell: UITableViewCell {
     
     //MARK: - Outlets

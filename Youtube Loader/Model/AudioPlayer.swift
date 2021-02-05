@@ -23,6 +23,7 @@ enum RepeatType: CaseIterable {
     case  none, once, infinity
 }
 
+/// An audio player that encapsulates all the audio work.
 final class AudioPlayer: NSObject {
     
     //MARK: - Properties

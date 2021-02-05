@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import Alamofire
 
+/// A view controller that specializes in creating or editing all available entities
 final class CreateOrEditContentViewController: UIViewController {
     
     //MARK: - Outlets
@@ -17,8 +18,8 @@ final class CreateOrEditContentViewController: UIViewController {
     @IBOutlet private weak var refreshButton: UIButton!
     @IBOutlet private weak var cameraBlurView: UIVisualEffectView!
     @IBOutlet private weak var cameraButton: UIButton!
-    @IBOutlet private weak var searchImageTextField: CustomTextField!
-    @IBOutlet private weak var nameTextField: CustomTextField!
+    @IBOutlet private weak var searchImageTextField: FloatingLabelTextField!
+    @IBOutlet private weak var nameTextField: FloatingLabelTextField!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var createButton: UIBarButtonItem!
@@ -320,7 +321,7 @@ extension CreateOrEditContentViewController {
 extension CreateOrEditContentViewController {
     private func configureCollectionView() {
         collectionView.delegate = self
-        collectionView.register(UnsplashImagesCollectionViewCell.self, forCellWithReuseIdentifier: UnsplashImagesCollectionViewCell.cellIdentifier)
+        collectionView.register(SquareImageCollectionViewCell.self, forCellWithReuseIdentifier: SquareImageCollectionViewCell.cellIdentifier)
         collectionView.collectionViewLayout = configureSongLayout()
     }
     
@@ -473,7 +474,7 @@ extension CreateOrEditContentViewController {
 extension CreateOrEditContentViewController {
     private func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Int, UnsplashResponse.Result> (collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: UnsplashImagesCollectionViewCell.cellIdentifier, for: indexPath) as! UnsplashImagesCollectionViewCell
+            let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: SquareImageCollectionViewCell.cellIdentifier, for: indexPath) as! SquareImageCollectionViewCell
             let imageUrl = self.results[indexPath.item].urls.small
             guard let url = URL(string: imageUrl) else { return cell }
             cell.imageView.af.setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "image_placeholder"))

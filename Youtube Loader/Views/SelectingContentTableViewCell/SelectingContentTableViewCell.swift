@@ -1,5 +1,5 @@
 //
-//  SelectArtistAlbumSongTableViewCell.swift
+//  SelectingContentTableViewCell.swift
 //  Youtube Loader
 //
 //  Created by isEmpty on 29.01.2021.
@@ -7,7 +7,8 @@
 
 import UIKit
 
-final class SelectArtistAlbumSongTableViewCell: UITableViewCell {
+/// A table view cell that specializes in displaying a selected entity in `CreateOrEditContentViewController`.
+final class SelectingContentTableViewCell: UITableViewCell {
 
     //MARK: - Outlets
     @IBOutlet private weak var visualEffectBlur: UIVisualEffectView!

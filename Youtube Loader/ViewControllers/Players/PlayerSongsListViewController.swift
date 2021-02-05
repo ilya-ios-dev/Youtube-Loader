@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+/// A view controller that specializes in displaying the song list of the current player.
 final class PlayerSongsListViewController: UIViewController {
     
     //MARK: - Outlets
@@ -18,7 +19,6 @@ final class PlayerSongsListViewController: UIViewController {
     @IBOutlet private weak var cardView: UIView!
     @IBOutlet private weak var cardViewTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var handleView: UIView!
-
     
     //MARK: - Properties
     public var backingImage: UIImage?

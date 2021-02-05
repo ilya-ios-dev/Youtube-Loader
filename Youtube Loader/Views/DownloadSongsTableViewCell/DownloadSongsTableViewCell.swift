@@ -10,13 +10,14 @@ import Alamofire
 import AlamofireImage
 
 protocol AddSongTableViewCellDelegate: class {
-    func downloadTapped(_ cell: AddSongTableViewCell)
-    func cancelTapped(_ cell: AddSongTableViewCell)
-    func pauseTapped(_ cell: AddSongTableViewCell)
-    func resumeTapped(_ cell: AddSongTableViewCell)
+    func downloadTapped(_ cell: DownloadSongsTableViewCell)
+    func cancelTapped(_ cell: DownloadSongsTableViewCell)
+    func pauseTapped(_ cell: DownloadSongsTableViewCell)
+    func resumeTapped(_ cell: DownloadSongsTableViewCell)
 }
 
-final class AddSongTableViewCell: UITableViewCell {
+/// A table view cell that specializes in displaying a songs available for download.
+final class DownloadSongsTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
     // Image
@@ -60,7 +61,7 @@ final class AddSongTableViewCell: UITableViewCell {
 }
 
 //MARK: - Supporting Methods
-extension AddSongTableViewCell {
+extension DownloadSongsTableViewCell {
     // Adjusts the display of the visualEffectBlur to look like a shadow.
     private func configureBlur() {
         let maskLayer = CAGradientLayer()
@@ -108,7 +109,7 @@ extension AddSongTableViewCell {
 }
 
 //MARK: - Public Methods
-extension AddSongTableViewCell {
+extension DownloadSongsTableViewCell {
     /// Adjusts the display of the call based on the provided conditions.
     /// - Parameters:
     ///   - video: The object to be displayed.

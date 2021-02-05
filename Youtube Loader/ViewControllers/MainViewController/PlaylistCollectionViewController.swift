@@ -12,6 +12,7 @@ protocol PlaylistCollectionViewControllerDelegate: class {
     func didSelectedPlaylist(_ playlist: Playlist)
 }
 
+/// A view controller that specializes in displaying all created playlists as a collection view.
 final class PlaylistCollectionViewController: UICollectionViewController {
 
     //MARK: - Properties

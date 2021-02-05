@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+/// A view controller that specializes in displaying a list of all loaded songs
 final class SongsListViewController: UIViewController {
     
     //MARK: - Outlets

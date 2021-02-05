@@ -13,6 +13,7 @@ protocol SongsCollectionViewControllerDelegate: class {
     func didSelectedItemAt(_ index: Int)
 }
 
+/// A view controller that specializes in displaying all loaded songs as a collection view.
 final class SongsCollectionViewController: UICollectionViewController {
 
     //MARK: - Properties

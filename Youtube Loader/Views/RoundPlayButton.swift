@@ -7,7 +7,8 @@
 
 import UIKit
 
-final class PlayButton: UIButton {
+/// UIButton, that specializes in displaying a round play button with shadow.
+final class RoundPlayButton: UIButton {
     
     //MARK: - Drawing
     override func draw(_ rect: CGRect) {

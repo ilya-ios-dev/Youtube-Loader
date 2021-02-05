@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A collection view cell that specializes in displaying a artist.
 final class ArtistCollectionViewCell: UICollectionViewCell {
 
     //MARK: - Outlets

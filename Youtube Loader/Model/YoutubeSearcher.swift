@@ -7,6 +7,7 @@
 
 import Alamofire
 
+/// Searcher providing out-of-the-box methods for working with youtube api.
 struct YoutubeSearcher {
     
     private static let apiKey = ApiKeys.youtubeApiKey

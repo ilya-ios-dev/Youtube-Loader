@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+/// A view controller that specializes in displaying a list of all songs in a playlist
 final class PlaylistDetailViewController: UIViewController {
     
     //MARK: - Outlets
@@ -114,9 +115,8 @@ extension PlaylistDetailViewController {
     
     private func configureTableView() {
         tableView.delegate = self
-        let nib = UINib(nibName: String(describing: SongFromDetailTableViewCell.self), bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: SongFromDetailTableViewCell.cellIdentifier)
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let nib = UINib(nibName: String(describing: SongTableViewCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: SongTableViewCell.cellIdentifier)
     }
     
     private func configureHeaderView() {
@@ -178,7 +178,8 @@ extension PlaylistDetailViewController {
 
     private func setupDiffableDataSource() {
         dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: SongFromDetailTableViewCell.cellIdentifier) as! SongFromDetailTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.cellIdentifier) as! SongTableViewCell
+            cell.inset = .init(top: 0, left: 16, bottom: 0, right: 16)
             cell.configure(name: song.name, author: song.author?.name, imageURL: song.thumbnails?.smallUrl, index: indexPath.row + 1)
             return cell
         })

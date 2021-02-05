@@ -12,6 +12,7 @@ protocol SelectSongsViewControllerDelegate: class {
     func didSaveSelectedSongs(_ songs: [Song])
 }
 
+/// A view controller that specializes in displaying and selecting available songs for the entity being created
 final class SelectSongsViewController: UIViewController {
     
     //MARK: - Outlets
@@ -103,8 +104,8 @@ extension SelectSongsViewController {
     
     private func configureTableView() {
         tableView.delegate = self
-        let nib = UINib(nibName: String(describing: SelectArtistAlbumSongTableViewCell.self), bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: SelectArtistAlbumSongTableViewCell.cellIdentifier)
+        let nib = UINib(nibName: String(describing: SelectingContentTableViewCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: SelectingContentTableViewCell.cellIdentifier)
     }
     
     private func setupTableSnapshot() {
@@ -123,7 +124,7 @@ extension SelectSongsViewController {
     
     private func setupTableDataSource() {
         tableDataSource = UITableViewDiffableDataSource<Int, Song>(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: SelectArtistAlbumSongTableViewCell.cellIdentifier) as! SelectArtistAlbumSongTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: SelectingContentTableViewCell.cellIdentifier) as! SelectingContentTableViewCell
             cell.configure(name: song.name, description: song.author?.name, url: song.thumbnails?.smallUrl, index: indexPath.row + 1)
             return cell
         })

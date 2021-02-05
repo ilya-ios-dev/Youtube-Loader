@@ -13,6 +13,7 @@ protocol SelectAlbumsViewControllerDelegate: class {
     func didSaveSelectedAlbum(_ album: Album?)
 }
 
+/// A view controller that specializes in displaying and selecting an album for the entity being created.
 final class SelectAlbumsViewController: UIViewController {
     
     //MARK: - Outlets
@@ -110,8 +111,8 @@ extension SelectAlbumsViewController {
     
     private func configureTableView() {
         tableView.delegate = self
-        let nib = UINib(nibName: String(describing: SelectArtistAlbumSongTableViewCell.self), bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: SelectArtistAlbumSongTableViewCell.cellIdentifier)
+        let nib = UINib(nibName: String(describing: SelectingContentTableViewCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: SelectingContentTableViewCell.cellIdentifier)
     }
     
     private func setupTableSnapshot() {
@@ -139,7 +140,7 @@ extension SelectAlbumsViewController {
     
     private func setupTableDataSource() {
         tableDataSource = UITableViewDiffableDataSource<Int, Album>(tableView: tableView, cellProvider: { (tableView, indexPath, album) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: SelectArtistAlbumSongTableViewCell.cellIdentifier) as! SelectArtistAlbumSongTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: SelectingContentTableViewCell.cellIdentifier) as! SelectingContentTableViewCell
             
             cell.configure(name: album.name, description: nil, url: album.thumbnails?.smallUrl, index: indexPath.row + 1)
             return cell

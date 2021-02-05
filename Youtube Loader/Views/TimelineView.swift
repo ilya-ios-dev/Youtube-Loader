@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+/// UIView, that specializes in displaying a Slider with start and end of song.
 final class TimelineView: UIView {
     
     //MARK: - Properties

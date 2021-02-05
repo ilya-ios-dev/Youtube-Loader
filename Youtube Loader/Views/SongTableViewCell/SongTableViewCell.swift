@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A table view cell that specializes in displaying a playable song.
 final class SongTableViewCell: UITableViewCell {
 
     //MARK: - Outlets
@@ -17,6 +18,21 @@ final class SongTableViewCell: UITableViewCell {
     @IBOutlet private weak var indexLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    
+    @IBOutlet private weak var contentBackground: UIView!
+    @IBOutlet private weak var contentBackgroundLeading: NSLayoutConstraint!
+    @IBOutlet private weak var contentBackgroundTrailing: NSLayoutConstraint!
+    @IBOutlet private weak var contentBackgroundTop: NSLayoutConstraint!
+    @IBOutlet private weak var contentBackgroundBottom: NSLayoutConstraint!
+    
+    public var inset: UIEdgeInsets = .zero {
+        didSet {
+            contentBackgroundTop.constant = inset.top
+            contentBackgroundBottom.constant = inset.bottom
+            contentBackgroundLeading.constant = inset.left
+            contentBackgroundTrailing.constant = inset.right
+        }
+    }
     
     public func configure(name: String?, author: String?, imageURL: URL?, index: Int) {
         if let url = imageURL {
@@ -34,12 +50,12 @@ final class SongTableViewCell: UITableViewCell {
             UIView.transition(with: playingImageView, duration: 0.325, options: .transitionCrossDissolve) {
                 self.playingImageView.isHidden = false
                 self.indexLabel.isHidden = true
-                self.contentView.backgroundColor = .white
+                self.contentBackground.backgroundColor = .white
             }
         } else {
             playingImageView.isHidden = true
             indexLabel.isHidden = false
-            contentView.backgroundColor = .clear
+            contentBackground.backgroundColor = .clear
         }
     }
     
@@ -47,7 +63,7 @@ final class SongTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         songImageView.layer.cornerRadius = 4
-        contentView.layer.cornerRadius = 8
+        contentBackground.layer.cornerRadius = 8
         configureBlur()
     }
     

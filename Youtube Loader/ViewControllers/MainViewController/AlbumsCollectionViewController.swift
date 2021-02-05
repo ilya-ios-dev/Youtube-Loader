@@ -12,6 +12,7 @@ protocol AlbumsCollectionViewControllerDelegate: class {
     func didSelectedAlbum(_ album: Album)
 }
 
+/// A view controller that specializes in displaying all created albums as a collection view.
 final class AlbumsCollectionViewController: UICollectionViewController {
 
     //MARK: - Properties

@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+/// A view controller that specializes in displaying a list of all songs and albums by an artist
 final class ArtistDetailViewController: UIViewController {
     
     //MARK: - Outlets

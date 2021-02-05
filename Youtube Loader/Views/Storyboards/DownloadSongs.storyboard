@@ -12,7 +12,7 @@
         <!--Add-->
         <scene sceneID="bTP-GJ-Rl1">
             <objects>
-                <viewController id="DDi-jw-yCs" customClass="AddViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DDi-jw-yCs" customClass="DownloadSongsViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HQa-cV-uxZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,7 +58,7 @@
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="backgorundColor">
-            <color red="0.93725490196078431" green="0.95686274509803915" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.93699997663497925" green="0.9570000171661377" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

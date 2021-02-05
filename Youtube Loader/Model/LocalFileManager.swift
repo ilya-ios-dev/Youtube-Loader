@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// A file manager that provides methods for working with local files.
 struct LocalFileManager {
     
     /// Returns the presence of a file in a document directory.

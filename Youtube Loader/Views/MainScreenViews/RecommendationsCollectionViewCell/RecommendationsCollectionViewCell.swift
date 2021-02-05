@@ -14,6 +14,7 @@ protocol RecommendationsCollectionViewCellDelegate: class {
     func resumeTapped(_ cell: RecommendationsCollectionViewCell)
 }
 
+/// A collection view cell that specializes in displaying a songs available for download.
 final class RecommendationsCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Outlets

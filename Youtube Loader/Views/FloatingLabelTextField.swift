@@ -1,5 +1,5 @@
 //
-//  CustomTextField.swift
+//  FloatingLabelTextField.swift
 //  Youtube Loader
 //
 //  Created by isEmpty on 26.01.2021.
@@ -7,18 +7,13 @@
 
 import UIKit
 
+/// UIView, that specializes in displaying a textField with floating header label.
 @IBDesignable
-final class CustomTextField: UIView {
+final class FloatingLabelTextField: UIView {
     
     //MARK: - Properties
     private var labelYAnchorConstraint: NSLayoutConstraint!
     private var labelLeadingAnchorConstraint: NSLayoutConstraint!
-    
-    public lazy var bottomLine: CALayer = {
-        let bottomLine = CALayer()
-        textField.layer.addSublayer(bottomLine)
-        return bottomLine
-    }()
     
     public var placeholder: String = "Username" {
         didSet {
@@ -44,7 +39,13 @@ final class CustomTextField: UIView {
         }
     }
     
-    public lazy var label: UILabel! = {
+    private(set) lazy var bottomLine: CALayer = {
+        let bottomLine = CALayer()
+        textField.layer.addSublayer(bottomLine)
+        return bottomLine
+    }()
+    
+    private(set) lazy var label: UILabel! = {
         let label = UILabel()
         label.text = "Label"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -52,7 +53,7 @@ final class CustomTextField: UIView {
         return label
     }()
     
-    public lazy var textField: UITextField! = {
+    private(set) lazy var textField: UITextField! = {
         let textLabel = UITextField()
         textLabel.borderStyle = .none
         textLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -99,7 +100,7 @@ final class CustomTextField: UIView {
 }
 
 //MARK: - UITextFieldDelegate
-extension CustomTextField: UITextFieldDelegate {
+extension FloatingLabelTextField: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }

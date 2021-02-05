@@ -12,6 +12,7 @@ protocol MiniPlayerDelegate: class {
     func didSelectedItem(_ item: Song?)
 }
 
+/// A view controller that specializes in displaying a small player which showing the current song in the player and its progress.
 final class MiniPlayerViewController: UIViewController {
 
     //MARK: - Outlets

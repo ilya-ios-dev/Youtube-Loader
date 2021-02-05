@@ -12,6 +12,7 @@ protocol SelectArtistViewControllerDelegate: class {
     func didSaveSelectedArtist(_ artist: Artist)
 }
 
+/// A view controller that specializes in displaying and selecting an artist for the entity being created.
 final class SelectArtistViewController: UIViewController {
     
     //MARK: - Outlets
@@ -105,8 +106,8 @@ extension SelectArtistViewController {
     
     private func configureTableView() {
         tableView.delegate = self
-        let nib = UINib(nibName: String(describing: SelectArtistAlbumSongTableViewCell.self), bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: SelectArtistAlbumSongTableViewCell.cellIdentifier)
+        let nib = UINib(nibName: String(describing: SelectingContentTableViewCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: SelectingContentTableViewCell.cellIdentifier)
     }
     
     private func setupTableSnapshot() {
@@ -124,7 +125,7 @@ extension SelectArtistViewController {
     
     private func setupTableDataSource() {
         tableDataSource = UITableViewDiffableDataSource<Int, Artist>(tableView: tableView, cellProvider: { (tableView, indexPath, song) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: SelectArtistAlbumSongTableViewCell.cellIdentifier) as! SelectArtistAlbumSongTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: SelectingContentTableViewCell.cellIdentifier) as! SelectingContentTableViewCell
             cell.configure(name: song.name, description: nil, url: song.thumbnails?.smallUrl, index: indexPath.row + 1)
             return cell
         })
