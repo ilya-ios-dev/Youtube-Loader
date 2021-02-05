@@ -47,10 +47,11 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         configureMiniPlayer()
+        configureTabBarSubview()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            // MiniPlayer
+        // MiniPlayer
         if let destination = segue.destination as? MiniPlayerViewController {
             miniPlayer = destination
             miniPlayer.sourceProtocol = self
@@ -65,8 +66,10 @@ final class MainViewController: UIViewController {
             // ArtistCollectionView
         } else if let destination = segue.destination as? ArtistCollectionViewController {
             destination.delegate = self
+            // AlbumsCollection
         } else if let destination = segue.destination as? AlbumsCollectionViewController {
             destination.delegate = self
+            // PlaylistCollection
         } else if let destination = segue.destination as? PlaylistCollectionViewController {
             destination.delegate = self
         }
@@ -78,6 +81,14 @@ final class MainViewController: UIViewController {
         miniPlayerView.layer.shadowOffset = CGSize(width: 0, height: -11)
         miniPlayerView.layer.shadowRadius = 9
         miniPlayerView.layer.shadowOpacity = 1
+    }
+    
+    private func configureTabBarSubview() {
+        guard let tabBar = tabBarController?.tabBar else { return }
+        let barView = UIView()
+        barView.backgroundColor = UIColor.white.withAlphaComponent(0.35)
+        tabBarController?.view.insertSubview(barView, belowSubview: tabBar)
+        barView.fillView(tabBar)
     }
 }
 

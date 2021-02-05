@@ -40,6 +40,14 @@ extension UIView {
             bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
         }
     }
+    
+    public func fillView(_ view: UIView) {
+        translatesAutoresizingMaskIntoConstraints = false
+        leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
 }
 
 public enum Point {
