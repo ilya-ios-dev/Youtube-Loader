@@ -19,6 +19,7 @@ final class AlbumCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         configureBlur()
+        albumImageView.layer.cornerRadius = 8
         contentView.backgroundColor = Colors.backgorundColor
     }
 

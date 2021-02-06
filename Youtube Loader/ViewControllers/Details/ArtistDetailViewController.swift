@@ -41,6 +41,7 @@ final class ArtistDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // If the song is in the audio player, then the player should be shown
+        scrollView.contentInset = .init(top: 0, left: 0, bottom: scrollView.contentInset.bottom + 16, right: 0)
         guard let song = sourceProtocol.audioPlayer.currentSong else { return }
         songsCollectionView.selectItem(song)
         miniPlayerView.isHidden = false
@@ -53,7 +54,6 @@ final class ArtistDetailViewController: UIViewController {
 
         downButton.layer.cornerRadius = downButton.frame.height / 2
         configureSearchBar()
-        scrollView.contentInset = .init(top: 0, left: 0, bottom: view.safeAreaInsets.bottom + 16, right: 0)
         configureMiniPlayer()
         configureHeaderView()
     }
@@ -242,9 +242,10 @@ extension ArtistDetailViewController: SongsCollectionViewControllerDelegate {
     }
 }
 
+//MARK: - AlbumsCollectionViewControllerDelegate
 extension ArtistDetailViewController: AlbumsCollectionViewControllerDelegate {
     func didSelectedAlbum(_ album: Album) {
-        let storyboard = UIStoryboard(name: Storyboards.artistDetail, bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.albumDetail, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? AlbumDetailViewController else { return }
         vc.sourceProtocol = sourceProtocol
         vc.album = album

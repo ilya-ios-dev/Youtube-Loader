@@ -363,12 +363,12 @@
 			isa = PBXGroup;
 			children = (
 				FA4243CA25BDB91D005E4309 /* AddingCollectionReusableView.swift */,
-				FACC5ACF25BDDEDC008C124A /* RoundPlusButton.swift */,
 				FA275C7825C00C3400C581BD /* FloatingLabelTextField.swift */,
 				FA18D2DB25ACC13D004D0E67 /* RoundPlayButton.swift */,
+				FACC5ACF25BDDEDC008C124A /* RoundPlusButton.swift */,
+				FA275C7D25C0555200C581BD /* SquareImageCollectionViewCell.swift */,
 				FA5E473B25C825780014572E /* StretchyTableHeaderView.swift */,
 				FA18D2D425AC5B40004D0E67 /* TimelineView.swift */,
-				FA275C7D25C0555200C581BD /* SquareImageCollectionViewCell.swift */,
 				FAFA681625B3828A0026059D /* DownloadSongsTableViewCell */,
 				FA76202825CD7F050011ED4B /* MainScreenViews */,
 				FAF65F2125CA9C08001346F1 /* PlaylistTableViewCell */,

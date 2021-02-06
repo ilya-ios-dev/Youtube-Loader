@@ -146,7 +146,8 @@ extension MiniPlayerViewController: AudioPlayerDelegate {
         configureColorElementOf(song)
         
         let imageName = audioplayer.isPlaying ? "pause.fill" : "play.fill"
-        playOrPauseButton.setImage(UIImage(systemName: imageName), for: .normal)
+        let largeConfig = UIImage.SymbolConfiguration(scale: .large)
+        playOrPauseButton.setImage(UIImage(systemName: imageName, withConfiguration: largeConfig), for: .normal)
     }
     
     func songChanged(_ song: Song) {
