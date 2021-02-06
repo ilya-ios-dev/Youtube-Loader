@@ -89,7 +89,7 @@ extension AlbumDetailViewController {
         searchBar.backgroundImage = UIImage()
         guard let searchTextField: UITextField = searchBar.value(forKey: "searchField") as? UITextField else { return }
         guard let imageView = searchTextField.leftView as? UIImageView else { return }
-        searchTextField.textColor = .black
+        searchTextField.textColor = .white
         
         let attributeDict = [NSAttributedString.Key.foregroundColor: UIColor.white]
         searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: attributeDict)

@@ -9,5 +9,5 @@ import Foundation
 
 struct ApiKeys {
     static let unsplashApiKey = ""
-    static let youtubeApiKey = "AIzaSyDJh84ieCch01s19vZdus8SQQuYqlvVY5c"
+    static let youtubeApiKey = ""
 }

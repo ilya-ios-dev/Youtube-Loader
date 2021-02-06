@@ -261,7 +261,7 @@
                             <constraint firstItem="lMk-WU-eFF" firstAttribute="leading" secondItem="ZYt-zc-bSc" secondAttribute="leading" id="oyX-gf-Z2u"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="music.note.house" catalog="system" id="xJV-pr-kL4"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="music.note.list" catalog="system" id="xJV-pr-kL4"/>
                     <connections>
                         <outlet property="albumsContainerView" destination="FL1-HK-tdF" id="6AK-Dv-lrp"/>
                         <outlet property="artistsContainerView" destination="4JZ-Ho-ig0" id="siP-Rr-PDB"/>
@@ -366,7 +366,7 @@
     </scenes>
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
-        <image name="music.note.house" catalog="system" width="128" height="106"/>
+        <image name="music.note.list" catalog="system" width="128" height="115"/>
         <namedColor name="backgorundColor">
             <color red="0.93699997663497925" green="0.9570000171661377" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -165,7 +165,7 @@ extension PlayerSongsListViewController: UISearchBarDelegate {
 extension PlayerSongsListViewController {
     /// Tracks down Pan Gesture.
     /// Moves the `cardView` to one of the positions, depending on where the view is dragged to.
-    @IBAction func viewPanned(_ panRecognizer: UIPanGestureRecognizer) {
+    @IBAction private func viewPanned(_ panRecognizer: UIPanGestureRecognizer) {
         let velocity = panRecognizer.velocity(in: self.view)
         let translation = panRecognizer.translation(in: self.view)
         
@@ -204,7 +204,7 @@ extension PlayerSongsListViewController {
         }
     }
     
-    @IBAction func dimmerViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
+    @IBAction private func dimmerViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
         hideCardAndGoBack()
     }
 }

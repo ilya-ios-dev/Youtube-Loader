@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RsO-tx-p5C">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -13,42 +15,42 @@
             <objects>
                 <viewController id="RsO-tx-p5C" customClass="PlayerViewController" customModule="Youtube_Loader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Nd-SU-x9R">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="vinyl_record" translatesAutoresizingMaskIntoConstraints="NO" id="gVO-s3-7Ef">
-                                <rect key="frame" x="162" y="235" width="276" height="276"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vinyl_record" translatesAutoresizingMaskIntoConstraints="NO" id="gVO-s3-7Ef">
+                                <rect key="frame" x="69" y="235" width="276" height="276"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gVO-s3-7Ef" secondAttribute="height" id="0se-6W-qUF"/>
                                     <constraint firstAttribute="width" constant="276" id="g5T-Hw-JaC"/>
                                 </constraints>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6P3-UY-tRP">
-                                <rect key="frame" x="162" y="235" width="276" height="377.5"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="0mc-xl-SYQ">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6P3-UY-tRP">
+                                <rect key="frame" x="69" y="235" width="276" height="377.5"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0mc-xl-SYQ">
                                     <rect key="frame" x="0.0" y="0.0" width="276" height="377.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="vinyl_record" translatesAutoresizingMaskIntoConstraints="NO" id="l7D-3I-cZf">
-                                <rect key="frame" x="162" y="235" width="276" height="276"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vinyl_record" translatesAutoresizingMaskIntoConstraints="NO" id="l7D-3I-cZf">
+                                <rect key="frame" x="69" y="235" width="276" height="276"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="l7D-3I-cZf" secondAttribute="height" id="vK7-nq-UPQ"/>
                                     <constraint firstAttribute="width" constant="276" id="xyu-sB-O31"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2v3-Zt-VgF">
-                                <rect key="frame" x="20" y="531" width="560" height="31.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2v3-Zt-VgF">
+                                <rect key="frame" x="20" y="531" width="374" height="51.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Ace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmY-U0-u8x">
-                                        <rect key="frame" x="262" y="0.0" width="36" height="4"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmY-U0-u8x">
+                                        <rect key="frame" x="169" y="0.0" width="36" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" name="textTitleAccentColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Else &amp; Vanderway" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiS-Fd-a5Q">
-                                        <rect key="frame" x="215.5" y="12" width="129.5" height="19.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Else &amp; Vanderway" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiS-Fd-a5Q">
+                                        <rect key="frame" x="122.5" y="32" width="129.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" name="textDescriptionAccentColor"/>
                                         <nil key="highlightedColor"/>
@@ -56,10 +58,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="Spx-R9-wXJ">
-                                <rect key="frame" x="94" y="495.5" width="412" height="22"/>
+                                <rect key="frame" x="94" y="681.5" width="226" height="97"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4TJ-dh-tY0">
-                                        <rect key="frame" x="0.0" y="0.0" width="161" height="22"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="30.5" height="97"/>
                                         <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal" title="prev" image="backward.fill" catalog="system"/>
                                         <connections>
@@ -67,7 +69,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfa-eO-XJN" customClass="RoundPlayButton" customModule="Youtube_Loader" customModuleProvider="target">
-                                        <rect key="frame" x="195" y="0.0" width="22" height="22"/>
+                                        <rect key="frame" x="64.5" y="0.0" width="97" height="97"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="97" id="Kiz-F6-Zgd"/>
                                             <constraint firstAttribute="width" secondItem="Zfa-eO-XJN" secondAttribute="height" id="lrf-mo-VUB"/>
@@ -79,7 +81,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SjL-92-Tuv">
-                                        <rect key="frame" x="251" y="0.0" width="161" height="22"/>
+                                        <rect key="frame" x="195.5" y="0.0" width="30.5" height="97"/>
                                         <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal" title="next" image="forward.fill" catalog="system"/>
                                         <connections>
@@ -92,17 +94,17 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Sp-71-z9R" customClass="TimelineView" customModule="Youtube_Loader" customModuleProvider="target">
-                                <rect key="frame" x="35" y="426.5" width="530" height="25"/>
+                                <rect key="frame" x="35" y="612.5" width="344" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="sKc-kD-GPf"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gmg-Xr-7oz">
-                                <rect key="frame" x="20" y="561.5" width="560" height="18.5"/>
+                                <rect key="frame" x="20" y="822.5" width="374" height="19.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ui7-iE-4Vi">
-                                        <rect key="frame" x="0.0" y="0.5" width="140" height="18"/>
+                                        <rect key="frame" x="0.0" y="1" width="93.5" height="18"/>
                                         <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal">
                                             <imageReference key="image" image="list.bullet" catalog="system" symbolScale="medium"/>
@@ -112,7 +114,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIK-ad-rDo">
-                                        <rect key="frame" x="140" y="0.5" width="140" height="18"/>
+                                        <rect key="frame" x="93.5" y="1" width="93.5" height="18"/>
                                         <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal">
                                             <imageReference key="image" image="shuffle" catalog="system" symbolScale="medium"/>
@@ -122,7 +124,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKa-1Z-la6">
-                                        <rect key="frame" x="280" y="0.0" width="140" height="18.5"/>
+                                        <rect key="frame" x="187" y="0.5" width="93.5" height="18.5"/>
                                         <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal">
                                             <imageReference key="image" image="repeat" catalog="system" symbolScale="medium"/>
@@ -132,7 +134,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWY-KE-2VV">
-                                        <rect key="frame" x="420" y="0.0" width="140" height="18.5"/>
+                                        <rect key="frame" x="280.5" y="0.0" width="93.5" height="19.5"/>
                                         <color key="tintColor" name="darkTintColor"/>
                                         <state key="normal">
                                             <imageReference key="image" image="text.badge.plus" catalog="system" symbolScale="medium"/>
@@ -143,10 +145,10 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YzP-ZY-fuT">
-                                <rect key="frame" x="20" y="60" width="560" height="33"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YzP-ZY-fuT">
+                                <rect key="frame" x="20" y="60" width="374" height="33"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUf-s0-SWF">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUf-s0-SWF">
                                         <rect key="frame" x="8" y="4.5" width="24" height="24"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -161,17 +163,17 @@
                                             <action selector="dismissTapped:" destination="RsO-tx-p5C" eventType="touchUpInside" id="w05-BK-gE4"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="1Rd-UH-Xj1">
-                                        <rect key="frame" x="205" y="0.0" width="150" height="33"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="1Rd-UH-Xj1">
+                                        <rect key="frame" x="112" y="0.0" width="150" height="33"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Playlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAH-Cb-rjG">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAH-Cb-rjG">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="12"/>
                                                 <color key="tintColor" red="0.6705882353" green="0.72549019609999998" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                                 <color key="textColor" name="textDescriptionAccentColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Best Vibes of the Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StM-c5-WJA">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Vibes of the Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StM-c5-WJA">
                                                 <rect key="frame" x="0.0" y="16" width="150" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="textTitleAccentColor"/>
@@ -257,19 +259,19 @@
         <image name="text.badge.plus" catalog="system" width="128" height="109"/>
         <image name="vinyl_record" width="500" height="500"/>
         <namedColor name="backgorundColor">
-            <color red="0.93725490196078431" green="0.95686274509803915" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.93699997663497925" green="0.9570000171661377" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="darkTintColor">
-            <color red="0.57647058823529407" green="0.6588235294117647" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.57599997520446777" green="0.6589999794960022" blue="0.70200002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="darkerTintColor">
-            <color red="0.23529411764705882" green="0.25882352941176467" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23499999940395355" green="0.25900000333786011" blue="0.35699999332427979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textDescriptionAccentColor">
-            <color red="0.45490196078431372" green="0.53333333333333333" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.45500001311302185" green="0.53299999237060547" blue="0.66299998760223389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textTitleAccentColor">
-            <color red="0.2196078431372549" green="0.30980392156862746" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.2199999988079071" green="0.31000000238418579" blue="0.43900001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

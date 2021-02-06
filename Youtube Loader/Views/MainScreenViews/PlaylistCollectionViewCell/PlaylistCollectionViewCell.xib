@@ -47,6 +47,7 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" name="backgorundColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="cCP-9r-rK8" secondAttribute="trailing" id="1Dw-Uv-IPU"/>
                 <constraint firstItem="q5s-Rq-0Rd" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="7Z5-2i-oW3"/>
@@ -75,8 +76,11 @@
     </objects>
     <resources>
         <image name="vinyl_record" width="500" height="500"/>
+        <namedColor name="backgorundColor">
+            <color red="0.93699997663497925" green="0.9570000171661377" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="textDarkGrayColor">
-            <color red="0.30196078431372547" green="0.32941176470588235" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.30199998617172241" green="0.32899999618530273" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

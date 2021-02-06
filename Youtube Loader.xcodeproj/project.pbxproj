@@ -384,7 +384,7 @@
 			children = (
 				FAFA680B25B37F670026059D /* DownloadSongsViewController.swift */,
 				FA912A2D25AB3292001936F1 /* SongsListViewController.swift */,
-				FAE4873525C41A1E0056B87D /* CreatePlaylistViewController */,
+				FAE4873525C41A1E0056B87D /* CreateOrEditContent */,
 				FAE2AE4925C8355B000EA8FF /* Details */,
 				FAFFE0E325B6F74E00FAE352 /* MainViewController */,
 				FAE2AE4725C8354E000EA8FF /* Players */,
@@ -475,7 +475,7 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
-		FAE4873525C41A1E0056B87D /* CreatePlaylistViewController */ = {
+		FAE4873525C41A1E0056B87D /* CreateOrEditContent */ = {
 			isa = PBXGroup;
 			children = (
 				FA275C7425BFFEC300C581BD /* CreateOrEditContentViewController.swift */,
@@ -483,7 +483,7 @@
 				FA4393AD25C43BF800F1D897 /* SelectArtistViewController.swift */,
 				FA4393B025C43C4200F1D897 /* SelectAlbumsViewController.swift */,
 			);
-			path = CreatePlaylistViewController;
+			path = CreateOrEditContent;
 			sourceTree = "<group>";
 		};
 		FAF65F2125CA9C08001346F1 /* PlaylistTableViewCell */ = {
@@ -840,6 +840,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Youtube Loader/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -859,6 +860,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Youtube Loader/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
