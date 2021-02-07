@@ -29,3 +29,8 @@
 - HTTP networking: [Alamofire](https://github.com/Alamofire/Alamofire)
 - Asynchronous image loading: [AlamofireImage](https://github.com/Alamofire/AlamofireImage)
 - YouTube URL extractor: [XCDYouTubeKit](https://github.com/0xced/XCDYouTubeKit)
+
+<h3 align="center">
+<img src="Images/download.gif" width="228" alt="Downloading Songs" />
+<img src="Images/player.gif" width="228" alt="Playing Songs" />
+</h3>
