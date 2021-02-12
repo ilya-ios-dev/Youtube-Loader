@@ -162,7 +162,8 @@ extension SongsListViewController {
         snapshot = NSDiffableDataSourceSnapshot<Int, Song>()
         snapshot.appendSections([0])
         snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.dataSource?.apply(self.snapshot, animatingDifferences: true) {
                 self.dataSource?.apply(self.snapshot, animatingDifferences: false)
             }

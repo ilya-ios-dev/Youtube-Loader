@@ -60,7 +60,7 @@ final class YoutubeDownloader {
     /// - Parameter youtubeVideo: The video object to be loaded.
     /// - Parameter completion: If an error occurs during download or during conversion, it returns it.
     public func downloadVideo(_ videoID: String, youtubeVideo: Video, completion: ((Error?) -> Void)? = nil) {
-        XCDYouTubeClient.default().getVideoWithIdentifier(videoID) { (video, error) in
+        XCDYouTubeClient.default().getVideoWithIdentifier(videoID) { [weak self] (video, error) in
             guard let video = video, let downloadingUrl = video.streamURLs[140] else {
                 print(error?.localizedDescription ?? "error")
                 completion?(error)
@@ -69,10 +69,14 @@ final class YoutubeDownloader {
 
             let group = DispatchGroup()
             // The song is downloading, after it actions should be performed.
-            self.saveSong(videoURL: downloadingUrl, videoExtension: "mp4", filename: videoID) { (error) in
+            self?.saveSong(videoURL: downloadingUrl, videoExtension: "mp4", filename: videoID) { [weak self] (error) in
                 if let error = error {
                     print(error)
                     completion?(error)
+                    return
+                }
+                guard let self = self else {
+                    completion?(nil)
                     return
                 }
                 // If the song has been downloaded, then you need to download images for the song.
@@ -155,13 +159,14 @@ final class YoutubeDownloader {
         }
         let group = DispatchGroup()
         group.enter()
-        DispatchQueue.global().async(group: group) {
-            self.downloadImages(from: channel.snippet.thumbnails, named: channelID) { _ in
+        DispatchQueue.global().async(group: group) { [weak self] in
+            self?.downloadImages(from: channel.snippet.thumbnails, named: channelID) { _ in
                 group.leave()
             }
         }
         let _ = group.wait(timeout: .now() + 15)
-        group.notify(queue: .main) {
+        group.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
             let largeImage = "\(channelID)Large" + ".jpg"
             let mediumImage = "\(channelID)Medium" + ".jpg"
             let smallImage = "\(channelID)Small" + ".jpg"
@@ -182,10 +187,10 @@ final class YoutubeDownloader {
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
         // Download a file, temporarily save it to a local disk.
-        self.downloadFile(from: videoURL, extension: videoExtension, filename: filename) { (error) in
+        downloadFile(from: videoURL, extension: videoExtension, filename: filename) { [weak self] (error) in
             if error == nil {
                 // Getting audio from video
-                self.extractAudioFromVideo(filename: filename) { (error) in
+                self?.extractAudioFromVideo(filename: filename) { (error) in
                     LocalFileManager.deleteFile(withNameAndExtension: "\(filename).mp4")
                     completion?(nil)
                     dispatchGroup.leave()
@@ -214,8 +219,8 @@ final class YoutubeDownloader {
             return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
         }
         // DownloadRequest is saved to the dictionary to control download during download.
-        activeDownloads[filename] = AF.download(link, to: destination).downloadProgress(queue: .global()) { progress in
-            self.delegate?.download(progress, videoID: filename)
+        activeDownloads[filename] = AF.download(link, to: destination).downloadProgress(queue: .global()) { [weak self] progress in
+            self?.delegate?.download(progress, videoID: filename)
         }.response{ response in
             if response.error == nil {
                 print("Downloaded successfully \(filename).\(ext)")

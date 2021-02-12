@@ -90,10 +90,10 @@ extension DownloadSongsViewController: AddSongTableViewCellDelegate {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let video = searchResults[indexPath.row]
         let videoID = video.id.videoID
-        downloader.downloadVideo(videoID, youtubeVideo: video){ error in
+        downloader.downloadVideo(videoID, youtubeVideo: video){ [weak self] error in
             guard let error = error else { return }
             guard let isExplisitlyCancelled = error.asAFError?.isExplicitlyCancelledError, !isExplisitlyCancelled else { return }
-            self.showAlert(alertText: error.localizedDescription)
+            self?.showAlert(alertText: error.localizedDescription)
         }
     }
     
@@ -120,8 +120,8 @@ extension DownloadSongsViewController: AddSongTableViewCellDelegate {
 extension DownloadSongsViewController: YoutubeDownloaderDelegate {
     func download(_ progress: Progress, videoID: String) {
         guard let index = self.searchResults.firstIndex(where: {$0.id.videoID == videoID}) else { return }
-        DispatchQueue.main.async {
-            if let trackCell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? DownloadSongsTableViewCell {
+        DispatchQueue.main.async { [weak self] in
+            if let trackCell = self?.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? DownloadSongsTableViewCell {
                 trackCell.updateDisplay(progress: Float(progress.fractionCompleted))
                 if progress.isFinished {
                     trackCell.finishDownload()
@@ -142,15 +142,15 @@ extension DownloadSongsViewController: UISearchBarDelegate {
     
     @objc private func search() {
         guard !searchText.isEmpty else { return }
-        YoutubeSearcher.performSearchVideo(with: searchText) { (error, response) in
+        YoutubeSearcher.performSearchVideo(with: searchText) { [weak self] (error, response) in
             guard let items = response?.items else {
                 print(error ?? "Unknown error")
-                self.showAlert(alertText: error?.localizedDescription)
+                self?.showAlert(alertText: error?.localizedDescription)
                 return
             }
-            self.searchResults = items
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            self?.searchResults = items
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
             }
         }
     }

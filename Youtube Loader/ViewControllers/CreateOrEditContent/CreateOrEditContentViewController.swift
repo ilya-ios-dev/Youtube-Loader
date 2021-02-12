@@ -142,27 +142,27 @@ final class CreateOrEditContentViewController: UIViewController {
         guard let url = URL(string: string) else { return }
         // Deletes temporary picture
         LocalFileManager.deleteFile(withNameAndExtension: "\(self.imageName).jpg")
-        loadImage(from: url) { error, fileURL in
+        loadImage(from: url) { [weak self] error, fileURL in
             if let error = error {
                 print(error)
-                self.showAlert(alertText: error.localizedDescription)
-                self.activityIndicatiorView.stopAnimating()
-                self.refreshButton.isHidden = false
+                self?.showAlert(alertText: error.localizedDescription)
+                self?.activityIndicatiorView.stopAnimating()
+                self?.refreshButton.isHidden = false
                 return
             }
             
             if let url = fileURL {
-                self.imageView.af.setImage(withURL: url)
+                self?.imageView.af.setImage(withURL: url)
             }
             
             UIView.animate(withDuration: 0.325, delay: 0, options: [], animations: {
-                self.imageViewBlur.alpha = 0
+                self?.imageViewBlur.alpha = 0
             }, completion: { _ in
-                self.imageViewBlur.isHidden = true
+                self?.imageViewBlur.isHidden = true
             })
             
-            self.activityIndicatiorView.stopAnimating()
-            self.refreshButton.isHidden = false
+            self?.activityIndicatiorView.stopAnimating()
+            self?.refreshButton.isHidden = false
         }
     }
     
@@ -251,19 +251,19 @@ extension CreateOrEditContentViewController {
             searchImageTextField.textField.endEditing(true)
         } else {
             // Search for a picture in Unsplash.
-            searchImage(by: searchText) { (error, response) in
+            searchImage(by: searchText) { [weak self] (error, response) in
                 if let error = error {
                     print(error)
-                    self.showAlert(alertText: error.localizedDescription)
+                    self?.showAlert(alertText: error.localizedDescription)
                     return
                 }
                 
                 guard let results = response?.results else { return }
-                self.results = results
-                self.setupSnapshot()
-                UIView.animate(withDuration: 1) {
-                    self.collectionView.isHidden = false
-                    self.stackView.layoutIfNeeded()
+                self?.results = results
+                self?.setupSnapshot()
+                UIView.animate(withDuration: 1) { [weak self] in
+                    self?.collectionView.isHidden = false
+                    self?.stackView.layoutIfNeeded()
                 }
             }
         }
@@ -488,7 +488,8 @@ extension CreateOrEditContentViewController {
         snapshot = NSDiffableDataSourceSnapshot<Int, UnsplashResponse.Result>()
         snapshot.appendSections([0])
         snapshot.appendItems(results)
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.dataSource?.apply(self.snapshot, animatingDifferences: true)
         }
     }
